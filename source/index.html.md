@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='https://revoxef.works'>Sign Up to be able to use the apis</a>
+  - <a href='https://revo.works'>Sign Up to be able to use the apis</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
