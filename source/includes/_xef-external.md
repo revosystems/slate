@@ -1,4 +1,4 @@
-# Xef External
+# Xef
 
 ## Prerequisistes
 
@@ -28,13 +28,11 @@ Authorization | Bearer {the-token}
 
 `GET PaymentMethods`
 
-**Example call**
+```sh
+GET https://revoxef.works/api/external/v2/paymentMethods
+```
 
-`GET https://revoxef.works/api/external/v2/paymentMethods`
-
-**Response**
-
-Response is an array of payment methods with the following fields:
+> Response is an array of payment methods with the following fields:
 
 ```
 "id": 1,
@@ -47,21 +45,13 @@ Response is an array of payment methods with the following fields:
 
 `GET Orders`
 
-| Query parameter | Description                                                                 |
-| ----------------|-----------------------------------------------------------------------------|
-| from (optional) | The starting date of the orders fetched                                     |
-| to (optional)   | The ending date of the orders fetched                                       |
-| page (optional) | As the orders are paginated, use this parameter to select the page to fetch |
-
-
-`GET https://revoxef.works/api/external/v2/orders?from=2017-01-02&to=2017-01-04`
-
-Response
-
-Response is paginated for every 50 
-
-
+```sh
+GET https://revoxef.works/api/external/v2/orders?from=2017-01-02&to=2017-01-04
 ```
+
+> Response is paginated for every 50 
+
+```sh
     "id": 4,
     "opened": "2017-12-15 08:40:52",
     "closed": "2017-01-03 00:00:00",
@@ -117,10 +107,18 @@ Response is paginated for every 50
        ],
       } 
 ```
+
+| Field    | Required | Description                                                                 |
+| ---------|----------|-----------------------------------------------------------------------------|
+| `from`   | optional | The starting date of the orders fetched                                     |
+| `to`     | optional | The ending date of the orders fetched                                       |
+| `page`   | optional | As the orders are paginated, use this parameter to select the page to fetch |
+
   
-  You can add `?withPayments` parameter. This way apart from `orderContents` another array will be loaded called `orderInvoices`, it will contain an array of invoices and each invoice will contain an array of `orderPayments`. 
+> You can add `?withPayments` parameter. This way apart from `orderContents` another array will be loaded called `orderInvoices`, it will contain an array of invoices and each invoice will contain an array of `orderPayments`. 
+
   
-```   
+```sh  
 "orderContents": [{…}, {…}, …],
 "orderInvoices": [
     {
@@ -135,9 +133,9 @@ Response is paginated for every 50
 ]
 ```  
   
-  You can add **?withRooms** parameter. This way apart from `orderContents` another array will be loaded called `table` which will contain a `room`. 
+> You can add **?withRooms** parameter. This way apart from `orderContents` another array will be loaded called `table` which will contain a `room`. 
   
-```
+```sh
 "orderContents": [{…}, {…}, …],
 "table": {
     "id"        : <table_id>,
@@ -154,15 +152,20 @@ Response is paginated for every 50
 
 `POST GiftCards`
 
-| Query parameter           | Description                                                                           |
-| --------------------------|---------------------------------------------------------------------------------------|
-| balance                   | Card amount                                                                           |
-| uuid                      | Unique identifier for the card                                                        |
-| campaign_id   (optional)  | Campaign ID when giftcard should be linked with a campaign (get ID from backend)      |
+| Query parameter |          | Description                                                                           |
+| ----------------|----------|---------------------------------------------------------------------------------------|
+| balance         | required | Card amount                                                                           |
+| uuid            | required | Unique identifier for the card                                                        |
+| campaign_id     | optional | Campaign ID when giftcard should be linked with a campaign (get ID from backend)      |
 
 
-`GET https://revoxef.works/api/external/v2/giftCards`
-``` 
+```sh
+GET https://revoxef.works/api/external/v2/giftCards
+```
+
+> Response
+
+```sh
 {
     "balance": 1.25,
     "uuid": "123456"
@@ -173,6 +176,7 @@ Response is paginated for every 50
 
 ## Responses
 
-----|---------------------------------|------------------------------------------------
-201 | HTTP_CREATED (201)              | giftcard could be created
-422 | HTTP_UNPROCESSABLE_ENTITY (422) | giftcard already exists or could not be created
+Value | Meaning                    | Description
+------|----------------------------|------------------------------------------------
+201   | HTTP_CREATED               | giftcard could be created
+422   | HTTP_UNPROCESSABLE_ENTITY  | giftcard already exists or could not be created
