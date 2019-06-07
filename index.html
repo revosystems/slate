@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Revo API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,9 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -225,28 +222,254 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#xef-deprecated" class="toc-h1 toc-link" data-title="Xef (Deprecated)">Xef (Deprecated)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#basic-request" class="toc-h2 toc-link" data-title="Basic Request">Basic Request</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#get" class="toc-h2 toc-link" data-title="Get">Get</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#getmenugroups" class="toc-h2 toc-link" data-title="getMenuGroups">getMenuGroups</a>
+                  </li>
+                  <li>
+                    <a href="#getchildren" class="toc-h2 toc-link" data-title="getChildren">getChildren</a>
+                  </li>
+                  <li>
+                    <a href="#getinventory" class="toc-h2 toc-link" data-title="getInventory">getInventory</a>
+                  </li>
+                  <li>
+                    <a href="#get-images" class="toc-h2 toc-link" data-title="Get images">Get images</a>
+                  </li>
+                  <li>
+                    <a href="#revo-display-images" class="toc-h2 toc-link" data-title="Revo Display Images">Revo Display Images</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#xef" class="toc-h1 toc-link" data-title="Xef">Xef</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#prerequisistes" class="toc-h2 toc-link" data-title="Prerequisistes">Prerequisistes</a>
+                  </li>
+                  <li>
+                    <a href="#basic-usage" class="toc-h2 toc-link" data-title="Basic usage">Basic usage</a>
+                  </li>
+                  <li>
+                    <a href="#payment-methods" class="toc-h2 toc-link" data-title="Payment Methods">Payment Methods</a>
+                  </li>
+                  <li>
+                    <a href="#orders" class="toc-h2 toc-link" data-title="Orders">Orders</a>
+                  </li>
+                  <li>
+                    <a href="#giftcards" class="toc-h2 toc-link" data-title="GiftCards">GiftCards</a>
+                  </li>
+                  <li>
+                    <a href="#responses" class="toc-h2 toc-link" data-title="Responses">Responses</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#xef-loyalty" class="toc-h1 toc-link" data-title="Xef Loyalty">Xef Loyalty</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#base-url" class="toc-h2 toc-link" data-title="Base URL">Base URL</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#xef-reports" class="toc-h1 toc-link" data-title="Xef Reports">Xef Reports</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#request" class="toc-h2 toc-link" data-title="Request">Request</a>
+                  </li>
+                  <li>
+                    <a href="#available-reports" class="toc-h2 toc-link" data-title="Available reports">Available reports</a>
+                  </li>
+                  <li>
+                    <a href="#master" class="toc-h2 toc-link" data-title="Master">Master</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#retail" class="toc-h1 toc-link" data-title="Retail">Retail</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#prerequisistes" class="toc-h2 toc-link" data-title="Prerequisistes">Prerequisistes</a>
+                  </li>
+                  <li>
+                    <a href="#authorization" class="toc-h2 toc-link" data-title="Authorization">Authorization</a>
+                  </li>
+                  <li>
+                    <a href="#generic-list-response" class="toc-h2 toc-link" data-title="Generic list response">Generic list response</a>
+                  </li>
+                  <li>
+                    <a href="#available-resources" class="toc-h2 toc-link" data-title="Available resources">Available resources</a>
+                  </li>
+                  <li>
+                    <a href="#catalog-generation" class="toc-h2 toc-link" data-title="Catalog generation">Catalog generation</a>
+                  </li>
+                  <li>
+                    <a href="#create-order" class="toc-h2 toc-link" data-title="Create Order">Create Order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#retail-reports" class="toc-h1 toc-link" data-title="Retail Reports">Retail Reports</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#response-format" class="toc-h2 toc-link" data-title="Response format">Response format</a>
+                  </li>
+                  <li>
+                    <a href="#available-filters" class="toc-h2 toc-link" data-title="Available filters">Available filters</a>
+                  </li>
+                  <li>
+                    <a href="#available-reports" class="toc-h2 toc-link" data-title="Available reports">Available reports</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#revoflow" class="toc-h1 toc-link" data-title="RevoFlow">RevoFlow</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#base-url" class="toc-h2 toc-link" data-title="Base URL">Base URL</a>
+                  </li>
+                  <li>
+                    <a href="#authorization" class="toc-h2 toc-link" data-title="Authorization">Authorization</a>
+                  </li>
+                  <li>
+                    <a href="#bookings" class="toc-h2 toc-link" data-title="Bookings">Bookings</a>
+                  </li>
+                  <li>
+                    <a href="#update-booking-put" class="toc-h2 toc-link" data-title="Update booking (PUT)">Update booking (PUT)</a>
+                  </li>
+                  <li>
+                    <a href="#customers" class="toc-h2 toc-link" data-title="Customers">Customers</a>
+                  </li>
+                  <li>
+                    <a href="#products" class="toc-h2 toc-link" data-title="Products">Products</a>
+                  </li>
+                  <li>
+                    <a href="#shifts" class="toc-h2 toc-link" data-title="Shifts">Shifts</a>
+                  </li>
+                  <li>
+                    <a href="#tables" class="toc-h2 toc-link" data-title="Tables">Tables</a>
+                  </li>
+                  <li>
+                    <a href="#availabillity" class="toc-h2 toc-link" data-title="Availabillity">Availabillity</a>
+                  </li>
+                  <li>
+                    <a href="#time-available" class="toc-h2 toc-link" data-title="Time Available">Time Available</a>
+                  </li>
+                  <li>
+                    <a href="#next-bookings" class="toc-h2 toc-link" data-title="Next bookings">Next bookings</a>
+                  </li>
+                  <li>
+                    <a href="#close-booking" class="toc-h2 toc-link" data-title="Close Booking">Close Booking</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#revoflow-integration-api" class="toc-h1 toc-link" data-title="RevoFlow integration API">RevoFlow integration API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#basic-request" class="toc-h2 toc-link" data-title="Basic Request">Basic Request</a>
+                  </li>
+                  <li>
+                    <a href="#sync" class="toc-h2 toc-link" data-title="Sync">Sync</a>
+                  </li>
+                  <li>
+                    <a href="#searchproducts" class="toc-h2 toc-link" data-title="searchProducts">searchProducts</a>
+                  </li>
+                  <li>
+                    <a href="#updatetables" class="toc-h2 toc-link" data-title="updateTables">updateTables</a>
+                  </li>
+                  <li>
+                    <a href="#neworder" class="toc-h2 toc-link" data-title="newOrder">newOrder</a>
+                  </li>
+                  <li>
+                    <a href="#updateorder" class="toc-h2 toc-link" data-title="updateOrder">updateOrder</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#intouch" class="toc-h1 toc-link" data-title="InTouch">InTouch</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#basic-request" class="toc-h2 toc-link" data-title="Basic request">Basic request</a>
+                  </li>
+                  <li>
+                    <a href="#images" class="toc-h2 toc-link" data-title="Images">Images</a>
+                  </li>
+                  <li>
+                    <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
+                  </li>
+                  <li>
+                    <a href="#register" class="toc-h2 toc-link" data-title="Register">Register</a>
+                  </li>
+                  <li>
+                    <a href="#cards" class="toc-h2 toc-link" data-title="Cards">Cards</a>
+                  </li>
+                  <li>
+                    <a href="#syncable-models" class="toc-h2 toc-link" data-title="Syncable models">Syncable models</a>
+                  </li>
+                  <li>
+                    <a href="#stores" class="toc-h2 toc-link" data-title="Stores">Stores</a>
+                  </li>
+                  <li>
+                    <a href="#categories" class="toc-h2 toc-link" data-title="Categories">Categories</a>
+                  </li>
+                  <li>
+                    <a href="#shifts" class="toc-h2 toc-link" data-title="Shifts">Shifts</a>
+                  </li>
+                  <li>
+                    <a href="#deliveryshifts" class="toc-h2 toc-link" data-title="DeliveryShifts">DeliveryShifts</a>
+                  </li>
+                  <li>
+                    <a href="#products" class="toc-h2 toc-link" data-title="Products">Products</a>
+                  </li>
+                  <li>
+                    <a href="#menu-categories" class="toc-h2 toc-link" data-title="Menu Categories">Menu Categories</a>
+                  </li>
+                  <li>
+                    <a href="#menu-products" class="toc-h2 toc-link" data-title="Menu Products">Menu Products</a>
+                  </li>
+                  <li>
+                    <a href="#modifier-categories" class="toc-h2 toc-link" data-title="Modifier Categories">Modifier Categories</a>
+                  </li>
+                  <li>
+                    <a href="#modifiers" class="toc-h2 toc-link" data-title="Modifiers">Modifiers</a>
+                  </li>
+                  <li>
+                    <a href="#product-modifier-cateogires" class="toc-h2 toc-link" data-title="Product - Modifier Cateogires">Product - Modifier Cateogires</a>
+                  </li>
+                  <li>
+                    <a href="#credit-cards" class="toc-h2 toc-link" data-title="Credit Cards">Credit Cards</a>
+                  </li>
+                  <li>
+                    <a href="#orders" class="toc-h2 toc-link" data-title="Orders">Orders</a>
+                  </li>
+                  <li>
+                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
+                  </li>
+                  <li>
+                    <a href="#other-routes" class="toc-h2 toc-link" data-title="Other routes">Other routes</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://revoxef.works'>Sign Up to be able to use the apis</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -254,240 +477,2483 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to Revo API! You can use our API&#39;s to access <a href="https://revo.works/en/products/revoxef">Xef</a>, <a href="https://revo.works/en/products/revoretail">Retail</a>, <a href="https://revo.works/en/products/revoflow">Flow</a> and <a href="https://revointouch.works">InTouch</a> Endpoints.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>You will be able to fetch records, update or fetch the catalog, create new orders and manage stock.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<p>Feel free to navigate through the docs and tell us if you feel that something can be improved.</p>
+<h1 id='xef-deprecated'>Xef (Deprecated)</h1>
+<p>Event this <code>api</code> is still working, it will be deprecated and updated the <code>REST</code> in the following months</p>
+<h2 id='basic-request'>Basic Request</h2><pre class="highlight sh tab-shell"><code>    <span class="o">{</span>
+        <span class="s2">"auth"</span>:<span class="o">{</span>
+            <span class="s2">"tenant"</span>  :<span class="s2">"account"</span>,
+            <span class="s2">"password"</span>:<span class="s2">"password"</span>
+        <span class="o">}</span>,
+        <span class="s2">"action"</span>:<span class="s2">"action"</span>,
+        <span class="s2">"data"</span>:data
+    <span class="o">}</span>
 </code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<p>To work with <code>Revo external api</code> a <code>POST</code> or <code>GET</code> request is required to the following url:</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p><code>https://revoxef.works/apiExternal</code></p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>With a variable named <code>message</code> that has to be a <code>json</code> with the following information</p>
 
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
+<th>Field</th>
+<th> Type</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account</td>
+<td><code>string</code></td>
+<td>is the account (same name used to login)</td>
+</tr>
+<tr>
+<td>password</td>
+<td><code>string</code></td>
+<td>is the <a href="/back/account#password">app password</a> (not the backend password)</td>
+</tr>
+<tr>
+<td>action</td>
+<td><code>string</code></td>
+<td>the action to perform (explained below)</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>json</code></td>
+<td>data required for the action (explained below)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>The api has a limit of 60 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
+</blockquote>
+<h2 id='get'>Get</h2>
+<p>Returns the full data for an specific model and id.</p>
+<pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"model"</span>:<span class="s2">"model"</span>,
+        <span class="s2">"id"</span>:<span class="s2">"id"</span>
+        <span class="o">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Field</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>is the model to fetch within <code>MenuGroup</code> <code>MenuCategory</code> <code>MenuItem</code> <code>ModifierGroup</code> <code>ModifierCategory</code> <code>Modifier</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td>is the id of the model to fetch</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
+    <span class="o">{</span>
+        <span class="s2">"auth"</span>      : <span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
+        <span class="s2">"action"</span>    : <span class="s2">"get"</span>,
+        <span class="s2">"data"</span>      : <span class="o">{</span><span class="s2">"model"</span>:<span class="s2">"MenuItem"</span>,<span class="s2">"id"</span>:<span class="s2">"236"</span><span class="o">}</span>
+    <span class="o">}</span>
+</code></pre><h2 id='getmenugroups'>getMenuGroups</h2><pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
+    <span class="o">{</span>
+        <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
+        <span class="s2">"action"</span>:<span class="s2">"getMenuGroups"</span>,
+        <span class="s2">"data"</span>:<span class="o">{}</span>
+    <span class="o">}</span>
+</code></pre>
+<p>Since maybe we want to create an online shop that starts with menu groups, we can get them all using the action <code>getMenuGroups</code> with empty data.
+This will return a list of all the groups (with their <code>ID</code>). With this Id we can <a href="#getChilds">fetch the categories</a>.</p>
+<h2 id='getchildren'>getChildren</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
+    <span class="s2">"model"</span>:<span class="s2">"parentModel"</span>,
+    <span class="s2">"id"</span>:id
+    <span class="o">}</span>
+</code></pre>
+<p>This action returns all the children for an specific model</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th> Type</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>parentModel</td>
+<td><code>string</code></td>
+<td>is the model we want its children. <code>MenuGroup</code> <code>MenuCategories</code> <code>ModifierCategory</code></td>
+</tr>
+<tr>
+<td>id</td>
+<td><code>int</code></td>
+<td>the id of the model we want its children.</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
+    <span class="o">{</span>
+        <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
+        <span class="s2">"action"</span>:<span class="s2">"getChilds"</span>,
+        <span class="s2">"data"</span>:<span class="o">{</span><span class="s2">"model"</span>:<span class="s2">"MenuGroup"</span>,<span class="s2">"id"</span>:2<span class="o">}</span>
+    <span class="o">}</span>
+</code></pre>
+<p>It will return all the childs of the <code>menuGroup</code> with <code>ID</code> 2.</p>
+<h2 id='getinventory'>getInventory</h2><pre class="highlight sh tab-shell"><code> https://revoxef.works/apiExternal?message<span class="o">=</span>
+     <span class="o">{</span>
+         <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
+         <span class="s2">"action"</span>:<span class="s2">"getInventory"</span>,
+         <span class="s2">"data"</span>:<span class="o">{</span><span class="s2">"warehouse_id"</span>:1,<span class="s2">"items"</span>:[2,4,10]<span class="o">}</span>
+     <span class="o">}</span>
+</code></pre>
+<p>Gets the current inventory for an Item in a Warehouse.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th> Type</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>warehouse_id</td>
+<td><code>int</code></td>
+<td>Is the ID of the warehouse to get the quantity from</td>
+</tr>
+<tr>
+<td>items</td>
+<td><code>array int</code></td>
+<td>Array of the ids of the items to get the quantity</td>
+</tr>
+</tbody></table>
+<h3 id='decreaseinventory'>decreaseInventory</h3>
+<p>Decreases the inventory for an Item in a Warehouse.</p>
+<pre class="highlight sh tab-shell"><code> https://revoxef.works/apiExternal?message<span class="o">=</span>
+     <span class="o">{</span>
+         <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
+         <span class="s2">"action"</span>:<span class="s2">"decreaseInventory"</span>,
+         <span class="s2">"data"</span>:<span class="o">{</span><span class="s2">"warehouse_id"</span>:1,<span class="s2">"item_id"</span>:2, <span class="s2">"quantity"</span>:1<span class="o">}</span>
+     <span class="o">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Field</th>
+<th> Type</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>warehouse_id</td>
+<td><code>int</code></td>
+<td>Is the ID of the warehouse to decrease the quantity from</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td><code>int</code></td>
+<td>Is the ID of the item to decrease</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td><code>int</code></td>
+<td>Is the quantity to decrease</td>
+</tr>
+</tbody></table>
+<h2 id='get-images'>Get images</h2>
+<p>To get the image, you need to do a get request the ideal thing for the images is to store it in your server and only request the image if the path changed,</p>
+
+<p><code>https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{account}/images/{image_path}</code></p>
+
+<p>or </p>
+
+<p><code>https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{account}/images/resized_100_{image_path}</code></p>
+
+<p>For a thumbnail</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th> Type</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account</td>
+<td><code>string</code></td>
+<td>Is your account name, same name used for login into the app</td>
+</tr>
+<tr>
+<td>image_path</td>
+<td><code>string</code></td>
+<td>is the photo variable of the model</td>
+</tr>
+</tbody></table>
+<h2 id='revo-display-images'>Revo Display Images</h2>
+<p>Returns an array of paths for each <a href="/display">Revo Display</a> ads image.</p>
+
+<p>To get the image</p>
+
+<p><code>https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{account}/banners/{image_path}</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th> Type</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account</td>
+<td><code>string</code></td>
+<td>the account name</td>
+</tr>
+<tr>
+<td>image_path</td>
+<td><code>string</code></td>
+<td>the image path returned in the array</td>
+</tr>
+</tbody></table>
+<h1 id='xef'>Xef</h1><h2 id='prerequisistes'>Prerequisistes</h2>
+<p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code></p>
+
+<ol>
+<li>Login into the desired account</li>
+<li>Go to account management</li>
+<li>Create a new <a href="https://revoxef.works/account/tokens">token</a></li>
+</ol>
+<h2 id='basic-usage'>Basic usage</h2>
+<p>The main URL for the external api is</p>
+
+<p><code>https://revoxek.works/api/external/v2/</code></p>
+
+<p>And you should provide the mandatory headers for the authentification</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tenant</td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {the-token}</td>
+</tr>
+</tbody></table>
+<h2 id='payment-methods'>Payment Methods</h2>
+<p><code>GET PaymentMethods</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/paymentMethods
+</code></pre>
+<blockquote>
+<p>Response is an array of payment methods with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>"id": 1,
+"name": "Payment method name",
+"active": true,
+</code></pre><h2 id='orders'>Orders</h2>
+<p><code>GET Orders</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/orders?from<span class="o">=</span>2017-01-02&amp;to<span class="o">=</span>2017-01-04
+</code></pre>
+<blockquote>
+<p>Response is paginated for every 50 </p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code>    <span class="s2">"id"</span>: 4,
+    <span class="s2">"opened"</span>: <span class="s2">"2017-12-15 08:40:52"</span>,
+    <span class="s2">"closed"</span>: <span class="s2">"2017-01-03 00:00:00"</span>,
+    <span class="s2">"merged"</span>: null,
+    <span class="s2">"canceled"</span>: null,
+    <span class="s2">"guests"</span>: <span class="s2">"4"</span>,
+    <span class="s2">"status"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"orderDiscountAmount"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"sum"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"discountAmount"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"subtotal"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"taxAmount"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"total"</span>: <span class="s2">"14.5"</span>,
+    <span class="s2">"alreadyPaid"</span>: <span class="s2">"0.0"</span>,
+    <span class="s2">"tenantUser_id"</span>: null,
+    <span class="s2">"tenantUserName"</span>: null,
+    <span class="s2">"discount"</span>: null,
+    <span class="s2">"table_id"</span>: null,
+    <span class="s2">"tableName"</span>: null,
+    <span class="s2">"margin"</span>: null,
+    <span class="s2">"delivery_id"</span>: null,
+    <span class="s2">"orderInvoices"</span>: <span class="o">[]</span>,
+    <span class="s2">"delivery"</span>: null,
+    <span class="s2">"orderContents"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1,
+            <span class="s2">"order_id"</span>: <span class="s2">"4"</span>,
+            <span class="s2">"item_id"</span>: <span class="s2">"1"</span>,
+            <span class="s2">"dishOrder"</span>: <span class="s2">"0"</span>,
+            <span class="s2">"seat"</span>: <span class="s2">"0"</span>,
+            <span class="s2">"quantity"</span>: <span class="s2">"2"</span>,
+            <span class="s2">"weight"</span>: <span class="s2">"0"</span>,
+            <span class="s2">"itemName"</span>: <span class="s2">"Oran Cartwright"</span>,
+            <span class="s2">"itemPrice"</span>: <span class="s2">"17.49"</span>,
+            <span class="s2">"alreadyPaidQuantity"</span>: <span class="s2">"0"</span>,
+            <span class="s2">"alreadyPrintedQuantity"</span>: <span class="s2">"0"</span>,
+            <span class="s2">"modifiers"</span>: null,
+            <span class="s2">"discount"</span>: null,
+            <span class="s2">"taxPercentage"</span>: <span class="s2">"0"</span>,
+            <span class="s2">"discountAmount"</span>: <span class="s2">"79.84"</span>,
+            <span class="s2">"taxAmount"</span>: <span class="s2">"85.91"</span>,
+            <span class="s2">"total"</span>: <span class="s2">"98.98"</span>,
+            <span class="s2">"extrasAmount"</span>: <span class="s2">"12.96"</span>,
+            <span class="s2">"subtotal"</span>: <span class="s2">"74.96"</span>,
+            <span class="s2">"priceWithExtrasIndividual"</span>: <span class="s2">"66.52"</span>,
+            <span class="s2">"notes"</span>: null,
+            <span class="s2">"price_id"</span>: null,
+            <span class="s2">"optional_modifiers"</span>: null,
+            <span class="s2">"format_pivot_id"</span>: null,
+            <span class="s2">"margin"</span>: null,
+            <span class="s2">"menuMenuContents"</span>: <span class="o">[]</span>,
+        <span class="o">}</span>
+       <span class="o">]</span>,
+      <span class="o">}</span> 
+</code></pre>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td><code>from</code></td>
+<td>optional</td>
+<td>The starting date of the orders fetched</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td><code>to</code></td>
+<td>optional</td>
+<td>The ending date of the orders fetched</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>optional</td>
+<td>As the orders are paginated, use this parameter to select the page to fetch</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<blockquote>
+<p>You can add <code>?withPayments</code> parameter. This way apart from <code>orderContents</code> another array will be loaded called <code>orderInvoices</code>, it will contain an array of invoices and each invoice will contain an array of <code>orderPayments</code>. </p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="s2">"orderContents"</span>: <span class="o">[{</span>…<span class="o">}</span>, <span class="o">{</span>…<span class="o">}</span>, …],
+<span class="s2">"orderInvoices"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"orderPayments"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">"payAmount"</span>: 10,
+                <span class="s2">"paymentMethod"</span>: 1,
+                …
+            <span class="o">}</span>, <span class="o">{</span>…<span class="o">}</span>, …
+        <span class="o">]</span>, …
+    <span class="o">}</span>, <span class="o">{</span>…<span class="o">}</span>, …
+<span class="o">]</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>You can add <strong>?withRooms</strong> parameter. This way apart from <code>orderContents</code> another array will be loaded called <code>table</code> which will contain a <code>room</code>. </p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<pre class="highlight sh tab-shell"><code><span class="s2">"orderContents"</span>: <span class="o">[{</span>…<span class="o">}</span>, <span class="o">{</span>…<span class="o">}</span>, …],
+<span class="s2">"table"</span>: <span class="o">{</span>
+    <span class="s2">"id"</span>        : &lt;table_id&gt;,
+    <span class="s2">"name"</span>      : &lt;tableName&gt;,
+    <span class="s2">"room_id"</span>   : &lt;room_id&gt;,
+    <span class="s2">"room"</span>      : <span class="o">{</span>
+        <span class="s2">"id"</span>    : &lt;room_id&gt;,
+        <span class="s2">"name"</span>  : &lt;roomName&gt;
+    <span class="o">}</span>,
+<span class="o">}</span>
+</code></pre><h2 id='giftcards'>GiftCards</h2>
+<p><code>POST GiftCards</code></p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Query parameter</th>
+<th></th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>balance</td>
+<td>required</td>
+<td>Card amount</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>required</td>
+<td>Unique identifier for the card</td>
+</tr>
+<tr>
+<td>campaign_id</td>
+<td>optional</td>
+<td>Campaign ID when giftcard should be linked with a campaign (get ID from backend)</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/giftCards
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Response</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"balance"</span>: 1.25,
+    <span class="s2">"uuid"</span>: <span class="s2">"123456"</span>
+    <span class="s2">"campaign_id"</span>: <span class="s2">"3"</span>
+<span class="o">}</span>
+</code></pre><h2 id='responses'>Responses</h2>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
+<th>Value</th>
 <th>Meaning</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>201</td>
+<td>HTTP_CREATED</td>
+<td>giftcard could be created</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>422</td>
+<td>HTTP_UNPROCESSABLE_ENTITY</td>
+<td>giftcard already exists or could not be created</td>
+</tr>
+</tbody></table>
+<h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='base-url'>Base URL</h2>
+<p><code>https://revoxef.works/api/loyalty/</code></p>
+<h2 id='create-an-order'>Create an order</h2>
+<p><code>POST orders</code></p>
+
+<p>Headers:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tenant</td>
+<td>account name</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Authorization</td>
+<td>Bearer {token}</td>
+</tr>
+</tbody></table>
+
+<p>Body:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td><code>json</code></td>
+<td> Json encoded order</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>customer</td>
+<td><code>array</code></td>
+<td>Of name and email <code>[&quot;name&quot; =&gt; &quot;The name&quot;, &quot;email&quot; =&gt; &quot;theEmail@example.com&quot;]</code></td>
+</tr>
+</tbody></table>
+<pre class="highlight plaintext"><code>Response:
+{
+    "total"     : 12.23,
+    "taxAmount" : 1.23,
+    "subtotal"  : 10,
+    "sum"       : 10,
+    "contents"  : [
+        [
+            "item_id"       : 1,
+            "total"         : 7,
+            "taxAmount"     : 2,
+            "subtotal"      : 5,
+            "itemPrice"     : 7,
+            "taxPercentage" : 10,
+        ], [
+            "item_id"       : 2,
+            "total"         : 7,
+            "taxAmount"     : 2,
+            "subtotal"      : 5,
+            "itemPrice"     : 7,
+            "taxPercentage" : 10,
+        ]
+    ]
+}
+</code></pre><h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
+     --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
+https://revoxef.works/api/external/v2
+</code></pre>
+<p>Base endpoint</p>
+
+<p><code>https://revoxef.works/api/external/v2</code></p>
+
+<p>You should send the headers <code>tenant</code> with your account username and <code>authorization</code> with the token created at <code>account &gt; tokens</code></p>
+
+<blockquote>
+<p>Get your token at <a href="https://revoxef.works/account/tokens">https://revoxef.works/account/tokens</a></p>
+</blockquote>
+<h2 id='request'>Request</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
+https://revoxef.works/api/external/v2/reports/<span class="o">{</span>reportName<span class="o">}</span>?start_date<span class="o">=</span>2018-01-01&amp;end_date<span class="o">=</span>2018-01-29
+</code></pre>
+<p><code>GET reports/{reportName}</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start_date</code></td>
+<td>YYYY-mm-dd</td>
+<td>The initial date for the report</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td><code>end_date</code></td>
+<td>YYYY-mm-dd</td>
+<td>The final date for the report</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"current_page"</span>: 1,
+    <span class="s2">"data"</span>: <span class="o">{</span><span class="s2">"HERE WILL GO THE SPECIFIC REPORT DATA"</span><span class="o">}</span>,
+    <span class="s2">"from"</span>: 1,
+    <span class="s2">"last_page"</span>: 4,
+    <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoxef.works/api/external/v2/reports/{reportName}?page=2"</span>,
+    <span class="s2">"path"</span>: <span class="s2">"https://revoxef.works/api/external/v2/reports/{reportName}"</span>,
+    <span class="s2">"per_page"</span>: 50,
+    <span class="s2">"prev_page_url"</span>: null,
+    <span class="s2">"to"</span>: 50,
+    <span class="s2">"total"</span>: 190
+<span class="o">}</span>
+</code></pre>
+<p>All responses will have this header</p>
+<h3 id='filters'>Filters</h3>
+<table><thead>
+<tr>
+<th>Filter</th>
+<th> Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start_date</code></td>
+<td>YYYY-mm-dd</td>
+<td>(required) The initial date for the report</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td><code>end_date</code></td>
+<td>YYYY-mm-dd</td>
+<td>(required) The final date for the report</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td><code>start_time</code></td>
+<td>HH:mm</td>
+<td>The start time for the report</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td><code>end_time</code></td>
+<td>HH:mm</td>
+<td>The end time for the report</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td><code>employee</code></td>
+<td>int</td>
+<td>Employee id</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td><code>room</code></td>
+<td>int</td>
+<td>Room id</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td><code>dayofweek</code></td>
+<td>int</td>
+<td>Where Sunday is 1 and Saturday is 7</td>
+</tr>
+<tr>
+<td><code>priceRate</code></td>
+<td>int</td>
+<td>Price rate id</td>
+</tr>
+<tr>
+<td><code>cashier</code></td>
+<td>int</td>
+<td>Cashier id</td>
+</tr>
+<tr>
+<td><code>discount</code></td>
+<td>int</td>
+<td>Discount id</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
+</aside>
+<h2 id='available-reports'>Available reports</h2>
+<p>Here is a list of all available reports</p>
+
+<ul>
+<li>actionLog</li>
+<li>allProducts</li>
+<li>canceledContents</li>
+<li>canceledInvoices</li>
+<li>canceledOrders</li>
+<li>categories</li>
+<li>contentDiscounts</li>
+<li>cookDurations</li>
+<li>customers</li>
+<li>deliveries</li>
+<li>discounts</li>
+<li>freeOrders</li>
+<li>groupedInvoices</li>
+<li>groups</li>
+<li>hours</li>
+<li>invoices</li>
+<li>menuProducts</li>
+<li>menus</li>
+<li>openOrders</li>
+<li>orderContents</li>
+<li>orders</li>
+<li>payments</li>
+<li>presences</li>
+<li>products</li>
+<li>purchasedProducts</li>
+<li>rooms</li>
+<li>stock</li>
+<li>stocks</li>
+<li>taxes</li>
+<li>turns</li>
+<li>users</li>
+<li>warehouses</li>
+<li>withoutInvoiceOrders</li>
+</ul>
+<h2 id='master'>Master</h2>
+<p>In case you have a master account you can create a token for the master account and use it to access all the chain reports as well as get a list of all the accounts within the master account</p>
+<h3 id='get-accounts'>Get Accounts</h3>
+<p><code>GET https://revoxef.works/api/external/v2/accounts</code></p>
+<h3 id='chain-reports'>Chain reports</h3>
+<p><code>GET https://revoxef.works/api/external/v2/accounts/reports/{reportName}</code></p>
+
+<p>And you have to add a new header that defines the chain to connect to</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th> Value</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tenant</td>
+<td>account</td>
+<td>Master account name,</td>
+</tr>
+<tr>
+<td>authorization</td>
+<td>Bearer {token}</td>
+<td>The <a href="https://revoxef.works/account/tokens">token</a> created at backoffice</td>
+</tr>
+<tr>
+<td>chain</td>
+<td>chain</td>
+<td>chain username returned in the accounts GET method</td>
+</tr>
+</tbody></table>
+<pre class="highlight plaintext"><code></code></pre><h1 id='retail'>Retail</h1><h2 id='prerequisistes'>Prerequisistes</h2>
+<p>To be able to use the external api you need a <code>revo retail</code> account and an <code>access token</code></p>
+
+<ol>
+<li>Login into the desired account</li>
+<li>Go to account management</li>
+<li>Create a new <a href="http://revoretail.works/admin/account/tokens">token</a></li>
+</ol>
+<h2 id='authorization'>Authorization</h2>
+<p>The main URL for the external api is</p>
+
+<p><code>https://revoretail.works/api/external</code></p>
+
+<p>And you should provide the mandatory headers for the authentification</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>username</code></td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td><code>Authorization</code></td>
+<td>Bearer {the-token}</td>
+</tr>
+</tbody></table>
+<h2 id='generic-list-response'>Generic list response</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"current_page"</span>  : 1,
+    <span class="s2">"from"</span>          : 1,
+    <span class="s2">"last_page"</span>     : 2,
+    <span class="s2">"next_page_url"</span> : <span class="s2">"https://revoretail.works/api/external/[resource]?page=2"</span>,
+    <span class="s2">"path"</span>          : <span class="s2">"http://revoretail.works/api/external/[resource]"</span>,
+    <span class="s2">"per_page"</span>      : 50,
+    <span class="s2">"prev_page_url"</span> : null,
+    <span class="s2">"to"</span>            : 50,
+    <span class="s2">"total"</span>         : 10,
+    <span class="s2">"data"</span>: <span class="o">[]</span>
+<span class="o">}</span>
+</code></pre><h2 id='available-resources'>Available resources</h2><h3 id='get-list-of-groups'>Get list of groups</h3>
+<p>Get a list of groups</p>
+
+<p><code>GET https://revoretail.works/api/external/catalog/groups</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"name"</span>, <span class="s2">"Shoes"</span>,
+        <span class="s2">"photo"</span>     : <span class="s2">""</span>,
+        <span class="s2">"order"</span>     : 0,
+        <span class="s2">"active"</span>    : 1,
+        <span class="s2">"group_id"</span>  : 1,
+        <span class="s2">"tax_id"</span>    : 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"name"</span>, <span class="s2">"Pants"</span>,
+        <span class="s2">"photo"</span>     : <span class="s2">""</span>,
+        <span class="s2">"order"</span>     : 0,
+        <span class="s2">"active"</span>    : 1,
+        <span class="s2">"group_id"</span>  : 1,
+        <span class="s2">"tax_id"</span>    : 1
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre><h3 id='get-list-of-categories'>Get list of categories</h3>
+<p>Get a list of categories, can filter by group</p>
+
+<p><code>GET https://revoretail.works/api/external/catalog/categories?group=</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"name"</span>, <span class="s2">"Trousers"</span>,
+        <span class="s2">"photo"</span>     : <span class="s2">""</span>,
+        <span class="s2">"order"</span>     : 0,
+        <span class="s2">"active"</span>    : 1,
+        <span class="s2">"group_id"</span>  : 1,
+        <span class="s2">"tax_id"</span>    : 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"name"</span>, <span class="s2">"Shorts"</span>,
+        <span class="s2">"photo"</span>     : <span class="s2">""</span>,
+        <span class="s2">"order"</span>     : 0,
+        <span class="s2">"active"</span>    : 1,
+        <span class="s2">"group_id"</span>  : 1,
+        <span class="s2">"tax_id"</span>    : 1
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre><h3 id='get-list-of-products'>Get list of products</h3>
+<p>Get a list of products, can filter by category</p>
+
+<p><code>GET https://revoretail.works/api/external/catalog/products?category=</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"name"</span>, <span class="s2">"new nike xl"</span>
+        <span class="s2">"reference"</span>             : <span class="s2">""</span>,
+        <span class="s2">"info"</span>                  : <span class="s2">""</span>,
+        <span class="s2">"shortInfo"</span>             : <span class="s2">""</span>,
+        <span class="s2">"brand"</span>                 : <span class="s2">""</span>,
+        <span class="s2">"season"</span>                : <span class="s2">""</span>,
+        <span class="s2">"photo"</span>                 : <span class="s2">""</span>,
+        <span class="s2">"order"</span>                 : <span class="s2">"0"</span>,
+        <span class="s2">"active"</span>                : <span class="s2">"1"</span>,
+        <span class="s2">"featured"</span>              : <span class="s2">"0"</span>,
+        <span class="s2">"isOpen"</span>                : <span class="s2">"0"</span>,
+        <span class="s2">"type"</span>                  : <span class="s2">"0"</span>,
+        <span class="s2">"price"</span>                 : <span class="s2">""</span>,
+        <span class="s2">"costPrice"</span>             : <span class="s2">""</span>,
+        <span class="s2">"barcode"</span>               : <span class="s2">""</span>,
+        <span class="s2">"category_id"</span>           : 1,
+        <span class="s2">"tax_id"</span>                : 1,
+        <span class="s2">"main_product_id"</span>       : null,
+        <span class="s2">"usesStockManagement"</span>   : <span class="nb">false</span>,
+        <span class="s2">"usesWeight"</span>            : <span class="nb">false</span>,
+        <span class="s2">"unit_id"</span>               : <span class="s2">"1"</span>
+    <span class="o">}</span>, <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"name"</span>, <span class="s2">"new nike m"</span>
+        <span class="s2">"reference"</span>             : <span class="s2">""</span>,
+        <span class="s2">"info"</span>                  : <span class="s2">""</span>,
+        <span class="s2">"shortInfo"</span>             : <span class="s2">""</span>,
+        <span class="s2">"brand"</span>                 : <span class="s2">""</span>,
+        <span class="s2">"season"</span>                : <span class="s2">""</span>,
+        <span class="s2">"photo"</span>                 : <span class="s2">""</span>,
+        <span class="s2">"order"</span>                 : <span class="s2">"0"</span>,
+        <span class="s2">"active"</span>                : <span class="s2">"1"</span>,
+        <span class="s2">"featured"</span>              : <span class="s2">"0"</span>,
+        <span class="s2">"isOpen"</span>                : <span class="s2">"0"</span>,
+        <span class="s2">"type"</span>                  : <span class="s2">"0"</span>,
+        <span class="s2">"price"</span>                 : <span class="s2">""</span>,
+        <span class="s2">"costPrice"</span>             : <span class="s2">""</span>,
+        <span class="s2">"barcode"</span>               : <span class="s2">""</span>,
+        <span class="s2">"category_id"</span>           : 1,
+        <span class="s2">"tax_id"</span>                : 1,
+        <span class="s2">"main_product_id"</span>       : null,
+        <span class="s2">"usesStockManagement"</span>   : <span class="nb">false</span>,
+        <span class="s2">"usesWeight"</span>            : <span class="nb">false</span>,
+        <span class="s2">"unit_id"</span>               : <span class="s2">"1"</span>    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<p>If we add <code>withStocks</code> parameter we&#39;ll get an stocks list within each product.
+For example:</p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"name"</span>, <span class="s2">"new nike xl"</span>,
+        ...
+        <span class="s2">"stocks"</span>: <span class="o">[{</span>
+            <span class="s2">"id"</span>: 1,<span class="s2">"warehouse_id"</span>: 1, <span class="s2">"quantity"</span>: 10
+        <span class="o">}</span>,<span class="o">{</span>
+            <span class="s2">"id"</span>: 2,<span class="s2">"warehouse_id"</span>: 3, <span class="s2">"quantity"</span>: 15
+        <span class="o">}]</span>
+    <span class="o">}</span>
+<span class="o">]</span>
+
+</code></pre><h3 id='variants'>Variants</h3>
+<p>RevoRetail uses variants to store product sizes, colors, etc..</p>
+
+<p>It has 3 objects kinds to represent them</p>
+
+<p>** 1. Variant Set **
+Variant kind, for example, size or color.</p>
+
+<p><code>GET https://revoretail.works/api/external/catalog/variantSets</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span><span class="s2">"id"</span>: 1, <span class="s2">"name"</span>: <span class="s2">"Color"</span><span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"id"</span>: 1, <span class="s2">"name"</span>: <span class="s2">"Size"</span><span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<p>** 2. Variant **
+<code>Variants</code> are every variantSet variant, so blue, red, yellow,… for colors or L, XL,… for sizes. </p>
+
+<p><code>GET https://revoretail.works/api/external/catalog/variants</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+   <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"name"</span>: <span class="s2">"Red"</span>,
+        <span class="s2">"order"</span>: 2,
+        <span class="s2">"variant_set_id"</span>: 1,
+        <span class="s2">"color"</span>: null
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"name"</span>: <span class="s2">"Blue"</span>,
+        <span class="s2">"order"</span>: 1,
+        <span class="s2">"variant_set_id"</span>: 1,
+        <span class="s2">"color"</span>: null
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 3,
+        <span class="s2">"name"</span>: <span class="s2">"L"</span>,
+        <span class="s2">"order"</span>: 1,
+        <span class="s2">"variant_set_id"</span>: 2,
+        <span class="s2">"color"</span>: null
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 4,
+        <span class="s2">"name"</span>: <span class="s2">"XL"</span>,
+        <span class="s2">"order"</span>: 1,
+        <span class="s2">"variant_set_id"</span>: 2,
+        <span class="s2">"color"</span>: null
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<p>** 3. Product Variants **
+Then we have product variants that are variants linked to products.</p>
+
+<p><code>GET https://revoretail.works/api/external/catalog/productsVariants</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"product_id"</span>: 23,
+        <span class="s2">"variant_1_id"</span>: 1,
+        <span class="s2">"variant_2_id"</span>: 3
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"product_id"</span>: 23,
+        <span class="s2">"variant_1_id"</span>: 2,
+        <span class="s2">"variant_2_id"</span>: 3
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 3,
+        <span class="s2">"product_id"</span>: 25,
+        <span class="s2">"variant_1_id"</span>: 2,
+        <span class="s2">"variant_2_id"</span>: 4
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 4,
+        <span class="s2">"product_id"</span>: 25,
+        <span class="s2">"variant_1_id"</span>: 1,
+        <span class="s2">"variant_2_id"</span>: 4
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre><h3 id='get-list-of-taxes'>Get list of taxes</h3>
+<p>Get a list of available taxes</p>
+
+<p><code>GET https://revoretail.works/api/external/config/taxes</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"name"</span>: <span class="s2">"10%"</span>,
+        <span class="s2">"taxPercentage"</span>: 10.00
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"name"</span>: <span class="s2">"21%"</span>,
+        <span class="s2">"taxPercentage"</span>: 21.00
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre><h2 id='catalog-generation'>Catalog generation</h2>
+<p>In order to generate a catalog via API we can create groups, group&#39;s categories and category&#39;s products.
+in any of these cases we can send a dictionary with the desired object to create (group, category or product) or we can send a list of dictionaries to create multiple objects at the same time. e.g.:</p>
+
+<p><code>POST https://revoretail.works/api/external/catalog/groups</code></p>
+<pre class="highlight sh tab-shell"><code>// BODY Dictionary:
+<span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Group 1"</span>,
+    <span class="s2">"active"</span>: 1,        // Optional, defaults to 1
+    <span class="s2">"tax_id"</span>: 1         // Optional, defaults to null
+<span class="o">}</span>
+</code></pre><pre class="highlight sh tab-shell"><code>// BODY List of dictionaries:
+<span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Group 1"</span>,
+        <span class="s2">"active"</span>: 1,        // Optional, defaults to 1
+        <span class="s2">"tax_id"</span>: 1         // Optional, defaults to null
+    <span class="o">}</span>, <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Group 2"</span>
+        <span class="s2">"active"</span>: 1,        // Optional, defaults to 1
+        <span class="s2">"tax_id"</span>: 1         // Optional, defaults to null
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre>
+<p>In any case its responses are a 200 JSON with 2 fields (success and errors): </p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"success"</span>: 1,                   // Amount of created objects
+    <span class="s2">"errors"</span>: <span class="o">[{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span><span class="o">}]</span> // List of object that couldn<span class="s1">'t be created
+}
+</span></code></pre><h3 id='create-a-category'>Create a category</h3>
+<p><code>POST https://revoretail.works/api/external/catalog/categories</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Category 1"</span>,
+    <span class="s2">"group_id"</span>: 1,
+    <span class="s2">"active"</span>: 1,            // Optional, defaults to 1
+    <span class="s2">"tax_id"</span>: 1             // Optional, defaults to null
+<span class="o">}</span>
+</code></pre><h3 id='create-a-product'>Create a product</h3>
+<p><code>POST https://revoretail.works/api/external/catalog/products</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Category 1"</span>,
+    <span class="s2">"category_id"</span>: 1,
+    <span class="s2">"id"</span>:                   // Optional, defaults autoincrement
+    <span class="s2">"active"</span>: 1,            // Optional, defaults to 1
+    <span class="s2">"tax_id"</span>: 1,            // Optional, defaults to null
+    <span class="s2">"reference"</span>: <span class="s2">""</span>,        // Optional
+    <span class="s2">"info"</span>: <span class="s2">""</span>,             // Optional
+    <span class="s2">"shortInfo"</span>: <span class="s2">""</span>,        // Optional
+    <span class="s2">"brand"</span>: <span class="s2">""</span>,            // Optional
+    <span class="s2">"season"</span>: <span class="s2">""</span>,           // Optional
+    <span class="s2">"order"</span>: <span class="s2">""</span>,            // Optional
+    <span class="s2">"featured"</span>: <span class="s2">""</span>,         // Optional
+    <span class="s2">"isOpen"</span>: <span class="s2">""</span>,           // Optional
+    <span class="s2">"price"</span>: <span class="s2">""</span>,            // Optional
+    <span class="s2">"costPrice"</span>: <span class="s2">""</span>,        // Optional
+    <span class="s2">"barcode"</span>: <span class="s2">""</span>,          // Optional
+    <span class="s2">"main_product_id"</span>: <span class="s2">""</span>,  // Optional
+    <span class="s2">"usesStockManagement"</span>: <span class="s2">""</span>,  // Optional
+    <span class="s2">"usesWeight"</span>: <span class="s2">""</span>,       // Optional
+    <span class="s2">"unit_id"</span>: 1            // Optional
+<span class="o">}</span>
+</code></pre><h3 id='get-stocks-list'>Get stocks list</h3>
+<p>Get an stock list.</p>
+
+<p><code>GET https://revoretail.works/api/external/catalog/stocks</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"item_id"</span>: <span class="s2">"1"</span>,
+        <span class="s2">"warehouse_id"</span>: <span class="s2">"1"</span>,
+        <span class="s2">"quantity"</span>: 10.00
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"item_id"</span>: <span class="s2">"1"</span>,
+        <span class="s2">"warehouse_id"</span>: <span class="s2">"2"</span>,
+        <span class="s2">"quantity"</span>: 20.00
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 3,
+        <span class="s2">"item_id"</span>: <span class="s2">"2"</span>,
+        <span class="s2">"warehouse_id"</span>: <span class="s2">"2"</span>,
+        <span class="s2">"quantity"</span>: 15.00
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre><h3 id='generate-stock-movement'>Generate stock movement.</h3>
+<p>We can generate stock movements with the following POST (required parameters: warehouse id, product id and quantity to move)</p>
+
+<p><code>POST https://revoretail.works/api/external/stocks/add</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"product_id"</span>: 1,
+    <span class="s2">"warehouse_id"</span>: 1,
+    <span class="s2">"quantity"</span>: 22.5
+<span class="o">}</span>
+</code></pre>
+<p>The answer is a 200 JSON with the current warehouse stock  <code>quantity</code>.</p>
+<h3 id='get-list-of-payments-methods'>Get list of Payments Methods</h3>
+<p>Get a list of available payment methods (card, cash, others...)</p>
+
+<p><code>GET https://revoretail.works/api/external/config/payment_methods</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"name"</span>: <span class="s2">"Card"</span>,
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"name"</span>: <span class="s2">"Cash"</span>,
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre><h2 id='create-order'>Create Order</h2>
+<p>Store an order.</p>
+
+<p><code>POST https://revoretail.works/api/external/orders</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"notes"</span>: <span class="s2">""</span>,
+    <span class="s2">"shippingAmount"</span>: 0,
+    <span class="s2">"sum"</span>: 71.5,
+    <span class="s2">"subtotal"</span>: 59.09,
+    <span class="s2">"discount"</span>: 17.5,
+    <span class="s2">"orderDiscount"</span>: 6.5,
+    <span class="s2">"tax"</span>: 1,
+    <span class="s2">"total"</span>: 65,
+    <span class="s2">"discountObject"</span>: <span class="o">{</span>
+        <span class="s2">"amount"</span>: 1.1,
+        <span class="s2">"id"</span>: null,
+        <span class="s2">"isPercentage"</span>: <span class="nb">true</span>,
+        <span class="s2">"name"</span>: <span class="s2">"Without iva"</span>
+    <span class="o">}</span>,
+    <span class="s2">"customer_id"</span>: null,
+    <span class="s2">"shipping_id"</span>: null,
+    <span class="s2">"employee_id"</span>: 1,
+    <span class="s2">"closed_at"</span>: <span class="s2">"2017-12-31 13:00:00"</span>,
+    <span class="s2">"order_contents"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"Dark shoes XL"</span>, 
+            <span class="s2">"quantity"</span>: 2, 
+            <span class="s2">"weight"</span>: null,
+            <span class="s2">"price"</span>: 27,
+            <span class="s2">"sum"</span>: 54,
+            <span class="s2">"discount"</span>: 11,
+            <span class="s2">"subtotal"</span>: 40,
+            <span class="s2">"tax"</span>: 4,
+            <span class="s2">"total"</span>: 44,
+            <span class="s2">"taxPercentage"</span>: 10,
+            <span class="s2">"discountObject"</span>: <span class="o">{</span>
+                <span class="s2">"amount"</span>: 1.1,
+                <span class="s2">"id"</span>: null,
+                <span class="s2">"isPercentage"</span>: <span class="nb">false</span>,
+                <span class="s2">"name"</span>: <span class="s2">"2nd unit 50%"</span>
+            <span class="o">}</span>,
+            <span class="s2">"notes"</span>: <span class="s2">""</span>,
+            <span class="s2">"margin"</span>: 0,
+            <span class="s2">"product_id"</span>: 1
+        <span class="o">}</span>, <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"Red shoes M"</span>, 
+            <span class="s2">"quantity"</span>: 1, 
+            <span class="s2">"weight"</span>: null,
+            <span class="s2">"price"</span>: 27.5,
+            <span class="s2">"sum"</span>: 27.5,
+            <span class="s2">"discount"</span>: 0,
+            <span class="s2">"subtotal"</span>: 25,
+            <span class="s2">"tax"</span>: 2.75,
+            <span class="s2">"total"</span>: 27.5,
+            <span class="s2">"taxPercentage"</span>: 10,
+            <span class="s2">"discountObject"</span>: <span class="o">{}</span>,
+            <span class="s2">"notes"</span>: <span class="s2">""</span>,
+            <span class="s2">"margin"</span>: 0,
+            <span class="s2">"product_id"</span>: 2
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<p>This will return an order. As relevant fields we do get the order id which will be used to make payments and create an invoice.</p>
+
+<p><code>{&quot;id&quot;: 1, &quot;status&quot;: 0, ...}</code></p>
+<h3 id='create-an-order-payment'>Create an order payment</h3>
+<p>Create order payments with its invoice.</p>
+
+<p><code>POST https://revoretail.works/api/external/orders/{order_id}/invoices</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"payments"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"amount"</span>: 65,
+        <span class="s2">"change"</span>: 0,
+        <span class="s2">"extra"</span>: 0,
+        <span class="s2">"payment_method_id"</span>: 1
+    <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<p>This will return an order invoice. As new relevant fields we can get the id.</p>
+
+<p><code>{&quot;id&quot;: 1, &quot;number&quot;: &quot;E-1&quot;, ...}</code></p>
+<h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> --header <span class="s2">"authorization: Bearer {token}"</span> https://revoxef.works/api/external/reports
+</code></pre><pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="s2">"username"</span> <span class="o">=</span>&gt; <span class="s2">"{account}"</span>,
+    <span class="s2">"authorization"</span> <span class="o">=</span>&gt; <span class="s2">"Bearer {token}"</span>
+<span class="o">]</span>
+</code></pre>
+<p>Base endpoint</p>
+
+<p><code>https://revoxef.works/api/external/reports</code></p>
+
+<p>You should send the headers <code>tenant</code> with your account username and <code>authorization</code> with the token created at <code>account &gt; tokens</code></p>
+
+<blockquote>
+<p>Get your token at <a href="https://revoretail.works/admin/account/tokens">https://revoretail.works/admin/account/tokens</a></p>
+</blockquote>
+
+<p>El <code>token</code> se obtiene desde <a href="https://revoretail.works/admin/account/tokens">Gestión de cuenta</a> de RevoRetail. Solo hay que crear un token nuevo dándole un nombre descriptivo de su función. Por ejemplo <code>externalApiToken</code>.</p>
+<h2 id='response-format'>Response format</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"current_page"</span>: 1,
+    <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Report data will go here]  <span class="o">]</span>,
+    <span class="s2">"from"</span>: 1,
+    <span class="s2">"last_page"</span>: 4,
+    <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}}?page=2"</span>,
+    <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}}"</span>,
+    <span class="s2">"per_page"</span>: 50,
+    <span class="s2">"prev_page_url"</span>: null,
+    <span class="s2">"to"</span>: 50,
+    <span class="s2">"total"</span>: 190
+<span class="o">}</span>
+</code></pre>
+<p>All requests will return the info following this template.<br>
+This format is paginated to avoid the system collapse. The object <code>data</code> contains the lines of the requested report.</p>
+<h2 id='available-filters'>Available filters</h2>
+<p>A parte de <code>start_date</code> y <code>end_date</code> se puede filtrar por otros campos (siempre que tengan sentido con el informe). A continuación les dejamos una lista:</p>
+
+<table><thead>
+<tr>
+<th>Filter</th>
+<th> Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start_date</code></td>
+<td>YYYY-MM-DD</td>
+<td><em>Required</em> The start date of the report</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>YYYY-MM-DD</td>
+<td><em>Required</em> The end date of the report</td>
+</tr>
+<tr>
+<td><code>start_time</code></td>
+<td>HH:mm</td>
+<td>The start time of the report</td>
+</tr>
+<tr>
+<td><code>end_time</code></td>
+<td>HH:mm</td>
+<td>The end time of the report</td>
+</tr>
+<tr>
+<td><code>employee</code></td>
+<td>int</td>
+<td>Id of the employee to filter with</td>
+</tr>
+<tr>
+<td><code>room</code></td>
+<td>int</td>
+<td>Id of the room to filter with</td>
+</tr>
+<tr>
+<td><code>dayofweek</code></td>
+<td>int</td>
+<td>Where Sunday is 1 and Saturday is 7</td>
+</tr>
+<tr>
+<td><code>priceRate</code></td>
+<td>int</td>
+<td>The id of the price rate</td>
+</tr>
+<tr>
+<td><code>cashier</code></td>
+<td>int</td>
+<td>The id of the cashier</td>
+</tr>
+<tr>
+<td><code>discount</code></td>
+<td>int</td>
+<td>The id of the cashier</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Hay que tener en cuenta que no todos los filtros sirven para todos los informes. Para conocer que filtros son útiles para cada informe se recomienda visitar los distintos informes en [RevoRetail](https://revoretail.works/admin/reports/summary) y fijarse en los parámetros que se aplican a la url al filtrar.
+</aside>
+<h2 id='available-reports'>Available reports</h2>
+<p>Here you have a list of the available filters.</p>
+
+<ul>
+<li>categories</li>
+<li>categorySales</li>
+<li>contentsDiscounts</li>
+<li>customerOrderContents</li>
+<li>customersList</li>
+<li>customers</li>
+<li>deliveryNoteContents</li>
+<li>fullProductSales</li>
+<li>groups</li>
+<li>hours</li>
+<li>inOuts</li>
+<li>inventories</li>
+<li>inventoryContents</li>
+<li>marketingAnswers</li>
+<li>orderDiscounts</li>
+<li>orderInvoices</li>
+<li>ordersByCustomer</li>
+<li>orders</li>
+<li>payments</li>
+<li>presences</li>
+<li>productList</li>
+<li>productSales</li>
+<li>products</li>
+<li>stockCategories</li>
+<li>stockGroups</li>
+<li>stockMovements</li>
+<li>stocks</li>
+<li>targets</li>
+<li>taxes</li>
+<li>turns</li>
+<li>vendorItems</li>
+</ul>
+<h1 id='revoflow'>RevoFlow</h1><h2 id='base-url'>Base URL</h2>
+<p><code>https://revoflow.works/api/v1/</code></p>
+<h2 id='authorization'>Authorization</h2>
+<p>The authorization is send inside request headers using the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th> Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Tenant</td>
+<td>{username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {token}</td>
+</tr>
+</tbody></table>
+
+<p>Response JSON: </p>
+<pre class="highlight plaintext"><code>    {
+        "ok": true/false, (shows wether request succeded or not).
+        "message": "", (when error occurs, an error message is sent)
+        "data": {}/[]
+    }
+</code></pre><h2 id='bookings'>Bookings</h2>
+<p>Start and End dates must be sent. Response is an array of bookings inside requested dates.</p>
+
+<p><code>https://revoflow.works/api/v1/bookings?start=2017-01-01&amp;end=2017-01-31</code></p>
+<pre class="highlight plaintext"><code>    {
+        "ok": true,
+      "message": "",
+      "data": [
+        {
+          "id": 1,
+          "date": "2017-01-19",
+          "time": "12:30:00",
+          "duration": "02:00:00",
+          "status": 1,
+          "guests": 3,
+          "shift_id": 1,
+          "origin": 3,
+          "customer_id": 1,
+          "notes": "",
+          "employee_id": null,
+          "employeeUserName": "Widget",
+          "booking_reference_id": null,
+          "tables": "[1]",
+          "isMailSent": false,
+          "isOrderSent": false,
+          "room_id": null,
+          "cancelation_reason_id": null,
+          "sentToRevo": null,
+          "token": null,
+          "total": "0.00",
+          "worker_id": null,
+          "order_id": null,
+          "pre_assigned_tables": null,
+          "payments": [
+            {
+              "id": 1,
+              "name": "pepito",
+              "amount": "12.50",
+              "payment_method_id": 1,
+              "booking_id": 1,
+              "employee_id": 1
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Product 1",
+              "product_id": 1,
+              "revo_id": 1,
+              "price": "12.50",
+              "quantity": 1,
+              "booking_id": 1,
+              "employee_id": 1,
+              "duration": null,
+              "spacing": null,
+              "type": null
+            }
+          ]
+        },
+        ...]
+    }
+</code></pre>
+<p>Finds a booking by its ID (in that example, the booking id is 1)<br>
+<code>https://revoflow.works/api/v1/bookings/1</code></p>
+<h3 id='save-booking-post'>Save Booking (POST)</h3>
+<p><code>https://revoflow.works/api/v1/bookings</code></p>
+<pre class="highlight plaintext"><code>    { 
+        data: {   
+            "booking": {
+                "date": "2017-01-19",
+                "time": "12:30:00",
+                "duration": "02:00:00",
+                "guests": 3,
+                "shift_id": 1,
+                "notes": ""
+            }
+            "customer": {
+                "name": "John Tree",
+                "email": "john@email.com",
+                "phone": "458234923",
+                "notes": "Notes"
+            }
+        }
+    }
+</code></pre><h2 id='update-booking-put'>Update booking (PUT)</h2>
+<p><code>https://revoflow.works/api/v1/bookings/{id}</code></p>
+<pre class="highlight plaintext"><code>    { 
+        data: {   
+            "booking": {
+                "date": "2017-01-19",
+                "time": "12:30:00",
+                "duration": "02:00:00",
+                "guests": 3,
+                "shift_id": 1,
+                "notes": "",
+                ...
+            }
+        }
+    }
+
+</code></pre><h2 id='customers'>Customers</h2>
+<p>Gets the a list of paginated customers.
+The page and limit must be set in request.</p>
+
+<p><code>https://revoflow.works/api/v1/customers?page=1&amp;limit=10</code></p>
+<pre class="highlight plaintext"><code>    {
+        "ok": true,
+        "message": "",
+        "data": {
+            "currentPage": "1",
+            "customers": [
+              {
+                "id": 1,
+                "name": "asdfa",
+                "address": "Address",
+                "city": "City",
+                "state": "State",
+                "country": "Country",
+                "postalCode": "Postal Code",
+                "nif": null,
+                "web": null,
+                "email": "eduard@revo.works",
+                "phone": "asdfasdf",
+                "notes": null,
+                "password": null,
+                "remember_token": null,
+                "created_at": "2017-01-17 00:10:12",
+                "updated_at": "2017-01-17 00:10:12",
+                "deleted_at": null
+             }
+            ],
+            "pages": 1,
+            "left": 0
+        }
+    }
+</code></pre><h2 id='products'>Products</h2>
+<p>Get products list</p>
+
+<p><code>https://revoflow.works/api/v1/products</code></p>
+<pre class="highlight plaintext"><code>    {
+      "ok": true,
+      "message": "",
+      "data": [
+        {
+          "id": 1,
+          "name": "Patatas Picantes",
+          "revo_id": 956,
+          "price": "4.50",
+          "startDate": null,
+          "endDate": null,
+          "photo": "FlKi6IoWZ8.png",
+          "duration": "00:00:00",
+          "spacing": "00:00:00",
+          "type": 0,
+          "order": 0
+        },
+        ...]
+    }
+</code></pre>
+<p>Get product by its ID
+<code>https://revoflow.works/api/v1/products/1</code></p>
+<h2 id='shifts'>Shifts</h2>
+<p>Get shifts list
+<code>https://revoflow.works/api/v1/shifts</code></p>
+<pre class="highlight plaintext"><code>    {
+      "ok": true,
+      "message": "",
+      "data": [
+        {
+          "id": 1,
+          "name": "Comida 1",
+          "startTime": "12:00:00",
+          "slotTime": "02:00:00",
+          "endTime": "14:00:00",
+          "weekdays": "[1,1,1,1,1,1,1]",
+          "deleted_at": null,
+          "weekday": null
+        },
+        ...]
+    }
+</code></pre><h2 id='tables'>Tables</h2>
+<p>Get tables by day and shift.
+<code>https://revoflow.works/api/v1/tables?date=2017-02-01&amp;shift_id=1</code></p>
+<pre class="highlight plaintext"><code>    {
+      "ok": true,
+      "message": "",
+      "data": [
+            {"id":1,"name":"Table 1","isJoined":"0","room_id":"1"},
+            {"id":2,"name":"Table 2","isJoined":"0","room_id":"1"},
+        }
+      ]
+    }    
+</code></pre><h2 id='availabillity'>Availabillity</h2>
+<p>Get the availabillity between requested dates.
+<code>https://revoflow.works/api/v1/availability?from=2017-02-01&amp;to=2017-02-15</code></p>
+<pre class="highlight plaintext"><code>    {
+      "ok": true,
+      "message": "",
+      "data": [
+        {
+          "2017-01-30": {
+            "1": {
+              "capacity": 114,
+              "available": 114,
+              "shift_id": 1
+            },
+            "2": {
+              "capacity": 114,
+              "available": 114,
+              "shift_id": 2
+            },
+            "3": {
+              "capacity": 114,
+              "available": 114,
+              "shift_id": 3
+            }
+          }
+        }
+      ]
+    }
+</code></pre><h2 id='time-available'>Time Available</h2>
+<p>Get the available time on each shift.
+<code>https://revoflow.works/api/v1/shiftsTime?date=2017-02-01&amp;guests=5</code></p>
+<pre class="highlight plaintext"><code>    {
+      "ok": true,
+      "message": "",
+      "data": [
+        {
+            "name": "Dinner",
+            "id": 1,
+            "time" : [
+                "20:00:00", 
+                "20:15:00", 
+                "20:30:00", 
+                "20:45:00", 
+                "21:00:00", 
+                "21:15:00", 
+                "21:30:00", 
+                "21:45:00", 
+                "22:00:00"
+            ]
+        }
+      ]
+    }
+</code></pre><h2 id='next-bookings'>Next bookings</h2>
+<p>Get next bookings inside interval [&quot;-1h&quot; - &quot;+2h&quot;].</p>
+
+<p><code>https://revoflow.works/api/v1/nextBookings</code></p>
+<pre class="highlight plaintext"><code>    {
+      "ok": true,
+      "message": "",
+      "data": [
+        {
+          "id": 1,
+          "date": "2017-01-19",
+          "time": "12:30:00",
+          "duration": "02:00:00",
+          "status": 1,
+          "guests": 3,
+          "shift_id": 1,
+          "origin": 3,
+          "customer_id": 1,
+          "notes": "",
+          "employee_id": null,
+          "employeeUserName": "Widget",
+          "booking_reference_id": null,
+          "tables": "[1]",
+          "isMailSent": false,
+          "isOrderSent": false,
+          "room_id": null,
+          "cancelation_reason_id": null,
+          "sentToRevo": null,
+          "token": null,
+          "total": "0.00",
+          "worker_id": null,
+          "order_id": null,
+          "pre_assigned_tables": null,
+          "payments": [
+            {
+              "id": 1,
+              "name": "pepito",
+              "amount": "12.50",
+              "payment_method_id": 1,
+              "booking_id": 1,
+              "employee_id": 1
+            }
+          ],
+          "products": [
+            {
+              "id": 1,
+              "name": "Product 1",
+              "product_id": 1,
+              "revo_id": 1,
+              "price": "12.50",
+              "quantity": 1,
+              "booking_id": 1,
+              "employee_id": 1,
+              "duration": null,
+              "spacing": null,
+              "type": null
+            }
+          ],
+          "start": "2018-02-03 17:00:00"
+          "end": "2018-02-03 19:00:00"
+        },
+        ...]
+    }
+</code></pre><h2 id='close-booking'>Close Booking</h2>
+<p>Closes booking by Order ID
+<code>https://revoflow.works/api/v1/bookings/closeWithOrder/{id}</code></p>
+<pre class="highlight plaintext"><code>    {
+      "ok": true,
+      "message": "",
+      "data": []
+    }
+</code></pre>
+<p>Closes booking by ID
+<code>https://revoflow.works/api/v1/bookings/close/{id}</code></p>
+<pre class="highlight plaintext"><code>    {
+      "ok": true,
+      "message": "",
+      "data": []
+    }
+``
+</code></pre><h1 id='revoflow-integration-api'>RevoFlow integration API</h1><h2 id='basic-request'>Basic Request</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+   <span class="s2">"auth"</span>:<span class="o">{</span>
+     <span class="s2">"tenant"</span>  :<span class="s2">"account"</span>,
+     <span class="s2">"password"</span>:<span class="s2">"password"</span>
+   <span class="o">}</span>,
+   <span class="s2">"action"</span>:<span class="s2">"action"</span>,
+   <span class="s2">"data"</span>:data
+<span class="o">}</span>
+</code></pre>
+<p>To work with <code>Revo external api</code> a <code>POST</code> or <code>GET</code> request is required to the following url:</p>
+
+<p><code>https://admin.revo.works/apiFlow</code></p>
+
+<p>With a variable named <code>message</code> that has to be a <code>json</code> with the following information</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account</td>
+<td><code>string</code></td>
+<td>is the account (same name used to login)</td>
+</tr>
+<tr>
+<td>password</td>
+<td><code>string</code></td>
+<td>is the <a href="/back/account#password">app password</a> (not the backend password)</td>
+</tr>
+<tr>
+<td>action</td>
+<td><code>string</code></td>
+<td>the action to perform (explained below)</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>json</code></td>
+<td>data required for the action (explained below)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>The api has a limit of 60 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
+</blockquote>
+<h2 id='sync'>Sync</h2>
+<p>Returns the full data for an specific model and id.</p>
+<pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
+    <span class="s2">"model"</span>:<span class="s2">"TableTable"</span>
+    <span class="s2">"fromDate:"</span>yyyy/mm/dd HH:mm:ss<span class="s2">",
+}
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model</td>
+<td>is the model to sync in <code>TableRoom</code> <code>TableTable</code></td>
+</tr>
+<tr>
+<td>fromDate</td>
+<td>the date from which changes to sync</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code> https://admin.revo.works/apiFlow?message<span class="o">=</span>
+<span class="o">{</span>
+<span class="s2">"auth"</span>:<span class="o">{</span>
+    <span class="s2">"tenant"</span>  :<span class="s2">"user1"</span>,
+    <span class="s2">"password"</span>:<span class="s2">"user1"</span>
+    <span class="o">}</span>,
+    <span class="s2">"action"</span>:<span class="s2">"sync"</span>, 
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"model"</span>:<span class="s2">"TableRoom"</span>,
+        <span class="s2">"fromDate"</span>:<span class="s2">"2016/12/01 16:05:20"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre><h2 id='searchproducts'>searchProducts</h2>
+<p>This action searches and returns the products where the name is like the text you ask for</p>
+<pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
+  <span class="s2">"text"</span>: <span class="s2">"burger"</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Text needs to be at least of 3 characters</p>
+</blockquote>
+<h2 id='updatetables'>updateTables</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
+  <span class="s2">"tables"</span>: <span class="o">[</span>
+    <span class="o">{</span><span class="s1">'id'</span>:1,<span class="s1">'x'</span>:10,<span class="s1">'y'</span>:10,<span class="s1">'width'</span>:100,<span class="s1">'height'</span>:100,<span class="s1">'isJoined'</span>:false<span class="o">}</span>,
+    <span class="o">{</span><span class="s1">'id'</span>:2,<span class="s1">'x'</span>:20,<span class="s1">'y'</span>:20,<span class="s1">'width'</span>:100,<span class="s1">'height'</span>:100,<span class="s1">'isJoined'</span>:true<span class="o">}</span>,
+    <span class="o">{</span><span class="s1">'id'</span>:3,<span class="s1">'x'</span>:30,<span class="s1">'y'</span>:30,<span class="s1">'width'</span>:100,<span class="s1">'height'</span>:100,<span class="s1">'isJoined'</span>:false<span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<p>This action updates the tables Layout (not the original one)</p>
+<h2 id='neworder'>newOrder</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
+    <span class="s2">"table_id"</span>: 3,
+    <span class="s2">"guests"</span>: 4,
+    <span class="s2">"contents"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"itemPrice"</span>: 10.2,
+        <span class="s2">"itemName"</span>: <span class="s2">"product name"</span>,
+        <span class="s2">"item_id"</span>: 5,
+        <span class="s2">"quantity"</span>: 2
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"itemPrice"</span>:7,
+        <span class="s2">"itemName"</span>: <span class="s2">"product name 2"</span>,
+        <span class="s2">"item_id"</span>: 2,
+        <span class="s2">"quantity"</span>: 4
+      <span class="o">}</span>
+    <span class="o">]</span>
+    <span class="s2">"payments"</span>:[
+      <span class="o">{</span>
+        <span class="s2">"payment_method_id:1,
+        "</span>amount<span class="s2">":10.10,
+      }
+    ]
+}
+</span></code></pre><h2 id='updateorder'>updateOrder</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
+    <span class="s2">"table_id"</span>: 2,
+    <span class="s2">"guests"</span>: 4,
+    <span class="s2">"payments"</span>:[
+        <span class="o">{</span>
+            <span class="s2">"payment_method_id:1,
+            "</span>amount<span class="s2">":10.10,
+        }
+    ]
+}
+</span></code></pre>
+<p>Use this function to create a new Order to Revo,
+You can send payments where <code>payment_method_id</code> is <code>1</code> (Card) or <code>2</code> (Cash)</p>
+<h1 id='intouch'>InTouch</h1><h2 id='basic-request'>Basic request</h2><pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/customer
+</code></pre><pre class="highlight sh tab-shell"><code>Authorization: Bearer <span class="o">{</span>token<span class="o">}</span>
+</code></pre><pre class="highlight sh tab-shell"><code>curl -X GET 
+     --header <span class="s2">"Authorization: Bearer K2YBo90R2bil1mVKTkHh9cRlzstQYHIqYjX3oAYFT9HWluGcq9DaDh4LxVUI"</span>
+     myaccount.revointouch.works/api/v1/customer/cards 
+</code></pre>
+<p>Revo-InTouch comes with an easy to use <code>REST</code> API Interface.
+All requests will have the same structure. </p>
+
+<p>With the autorization header when calling authenticated based resources</p>
+<h2 id='images'>Images</h2><pre class="highlight plaintext"><code>https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{xef-account}/images/{url}
+</code></pre><h2 id='login'>Login</h2><pre class="highlight sh tab-shell"><code>// Response
+<span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"api_token"</span> : <span class="s2">"token"</span>,
+    <span class="s2">"info"</span> : <span class="o">{</span>
+      <span class="s2">"points"</span> : 378,
+      <span class="s2">"id"</span> : 1,
+      <span class="s2">"postalCode"</span> : <span class="s2">"08240"</span>,
+      <span class="s2">"email"</span> : <span class="s2">"jordi.p@revo.works"</span>,
+      <span class="s2">"name"</span> : <span class="s2">"Jordi Puigdellívol"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST login</code> </p>
+
+<p>Parameters</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td><strong>string</strong> User email</td>
+</tr>
+<tr>
+<td>password</td>
+<td><strong>string</strong> User password</td>
+</tr>
+</tbody></table>
+<h2 id='register'>Register</h2>
+<p><code>POST register</code></p>
+
+<blockquote>
+<p>Same response as login</p>
+</blockquote>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>Bruce</td>
+</tr>
+<tr>
+<td>lastName</td>
+<td><code>string</code></td>
+<td>Wayne</td>
+</tr>
+<tr>
+<td>password</td>
+<td><code>string</code></td>
+<td>batman</td>
+</tr>
+<tr>
+<td>postalCode</td>
+<td><code>string</code></td>
+<td>08240</td>
+</tr>
+<tr>
+<td>birthDate</td>
+<td><code>date</code></td>
+<td>1950-12-23</td>
+</tr>
+<tr>
+<td>email</td>
+<td><code>email</code></td>
+<td>bruce@wayne.com</td>
+</tr>
+<tr>
+<td>subscribe</td>
+<td><code>bool</code></td>
+<td>1</td>
+</tr>
+</tbody></table>
+<h2 id='cards'>Cards</h2>
+<p><code>GET cards</code> </p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  // GET cards
+  <span class="s2">"data"</span> : <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"active"</span> : 1,
+      <span class="s2">"amount"</span> : 0,
+      <span class="s2">"id"</span> : 8,
+      <span class="s2">"uuid"</span> : <span class="s2">"58b194cc08bfa"</span>,
+      <span class="s2">"photo"</span> : <span class="s2">"hi5bOD"</span>,
+      <span class="s2">"customer_id"</span> : 1,
+      <span class="s2">"name"</span> : <span class="s2">"My gift card"</span>,
+    <span class="o">}</span>,
+    <span class="o">{</span>
+      <span class="s2">"active"</span> : 1,
+      <span class="s2">"amount"</span> : 0,
+      <span class="s2">"id"</span> : 7,
+      <span class="s2">"uuid"</span> : <span class="s2">"5876009347306"</span>,
+      <span class="s2">"photo"</span> : <span class="s2">"O6Magz"</span>,
+      <span class="s2">"customer_id"</span> : 1,
+      <span class="s2">"name"</span> : <span class="s2">"My gift card"</span>,
+    <span class="o">}</span>,
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h3 id='get-cards-card_uuid'><code>GET cards/{card_uuid}</code></h3><pre class="highlight sh tab-shell"><code>// GET cards/<span class="o">{</span>card_uuid<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"active"</span> : 1,
+    <span class="s2">"amount"</span> : 0,
+    <span class="s2">"id"</span> : 8,
+    <span class="s2">"uuid"</span> : <span class="s2">"58b194cc08bfa"</span>,
+    <span class="s2">"photo"</span> : <span class="s2">"hi5bOD"</span>,
+    <span class="s2">"customer_id"</span> : 1,
+    <span class="s2">"name"</span> : <span class="s2">"My gift card"</span>,
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='put-cards-card_uuid-to-reload-a-gift-card'><code>PUT cards/{card_uuid}</code> To reload a gift card</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td><strong>int</strong> amount in cents</td>
+</tr>
+<tr>
+<td>payment_token</td>
+<td><strong>string</strong> (optional) the stripe payment token. If null or not present it will use customer&#39;s default credit card</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code>// <span class="sb">`</span>PUT cards/<span class="o">{</span>card_uuid<span class="o">}</span><span class="sb">`</span> To reload a gift card
+<span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"newAmount"</span> : 1000
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre><h3 id='post-cards'><code>POST cards</code></h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td><strong>string</strong> the name of the new card</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code>// <span class="sb">`</span>POST cards<span class="sb">`</span>
+<span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"amount"</span> : 0,
+    <span class="s2">"id"</span> : 9,
+    <span class="s2">"uuid"</span> : <span class="s2">"58c2b978bb6ca"</span>,
+    <span class="s2">"photo"</span> : <span class="s2">"IWtdZ6"</span>,
+    <span class="s2">"name"</span> : <span class="s2">"My gift card"</span>,
+    <span class="s2">"customer_id"</span> : 1
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='syncable-models'>Syncable models</h2>
+<p>Doing a get request with a <code>from</code> parameter will return the objects to sync from them. Ideally you can store those objects into your system to be more responsive and sync when something changes</p>
+<h2 id='stores'>Stores</h2>
+<p><code>GET stores</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 1,
+        <span class="s2">"phone"</span> : <span class="s2">"669 68 65 61"</span>,
+        <span class="s2">"geo"</span> : <span class="s2">"41.7268582,1.8211535"</span>,
+        <span class="s2">"address"</span> : <span class="s2">"Arquitecte Oms 2"</span>,
+        <span class="s2">"token"</span> : <span class="s2">"ctzHxM48wBbRzZFM"</span>,
+        <span class="s2">"city"</span> : <span class="s2">"Manresa"</span>,
+        <span class="s2">"username"</span> : <span class="s2">"user1"</span>,
+        <span class="s2">"country"</span> : <span class="s2">"Spain"</span>,
+        <span class="s2">"name"</span> : <span class="s2">"An store"</span>
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"updated"</span> : null,
+    <span class="s2">"deleted"</span> : null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='categories'>Categories</h2>
+<p><code>GET categories</code></p>
+<pre class="highlight sh tab-shell"><code>  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"deleted_at"</span> : null,
+        <span class="s2">"id"</span> : 1,
+        <span class="s2">"name"</span> : <span class="s2">"Category 1"</span>,
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"deleted_at"</span> : null,
+        <span class="s2">"id"</span> : 2,
+        <span class="s2">"name"</span> : <span class="s2">"Category 2"</span>,
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"updated"</span> : null,
+    <span class="s2">"deleted"</span> : null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='shifts'>Shifts</h2>
+<p><code>GET shifts</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"end"</span> : <span class="s2">"23:59:00"</span>,
+        <span class="s2">"start"</span> : <span class="s2">"00:00:00"</span>,
+        <span class="s2">"id"</span> : 1,
+        <span class="s2">"daysOfWeek"</span> : <span class="o">[</span>
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          0
+        <span class="o">]</span>,
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"updated"</span> : null,
+    <span class="s2">"deleted"</span> : null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='deliveryshifts'>DeliveryShifts</h2>
+<p>These only should be used when <code>store.use_delivery_shifts</code> is true, if it is false, use the standard shifts for deliveries as well</p>
+
+<p><code>GET deliveryShifts</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"end"</span> : <span class="s2">"23:59:00"</span>,
+        <span class="s2">"start"</span> : <span class="s2">"00:00:00"</span>,
+        <span class="s2">"id"</span> : 1,
+        <span class="s2">"daysOfWeek"</span> : <span class="o">[</span>
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          0
+        <span class="o">]</span>,
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"updated"</span> : null,
+    <span class="s2">"deleted"</span> : null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='products'>Products</h2>
+<p><code>GET products</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"points"</span> : 150,
+        <span class="s2">"product_category_id"</span> : 1,
+        <span class="s2">"id"</span> : 1,
+        <span class="s2">"price"</span> : 1240,
+        <span class="s2">"tax"</span> : 1000,
+        <span class="s2">"pointsRequired"</span> : null,
+        <span class="s2">"deleted_at"</span> : null,
+        <span class="s2">"photo"</span> : <span class="s2">"cGs3lw7I6H.png"</span>,
+        <span class="s2">"name"</span> : <span class="s2">"Product 1"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"points"</span> : 250,
+        <span class="s2">"product_category_id"</span> : 1,
+        <span class="s2">"id"</span> : 2,
+        <span class="s2">"price"</span> : 652,
+        <span class="s2">"tax"</span> : 1000,
+        <span class="s2">"pointsRequired"</span> : null,
+        <span class="s2">"deleted_at"</span> : null,
+        <span class="s2">"photo"</span> : <span class="s2">"JmXM9ft8aV.png"</span>,
+        <span class="s2">"name"</span> : <span class="s2">"Product 2"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"points"</span> : 350,
+        <span class="s2">"product_category_id"</span> : 2,
+        <span class="s2">"id"</span> : 3,
+        <span class="s2">"price"</span> : 1840,
+        <span class="s2">"tax"</span> : 1000,
+        <span class="s2">"pointsRequired"</span> : null,
+        <span class="s2">"deleted_at"</span> : null,
+        <span class="s2">"photo"</span> : <span class="s2">"aaHwaf1Bql.png"</span>,
+        <span class="s2">"name"</span> : <span class="s2">"Product 3"</span>
+      <span class="o">}</span>,
+    <span class="o">]</span>,
+    <span class="s2">"updated"</span> : null,
+    <span class="s2">"deleted"</span> : null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='menu-categories'>Menu Categories</h2>
+<p><code>GET menuCategories</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span> : 1
+        <span class="s2">"name"</span> : <span class="s2">"Drinks"</span>,
+        <span class="s2">"product_id"</span> : 1,
+        <span class="s2">"order"</span> : 2
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"name"</span> : <span class="s2">"Take away"</span>,
+        <span class="s2">"product_id"</span> : 2,
+        <span class="s2">"order"</span> : 1
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre><h2 id='menu-products'>Menu Products</h2>
+<p><code>GET menuProducts</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="o">{</span>
+        <span class="s2">"product_id"</span> : 1,
+        <span class="s2">"menu_category_id"</span> : 1
+        <span class="s2">"order"</span> : 2,
+        <span class="s2">"price"</span> : 0,
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"product_id"</span> : 15,
+        <span class="s2">"menu_category_id"</span> : 1
+        <span class="s2">"order"</span> : 1,
+        <span class="s2">"price"</span> : 1500,
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre><h2 id='modifier-categories'>Modifier Categories</h2>
+<p><code>GET modifierCategories</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 1,
+        <span class="s2">"deleted_at"</span> : null,
+        <span class="s2">"type"</span> : 1,
+        <span class="s2">"name"</span> : <span class="s2">"Size"</span>,
+        <span class="s2">"isMandatory"</span> : 1
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 2,
+        <span class="s2">"type"</span> : 2,
+        <span class="s2">"name"</span> : <span class="s2">"Toppings"</span>,
+        <span class="s2">"isMandatory"</span> : 0
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"updated"</span> : null,
+    <span class="s2">"deleted"</span> : null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='modifiers'>Modifiers</h2>
+<p><code>GET modifiers</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 1,
+        <span class="s2">"price"</span> : 0,
+        <span class="s2">"modifier_category_id"</span> : 1,
+        <span class="s2">"name"</span> : <span class="s2">"Small"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 2,
+        <span class="s2">"price"</span> : 1050,
+        <span class="s2">"modifier_category_id"</span> : 1,
+        <span class="s2">"name"</span> : <span class="s2">"XL"</span>
+      <span class="o">}</span>,
+    <span class="o">]</span>,
+    <span class="s2">"updated"</span> : null,
+    <span class="s2">"deleted"</span> : null
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='product-modifier-cateogires'>Product - Modifier Cateogires</h2>
+<p><code>GET productModifierCategories</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"product_id"</span> : 1,
+        <span class="s2">"id"</span> : 1,
+        <span class="s2">"deleted_at"</span> : null,
+        <span class="s2">"modifier_category_id"</span> : 1,
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"product_id"</span> : 1,
+        <span class="s2">"id"</span> : 2,
+        <span class="s2">"deleted_at"</span> : null,
+        <span class="s2">"modifier_category_id"</span> : 1,
+      <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"updated"</span> : null,
+    <span class="s2">"deleted"</span> : null
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre><h2 id='credit-cards'>Credit Cards</h2>
+<p><code>POST creditCards</code></p>
+
+<p>Parameters:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>The stripe card token</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"address_line1_check"</span> : null,
+    <span class="s2">"dynamic_last4"</span> : null,
+    <span class="s2">"last4"</span> : <span class="s2">"4242"</span>,
+    <span class="s2">"address_line2"</span> : null,
+    <span class="s2">"metadata"</span> : <span class="o">[</span>
+
+    <span class="o">]</span>,
+    <span class="s2">"address_city"</span> : null,
+    <span class="s2">"address_zip_check"</span> : null,
+    <span class="s2">"address_zip"</span> : null,
+    <span class="s2">"country"</span> : <span class="s2">"US"</span>,
+    <span class="s2">"object"</span> : <span class="s2">"card"</span>,
+    <span class="s2">"address_line1"</span> : null,
+    <span class="s2">"address_state"</span> : null,
+    <span class="s2">"brand"</span> : <span class="s2">"Visa"</span>,
+    <span class="s2">"cvc_check"</span> : <span class="s2">"pass"</span>,
+    <span class="s2">"exp_month"</span> : 4,
+    <span class="s2">"name"</span> : null,
+    <span class="s2">"fingerprint"</span> : <span class="s2">"R92NDa6Z6u42Srgc"</span>,
+    <span class="s2">"funding"</span> : <span class="s2">"credit"</span>,
+    <span class="s2">"id"</span> : <span class="s2">"card_19vovPJVS7gfpCD2mGY750mu"</span>,
+    <span class="s2">"tokenization_method"</span> : null,
+    <span class="s2">"customer"</span> : <span class="s2">"cus_AGLc0pme4PvRyf"</span>,
+    <span class="s2">"address_country"</span> : null,
+    <span class="s2">"exp_year"</span> : 2024
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='orders'>Orders</h2><h3 id='last-order'>Last Order</h3>
+<p><code>GET lastOrder</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"lastContents"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 16,
+        <span class="s2">"quantity"</span> : 1,
+        <span class="s2">"tax"</span> : 1000,
+        <span class="s2">"total"</span> : 1240,
+        <span class="s2">"order_id"</span> : 102,
+        <span class="s2">"subtotal"</span> : 1128,
+        <span class="s2">"price"</span> : 1240,
+        <span class="s2">"product_id"</span> : 1,
+        <span class="s2">"pointsSpent"</span> : null,
+        <span class="s2">"customer_id"</span> : 1,
+        <span class="s2">"taxAmount"</span> : 112
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 11,
+        <span class="s2">"quantity"</span> : 1,
+        <span class="s2">"tax"</span> : 1000,
+        <span class="s2">"total"</span> : 1240,
+        <span class="s2">"order_id"</span> : 98,
+        <span class="s2">"subtotal"</span> : 1128,
+        <span class="s2">"price"</span> : 1240,
+        <span class="s2">"product_id"</span> : 1,
+        <span class="s2">"pointsSpent"</span> : null,
+        <span class="s2">"customer_id"</span> : 1,
+        <span class="s2">"taxAmount"</span> : 112
+      <span class="o">}</span>,
+    <span class="o">]</span>,
+    <span class="s2">"lastOrder"</span> : <span class="o">{</span>
+      <span class="s2">"closed_at"</span> : <span class="s2">"2017-01-09 11:33:27"</span>,
+      <span class="s2">"id"</span> : 102,
+      <span class="s2">"subtotal"</span> : 1128,
+      <span class="s2">"created_at"</span> : <span class="s2">"2017-01-05 11:47:15"</span>,
+      <span class="s2">"contents"</span> : <span class="o">[</span>
+        <span class="o">{</span>
+          <span class="s2">"id"</span> : 16,
+          <span class="s2">"quantity"</span> : 1,
+          <span class="s2">"tax"</span> : 1000,
+          <span class="s2">"created_at"</span> : <span class="s2">"2017-01-05 11:47:15"</span>,
+          <span class="s2">"total"</span> : 1240,
+          <span class="s2">"order_id"</span> : 102,
+          <span class="s2">"subtotal"</span> : 1128,
+          <span class="s2">"price"</span> : 1240,
+          <span class="s2">"product_id"</span> : 1,
+          <span class="s2">"pointsSpent"</span> : null,
+          <span class="s2">"taxAmount"</span> : 112
+        <span class="o">}</span>
+      <span class="o">]</span>,
+      <span class="s2">"pointsEarned"</span> : 124,
+      <span class="s2">"total"</span> : 1240,
+      <span class="s2">"customer_id"</span> : 1,
+      <span class="s2">"taxAmount"</span> : 112
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='create-an-order'>Create an order</h2><pre class="highlight sh tab-shell"><code><span class="nv">order</span><span class="o">={</span>
+  <span class="s2">"subtotal"</span> : 1673,
+  <span class="s2">"id"</span> : null,
+  <span class="s2">"total"</span> : 1840,
+  <span class="s2">"taxAmount"</span> : 167
+<span class="o">}</span>
+</code></pre><pre class="highlight sh tab-shell"><code><span class="nv">delivery</span><span class="o">={</span>
+    <span class="s2">"address"</span> : <span class="s2">"Central perk, 12"</span>,
+    <span class="s2">"city"</span> : <span class="s2">"New York"</span>,
+    <span class="s2">"phone"</span> : <span class="s2">"555-555-555"</span>,
+    <span class="s2">"time"</span> : <span class="s2">"12:30"</span>,
+    <span class="s2">"geolocation"</span> : <span class="s2">"41.5500976,2.0964411"</span>
+<span class="o">}</span>
+
+</code></pre><pre class="highlight sh tab-shell"><code>contents <span class="o">=</span> <span class="o">[{</span>
+  <span class="s2">"product_id"</span> : 1,
+  <span class="s2">"quantity"</span> : 1,
+  <span class="s2">"id"</span> : null,
+  <span class="s2">"subtotal"</span> : 0,
+  <span class="s2">"price"</span> : 1240,
+  <span class="s2">"tax"</span> : 1000,
+  <span class="s2">"pointsSpent"</span> : 150,
+  <span class="s2">"total"</span> : 0,
+  <span class="s2">"taxAmount"</span> : 0
+<span class="o">}</span>,<span class="o">{</span>
+  <span class="s2">"product_id"</span> : 3,
+  <span class="s2">"quantity"</span> : 1,
+  <span class="s2">"id"</span> : null,
+  <span class="s2">"subtotal"</span> : 1673,
+  <span class="s2">"price"</span> : 1840,
+  <span class="s2">"tax"</span> : 1000,
+  <span class="s2">"pointsSpent"</span> : null,
+  <span class="s2">"total"</span> : 1840,
+  <span class="s2">"taxAmount"</span> : 167
+  <span class="s2">"modifiers"</span> : <span class="o">[</span>
+    <span class="o">[</span>
+     <span class="s2">"name"</span> : <span class="s2">"topping 1"</span>,
+     <span class="s2">"price"</span>: 500
+    <span class="o">]</span>,
+    <span class="o">[</span>
+     <span class="s2">"name"</span> : <span class="s2">"topping 2"</span>,
+     <span class="s2">"price"</span>: 0
+    <span class="o">]</span>,
+  <span class="o">]</span>
+<span class="o">}</span>,<span class="o">{</span>
+  <span class="s2">"product_id"</span> : 1,
+  <span class="s2">"quantity"</span> : 1,
+  <span class="s2">"id"</span> : null,
+  <span class="s2">"subtotal"</span> : 0,
+  <span class="s2">"price"</span> : 1240,
+  <span class="s2">"tax"</span> : 1000,
+  <span class="s2">"pointsSpent"</span> : 150,
+  <span class="s2">"total"</span> : 0,
+  <span class="s2">"taxAmount"</span> : 0,
+  <span class="s2">"menuContents"</span> : <span class="o">[</span>
+      <span class="s2">"product_id"</span> : 4,
+      <span class="s2">"price"</span> : 120
+      <span class="s2">"modifiers"</span> : <span class="o">[]</span>
+  <span class="o">]</span>
+<span class="o">}]</span>
+</code></pre>
+<p><code>POST orders</code></p>
+
+<p>Parameters:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td><code>json</code></td>
+<td>the order json following the format below</td>
+</tr>
+<tr>
+<td>contents</td>
+<td><code>array json</code></td>
+<td>the array of contents json following the format below</td>
+</tr>
+<tr>
+<td>card</td>
+<td><code>string</code></td>
+<td>the customer gift card to use to do the charge</td>
+</tr>
+<tr>
+<td>store</td>
+<td><code>int</code></td>
+<td>(optional) the store id to to create the order (it can be ignored if there is only one store)</td>
+</tr>
+<tr>
+<td>delivery</td>
+<td><code>json</code></td>
+<td>(optional) The delivery information it should contain <code>address</code> <code>city</code> <code>phone</code> <code>geolocation</code> and <code>time</code> fields</td>
+</tr>
+</tbody></table>
+
+<p>Contents can have optional parameters such as <code>modifiers</code> and <code>menuContents</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>modifiers</td>
+<td><code>array json</code></td>
+<td>the array of modifiers</td>
+</tr>
+<tr>
+<td>menuContents</td>
+<td><code>array json</code></td>
+<td>the array of menuContents</td>
+</tr>
+</tbody></table>
+<h2 id='other-routes'>Other routes</h2>
+<table><thead>
+<tr>
+<th>Verb</th>
+<th>Route</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GET</td>
+<td>/</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>/</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>cards</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>cards/{uuid}</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>cards</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>cards/{uuid}</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>cards/{card}/associate</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>cards/{card}/transfer</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>orders</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>orders</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>orders/{id}</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>points</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>creditCards</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>creditCards</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>creditCards/{id}</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>creditCards/{id}</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>invoices/{id}/points/obtain</td>
 </tr>
 </tbody></table>
 
@@ -495,9 +2961,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
