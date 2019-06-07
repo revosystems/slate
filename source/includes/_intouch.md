@@ -24,9 +24,9 @@ With the autorization header when calling authenticated based resources
 
 ## Images
 
-```
+`
 https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{xef-account}/images/{url}
-```
+`
 
 
 ## Login

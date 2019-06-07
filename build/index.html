@@ -1621,11 +1621,9 @@ in any of these cases we can send a dictionary with the desired object to create
 <p>This will return an order invoice. As new relevant fields we can get the id.</p>
 
 <p><code>{&quot;id&quot;: 1, &quot;number&quot;: &quot;E-1&quot;, ...}</code></p>
-<h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> --header <span class="s2">"authorization: Bearer {token}"</span> https://revoxef.works/api/external/reports
-</code></pre><pre class="highlight sh tab-shell"><code><span class="o">[</span>
-    <span class="s2">"username"</span> <span class="o">=</span>&gt; <span class="s2">"{account}"</span>,
-    <span class="s2">"authorization"</span> <span class="o">=</span>&gt; <span class="s2">"Bearer {token}"</span>
-<span class="o">]</span>
+<h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
+     --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
+     https://revoxef.works/api/external/reports
 </code></pre>
 <p>Base endpoint</p>
 
@@ -1637,14 +1635,30 @@ in any of these cases we can send a dictionary with the desired object to create
 <p>Get your token at <a href="https://revoretail.works/admin/account/tokens">https://revoretail.works/admin/account/tokens</a></p>
 </blockquote>
 
-<p>El <code>token</code> se obtiene desde <a href="https://revoretail.works/admin/account/tokens">Gestión de cuenta</a> de RevoRetail. Solo hay que crear un token nuevo dándole un nombre descriptivo de su función. Por ejemplo <code>externalApiToken</code>.</p>
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>{account}</td>
+</tr>
+<tr>
+<td>authorization</td>
+<td>Bearer {token}</td>
+</tr>
+</tbody></table>
+
+<p>The <code>token</code> it obtained at <a href="https://revoretail.works/admin/account/tokens">Account managment</a> section of RevoRetail. You just need to create a new token givin it a descriptive name. For example <code>api acess</code>.</p>
 <h2 id='response-format'>Response format</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Report data will go here]  <span class="o">]</span>,
     <span class="s2">"from"</span>: 1,
     <span class="s2">"last_page"</span>: 4,
-    <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}}?page=2"</span>,
-    <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}}"</span>,
+    <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=2"</span>,
+    <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}"</span>,
     <span class="s2">"per_page"</span>: 50,
     <span class="s2">"prev_page_url"</span>: null,
     <span class="s2">"to"</span>: 50,
@@ -1716,7 +1730,7 @@ This format is paginated to avoid the system collapse. The object <code>data</co
 </tbody></table>
 
 <aside class="notice">
-Hay que tener en cuenta que no todos los filtros sirven para todos los informes. Para conocer que filtros son útiles para cada informe se recomienda visitar los distintos informes en [RevoRetail](https://revoretail.works/admin/reports/summary) y fijarse en los parámetros que se aplican a la url al filtrar.
+Just note that all filters don't work on all reports. To know which ones work, we recomend to visit the reports in the [backend](https://revoretail.works/admin/reports/summary) and see what parameters are applied at the url query when filtering.
 </aside>
 <h2 id='available-reports'>Available reports</h2>
 <p>Here you have a list of the available filters.</p>
@@ -2252,8 +2266,11 @@ You can send payments where <code>payment_method_id</code> is <code>1</code> (Ca
 All requests will have the same structure. </p>
 
 <p>With the autorization header when calling authenticated based resources</p>
-<h2 id='images'>Images</h2><pre class="highlight plaintext"><code>https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{xef-account}/images/{url}
-</code></pre><h2 id='login'>Login</h2><pre class="highlight sh tab-shell"><code>// Response
+<h2 id='images'>Images</h2>
+<p><code>
+https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{xef-account}/images/{url}
+</code></p>
+<h2 id='login'>Login</h2><pre class="highlight sh tab-shell"><code>// Response
 <span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"api_token"</span> : <span class="s2">"token"</span>,

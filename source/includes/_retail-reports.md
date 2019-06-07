@@ -3,14 +3,9 @@
 ## Authentication 
 
 ```sh
-curl --header "tenant: {myaccount}" --header "authorization: Bearer {token}" https://revoxef.works/api/external/reports
-```
-
-```sh
-[
-    "username" => "{account}",
-    "authorization" => "Bearer {token}"
-]
+curl --header "tenant: {myaccount}" \
+     --header "authorization: Bearer {token}" \
+     https://revoxef.works/api/external/reports
 ```
 
 Base endpoint
@@ -21,9 +16,13 @@ You should send the headers `tenant` with your account username and `authorizati
 
 > Get your token at [https://revoretail.works/admin/account/tokens](https://revoretail.works/admin/account/tokens)
 
+Header        | Value
+--------------|-----------
+username      | {account}
+authorization | Bearer {token}
 
 
-El `token` se obtiene desde [Gestión de cuenta](https://revoretail.works/admin/account/tokens) de RevoRetail. Solo hay que crear un token nuevo dándole un nombre descriptivo de su función. Por ejemplo `externalApiToken`.
+The `token` it obtained at [Account managment](https://revoretail.works/admin/account/tokens) section of RevoRetail. You just need to create a new token givin it a descriptive name. For example `api acess`.
 
 
 ## Response format
@@ -34,8 +33,8 @@ El `token` se obtiene desde [Gestión de cuenta](https://revoretail.works/admin/
     "data": [  [Report data will go here]  ],
     "from": 1,
     "last_page": 4,
-    "next_page_url": "https://revoretail.works/api/external/reports/{reportName}}?page=2",
-    "path": "https://revoretail.works/api/external/reports/{reportName}}",
+    "next_page_url": "https://revoretail.works/api/external/reports/{reportName}?page=2",
+    "path": "https://revoretail.works/api/external/reports/{reportName}",
     "per_page": 50,
     "prev_page_url": null,
     "to": 50,
@@ -66,7 +65,7 @@ Filter        | Value      | Description
 
 
 <aside class="notice">
-Hay que tener en cuenta que no todos los filtros sirven para todos los informes. Para conocer que filtros son útiles para cada informe se recomienda visitar los distintos informes en [RevoRetail](https://revoretail.works/admin/reports/summary) y fijarse en los parámetros que se aplican a la url al filtrar.
+Just note that all filters don't work on all reports. To know which ones work, we recomend to visit the reports in the [backend](https://revoretail.works/admin/reports/summary) and see what parameters are applied at the url query when filtering.
 </aside>
 
 
