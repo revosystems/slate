@@ -73,10 +73,6 @@ Take into account that not all filters are available for all reports. To exactly
 Here is a list of all available reports
 
 * actionLog
-* allProducts
-* canceledContents
-* canceledInvoices
-* canceledOrders
 * categories
 * contentDiscounts
 * cookDurations
@@ -105,7 +101,11 @@ Here is a list of all available reports
 * users
 * warehouses
 * withoutInvoiceOrders
-
+* allProducts
+* canceledContents
+* canceledInvoices
+* canceledOrders
+* canceledPayments
 
 ## Master
 In case you have a master account you can create a token for the master account and use it to access all the chain reports as well as get a list of all the accounts within the master account
