@@ -263,6 +263,9 @@
                     <a href="#orders" class="toc-h2 toc-link" data-title="Orders">Orders</a>
                   </li>
                   <li>
+                    <a href="#rooms" class="toc-h2 toc-link" data-title="Rooms">Rooms</a>
+                  </li>
+                  <li>
                     <a href="#giftcards" class="toc-h2 toc-link" data-title="GiftCards">GiftCards</a>
                   </li>
                   <li>
@@ -869,6 +872,40 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         <span class="s2">"name"</span>  : &lt;roomName&gt;
     <span class="o">}</span>,
 <span class="o">}</span>
+</code></pre><h2 id='rooms'>Rooms</h2>
+<p><code>GET Rooms</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/rooms
+</code></pre>
+<blockquote>
+<p>Response is paginated for every 20 rooms </p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code>    <span class="s2">"id"</span>: 1,
+    <span class="s2">"name"</span>: <span class="s2">"Room 1"</span>,
+    <span class="s2">"order"</span>: <span class="s2">"0"</span>,
+    <span class="s2">"active"</span>: <span class="s2">"1"</span>,
+</code></pre>
+<blockquote>
+<p>You can add <code>?withTables</code> parameter. This way apart from <code>rooms</code> another array will be loaded called <code>tables</code>, it will contain a tables array within each room. </p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="s2">"tables"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"name"</span>: <span class="s2">"Table 1"</span>,
+        <span class="s2">"x"</span>: <span class="s2">"0"</span>,
+        <span class="s2">"y"</span>: <span class="s2">"0"</span>,
+        <span class="s2">"width"</span>: <span class="s2">"100"</span>,
+        <span class="s2">"height"</span>: <span class="s2">"100"</span>,
+        <span class="s2">"baseX"</span>: <span class="s2">"0"</span>,
+        <span class="s2">"baseY"</span>: <span class="s2">"0"</span>,
+        <span class="s2">"isJoined"</span>: <span class="s2">"0"</span>,
+        <span class="s2">"baseWidth"</span>: <span class="s2">"100"</span>,
+        <span class="s2">"baseHeight"</span>: <span class="s2">"100"</span>,
+        <span class="s2">"color"</span>: <span class="s2">"#dddddd"</span>,
+        <span class="s2">"type_id"</span>: <span class="s2">"2"</span>,
+        <span class="s2">"room_id"</span>: <span class="s2">"1"</span>,
+        <span class="s2">"price_id"</span>: null,
+    <span class="o">}</span>
+<span class="o">]</span>
 </code></pre><h2 id='giftcards'>GiftCards</h2>
 <p><code>POST GiftCards</code></p>
 

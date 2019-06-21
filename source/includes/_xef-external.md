@@ -148,6 +148,48 @@ GET https://revoxef.works/api/external/v2/orders?from=2017-01-02&to=2017-01-04
 }
 ```  
 
+## Rooms
+
+`GET Rooms`
+
+```sh
+GET https://revoxef.works/api/external/v2/rooms
+```
+
+> Response is paginated for every 20 rooms 
+
+```sh
+    "id": 1,
+    "name": "Room 1",
+    "order": "0",
+    "active": "1",
+```
+  
+> You can add `?withTables` parameter. This way apart from `rooms` another array will be loaded called `tables`, it will contain a tables array within each room. 
+
+  
+```sh  
+"tables": [
+    {
+        "id": 1,
+        "name": "Table 1",
+        "x": "0",
+        "y": "0",
+        "width": "100",
+        "height": "100",
+        "baseX": "0",
+        "baseY": "0",
+        "isJoined": "0",
+        "baseWidth": "100",
+        "baseHeight": "100",
+        "color": "#dddddd",
+        "type_id": "2",
+        "room_id": "1",
+        "price_id": null,
+    }
+]
+```  
+
 ## GiftCards
 
 `POST GiftCards`
