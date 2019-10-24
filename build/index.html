@@ -963,7 +963,55 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 </tbody></table>
 <h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='base-url'>Base URL</h2>
 <p><code>https://revoxef.works/api/loyalty/</code></p>
-<h2 id='create-an-order'>Create an order</h2>
+<h2 id='create-an-order'>Create an order</h2><pre class="highlight plaintext"><code>curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
+    "name":"Jordi",
+    "email":"jordi.p@revo.works"
+}&amp;order={
+    "subtotal" : 1336,
+    "sum" : 1336,
+    "id" : null,
+    "tableId" : null,
+    "total" : 1460,
+    "taxAmount" : 124,
+    "contents":[{
+        "item_id" : 949,
+        "quantity" : 1,
+        "menuContents" : null,
+        "id" : null,
+        "subtotal" : 910,
+        "itemPrice" : 1000,
+        "tax" : 1000,
+        "pointsSpent" : null,
+        "modifiers" : [],
+        "total" : 1000,
+        "taxAmount" : 90
+    },{
+        "item_id" : 2041,
+        "quantity" : 1,
+        "menuContents" : null,
+        "id" : null,
+        "subtotal" : 153,
+        "itemPrice" : 160,
+        "tax" : 2000,
+        "pointsSpent" : null,
+        "modifiers" : [],
+        "total" : 160,
+        "taxAmount" : 7
+    },{
+        "item_id" : 927,
+        "quantity" : 1,
+        "menuContents" : null,
+        "id" : null,
+        "subtotal" : 273,
+        "itemPrice" : 300,
+        "tax" : 1000,
+        "pointsSpent" : null,
+        "modifiers" : [],
+        "total" : 300,
+        "taxAmount" : 27
+    }
+]}&amp;notification_hook="service:http://www.example.com"' 'https://revoxef.works/api/loyalty/orders'
+</code></pre>
 <p><code>POST orders</code></p>
 
 <p>Headers:</p>
@@ -1002,6 +1050,11 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>customer</td>
 <td><code>array</code></td>
 <td>Of name and email <code>[&quot;name&quot; =&gt; &quot;The name&quot;, &quot;email&quot; =&gt; &quot;theEmail@example.com&quot;]</code></td>
+</tr>
+<tr>
+<td>notification_hook</td>
+<td><code>string</code></td>
+<td>An url where to notify the order status changes prefixed with the service id <code>service:https://notificationurl.com/notify</code></td>
 </tr>
 </tbody></table>
 <pre class="highlight plaintext"><code>Response:
