@@ -215,10 +215,9 @@ GET https://revoxef.works/api/external/v2/giftCards
 }
 ```
 
-
 ## Responses
 
 Value | Meaning                    | Description
 ------|----------------------------|------------------------------------------------
-201   | HTTP_CREATED               | giftcard could be created
-422   | HTTP_UNPROCESSABLE_ENTITY  | giftcard already exists or could not be created
+201   | HTTP_CREATED               | Call succeed
+422   | HTTP_UNPROCESSABLE_ENTITY  | Call failed

@@ -11,6 +11,7 @@ toc_footers:
 includes:
   - xef-old
   - xef-external
+  - xef-external-catalog
   - xef-loyalty
   - xef-reports
   
@@ -21,6 +22,8 @@ includes:
   - flow-integration
   
   - intouch
+  
+  - overview
 #  - errors
 
 search: true

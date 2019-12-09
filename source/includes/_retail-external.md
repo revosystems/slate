@@ -512,7 +512,6 @@ This will return an order. As relevant fields we do get the order id which will 
 ### Create an order payment
 Create order payments with its invoice.
 
-
 `POST https://revoretail.works/api/external/orders/{order_id}/invoices`
 
 ```sh
@@ -531,3 +530,19 @@ Create order payments with its invoice.
 This will return an order invoice. As new relevant fields we can get the id.
 
 `{"id": 1, "number": "E-1", ...}`
+
+## Sync chains
+
+`Sync account chains data`
+
+```sh
+POST https://revoretail.works/api/external/chains/sync
+```
+
+> Response
+
+```sh
+{
+    "data": {"message": Synced},
+}
+```
