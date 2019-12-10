@@ -29,6 +29,7 @@ Create a lead and point.
 `http://overview.revo.works/api/leads`
 
 Following fields can be passed
+
 ```sh
 {
     'user_id'                   : null,  // unsignedInteger, operator_id if known
@@ -73,15 +74,14 @@ Following fields can be passed
 }
 ```
 
-> Response is a json with created lead
-This will return created lead.
-
+Response is a json with created lead:
 `{"id": 1, "status": 0, ...}`
 
 
 ### Tips
 \* General typologies
-```
+
+```sh
 [
     1 => 'Cafetería',
     2 => 'Bar',
@@ -105,9 +105,10 @@ This will return created lead.
     21 => 'Espectáculos'
 ]
 ```
+
 ** Property spaces
 
-```
+```sh
 [
     1 => 'Una única Sala',
     2 => 'Sala + Terraza',
