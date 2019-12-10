@@ -80,8 +80,7 @@ Response is a json with created lead:
 
 
 ### Tips
-> \* General typologies
-
+\* General typologies
 ```sh
 [
     1 => 'Cafetería',
@@ -107,8 +106,7 @@ Response is a json with created lead:
 ]
 ```
 
-> ** Property spaces
-
+** Property spaces
 ```sh
 [
     1 => 'Una única Sala',
