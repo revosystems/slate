@@ -274,6 +274,26 @@
               </ul>
           </li>
           <li>
+            <a href="#xef-catalog" class="toc-h1 toc-link" data-title="Xef Catalog">Xef Catalog</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#prerequisistes" class="toc-h2 toc-link" data-title="Prerequisistes">Prerequisistes</a>
+                  </li>
+                  <li>
+                    <a href="#basic-usage" class="toc-h2 toc-link" data-title="Basic usage">Basic usage</a>
+                  </li>
+                  <li>
+                    <a href="#products" class="toc-h2 toc-link" data-title="Products">Products</a>
+                  </li>
+                  <li>
+                    <a href="#categories" class="toc-h2 toc-link" data-title="Categories">Categories</a>
+                  </li>
+                  <li>
+                    <a href="#groups" class="toc-h2 toc-link" data-title="Groups">Groups</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#xef-loyalty" class="toc-h1 toc-link" data-title="Xef Loyalty">Xef Loyalty</a>
               <ul class="toc-list-h2">
                   <li>
@@ -321,6 +341,9 @@
                   </li>
                   <li>
                     <a href="#create-order" class="toc-h2 toc-link" data-title="Create Order">Create Order</a>
+                  </li>
+                  <li>
+                    <a href="#sync-chains" class="toc-h2 toc-link" data-title="Sync chains">Sync chains</a>
                   </li>
               </ul>
           </li>
@@ -467,6 +490,23 @@
                   </li>
                   <li>
                     <a href="#other-routes" class="toc-h2 toc-link" data-title="Other routes">Other routes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#overview" class="toc-h1 toc-link" data-title="Overview">Overview</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#prerequisistes" class="toc-h2 toc-link" data-title="Prerequisistes">Prerequisistes</a>
+                  </li>
+                  <li>
+                    <a href="#basic-usage" class="toc-h2 toc-link" data-title="Basic usage">Basic usage</a>
+                  </li>
+                  <li>
+                    <a href="#create-lead" class="toc-h2 toc-link" data-title="Create lead">Create lead</a>
+                  </li>
+                  <li>
+                    <a href="#responses" class="toc-h2 toc-link" data-title="Responses">Responses</a>
                   </li>
               </ul>
           </li>
@@ -953,15 +993,112 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <tr>
 <td>201</td>
 <td>HTTP_CREATED</td>
-<td>giftcard could be created</td>
+<td>Call succeed</td>
 </tr>
 <tr>
 <td>422</td>
 <td>HTTP_UNPROCESSABLE_ENTITY</td>
-<td>giftcard already exists or could not be created</td>
+<td>Call failed</td>
 </tr>
 </tbody></table>
-<h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='base-url'>Base URL</h2>
+<h1 id='xef-catalog'>Xef Catalog</h1>
+<p>Inside catalog there are many resources; items, categories, groups, modifiers and sellingFormats.</p>
+
+<p>To explore those resources as a paginated list we can use a GET request with the following pattern. <code>GET https://revoxef.works/api/external/catalog/{resource}</code> replacing the desired resource on this url. </p>
+<h2 id='prerequisistes'>Prerequisistes</h2>
+<p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code></p>
+
+<ol>
+<li>Login into the desired account</li>
+<li>Go to account management</li>
+<li>Create a new <a href="https://revoxef.works/account/tokens">token</a></li>
+</ol>
+<h2 id='basic-usage'>Basic usage</h2>
+<p>The main URL for the external api is</p>
+
+<p><code>https://revoxek.works/api/external/catalog</code></p>
+
+<p>And you should provide the mandatory headers for the authentification</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tenant</td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {the-token}</td>
+</tr>
+</tbody></table>
+<h2 id='products'>Products</h2>
+<p><code>GET Products</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/catalog/products
+</code></pre>
+<blockquote>
+<p>Response is a products paginated array with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    'id',
+    'name',
+    'nameKitchen',
+    'buttonName',
+    'price',
+    'photo',
+    'order',
+    'info',
+    'isOpen',
+    'cookDuration',
+    'type',
+    'hasInventory',
+    'usesWeight',
+    'super_group_id',
+    'extra_id',
+    'printer_id',
+    'useAverageCostPrice',
+    'displayInventory',
+    'allergies',
+    'barcode',
+    'minQuantity',
+    'dish_order_id'
+</code></pre><h2 id='categories'>Categories</h2>
+<p><code>GET Categories</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/catalog/categories
+</code></pre>
+<blockquote>
+<p>Response is a categories paginated array with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    'id',
+    'name',
+    'group_id',
+    'active',
+    'tax_id',
+    'photo',
+    'super_group_id',
+    'printer_id',
+    'printer_group_id',
+    'modifier_category_id',
+    'modifier_group_id',
+    'dish_order_id'
+</code></pre><h2 id='groups'>Groups</h2>
+<p><code>GET Groups</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/catalog/groups
+</code></pre>
+<blockquote>
+<p>Response is a groups paginated array with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    'id',
+    'name',
+    'active',
+    'tax_id',
+    'photo',
+    'super_group_id',
+    'printer_id',
+    'printer_group_id',
+</code></pre><h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='base-url'>Base URL</h2>
 <p><code>https://revoxef.works/api/loyalty/</code></p>
 <h2 id='create-an-order'>Create an order</h2><pre class="highlight plaintext"><code>curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
     "name":"Jordi",
@@ -1712,7 +1849,17 @@ in any of these cases we can send a dictionary with the desired object to create
 <p>This will return an order invoice. As new relevant fields we can get the id.</p>
 
 <p><code>{&quot;id&quot;: 1, &quot;number&quot;: &quot;E-1&quot;, ...}</code></p>
-<h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
+<h2 id='sync-chains'>Sync chains</h2>
+<p><code>Sync account chains data</code></p>
+<pre class="highlight sh tab-shell"><code>POST https://revoretail.works/api/external/chains/sync
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span><span class="s2">"message"</span>: Synced<span class="o">}</span>,
+<span class="o">}</span>
+</code></pre><h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
      --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
      https://revoxef.works/api/external/reports
 </code></pre>
@@ -3062,6 +3209,150 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 <tr>
 <td>POST</td>
 <td>invoices/{id}/points/obtain</td>
+</tr>
+</tbody></table>
+<h1 id='overview'>Overview</h1><h2 id='prerequisistes'>Prerequisistes</h2>
+<p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code></p>
+
+<ol>
+<li>Request an organization token at support@revo.works </li>
+</ol>
+<h2 id='basic-usage'>Basic usage</h2>
+<p>The main URL for this api is</p>
+
+<p><code>http://overview.revo.works/api/</code></p>
+
+<p>And you should provide the mandatory headers for the authentification</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>{organization-name}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {the-token}</td>
+</tr>
+<tr>
+<td>Accept</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+<h2 id='create-lead'>Create lead</h2>
+<p>Create a lead and point.</p>
+
+<p><code>POST leads</code> </p>
+
+<p><code>http://overview.revo.works/api/leads</code></p>
+
+<p>Following fields can be passed
+<code>sh
+{
+    &#39;user_id&#39;                   : null,  // unsignedInteger, operator_id if known
+    &#39;probability&#39;               : null,  // tinyInteger [1 =&gt; VERY_LOW, 2 =&gt; LOW, 3 =&gt; MEDIUM, 4 =&gt; HIGH, 5 =&gt; VERY_HIGH]
+    &#39;total&#39;                     : 0.0,  // decimal
+    &#39;total_devices&#39;             : 10,  // decimal
+    &#39;trade_name&#39;                : &quot;Testing business&quot;,  // string
+    &#39;name&#39;                      : &quot;John&quot;,  // string
+    &#39;cif&#39;                       : &quot;39393938&quot;,  // string
+    &#39;surname1&#39;                  : &quot;Snow&quot;,  // string
+    &#39;surname2&#39;                  : &quot;White&quot;,  // string
+    &#39;email&#39;                     : &quot;john@revo.works&quot;,  // string
+    &#39;phone&#39;                     : &quot;+34 668686854&quot;,  // varchar(255)
+    &#39;city&#39;                      : &quot;Manchester&quot;,  // string
+    &#39;product&#39;                   : 2,  // tinyInteger [1 =&gt; Xef, 2 =&gt; Retail]
+    &#39;type_segment&#39;              : 1,  // [1 =&gt; SEGMENT_SMALL, 2 =&gt; SEGMENT_MEDIUM, 3 =&gt; SEGMENT_LARGE]
+    &#39;general_typology&#39;          : 1,  // GENERAL TYPOLOGIES IDS ARE SPECIFIED BELOW*
+    &#39;property_spaces&#39;           : 4,  // PROPERTY SPACES IDS ARE  SPECIFIED BELOW**
+    &#39;property_quantity&#39;         : 3,  // How many properties does the lead have
+    &#39;property_capacity&#39;         : 99,  // Local Max capacity
+    &#39;property_franchise&#39;        : 1,  // Is a franchise
+    &#39;devices&#39;                   : 6,  // How many devices has?. integer
+    &#39;devices_current&#39;           : &quot;&quot;,  // Specify device names 
+    &#39;xef_pos_critical_quantity&#39; : 4,  // Nº de comanderos entorno crítico. integer
+    &#39;xef_cash_quantity&#39;         : 1,  // Cashier number. integer
+    &#39;xef_printers_quantity&#39;     : 1,  // Kitchen printers. integer
+    &#39;xef_kds&#39;                   : 1,  // Would likes KDS? boolean
+    &#39;xef_kds_quantity&#39;          : 1,  // How many KDS? integer
+    &#39;soft&#39;                  =&gt; [
+      -2
+    ],  Current SOFTS. -2 means None. array of tinyIntegers
+    &#39;soft_other&#39;                : &quot;&quot;,  // If -1 one specified, here an other soft name can be written. string
+    &#39;pos&#39;                       : -2,  // Current POS. -2 means None. tinyInteger
+    &#39;pos_other&#39;                 : &quot;&quot;,  // If -1 one specified, here an other pos name can be written. string
+    &#39;can_use_another_pos&#39;       : 0,  // tinyInteger
+    &#39;xef_pms&#39;                   : -2,  // Current PMS. -2 means None. tinyInteger
+    &#39;xef_pms_other&#39;             : &quot;&quot;,  // If -1 one specified, here an other pms name can be written. string
+    &#39;erp&#39;                       : -2,  // Current ERP. -2 means None. tinyInteger
+    &#39;erp_other&#39;                 : &quot;&quot;,  // If -1 one specified, here an other erp name can be written. string
+    &#39;telco_number&#39;              : null,  // string
+    &#39;status&#39;                    : 1,  // tinyInteger [1 =&gt; NEW,const 2 =&gt; FIRST_CONTACT,const 3 =&gt; VISITED,const 4 =&gt; COMPLETED,const 5 =&gt; FAILED]
+}
+</code></p>
+
+<blockquote>
+<p>Response is a json with created lead
+This will return created lead.</p>
+</blockquote>
+
+<p><code>{&quot;id&quot;: 1, &quot;status&quot;: 0, ...}</code></p>
+<h3 id='tips'>Tips</h3>
+<p>* General typologies
+<code>
+[
+    1 =&gt; &#39;Cafetería&#39;,
+    2 =&gt; &#39;Bar&#39;,
+    3 =&gt; &#39;Restaurante&#39;,
+    4 =&gt; &#39;Discoteca&#39;,
+    5 =&gt; &#39;Take away&#39;,
+    6 =&gt; &#39;Delivery&#39;,   
+    7 =&gt; &#39;Hotel&#39;,      
+    9 =&gt; &#39;Panadería&#39;,  
+    10 =&gt; &#39;Foodtruck&#39;,  
+    11 =&gt; &#39;Comida al peso&#39;,
+    12 =&gt; &#39;Solo eventos&#39;,
+    13 =&gt; &#39;Retail store&#39;,
+    14 =&gt; &#39;Distribución de productos y Fuerza comercial&#39;,
+    15 =&gt; &#39;Autoventa / movilidad&#39;,
+    16 =&gt; &#39;Peluquería / estética&#39;,
+    17 =&gt; &#39;Panadería&#39;, 
+    18 =&gt; &#39;Venta a granel&#39;,
+    19 =&gt; &#39;Aviación / transporte&#39;,
+    20 =&gt; &#39;Eventos / corners&#39;,
+    21 =&gt; &#39;Espectáculos&#39;
+]
+</code>
+** Property spaces</p>
+<pre class="highlight plaintext"><code>[
+    1 =&gt; 'Una única Sala',
+    2 =&gt; 'Sala + Terraza',
+    3 =&gt; 'Multiples Salas y/o Terrazas',
+    4 =&gt; 'Estándar',
+    5 =&gt; 'Diferentes áreas / plantas',
+    6 =&gt; 'Locales separados'
+]
+</code></pre><h2 id='responses'>Responses</h2>
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td>HTTP_CREATED</td>
+<td>Call succeed</td>
+</tr>
+<tr>
+<td>422</td>
+<td>HTTP_UNPROCESSABLE_ENTITY</td>
+<td>Call failed</td>
 </tr>
 </tbody></table>
 
