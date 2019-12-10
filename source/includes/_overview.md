@@ -79,8 +79,8 @@ Response is a json with created lead:
 `{"id": 1, "status": 0, ...}`
 
 
-### Tips
-\* General typologies
+> ### Tips
+> \* General typologies
 
 ```
 [
@@ -107,7 +107,7 @@ Response is a json with created lead:
 ]
 ```
 
-** Property spaces
+> ** Property spaces
 
 ```
 [
