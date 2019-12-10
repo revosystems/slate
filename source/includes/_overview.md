@@ -28,7 +28,7 @@ Create a lead and point.
 
 `http://overview.revo.works/api/leads`
 
-Following fields can be passed =>
+Following fields can be passed (all of them are optional) =>
 
 ```sh
 {
