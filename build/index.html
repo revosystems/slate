@@ -3250,7 +3250,7 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 
 <p><code>http://overview.revo.works/api/leads</code></p>
 
-<p>Following fields can be passed</p>
+<p>Following fields can be passed =&gt;</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s1">'user_id'</span>                   : null,  // unsignedInteger, operator_id <span class="k">if </span>known
     <span class="s1">'probability'</span>               : null,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; VERY_LOW, 2 <span class="o">=</span>&gt; LOW, 3 <span class="o">=</span>&gt; MEDIUM, 4 <span class="o">=</span>&gt; HIGH, 5 <span class="o">=</span>&gt; VERY_HIGH]
@@ -3293,10 +3293,13 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     <span class="s1">'status'</span>                    : 1,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; NEW,const 2 <span class="o">=</span>&gt; FIRST_CONTACT,const 3 <span class="o">=</span>&gt; VISITED,const 4 <span class="o">=</span>&gt; COMPLETED,const 5 <span class="o">=</span>&gt; FAILED]
 <span class="o">}</span>
 </code></pre>
-<p>Response is a json with created lead:
-<code>{&quot;id&quot;: 1, &quot;status&quot;: 0, ...}</code></p>
+<p>Response is a json with created lead:</p>
+
+<p><code>{&quot;id&quot;: 1, &quot;status&quot;: 0, ...}</code></p>
 <h3 id='tips'>Tips</h3>
+<blockquote>
 <p>* General typologies</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     1 <span class="o">=</span>&gt; <span class="s1">'Cafetería'</span>,
     2 <span class="o">=</span>&gt; <span class="s1">'Bar'</span>,
@@ -3320,7 +3323,9 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     21 <span class="o">=</span>&gt; <span class="s1">'Espectáculos'</span>
 <span class="o">]</span>
 </code></pre>
+<blockquote>
 <p>** Property spaces</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     1 <span class="o">=</span>&gt; <span class="s1">'Una única Sala'</span>,
     2 <span class="o">=</span>&gt; <span class="s1">'Sala + Terraza'</span>,
