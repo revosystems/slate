@@ -3250,92 +3250,85 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 
 <p><code>http://overview.revo.works/api/leads</code></p>
 
-<p>Following fields can be passed
-<code>sh
-{
-    &#39;user_id&#39;                   : null,  // unsignedInteger, operator_id if known
-    &#39;probability&#39;               : null,  // tinyInteger [1 =&gt; VERY_LOW, 2 =&gt; LOW, 3 =&gt; MEDIUM, 4 =&gt; HIGH, 5 =&gt; VERY_HIGH]
-    &#39;total&#39;                     : 0.0,  // decimal
-    &#39;total_devices&#39;             : 10,  // decimal
-    &#39;trade_name&#39;                : &quot;Testing business&quot;,  // string
-    &#39;name&#39;                      : &quot;John&quot;,  // string
-    &#39;cif&#39;                       : &quot;39393938&quot;,  // string
-    &#39;surname1&#39;                  : &quot;Snow&quot;,  // string
-    &#39;surname2&#39;                  : &quot;White&quot;,  // string
-    &#39;email&#39;                     : &quot;john@revo.works&quot;,  // string
-    &#39;phone&#39;                     : &quot;+34 668686854&quot;,  // varchar(255)
-    &#39;city&#39;                      : &quot;Manchester&quot;,  // string
-    &#39;product&#39;                   : 2,  // tinyInteger [1 =&gt; Xef, 2 =&gt; Retail]
-    &#39;type_segment&#39;              : 1,  // [1 =&gt; SEGMENT_SMALL, 2 =&gt; SEGMENT_MEDIUM, 3 =&gt; SEGMENT_LARGE]
-    &#39;general_typology&#39;          : 1,  // GENERAL TYPOLOGIES IDS ARE SPECIFIED BELOW*
-    &#39;property_spaces&#39;           : 4,  // PROPERTY SPACES IDS ARE  SPECIFIED BELOW**
-    &#39;property_quantity&#39;         : 3,  // How many properties does the lead have
-    &#39;property_capacity&#39;         : 99,  // Local Max capacity
-    &#39;property_franchise&#39;        : 1,  // Is a franchise
-    &#39;devices&#39;                   : 6,  // How many devices has?. integer
-    &#39;devices_current&#39;           : &quot;&quot;,  // Specify device names 
-    &#39;xef_pos_critical_quantity&#39; : 4,  // Nº de comanderos entorno crítico. integer
-    &#39;xef_cash_quantity&#39;         : 1,  // Cashier number. integer
-    &#39;xef_printers_quantity&#39;     : 1,  // Kitchen printers. integer
-    &#39;xef_kds&#39;                   : 1,  // Would likes KDS? boolean
-    &#39;xef_kds_quantity&#39;          : 1,  // How many KDS? integer
-    &#39;soft&#39;                  =&gt; [
+<p>Following fields can be passed</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s1">'user_id'</span>                   : null,  // unsignedInteger, operator_id <span class="k">if </span>known
+    <span class="s1">'probability'</span>               : null,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; VERY_LOW, 2 <span class="o">=</span>&gt; LOW, 3 <span class="o">=</span>&gt; MEDIUM, 4 <span class="o">=</span>&gt; HIGH, 5 <span class="o">=</span>&gt; VERY_HIGH]
+    <span class="s1">'total'</span>                     : 0.0,  // decimal
+    <span class="s1">'total_devices'</span>             : 10,  // decimal
+    <span class="s1">'trade_name'</span>                : <span class="s2">"Testing business"</span>,  // string
+    <span class="s1">'name'</span>                      : <span class="s2">"John"</span>,  // string
+    <span class="s1">'cif'</span>                       : <span class="s2">"39393938"</span>,  // string
+    <span class="s1">'surname1'</span>                  : <span class="s2">"Snow"</span>,  // string
+    <span class="s1">'surname2'</span>                  : <span class="s2">"White"</span>,  // string
+    <span class="s1">'email'</span>                     : <span class="s2">"john@revo.works"</span>,  // string
+    <span class="s1">'phone'</span>                     : <span class="s2">"+34 668686854"</span>,  // varchar<span class="o">(</span>255<span class="o">)</span>
+    <span class="s1">'city'</span>                      : <span class="s2">"Manchester"</span>,  // string
+    <span class="s1">'product'</span>                   : 2,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; Xef, 2 <span class="o">=</span>&gt; Retail]
+    <span class="s1">'type_segment'</span>              : 1,  // <span class="o">[</span>1 <span class="o">=</span>&gt; SEGMENT_SMALL, 2 <span class="o">=</span>&gt; SEGMENT_MEDIUM, 3 <span class="o">=</span>&gt; SEGMENT_LARGE]
+    <span class="s1">'general_typology'</span>          : 1,  // GENERAL TYPOLOGIES IDS ARE SPECIFIED BELOW<span class="k">*</span>
+    <span class="s1">'property_spaces'</span>           : 4,  // PROPERTY SPACES IDS ARE  SPECIFIED BELOW<span class="k">**</span>
+    <span class="s1">'property_quantity'</span>         : 3,  // How many properties does the lead have
+    <span class="s1">'property_capacity'</span>         : 99,  // Local Max capacity
+    <span class="s1">'property_franchise'</span>        : 1,  // Is a franchise
+    <span class="s1">'devices'</span>                   : 6,  // How many devices has?. integer
+    <span class="s1">'devices_current'</span>           : <span class="s2">""</span>,  // Specify device names 
+    <span class="s1">'xef_pos_critical_quantity'</span> : 4,  // Nº de comanderos entorno crítico. integer
+    <span class="s1">'xef_cash_quantity'</span>         : 1,  // Cashier number. integer
+    <span class="s1">'xef_printers_quantity'</span>     : 1,  // Kitchen printers. integer
+    <span class="s1">'xef_kds'</span>                   : 1,  // Would likes KDS? boolean
+    <span class="s1">'xef_kds_quantity'</span>          : 1,  // How many KDS? integer
+    <span class="s1">'soft'</span>                  <span class="o">=</span>&gt; <span class="o">[</span>
       -2
-    ],  Current SOFTS. -2 means None. array of tinyIntegers
-    &#39;soft_other&#39;                : &quot;&quot;,  // If -1 one specified, here an other soft name can be written. string
-    &#39;pos&#39;                       : -2,  // Current POS. -2 means None. tinyInteger
-    &#39;pos_other&#39;                 : &quot;&quot;,  // If -1 one specified, here an other pos name can be written. string
-    &#39;can_use_another_pos&#39;       : 0,  // tinyInteger
-    &#39;xef_pms&#39;                   : -2,  // Current PMS. -2 means None. tinyInteger
-    &#39;xef_pms_other&#39;             : &quot;&quot;,  // If -1 one specified, here an other pms name can be written. string
-    &#39;erp&#39;                       : -2,  // Current ERP. -2 means None. tinyInteger
-    &#39;erp_other&#39;                 : &quot;&quot;,  // If -1 one specified, here an other erp name can be written. string
-    &#39;telco_number&#39;              : null,  // string
-    &#39;status&#39;                    : 1,  // tinyInteger [1 =&gt; NEW,const 2 =&gt; FIRST_CONTACT,const 3 =&gt; VISITED,const 4 =&gt; COMPLETED,const 5 =&gt; FAILED]
-}
-</code></p>
-
-<blockquote>
-<p>Response is a json with created lead
-This will return created lead.</p>
-</blockquote>
-
-<p><code>{&quot;id&quot;: 1, &quot;status&quot;: 0, ...}</code></p>
+    <span class="o">]</span>,  Current SOFTS. -2 means None. array of tinyIntegers
+    <span class="s1">'soft_other'</span>                : <span class="s2">""</span>,  // If -1 one specified, here an other soft name can be written. string
+    <span class="s1">'pos'</span>                       : -2,  // Current POS. -2 means None. tinyInteger
+    <span class="s1">'pos_other'</span>                 : <span class="s2">""</span>,  // If -1 one specified, here an other pos name can be written. string
+    <span class="s1">'can_use_another_pos'</span>       : 0,  // tinyInteger
+    <span class="s1">'xef_pms'</span>                   : -2,  // Current PMS. -2 means None. tinyInteger
+    <span class="s1">'xef_pms_other'</span>             : <span class="s2">""</span>,  // If -1 one specified, here an other pms name can be written. string
+    <span class="s1">'erp'</span>                       : -2,  // Current ERP. -2 means None. tinyInteger
+    <span class="s1">'erp_other'</span>                 : <span class="s2">""</span>,  // If -1 one specified, here an other erp name can be written. string
+    <span class="s1">'telco_number'</span>              : null,  // string
+    <span class="s1">'status'</span>                    : 1,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; NEW,const 2 <span class="o">=</span>&gt; FIRST_CONTACT,const 3 <span class="o">=</span>&gt; VISITED,const 4 <span class="o">=</span>&gt; COMPLETED,const 5 <span class="o">=</span>&gt; FAILED]
+<span class="o">}</span>
+</code></pre>
+<p>Response is a json with created lead:
+<code>{&quot;id&quot;: 1, &quot;status&quot;: 0, ...}</code></p>
 <h3 id='tips'>Tips</h3>
-<p>* General typologies
-<code>
-[
-    1 =&gt; &#39;Cafetería&#39;,
-    2 =&gt; &#39;Bar&#39;,
-    3 =&gt; &#39;Restaurante&#39;,
-    4 =&gt; &#39;Discoteca&#39;,
-    5 =&gt; &#39;Take away&#39;,
-    6 =&gt; &#39;Delivery&#39;,   
-    7 =&gt; &#39;Hotel&#39;,      
-    9 =&gt; &#39;Panadería&#39;,  
-    10 =&gt; &#39;Foodtruck&#39;,  
-    11 =&gt; &#39;Comida al peso&#39;,
-    12 =&gt; &#39;Solo eventos&#39;,
-    13 =&gt; &#39;Retail store&#39;,
-    14 =&gt; &#39;Distribución de productos y Fuerza comercial&#39;,
-    15 =&gt; &#39;Autoventa / movilidad&#39;,
-    16 =&gt; &#39;Peluquería / estética&#39;,
-    17 =&gt; &#39;Panadería&#39;, 
-    18 =&gt; &#39;Venta a granel&#39;,
-    19 =&gt; &#39;Aviación / transporte&#39;,
-    20 =&gt; &#39;Eventos / corners&#39;,
-    21 =&gt; &#39;Espectáculos&#39;
-]
-</code>
-** Property spaces</p>
-<pre class="highlight plaintext"><code>[
-    1 =&gt; 'Una única Sala',
-    2 =&gt; 'Sala + Terraza',
-    3 =&gt; 'Multiples Salas y/o Terrazas',
-    4 =&gt; 'Estándar',
-    5 =&gt; 'Diferentes áreas / plantas',
-    6 =&gt; 'Locales separados'
-]
+<p>* General typologies</p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    1 <span class="o">=</span>&gt; <span class="s1">'Cafetería'</span>,
+    2 <span class="o">=</span>&gt; <span class="s1">'Bar'</span>,
+    3 <span class="o">=</span>&gt; <span class="s1">'Restaurante'</span>,
+    4 <span class="o">=</span>&gt; <span class="s1">'Discoteca'</span>,
+    5 <span class="o">=</span>&gt; <span class="s1">'Take away'</span>,
+    6 <span class="o">=</span>&gt; <span class="s1">'Delivery'</span>,   
+    7 <span class="o">=</span>&gt; <span class="s1">'Hotel'</span>,      
+    9 <span class="o">=</span>&gt; <span class="s1">'Panadería'</span>,  
+    10 <span class="o">=</span>&gt; <span class="s1">'Foodtruck'</span>,  
+    11 <span class="o">=</span>&gt; <span class="s1">'Comida al peso'</span>,
+    12 <span class="o">=</span>&gt; <span class="s1">'Solo eventos'</span>,
+    13 <span class="o">=</span>&gt; <span class="s1">'Retail store'</span>,
+    14 <span class="o">=</span>&gt; <span class="s1">'Distribución de productos y Fuerza comercial'</span>,
+    15 <span class="o">=</span>&gt; <span class="s1">'Autoventa / movilidad'</span>,
+    16 <span class="o">=</span>&gt; <span class="s1">'Peluquería / estética'</span>,
+    17 <span class="o">=</span>&gt; <span class="s1">'Panadería'</span>, 
+    18 <span class="o">=</span>&gt; <span class="s1">'Venta a granel'</span>,
+    19 <span class="o">=</span>&gt; <span class="s1">'Aviación / transporte'</span>,
+    20 <span class="o">=</span>&gt; <span class="s1">'Eventos / corners'</span>,
+    21 <span class="o">=</span>&gt; <span class="s1">'Espectáculos'</span>
+<span class="o">]</span>
+</code></pre>
+<p>** Property spaces</p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    1 <span class="o">=</span>&gt; <span class="s1">'Una única Sala'</span>,
+    2 <span class="o">=</span>&gt; <span class="s1">'Sala + Terraza'</span>,
+    3 <span class="o">=</span>&gt; <span class="s1">'Multiples Salas y/o Terrazas'</span>,
+    4 <span class="o">=</span>&gt; <span class="s1">'Estándar'</span>,
+    5 <span class="o">=</span>&gt; <span class="s1">'Diferentes áreas / plantas'</span>,
+    6 <span class="o">=</span>&gt; <span class="s1">'Locales separados'</span>
+<span class="o">]</span>
 </code></pre><h2 id='responses'>Responses</h2>
 <table><thead>
 <tr>
