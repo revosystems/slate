@@ -28,7 +28,7 @@ Create a lead and point.
 
 `http://overview.revo.works/api/leads`
 
-Following fields can be passed
+Following fields can be passed =>
 
 ```sh
 {
@@ -75,11 +75,12 @@ Following fields can be passed
 ```
 
 Response is a json with created lead:
+
 `{"id": 1, "status": 0, ...}`
 
 
 ### Tips
-\* General typologies
+> \* General typologies
 
 ```sh
 [
@@ -106,7 +107,7 @@ Response is a json with created lead:
 ]
 ```
 
-** Property spaces
+> ** Property spaces
 
 ```sh
 [
