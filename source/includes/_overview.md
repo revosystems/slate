@@ -79,46 +79,43 @@ Response is a json with created lead:
 `{"id": 1, "status": 0, ...}`
 
 
-> ### Tips
-> \* General typologies
+### Tips
+\* General typologies
 
-```
-[
-    1 => 'Cafetería',
-    2 => 'Bar',
-    3 => 'Restaurante',
-    4 => 'Discoteca',
-    5 => 'Take away',
-    6 => 'Delivery',   
-    7 => 'Hotel',      
-    9 => 'Panadería',  
-    10 => 'Foodtruck',  
-    11 => 'Comida al peso',
-    12 => 'Solo eventos',
-    13 => 'Retail store',
-    14 => 'Distribución de productos y Fuerza comercial',
-    15 => 'Autoventa / movilidad',
-    16 => 'Peluquería / estética',
-    17 => 'Panadería', 
-    18 => 'Venta a granel',
-    19 => 'Aviación / transporte',
-    20 => 'Eventos / corners',
-    21 => 'Espectáculos'
+Key | Value          
+------------------|--------------
+1 | Cafetería
+2 | Bar
+3 | Restaurante
+4 | Discoteca
+5 | Take away
+6 | Delivery   
+7 | Hotel      
+9 | Panadería  
+10 | Foodtruck  
+11 | Comida al peso
+12 | Solo eventos
+13 | Retail store
+14 | Distribución de productos y Fuerza comercial
+15 | Autoventa / movilidad
+16 | Peluquería / estética
+17 | Panadería 
+18 | Venta a granel
+19 | Aviación / transporte
+20 | Eventos / corners
+21 | Espectáculos
 ]
-```
 
-> ** Property spaces
+** Property spaces
 
-```
-[
-    1 => 'Una única Sala',
-    2 => 'Sala + Terraza',
-    3 => 'Multiples Salas y/o Terrazas',
-    4 => 'Estándar',
-    5 => 'Diferentes áreas / plantas',
-    6 => 'Locales separados'
-]
-```
+Key | Value          
+------------------|--------------
+1 | Una única Sala
+2 | Sala + Terraza
+3 | Multiples Salas y/o Terrazas
+4 | Estándar
+5 | Diferentes áreas / plantas
+6 | Locales separados
 
 ## Responses
 
