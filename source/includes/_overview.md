@@ -80,7 +80,7 @@ Response is a json with created lead:
 
 
 ### Tips
-\* *General typologies*
+#### \* General typologies
 
 Key | Value          
 ------------------|--------------
@@ -105,7 +105,7 @@ Key | Value
 20 | Eventos / corners
 21 | Espectáculos
 
-** *Property spaces*
+#### ** Property spaces
 
 Key | Value          
 ------------------|--------------
