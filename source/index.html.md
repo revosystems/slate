@@ -14,6 +14,7 @@ includes:
   - xef-external-catalog
   - xef-loyalty
   - xef-reports
+  - xef-webhooks
   
   - retail-external
   - retail-reports
