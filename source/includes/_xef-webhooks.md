@@ -15,7 +15,7 @@ With the body hashed with the `SHA256` algorithm and using the `secret key` gene
 
 The payload will always have the keys
 
-```
+```sh
 {
     "event" : "order.closed",
     "data" : {
@@ -54,7 +54,7 @@ Event    | The event that will triger it
 
 ## Product
 
-```
+```sh
 // Updated
 {
     "event" : "product.updated"
@@ -78,7 +78,7 @@ Event    | The event that will triger it
 
 ## Customer
 
-```
+```sh
 // Created
 {
     "event" : "customer.created"
@@ -138,7 +138,7 @@ Event    | The event that will triger it
 
 ## Order
 
-```
+```sh
 // Created
 {
     "event" : "order.created"
