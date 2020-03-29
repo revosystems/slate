@@ -322,6 +322,26 @@
               </ul>
           </li>
           <li>
+            <a href="#xef-webhooks" class="toc-h1 toc-link" data-title="Xef Webhooks">Xef Webhooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#available-webhooks" class="toc-h2 toc-link" data-title="Available webhooks">Available webhooks</a>
+                  </li>
+                  <li>
+                    <a href="#product" class="toc-h2 toc-link" data-title="Product">Product</a>
+                  </li>
+                  <li>
+                    <a href="#customer" class="toc-h2 toc-link" data-title="Customer">Customer</a>
+                  </li>
+                  <li>
+                    <a href="#order" class="toc-h2 toc-link" data-title="Order">Order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#retail" class="toc-h1 toc-link" data-title="Retail">Retail</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1402,7 +1422,181 @@ Take into account that not all filters are available for all reports. To exactly
 <td>chain username returned in the accounts GET method</td>
 </tr>
 </tbody></table>
-<pre class="highlight plaintext"><code></code></pre><h1 id='retail'>Retail</h1><h2 id='prerequisistes'>Prerequisistes</h2>
+<pre class="highlight plaintext"><code></code></pre><h1 id='xef-webhooks'>Xef Webhooks</h1><h2 id='introduction'>Introduction</h2>
+<p>Revo Xef comes with <a href="https://es.wikipedia.org/wiki/Webhook">webhooks</a>. You can add as many as you need in the <code>webhooks</code> page <a href="https://revoxef.works/account/webhooks">https://revoxef.works/account/webhooks</a></p>
+
+<p>Once you create your first webhook a secret key will be generated and this will be used to create a hash that we will send in every webhook call so you can verify it is us who send it.</p>
+
+<p>We will send the header.  </p>
+
+<p><code>X-Revo-Hmac-SHA256</code></p>
+
+<p>With the body hashed with the <code>SHA256</code> algorithm and using the <code>secret key</code> generated when creating the first webhook.</p>
+
+<p>The payload will always have the keys</p>
+<pre class="highlight plaintext"><code>{
+    "event" : "order.closed",
+    "data" : {
+        "id" : 298
+        "table_id" : 12 
+        "guests" : 4
+    }
+}
+</code></pre>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event</td>
+<td>One of the available webhook events</td>
+</tr>
+<tr>
+<td>data</td>
+<td>the data depending on the event</td>
+</tr>
+</tbody></table>
+<h2 id='available-webhooks'>Available webhooks</h2>
+<table><thead>
+<tr>
+<th>Model</th>
+<th>Events</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Product</td>
+<td>updated, deleted</td>
+</tr>
+<tr>
+<td>Customer</td>
+<td>created, updated, deleted</td>
+</tr>
+<tr>
+<td>Order</td>
+<td>created, closed</td>
+</tr>
+</tbody></table>
+
+<p><em>There is the `{model}.</em>` event that means that you want to receive all the available events for the model*   </p>
+
+<p>When creating a new <code>webhook</code> you will have the following options</p>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Active</td>
+<td>If you want the event to be sent or not</td>
+</tr>
+<tr>
+<td>Url</td>
+<td>The url it should call</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>The event that will triger it</td>
+</tr>
+</tbody></table>
+<h2 id='product'>Product</h2><pre class="highlight plaintext"><code>// Updated
+{
+    "event" : "product.updated"
+    "data" : {
+        "id" : {id},
+        "type" : {type},
+        "name" : {name},
+        "price" : {photo}
+    }
+}
+
+// Deleted
+{
+    "event" : "product.deleted"
+    "data":{
+        "id" : {id}
+    }
+}
+</code></pre><h2 id='customer'>Customer</h2><pre class="highlight plaintext"><code>// Created
+{
+    "event" : "customer.created"
+    "data" : {
+        "id" : {id},
+        "active" : {active},
+        "name" : {name},
+        "address" : {address},
+        "city" : {city},
+        "state" : {state},
+        "country" : {country},
+        "postalCode" : {postalCode},
+        "nif" : {nif},
+        "web" : {web},
+        "email" : {email},
+        "phone" : {phone},
+        "notes" : {notes},
+        "extra_id" : {extra_id},
+        "created_at" : {created_at},
+        "updated_at" : {updated_at},
+        "deleted_at" : {deleted_at},  
+    }
+}
+
+// Updated
+{
+    "event" : "customer.updated"
+    "data" : {
+        "id" : {id},
+        "active" : {active},
+        "name" : {name},
+        "address" : {address},
+        "city" : {city},
+        "state" : {state},
+        "country" : {country},
+        "postalCode" : {postalCode},
+        "nif" : {nif},
+        "web" : {web},
+        "email" : {email},
+        "phone" : {phone},
+        "notes" : {notes},
+        "extra_id" : {extra_id},
+        "created_at" : {created_at},
+        "updated_at" : {updated_at},
+        "deleted_at" : {deleted_at},  
+    }
+}
+
+// Deleted
+{
+    "event" : "customer.deleted"
+    "data":{
+        "id" : {id}
+    }
+}
+</code></pre><h2 id='order'>Order</h2><pre class="highlight plaintext"><code>// Created
+{
+    "event" : "order.created"
+    "data" : {
+        "id" : {id},
+        "table_id" : {table_id},
+        "total" : {total},       
+        "guests": {guests} 
+    }
+}
+
+// Closed
+{
+    "event" : "order.closed"
+    "data":{
+        "id" : {id},
+        "table_id" : {table_id},
+        "total" : {total},
+        "guests": {guests} 
+    }
+}
+</code></pre><h1 id='retail'>Retail</h1><h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the external api you need a <code>revo retail</code> account and an <code>access token</code></p>
 
 <ol>
