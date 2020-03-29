@@ -1434,14 +1434,14 @@ Take into account that not all filters are available for all reports. To exactly
 <p>With the body hashed with the <code>SHA256</code> algorithm and using the <code>secret key</code> generated when creating the first webhook.</p>
 
 <p>The payload will always have the keys</p>
-<pre class="highlight plaintext"><code>{
-    "event" : "order.closed",
-    "data" : {
-        "id" : 298
-        "table_id" : 12 
-        "guests" : 4
-    }
-}
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"event"</span> : <span class="s2">"order.closed"</span>,
+    <span class="s2">"data"</span> : <span class="o">{</span>
+        <span class="s2">"id"</span> : 298
+        <span class="s2">"table_id"</span> : 12 
+        <span class="s2">"guests"</span> : 4
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre>
 <table><thead>
 <tr>
@@ -1502,100 +1502,100 @@ Take into account that not all filters are available for all reports. To exactly
 <td>The event that will triger it</td>
 </tr>
 </tbody></table>
-<h2 id='product'>Product</h2><pre class="highlight plaintext"><code>// Updated
-{
-    "event" : "product.updated"
-    "data" : {
-        "id" : {id},
-        "type" : {type},
-        "name" : {name},
-        "price" : {photo}
-    }
-}
+<h2 id='product'>Product</h2><pre class="highlight sh tab-shell"><code>// Updated
+<span class="o">{</span>
+    <span class="s2">"event"</span> : <span class="s2">"product.updated"</span>
+    <span class="s2">"data"</span> : <span class="o">{</span>
+        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"type"</span> : <span class="o">{</span><span class="nb">type</span><span class="o">}</span>,
+        <span class="s2">"name"</span> : <span class="o">{</span>name<span class="o">}</span>,
+        <span class="s2">"price"</span> : <span class="o">{</span>photo<span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 
 // Deleted
-{
-    "event" : "product.deleted"
-    "data":{
-        "id" : {id}
-    }
-}
-</code></pre><h2 id='customer'>Customer</h2><pre class="highlight plaintext"><code>// Created
-{
-    "event" : "customer.created"
-    "data" : {
-        "id" : {id},
-        "active" : {active},
-        "name" : {name},
-        "address" : {address},
-        "city" : {city},
-        "state" : {state},
-        "country" : {country},
-        "postalCode" : {postalCode},
-        "nif" : {nif},
-        "web" : {web},
-        "email" : {email},
-        "phone" : {phone},
-        "notes" : {notes},
-        "extra_id" : {extra_id},
-        "created_at" : {created_at},
-        "updated_at" : {updated_at},
-        "deleted_at" : {deleted_at},  
-    }
-}
+<span class="o">{</span>
+    <span class="s2">"event"</span> : <span class="s2">"product.deleted"</span>
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='customer'>Customer</h2><pre class="highlight sh tab-shell"><code>// Created
+<span class="o">{</span>
+    <span class="s2">"event"</span> : <span class="s2">"customer.created"</span>
+    <span class="s2">"data"</span> : <span class="o">{</span>
+        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"active"</span> : <span class="o">{</span>active<span class="o">}</span>,
+        <span class="s2">"name"</span> : <span class="o">{</span>name<span class="o">}</span>,
+        <span class="s2">"address"</span> : <span class="o">{</span>address<span class="o">}</span>,
+        <span class="s2">"city"</span> : <span class="o">{</span>city<span class="o">}</span>,
+        <span class="s2">"state"</span> : <span class="o">{</span>state<span class="o">}</span>,
+        <span class="s2">"country"</span> : <span class="o">{</span>country<span class="o">}</span>,
+        <span class="s2">"postalCode"</span> : <span class="o">{</span>postalCode<span class="o">}</span>,
+        <span class="s2">"nif"</span> : <span class="o">{</span>nif<span class="o">}</span>,
+        <span class="s2">"web"</span> : <span class="o">{</span>web<span class="o">}</span>,
+        <span class="s2">"email"</span> : <span class="o">{</span>email<span class="o">}</span>,
+        <span class="s2">"phone"</span> : <span class="o">{</span>phone<span class="o">}</span>,
+        <span class="s2">"notes"</span> : <span class="o">{</span>notes<span class="o">}</span>,
+        <span class="s2">"extra_id"</span> : <span class="o">{</span>extra_id<span class="o">}</span>,
+        <span class="s2">"created_at"</span> : <span class="o">{</span>created_at<span class="o">}</span>,
+        <span class="s2">"updated_at"</span> : <span class="o">{</span>updated_at<span class="o">}</span>,
+        <span class="s2">"deleted_at"</span> : <span class="o">{</span>deleted_at<span class="o">}</span>,  
+    <span class="o">}</span>
+<span class="o">}</span>
 
 // Updated
-{
-    "event" : "customer.updated"
-    "data" : {
-        "id" : {id},
-        "active" : {active},
-        "name" : {name},
-        "address" : {address},
-        "city" : {city},
-        "state" : {state},
-        "country" : {country},
-        "postalCode" : {postalCode},
-        "nif" : {nif},
-        "web" : {web},
-        "email" : {email},
-        "phone" : {phone},
-        "notes" : {notes},
-        "extra_id" : {extra_id},
-        "created_at" : {created_at},
-        "updated_at" : {updated_at},
-        "deleted_at" : {deleted_at},  
-    }
-}
+<span class="o">{</span>
+    <span class="s2">"event"</span> : <span class="s2">"customer.updated"</span>
+    <span class="s2">"data"</span> : <span class="o">{</span>
+        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"active"</span> : <span class="o">{</span>active<span class="o">}</span>,
+        <span class="s2">"name"</span> : <span class="o">{</span>name<span class="o">}</span>,
+        <span class="s2">"address"</span> : <span class="o">{</span>address<span class="o">}</span>,
+        <span class="s2">"city"</span> : <span class="o">{</span>city<span class="o">}</span>,
+        <span class="s2">"state"</span> : <span class="o">{</span>state<span class="o">}</span>,
+        <span class="s2">"country"</span> : <span class="o">{</span>country<span class="o">}</span>,
+        <span class="s2">"postalCode"</span> : <span class="o">{</span>postalCode<span class="o">}</span>,
+        <span class="s2">"nif"</span> : <span class="o">{</span>nif<span class="o">}</span>,
+        <span class="s2">"web"</span> : <span class="o">{</span>web<span class="o">}</span>,
+        <span class="s2">"email"</span> : <span class="o">{</span>email<span class="o">}</span>,
+        <span class="s2">"phone"</span> : <span class="o">{</span>phone<span class="o">}</span>,
+        <span class="s2">"notes"</span> : <span class="o">{</span>notes<span class="o">}</span>,
+        <span class="s2">"extra_id"</span> : <span class="o">{</span>extra_id<span class="o">}</span>,
+        <span class="s2">"created_at"</span> : <span class="o">{</span>created_at<span class="o">}</span>,
+        <span class="s2">"updated_at"</span> : <span class="o">{</span>updated_at<span class="o">}</span>,
+        <span class="s2">"deleted_at"</span> : <span class="o">{</span>deleted_at<span class="o">}</span>,  
+    <span class="o">}</span>
+<span class="o">}</span>
 
 // Deleted
-{
-    "event" : "customer.deleted"
-    "data":{
-        "id" : {id}
-    }
-}
-</code></pre><h2 id='order'>Order</h2><pre class="highlight plaintext"><code>// Created
-{
-    "event" : "order.created"
-    "data" : {
-        "id" : {id},
-        "table_id" : {table_id},
-        "total" : {total},       
-        "guests": {guests} 
-    }
-}
+<span class="o">{</span>
+    <span class="s2">"event"</span> : <span class="s2">"customer.deleted"</span>
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='order'>Order</h2><pre class="highlight sh tab-shell"><code>// Created
+<span class="o">{</span>
+    <span class="s2">"event"</span> : <span class="s2">"order.created"</span>
+    <span class="s2">"data"</span> : <span class="o">{</span>
+        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"table_id"</span> : <span class="o">{</span>table_id<span class="o">}</span>,
+        <span class="s2">"total"</span> : <span class="o">{</span>total<span class="o">}</span>,       
+        <span class="s2">"guests"</span>: <span class="o">{</span>guests<span class="o">}</span> 
+    <span class="o">}</span>
+<span class="o">}</span>
 
 // Closed
-{
-    "event" : "order.closed"
-    "data":{
-        "id" : {id},
-        "table_id" : {table_id},
-        "total" : {total},
-        "guests": {guests} 
-    }
-}
+<span class="o">{</span>
+    <span class="s2">"event"</span> : <span class="s2">"order.closed"</span>
+    <span class="s2">"data"</span>:<span class="o">{</span>
+        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"table_id"</span> : <span class="o">{</span>table_id<span class="o">}</span>,
+        <span class="s2">"total"</span> : <span class="o">{</span>total<span class="o">}</span>,
+        <span class="s2">"guests"</span>: <span class="o">{</span>guests<span class="o">}</span> 
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h1 id='retail'>Retail</h1><h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the external api you need a <code>revo retail</code> account and an <code>access token</code></p>
 
