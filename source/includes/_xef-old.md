@@ -1,6 +1,7 @@
 # Xef (Deprecated)
 
-Event this `api` is still working, it will be deprecated and updated the `REST` in the following months
+Even this `api` is not working anymore, it has been deprecated in favor of the new `REST` one
+See [Xef Catalog](#xef-catalog) section one instead
 
 ## Basic Request
 
