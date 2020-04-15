@@ -377,10 +377,10 @@
                     <a href="#response-format" class="toc-h2 toc-link" data-title="Response format">Response format</a>
                   </li>
                   <li>
-                    <a href="#available-filters" class="toc-h2 toc-link" data-title="Available filters">Available filters</a>
+                    <a href="#available-reports" class="toc-h2 toc-link" data-title="Available reports">Available reports</a>
                   </li>
                   <li>
-                    <a href="#available-reports" class="toc-h2 toc-link" data-title="Available reports">Available reports</a>
+                    <a href="#available-filters" class="toc-h2 toc-link" data-title="Available filters">Available filters</a>
                   </li>
               </ul>
           </li>
@@ -1289,6 +1289,45 @@ https://revoxef.works/api/external/v2/reports/<span class="o">{</span>reportName
 <span class="o">}</span>
 </code></pre>
 <p>All responses will have this header</p>
+<h2 id='available-reports'>Available reports</h2>
+<p>Here is a list of all available reports</p>
+
+<ul>
+<li>actionLog</li>
+<li>categories</li>
+<li>contentDiscounts</li>
+<li>cookDurations</li>
+<li>customers</li>
+<li>deliveries</li>
+<li>discounts</li>
+<li>freeOrders</li>
+<li>groupedInvoices</li>
+<li>groups</li>
+<li>hours</li>
+<li>invoices</li>
+<li>menuProducts</li>
+<li>menus</li>
+<li>openOrders</li>
+<li>orderContents</li>
+<li>orders</li>
+<li>payments</li>
+<li>presences</li>
+<li>products</li>
+<li>purchasedProducts</li>
+<li>rooms</li>
+<li>stock</li>
+<li>stocks</li>
+<li>taxes</li>
+<li>turns</li>
+<li>users</li>
+<li>warehouses</li>
+<li>withoutInvoiceOrders</li>
+<li>allProducts</li>
+<li>canceledContents</li>
+<li>canceledInvoices</li>
+<li>canceledOrders</li>
+<li>canceledPayments</li>
+</ul>
 <h3 id='filters'>Filters</h3>
 <table><thead>
 <tr>
@@ -1347,50 +1386,16 @@ https://revoxef.works/api/external/v2/reports/<span class="o">{</span>reportName
 <td>int</td>
 <td>Discount id</td>
 </tr>
+<tr>
+<td><code>dateField</code></td>
+<td>string</td>
+<td>The date field that&#39;ll be used on filters query (created_at, updated_at, closed, opened)</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
 </aside>
-<h2 id='available-reports'>Available reports</h2>
-<p>Here is a list of all available reports</p>
-
-<ul>
-<li>actionLog</li>
-<li>categories</li>
-<li>contentDiscounts</li>
-<li>cookDurations</li>
-<li>customers</li>
-<li>deliveries</li>
-<li>discounts</li>
-<li>freeOrders</li>
-<li>groupedInvoices</li>
-<li>groups</li>
-<li>hours</li>
-<li>invoices</li>
-<li>menuProducts</li>
-<li>menus</li>
-<li>openOrders</li>
-<li>orderContents</li>
-<li>orders</li>
-<li>payments</li>
-<li>presences</li>
-<li>products</li>
-<li>purchasedProducts</li>
-<li>rooms</li>
-<li>stock</li>
-<li>stocks</li>
-<li>taxes</li>
-<li>turns</li>
-<li>users</li>
-<li>warehouses</li>
-<li>withoutInvoiceOrders</li>
-<li>allProducts</li>
-<li>canceledContents</li>
-<li>canceledInvoices</li>
-<li>canceledOrders</li>
-<li>canceledPayments</li>
-</ul>
 <h2 id='master'>Master</h2>
 <p>In case you have a master account you can create a token for the master account and use it to access all the chain reports as well as get a list of all the accounts within the master account</p>
 <h3 id='get-accounts'>Get Accounts</h3>
@@ -2100,6 +2105,42 @@ in any of these cases we can send a dictionary with the desired object to create
 </code></pre>
 <p>All requests will return the info following this template.<br>
 This format is paginated to avoid the system collapse. The object <code>data</code> contains the lines of the requested report.</p>
+<h2 id='available-reports'>Available reports</h2>
+<p>Here you have a list of the available filters.</p>
+
+<ul>
+<li>categories</li>
+<li>categorySales</li>
+<li>contentsDiscounts</li>
+<li>customerOrderContents</li>
+<li>customersList</li>
+<li>customers</li>
+<li>deliveryNoteContents</li>
+<li>fullProductSales</li>
+<li>groups</li>
+<li>hours</li>
+<li>inOuts</li>
+<li>inventories</li>
+<li>inventoryContents</li>
+<li>marketingAnswers</li>
+<li>orderDiscounts</li>
+<li>orderInvoices</li>
+<li>ordersByCustomer</li>
+<li>orders</li>
+<li>payments</li>
+<li>presences</li>
+<li>productList</li>
+<li>productSales</li>
+<li>products</li>
+<li>stockCategories</li>
+<li>stockGroups</li>
+<li>stockMovements</li>
+<li>stocks</li>
+<li>targets</li>
+<li>taxes</li>
+<li>turns</li>
+<li>vendorItems</li>
+</ul>
 <h2 id='available-filters'>Available filters</h2>
 <p>A parte de <code>start_date</code> y <code>end_date</code> se puede filtrar por otros campos (siempre que tengan sentido con el informe). A continuación les dejamos una lista:</p>
 
@@ -2160,47 +2201,16 @@ This format is paginated to avoid the system collapse. The object <code>data</co
 <td>int</td>
 <td>The id of the cashier</td>
 </tr>
+<tr>
+<td><code>dateField</code></td>
+<td>string</td>
+<td>The date field that&#39;ll be used on filters query (created_at, updated_at, closed_at, opened_at)</td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
 Just note that all filters don't work on all reports. To know which ones work, we recomend to visit the reports in the [backend](https://revoretail.works/admin/reports/summary) and see what parameters are applied at the url query when filtering.
 </aside>
-<h2 id='available-reports'>Available reports</h2>
-<p>Here you have a list of the available filters.</p>
-
-<ul>
-<li>categories</li>
-<li>categorySales</li>
-<li>contentsDiscounts</li>
-<li>customerOrderContents</li>
-<li>customersList</li>
-<li>customers</li>
-<li>deliveryNoteContents</li>
-<li>fullProductSales</li>
-<li>groups</li>
-<li>hours</li>
-<li>inOuts</li>
-<li>inventories</li>
-<li>inventoryContents</li>
-<li>marketingAnswers</li>
-<li>orderDiscounts</li>
-<li>orderInvoices</li>
-<li>ordersByCustomer</li>
-<li>orders</li>
-<li>payments</li>
-<li>presences</li>
-<li>productList</li>
-<li>productSales</li>
-<li>products</li>
-<li>stockCategories</li>
-<li>stockGroups</li>
-<li>stockMovements</li>
-<li>stocks</li>
-<li>targets</li>
-<li>taxes</li>
-<li>turns</li>
-<li>vendorItems</li>
-</ul>
 <h1 id='revoflow'>RevoFlow</h1><h2 id='base-url'>Base URL</h2>
 <p><code>https://revoflow.works/api/v1/</code></p>
 <h2 id='authorization'>Authorization</h2>

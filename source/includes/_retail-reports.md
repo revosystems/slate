@@ -45,30 +45,6 @@ The `token` it obtained at [Account managment](https://revoretail.works/admin/ac
 All requests will return the info following this template.       
 This format is paginated to avoid the system collapse. The object `data` contains the lines of the requested report.
 
-
-
-## Available filters
-A parte de `start_date` y `end_date` se puede filtrar por otros campos (siempre que tengan sentido con el informe). A continuación les dejamos una lista:
-
-Filter        | Value      | Description
---------------|------------|--------------
-`start_date`  | YYYY-MM-DD | *Required* The start date of the report 
-`end_date`    | YYYY-MM-DD | *Required* The end date of the report
-`start_time`  | HH:mm      | The start time of the report 
-`end_time`    | HH:mm      | The end time of the report 
-`employee`    | int        | Id of the employee to filter with
-`room`        | int        | Id of the room to filter with
-`dayofweek`   | int        | Where Sunday is 1 and Saturday is 7
-`priceRate`   | int        | The id of the price rate
-`cashier`     | int        | The id of the cashier
-`discount`    | int        | The id of the cashier
-
-
-<aside class="notice">
-Just note that all filters don't work on all reports. To know which ones work, we recomend to visit the reports in the [backend](https://revoretail.works/admin/reports/summary) and see what parameters are applied at the url query when filtering.
-</aside>
-
-
 ## Available reports
 
 Here you have a list of the available filters.
@@ -104,3 +80,27 @@ Here you have a list of the available filters.
 * taxes
 * turns
 * vendorItems
+
+## Available filters
+A parte de `start_date` y `end_date` se puede filtrar por otros campos (siempre que tengan sentido con el informe). A continuación les dejamos una lista:
+
+Filter        | Value      | Description
+--------------|------------|--------------
+`start_date`  | YYYY-MM-DD | *Required* The start date of the report 
+`end_date`    | YYYY-MM-DD | *Required* The end date of the report
+`start_time`  | HH:mm      | The start time of the report 
+`end_time`    | HH:mm      | The end time of the report 
+`employee`    | int        | Id of the employee to filter with
+`room`        | int        | Id of the room to filter with
+`dayofweek`   | int        | Where Sunday is 1 and Saturday is 7
+`priceRate`   | int        | The id of the price rate
+`cashier`     | int        | The id of the cashier
+`discount`    | int        | The id of the cashier
+`dateField`   | string     | The date field that'll be used on filters query (created_at, updated_at, closed_at, opened_at)
+
+
+<aside class="notice">
+Just note that all filters don't work on all reports. To know which ones work, we recomend to visit the reports in the [backend](https://revoretail.works/admin/reports/summary) and see what parameters are applied at the url query when filtering.
+</aside>
+
+
