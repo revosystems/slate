@@ -302,6 +302,12 @@
                   <li>
                     <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
                   </li>
+                  <li>
+                    <a href="#order-with-payment" class="toc-h2 toc-link" data-title="Order with payment">Order with payment</a>
+                  </li>
+                  <li>
+                    <a href="#standalone-payment" class="toc-h2 toc-link" data-title="Standalone payment">Standalone payment</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1239,7 +1245,53 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         ]
     ]
 }
-</code></pre><h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
+</code></pre><h2 id='order-with-payment'>Order with payment</h2><pre class="highlight plaintext"><code>order={
+    "contents" : [{
+        ...
+    }],
+    "payment" : { 
+       "amount" : 12.40,
+        "payment_reference" : "your-payment-reference",
+        "payment_method_id" : 1
+    }
+}
+
+</code></pre>
+<p>You can send a payment while creating the order as well by adding the <code>payment</code> element inside the order</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th> Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>yes</td>
+<td>The payment amount</td>
+</tr>
+<tr>
+<td>payment_reference</td>
+<td>no</td>
+<td>A info field that references your payment id</td>
+</tr>
+<tr>
+<td>payment_method_id</td>
+<td>no</td>
+<td>In case you want it to match with a revo payment, or don&#39;t send to use the standard <code>InTouch</code> payment</td>
+</tr>
+</tbody></table>
+<h2 id='standalone-payment'>Standalone payment</h2><pre class="highlight plaintext"><code>payment={ 
+   "amount" : 12.40,
+    "payment_reference" : "your-payment-reference",
+    "payment_method_id" : 1
+}
+</code></pre>
+<p>Otherwise, you might need the order id before doing the payment, so you can add it afterwards with another call, where the parameters follow the same rules as the above call</p>
+
+<p><code>POST orders/{orderId}/payments</code></p>
+<h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
      --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
 https://revoxef.works/api/external/v2
 </code></pre>
