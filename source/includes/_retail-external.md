@@ -15,7 +15,7 @@ The main URL for the external api is
 
 `https://revoretail.works/api/external`
 
-And you should provide the mandatory headers for the authentification
+And you should provide the mandatory headers for the authentication
 
 
 Header          | Value

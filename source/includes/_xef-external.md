@@ -15,7 +15,7 @@ The main URL for the external api is
 
 `https://revoxef.works/api/external/v2/`
 
-And you should provide the mandatory headers for the authentification
+And you should provide the mandatory headers for the authentication
 
 
 Header        | Value

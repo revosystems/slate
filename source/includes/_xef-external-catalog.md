@@ -4,7 +4,6 @@ Inside catalog there are many resources; items, categories, groups, modifiers an
 To explore those resources as a paginated list we can use a GET request with the following pattern. `GET https://revoxef.works/api/external/v2/catalog/{resource}` replacing the desired resource on this url. 
 
 ## Prerequisistes
-
 To be able to use the external api you need a `revo xef` account and a `access token`
 
 1. Login into the desired account
@@ -15,10 +14,9 @@ To be able to use the external api you need a `revo xef` account and a `access t
 ## Basic usage
 The main URL for the external api is
 
-
 `https://revoxef.works/api/external/v2/catalog`
 
-And you should provide the mandatory headers for the authentification
+And you should provide the mandatory headers for the authentication
 
 
 Header        | Value
