@@ -13,7 +13,7 @@ To be able to use the external api you need a `revo xef` account and a `access t
 The main URL for the external api is
 
 
-`https://revoxek.works/api/external/v2/`
+`https://revoxef.works/api/external/v2/`
 
 And you should provide the mandatory headers for the authentification
 
