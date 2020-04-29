@@ -1,7 +1,7 @@
 # Xef Catalog
 Inside catalog there are many resources; items, categories, groups, modifiers and sellingFormats.
 
-To explore those resources as a paginated list we can use a GET request with the following pattern. `GET https://revoxef.works/api/external/catalog/{resource}` replacing the desired resource on this url. 
+To explore those resources as a paginated list we can use a GET request with the following pattern. `GET https://revoxef.works/api/external/v2/catalog/{resource}` replacing the desired resource on this url. 
 
 ## Prerequisistes
 
@@ -16,7 +16,7 @@ To be able to use the external api you need a `revo xef` account and a `access t
 The main URL for the external api is
 
 
-`https://revoxek.works/api/external/catalog`
+`https://revoxef.works/api/external/v2/catalog`
 
 And you should provide the mandatory headers for the authentification
 
@@ -32,7 +32,7 @@ Authorization | Bearer {the-token}
 `GET Products`
 
 ```sh
-GET https://revoxef.works/api/external/catalog/products
+GET https://revoxef.works/api/external/v2/catalog/products
 ```
 
 > Response is a products paginated array with the following fields:
@@ -68,7 +68,7 @@ GET https://revoxef.works/api/external/catalog/products
 `GET Categories`
 
 ```sh
-GET https://revoxef.works/api/external/catalog/categories
+GET https://revoxef.works/api/external/v2/catalog/categories
 ```
 
 > Response is a categories paginated array with the following fields:
@@ -93,7 +93,7 @@ GET https://revoxef.works/api/external/catalog/categories
 `GET Groups`
 
 ```sh
-GET https://revoxef.works/api/external/catalog/groups
+GET https://revoxef.works/api/external/v2/catalog/groups
 ```
 
 > Response is a groups paginated array with the following fields:
