@@ -102,3 +102,43 @@ Response:
     ]
 }
 ```
+
+## Order with payment
+
+```
+order={
+    "contents" : [{
+        ...
+    }],
+    "payment" : { 
+       "amount" : 12.40,
+        "payment_reference" : "your-payment-reference",
+        "payment_method_id" : 1
+    }
+}
+
+```
+
+You can send a payment while creating the order as well by adding the `payment` element inside the order
+
+
+Field             | Required | Description
+------------------|----------|--------------
+amount            | yes      | The payment amount
+payment_reference | no       | A info field that references your payment id
+payment_method_id | no       | In case you want it to match with a revo payment, or don't send to use the standard `InTouch` payment
+
+## Standalone payment
+
+```
+payment={ 
+   "amount" : 12.40,
+    "payment_reference" : "your-payment-reference",
+    "payment_method_id" : 1
+}
+```
+
+Otherwise, you might need the order id before doing the payment, so you can add it afterwards with another call, where the parameters follow the same rules as the above call
+
+`POST orders/{orderId}/payments`
+
