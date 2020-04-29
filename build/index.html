@@ -789,7 +789,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <h2 id='basic-usage'>Basic usage</h2>
 <p>The main URL for the external api is</p>
 
-<p><code>https://revoxek.works/api/external/v2/</code></p>
+<p><code>https://revoxef.works/api/external/v2/</code></p>
 
 <p>And you should provide the mandatory headers for the authentification</p>
 
@@ -878,7 +878,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
             <span class="s2">"menuMenuContents"</span>: <span class="o">[]</span>,
         <span class="o">}</span>
        <span class="o">]</span>,
-      <span class="o">}</span>
+      <span class="o">}</span> 
 </code></pre>
 <table><thead>
 <tr>
@@ -1025,7 +1025,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <h1 id='xef-catalog'>Xef Catalog</h1>
 <p>Inside catalog there are many resources; items, categories, groups, modifiers and sellingFormats.</p>
 
-<p>To explore those resources as a paginated list we can use a GET request with the following pattern. <code>GET https://revoxef.works/api/external/catalog/{resource}</code> replacing the desired resource on this url. </p>
+<p>To explore those resources as a paginated list we can use a GET request with the following pattern. <code>GET https://revoxef.works/api/external/v2/catalog/{resource}</code> replacing the desired resource on this url. </p>
 <h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code></p>
 
@@ -1037,7 +1037,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <h2 id='basic-usage'>Basic usage</h2>
 <p>The main URL for the external api is</p>
 
-<p><code>https://revoxek.works/api/external/catalog</code></p>
+<p><code>https://revoxef.works/api/external/v2/catalog</code></p>
 
 <p>And you should provide the mandatory headers for the authentification</p>
 
@@ -1058,7 +1058,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 </tbody></table>
 <h2 id='products'>Products</h2>
 <p><code>GET Products</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/catalog/products
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/catalog/products
 </code></pre>
 <blockquote>
 <p>Response is a products paginated array with the following fields:</p>
@@ -1087,7 +1087,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
     'dish_order_id'
 </code></pre><h2 id='categories'>Categories</h2>
 <p><code>GET Categories</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/catalog/categories
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/catalog/categories
 </code></pre>
 <blockquote>
 <p>Response is a categories paginated array with the following fields:</p>
@@ -1106,7 +1106,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
     'dish_order_id'
 </code></pre><h2 id='groups'>Groups</h2>
 <p><code>GET Groups</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/catalog/groups
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/catalog/groups
 </code></pre>
 <blockquote>
 <p>Response is a groups paginated array with the following fields:</p>
@@ -1444,7 +1444,7 @@ Take into account that not all filters are available for all reports. To exactly
     <span class="s2">"event"</span> : <span class="s2">"order.closed"</span>,
     <span class="s2">"data"</span> : <span class="o">{</span>
         <span class="s2">"id"</span> : 298
-        <span class="s2">"table_id"</span> : 12
+        <span class="s2">"table_id"</span> : 12 
         <span class="s2">"guests"</span> : 4
     <span class="o">}</span>
 <span class="o">}</span>
@@ -1546,7 +1546,7 @@ Take into account that not all filters are available for all reports. To exactly
         <span class="s2">"extra_id"</span> : <span class="o">{</span>extra_id<span class="o">}</span>,
         <span class="s2">"created_at"</span> : <span class="o">{</span>created_at<span class="o">}</span>,
         <span class="s2">"updated_at"</span> : <span class="o">{</span>updated_at<span class="o">}</span>,
-        <span class="s2">"deleted_at"</span> : <span class="o">{</span>deleted_at<span class="o">}</span>,
+        <span class="s2">"deleted_at"</span> : <span class="o">{</span>deleted_at<span class="o">}</span>,  
     <span class="o">}</span>
 <span class="o">}</span>
 
@@ -1570,7 +1570,7 @@ Take into account that not all filters are available for all reports. To exactly
         <span class="s2">"extra_id"</span> : <span class="o">{</span>extra_id<span class="o">}</span>,
         <span class="s2">"created_at"</span> : <span class="o">{</span>created_at<span class="o">}</span>,
         <span class="s2">"updated_at"</span> : <span class="o">{</span>updated_at<span class="o">}</span>,
-        <span class="s2">"deleted_at"</span> : <span class="o">{</span>deleted_at<span class="o">}</span>,
+        <span class="s2">"deleted_at"</span> : <span class="o">{</span>deleted_at<span class="o">}</span>,  
     <span class="o">}</span>
 <span class="o">}</span>
 
@@ -1587,8 +1587,8 @@ Take into account that not all filters are available for all reports. To exactly
     <span class="s2">"data"</span> : <span class="o">{</span>
         <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
         <span class="s2">"table_id"</span> : <span class="o">{</span>table_id<span class="o">}</span>,
-        <span class="s2">"total"</span> : <span class="o">{</span>total<span class="o">}</span>,
-        <span class="s2">"guests"</span>: <span class="o">{</span>guests<span class="o">}</span>
+        <span class="s2">"total"</span> : <span class="o">{</span>total<span class="o">}</span>,       
+        <span class="s2">"guests"</span>: <span class="o">{</span>guests<span class="o">}</span> 
     <span class="o">}</span>
 <span class="o">}</span>
 
@@ -1599,7 +1599,7 @@ Take into account that not all filters are available for all reports. To exactly
         <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
         <span class="s2">"table_id"</span> : <span class="o">{</span>table_id<span class="o">}</span>,
         <span class="s2">"total"</span> : <span class="o">{</span>total<span class="o">}</span>,
-        <span class="s2">"guests"</span>: <span class="o">{</span>guests<span class="o">}</span>
+        <span class="s2">"guests"</span>: <span class="o">{</span>guests<span class="o">}</span> 
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><h1 id='retail'>Retail</h1><h2 id='prerequisistes'>Prerequisistes</h2>
@@ -1990,8 +1990,8 @@ in any of these cases we can send a dictionary with the desired object to create
     <span class="s2">"closed_at"</span>: <span class="s2">"2017-12-31 13:00:00"</span>,
     <span class="s2">"order_contents"</span>: <span class="o">[</span>
         <span class="o">{</span>
-            <span class="s2">"name"</span>: <span class="s2">"Dark shoes XL"</span>,
-            <span class="s2">"quantity"</span>: 2,
+            <span class="s2">"name"</span>: <span class="s2">"Dark shoes XL"</span>, 
+            <span class="s2">"quantity"</span>: 2, 
             <span class="s2">"weight"</span>: null,
             <span class="s2">"price"</span>: 27,
             <span class="s2">"sum"</span>: 54,
@@ -2010,8 +2010,8 @@ in any of these cases we can send a dictionary with the desired object to create
             <span class="s2">"margin"</span>: 0,
             <span class="s2">"product_id"</span>: 1
         <span class="o">}</span>, <span class="o">{</span>
-            <span class="s2">"name"</span>: <span class="s2">"Red shoes M"</span>,
-            <span class="s2">"quantity"</span>: 1,
+            <span class="s2">"name"</span>: <span class="s2">"Red shoes M"</span>, 
+            <span class="s2">"quantity"</span>: 1, 
             <span class="s2">"weight"</span>: null,
             <span class="s2">"price"</span>: 27.5,
             <span class="s2">"sum"</span>: 27.5,
@@ -2304,8 +2304,8 @@ Just note that all filters don't work on all reports. To know which ones work, w
 <code>https://revoflow.works/api/v1/bookings/1</code></p>
 <h3 id='save-booking-post'>Save Booking (POST)</h3>
 <p><code>https://revoflow.works/api/v1/bookings</code></p>
-<pre class="highlight plaintext"><code>    {
-        data: {
+<pre class="highlight plaintext"><code>    { 
+        data: {   
             "booking": {
                 "date": "2017-01-19",
                 "time": "12:30:00",
@@ -2324,8 +2324,8 @@ Just note that all filters don't work on all reports. To know which ones work, w
     }
 </code></pre><h2 id='update-booking-put'>Update booking (PUT)</h2>
 <p><code>https://revoflow.works/api/v1/bookings/{id}</code></p>
-<pre class="highlight plaintext"><code>    {
-        data: {
+<pre class="highlight plaintext"><code>    { 
+        data: {   
             "booking": {
                 "date": "2017-01-19",
                 "time": "12:30:00",
@@ -2429,7 +2429,7 @@ The page and limit must be set in request.</p>
             {"id":2,"name":"Table 2","isJoined":"0","room_id":"1"},
         }
       ]
-    }
+    }    
 </code></pre><h2 id='availabillity'>Availabillity</h2>
 <p>Get the availabillity between requested dates.
 <code>https://revoflow.works/api/v1/availability?from=2017-02-01&amp;to=2017-02-15</code></p>
@@ -2469,14 +2469,14 @@ The page and limit must be set in request.</p>
             "name": "Dinner",
             "id": 1,
             "time" : [
-                "20:00:00",
-                "20:15:00",
-                "20:30:00",
-                "20:45:00",
-                "21:00:00",
-                "21:15:00",
-                "21:30:00",
-                "21:45:00",
+                "20:00:00", 
+                "20:15:00", 
+                "20:30:00", 
+                "20:45:00", 
+                "21:00:00", 
+                "21:15:00", 
+                "21:30:00", 
+                "21:45:00", 
                 "22:00:00"
             ]
         }
@@ -2637,7 +2637,7 @@ The page and limit must be set in request.</p>
     <span class="s2">"tenant"</span>  :<span class="s2">"user1"</span>,
     <span class="s2">"password"</span>:<span class="s2">"user1"</span>
     <span class="o">}</span>,
-    <span class="s2">"action"</span>:<span class="s2">"sync"</span>,
+    <span class="s2">"action"</span>:<span class="s2">"sync"</span>, 
     <span class="s2">"data"</span>:<span class="o">{</span>
         <span class="s2">"model"</span>:<span class="s2">"TableRoom"</span>,
         <span class="s2">"fromDate"</span>:<span class="s2">"2016/12/01 16:05:20"</span>
@@ -2701,9 +2701,9 @@ The page and limit must be set in request.</p>
 You can send payments where <code>payment_method_id</code> is <code>1</code> (Card) or <code>2</code> (Cash)</p>
 <h1 id='intouch'>InTouch</h1><h2 id='basic-request'>Basic request</h2><pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/customer
 </code></pre><pre class="highlight sh tab-shell"><code>Authorization: Bearer <span class="o">{</span>token<span class="o">}</span>
-</code></pre><pre class="highlight sh tab-shell"><code>curl -X GET
+</code></pre><pre class="highlight sh tab-shell"><code>curl -X GET 
      --header <span class="s2">"Authorization: Bearer K2YBo90R2bil1mVKTkHh9cRlzstQYHIqYjX3oAYFT9HWluGcq9DaDh4LxVUI"</span>
-     myaccount.revointouch.works/api/v1/customer/cards
+     myaccount.revointouch.works/api/v1/customer/cards 
 </code></pre>
 <p>Revo-InTouch comes with an easy to use <code>REST</code> API Interface.
 All requests will have the same structure. </p>
@@ -3477,7 +3477,7 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     <span class="s1">'property_capacity'</span>         : 99,  // Local Max capacity
     <span class="s1">'property_franchise'</span>        : 1,  // Is a franchise
     <span class="s1">'devices'</span>                   : 6,  // How many devices has?. integer
-    <span class="s1">'devices_current'</span>           : <span class="s2">""</span>,  // Specify device names
+    <span class="s1">'devices_current'</span>           : <span class="s2">""</span>,  // Specify device names 
     <span class="s1">'xef_pos_critical_quantity'</span> : 4,  // Nº de comanderos entorno crítico. integer
     <span class="s1">'xef_cash_quantity'</span>         : 1,  // Cashier number. integer
     <span class="s1">'xef_printers_quantity'</span>     : 1,  // Kitchen printers. integer
