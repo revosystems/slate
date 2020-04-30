@@ -142,3 +142,18 @@ Otherwise, you might need the order id before doing the payment, so you can add 
 
 `POST orders/{orderId}/payments`
 
+
+## Cancel Order
+```
+curl -XDELETE -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'reason="Payment Failed"' 'https://revoxef.works/api/loyalty/orders/123456'
+```
+
+During the next 5 minutes after an order has been place, you can cancel it (for example, if the defeered payment failed)
+
+`DELETE orders/{orderId}`
+
+Field             | Required | Description
+------------------|----------|--------------
+reason            | yes      | The reason why the order is canceled
+
+
