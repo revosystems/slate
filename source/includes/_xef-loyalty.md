@@ -122,11 +122,11 @@ order={
 You can send a payment while creating the order as well by adding the `payment` element inside the order
 
 
-Field             | Required | Description
-------------------|----------|--------------
-amount            | yes      | The payment amount
-payment_reference | no       | A info field that references your payment id
-payment_method_id | no       | In case you want it to match with a revo payment, or don't send to use the standard `InTouch` payment
+Field               | Required | Description
+--------------------|----------|--------------
+`amount`            | yes      | The payment amount
+`payment_reference` | no       | A info field that references your payment id
+`payment_method_id` | no       | In case you want it to match with a revo payment, or don't send to use the standard `InTouch` payment
 
 ## Standalone payment
 
@@ -156,6 +156,6 @@ During the next 5 minutes after an order has been place, you can cancel it (for 
 
 Field             | Required | Description
 ------------------|----------|--------------
-reason            | yes      | The reason why the order is canceled
+`reason`            | yes      | The reason why the order is canceled
 
 
