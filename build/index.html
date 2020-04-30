@@ -1294,7 +1294,9 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <p>Otherwise, you might need the order id before doing the payment, so you can add it afterwards with another call, where the parameters follow the same rules as the above call</p>
 
 <p><code>POST orders/{orderId}/payments</code></p>
-<h2 id='cancel-order'>Cancel Order</h2><pre class="highlight plaintext"><code>curl -XDELETE -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'reason="Payment Failed"' 'https://revoxef.works/api/loyalty/orders/123456'
+<h2 id='cancel-order'>Cancel Order</h2><pre class="highlight plaintext"><code>curl -XDELETE -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' \
+-d 'reason="Payment Failed"' \
+'https://revoxef.works/api/loyalty/orders/123456'
 </code></pre>
 <p>During the next 5 minutes after an order has been place, you can cancel it (for example, if the defeered payment failed)</p>
 
