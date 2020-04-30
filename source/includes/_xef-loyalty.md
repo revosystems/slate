@@ -156,6 +156,6 @@ During the next 5 minutes after an order has been place, you can cancel it (for 
 
 Field             | Required | Description
 ------------------|----------|--------------
-`reason`            | yes      | The reason why the order is canceled
+`reason`          | yes      | The reason why the order is canceled
 
 
