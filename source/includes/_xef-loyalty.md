@@ -18,6 +18,7 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
     "tableId" : null,
     "total" : 1460,
     "taxAmount" : 124,
+    "notes" : "You can send some optional notes"
     "contents":[{
         "item_id" : 949,
         "quantity" : 1,
