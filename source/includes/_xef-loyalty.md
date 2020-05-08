@@ -15,7 +15,8 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
     "subtotal" : 1336,
     "sum" : 1336,
     "id" : null,
-    "tableId" : null,
+    "tableId" : null,	// Optional (In case you want it into a table in xef)
+    "tableName" : 		// Optional (In case you want to give another table name)
     "total" : 1460,
     "taxAmount" : 124,
     "notes" : "You can send some optional notes"
@@ -27,10 +28,11 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
         "subtotal" : 910,
         "itemPrice" : 1000,
         "tax" : 1000,
-        "pointsSpent" : null,
         "modifiers" : [],
         "total" : 1000,
-        "taxAmount" : 90
+        "taxAmount" : 90,
+        "dishOrder" : 2, //Optional
+        "notes" : "You can also send optional notes here"
     },{
         "item_id" : 2041,
         "quantity" : 1,
@@ -39,7 +41,6 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
         "subtotal" : 153,
         "itemPrice" : 160,
         "tax" : 2000,
-        "pointsSpent" : null,
         "modifiers" : [],
         "total" : 160,
         "taxAmount" : 7
@@ -51,7 +52,6 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
         "subtotal" : 273,
         "itemPrice" : 300,
         "tax" : 1000,
-        "pointsSpent" : null,
         "modifiers" : [],
         "total" : 300,
         "taxAmount" : 27
