@@ -1137,7 +1137,8 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
     "subtotal" : 1336,
     "sum" : 1336,
     "id" : null,
-    "tableId" : null,
+    "tableId" : null,   // Optional (In case you want it into a table in xef)
+    "tableName" :       // Optional (In case you want to give another table name)
     "total" : 1460,
     "taxAmount" : 124,
     "notes" : "You can send some optional notes"
@@ -1149,10 +1150,11 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         "subtotal" : 910,
         "itemPrice" : 1000,
         "tax" : 1000,
-        "pointsSpent" : null,
         "modifiers" : [],
         "total" : 1000,
-        "taxAmount" : 90
+        "taxAmount" : 90,
+        "dishOrder" : 2, //Optional
+        "notes" : "You can also send optional notes here"
     },{
         "item_id" : 2041,
         "quantity" : 1,
@@ -1161,7 +1163,6 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         "subtotal" : 153,
         "itemPrice" : 160,
         "tax" : 2000,
-        "pointsSpent" : null,
         "modifiers" : [],
         "total" : 160,
         "taxAmount" : 7
@@ -1173,7 +1174,6 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         "subtotal" : 273,
         "itemPrice" : 300,
         "tax" : 1000,
-        "pointsSpent" : null,
         "modifiers" : [],
         "total" : 300,
         "taxAmount" : 27
