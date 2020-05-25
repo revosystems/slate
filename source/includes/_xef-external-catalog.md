@@ -25,15 +25,15 @@ tenant        | {account-username}
 Authorization | Bearer {the-token}
 
 
-## Products
+## Items
 
-`GET Products`
+`GET Items`
 
 ```sh
-GET https://revoxef.works/api/external/v2/catalog/products
+GET https://revoxef.works/api/external/v2/catalog/items
 ```
 
-> Response is a products paginated array with the following fields:
+> Response is a items paginated array with the following fields:
 
 ```
     'id',
