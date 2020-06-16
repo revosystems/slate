@@ -31,9 +31,19 @@ Authorization | Bearer {the-token}
 
 ```sh
 GET https://revoxef.works/api/external/v2/catalog/items
+GET https://revoxef.works/api/external/v2/catalog/categories/<category_id>/items
+GET https://revoxef.works/api/external/v2/catalog/items/<item_id>
+POST https://revoxef.works/api/external/v2/catalog/items
+    Create a item:          {"name": "Product 1", "active": 1, "category_id": 2}
+    Update a item:          {"id":2, "name": "Product 1 updated", "active": 0, "category_id": 2}
+    Create multiple items:  {"items": [
+            {"name": "Product 1", "active": 1, "category_id": 2},
+            {"name": "Product 2", "active": 1, "category_id": 1}
+        ]}
+DELETE https://revoxef.works/api/external/v2/catalog/items/<item_id>
 ```
 
-> Response is a items paginated array with the following fields:
+> Response for GET items is an items paginated array with the following fields:
 
 ```
     'id',
@@ -67,9 +77,19 @@ GET https://revoxef.works/api/external/v2/catalog/items
 
 ```sh
 GET https://revoxef.works/api/external/v2/catalog/categories
+GET https://revoxef.works/api/external/v2/catalog/groups/<group_id>/categories
+GET https://revoxef.works/api/external/v2/catalog/categories/<category_id>
+POST https://revoxef.works/api/external/v2/catalog/categories
+    Create a category:          {"name": "Category 1", "active": 1, "group_id": 2}
+    Update a category:          {"id":2, "name": "Category 1 updated", "active": 0, "group_id": 2}
+    Create multiple categories:  {"categories": [
+            {"name": "Category 1", "active": 1, "group_id": 2},
+            {"name": "Category 2", "active": 1, "group_id": 1}
+        ]}
+DELETE https://revoxef.works/api/external/v2/catalog/categories/<category_id>
 ```
 
-> Response is a categories paginated array with the following fields:
+> Response for GET categories is a categories paginated array with the following fields:
 
 ```
     'id',
@@ -92,6 +112,15 @@ GET https://revoxef.works/api/external/v2/catalog/categories
 
 ```sh
 GET https://revoxef.works/api/external/v2/catalog/groups
+GET https://revoxef.works/api/external/v2/catalog/groups/<group_id>
+POST https://revoxef.works/api/external/v2/catalog/groups
+    Create a group:          {"name": "Group 1", "active": 1}
+    Update a group:          {"id":2, "name": "Group 1 updated", "active": 0}
+    Create multiple groups:  {"groups": [
+            {"name": "Group 1", "active": 1},
+            {"name": "Group 2", "active": 1}
+        ]}
+DELETE https://revoxef.works/api/external/v2/catalog/groups/<group_id>
 ```
 
 > Response is a groups paginated array with the following fields:
@@ -106,3 +135,93 @@ GET https://revoxef.works/api/external/v2/catalog/groups
     'printer_id',
     'printer_group_id',
 ```
+
+## Warehouses
+
+`GET Warehouses`
+
+```sh
+GET https://revoxef.works/api/external/v2/warehouses
+```
+
+> Response is a warehouses paginated array with the following fields:
+
+```
+    'id',
+    'name',
+    'order',
+```
+
+
+`GET Warehouses stocks`
+
+```sh
+GET https://revoxef.works/api/external/v2/warehouses/<warehouse_id>
+POST https://revoxef.works/api/external/v2/warehouses/<warehouse_id>/addStock  {"item_id": <item_id>, "quantity": <quantity_to_add>}
+POST https://revoxef.works/api/external/v2/warehouses/<warehouse_id>/setStock  
+    set a item stock to a warehouse     => {"item_id": <item_id>, "quantity": <quantity_to_set>}
+    set multiple stocks to a warehouse  => {"stocks": [
+        {"item_id": <item_id>, "quantity": <quantity_to_set>},
+        {"item_id": <item_id>, "quantity": <quantity_to_set>},
+    ]}
+```
+
+> Response for a warehouse is a stocks paginated array with the following fields:
+
+```
+    'id',
+    'quantity',
+    'defaultQuantity',
+    'alert',
+    'warehouse_id',
+    'item_id',
+    'unit_id'
+```
+
+## Purchase
+
+`GET Purchase orders`
+
+```sh
+GET https://revoxef.works/api/external/v2/purchaseOrders
+```
+
+> Response is a purchase orders paginated array with the following fields:
+
+```
+    'id',
+    'vendor_order_id',
+    'reference',
+    'subtotal',
+    'tax',
+    'total',
+    'status',
+    'vendor_id',
+    'vendorName',
+    'contentsArray'
+```
+
+`GET Purchase order contents`
+
+```sh
+GET https://revoxef.works/api/external/v2/purchaseOrders/{purchase_order_id}
+```
+
+> Response is a purchase order contents paginated array with the following fields:
+
+```
+    'id',
+    'status',
+    'quantity',
+    'received',
+    'price',
+    'subtotal',
+    'tax',
+    'total',
+    'order_id',
+    'item_vendor_id',
+    'itemName',
+    'itemBarcode',
+    'item_id'
+```
+

@@ -221,3 +221,35 @@ Value | Meaning                    | Description
 ------|----------------------------|------------------------------------------------
 201   | HTTP_CREATED               | Call succeed
 422   | HTTP_UNPROCESSABLE_ENTITY  | Call failed
+
+
+
+## Customers
+
+`GET Customers`
+
+```sh
+GET https://revoxef.works/api/external/v2/customers
+GET https://revoxef.works/api/external/v2/customers/<customer_id>
+POST https://revoxef.works/api/external/v2/customers
+    Create a customer:          {"name": "Customer 1", "active": 1}
+    Update a customer:          {"id":2, "name": "Customer 1 updated", "active": 0}
+    Create multiple customers:  [
+            {"name": "Customer 1", "active": 1},
+            {"name": "Customer 2", "active": 1}
+        ]
+DELETE https://revoxef.works/api/external/v2/customers/<customer_id>
+```
+
+> Response is a groups paginated array with the following fields:
+
+```
+    'id',
+    'name',
+    'active',
+    'tax_id',
+    'photo',
+    'super_group_id',
+    'printer_id',
+    'printer_group_id',
+```
