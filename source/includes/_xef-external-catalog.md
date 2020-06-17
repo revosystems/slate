@@ -27,10 +27,9 @@ Authorization | Bearer {the-token}
 
 ## Items
 
-Can list, create, update and delete Items`
+Can list, show, create, update and delete Items`
 
-GET `https://revoxef.works/api/external/v2/catalog/items`
-or 
+GET `https://revoxef.works/api/external/v2/catalog/items` or 
 
 GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/items`
 
@@ -65,19 +64,19 @@ GET `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
 
 POST `https://revoxef.works/api/external/v2/catalog/items`
 
-> Create a item
+> Create a item (POST) `catalog/items`
 
 ```sh
 {"name": "Product 1", "active": 1, "category_id": 2}
 ```
 
-> Update a item
+> Update a item (POST) `catalog/items`
 
 ```sh
 {"id":2, "name": "Product 1 updated", "active": 0, "category_id": 2}
 ```
 
-> Create multiple items
+> Create multiple items (POST) `catalog/items`
 
 ```sh
   {"items": [
@@ -91,25 +90,15 @@ DELETE `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
 
 ## Categories
 
-`GET Categories`
+Can list, show, create, update and delete Categories`
 
-```sh
-GET https://revoxef.works/api/external/v2/catalog/categories
-GET https://revoxef.works/api/external/v2/catalog/groups/<group_id>/categories
-GET https://revoxef.works/api/external/v2/catalog/categories/<category_id>
-POST https://revoxef.works/api/external/v2/catalog/categories
-    Create a category:          {"name": "Category 1", "active": 1, "group_id": 2}
-    Update a category:          {"id":2, "name": "Category 1 updated", "active": 0, "group_id": 2}
-    Create multiple categories:  {"categories": [
-            {"name": "Category 1", "active": 1, "group_id": 2},
-            {"name": "Category 2", "active": 1, "group_id": 1}
-        ]}
-DELETE https://revoxef.works/api/external/v2/catalog/categories/<category_id>
-```
+GET `https://revoxef.works/api/external/v2/catalog/categories` or 
+
+GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>/categories`
 
 > Response for GET categories is a categories paginated array with the following fields:
 
-```
+```sh
     'id',
     'name',
     'group_id',
@@ -124,26 +113,42 @@ DELETE https://revoxef.works/api/external/v2/catalog/categories/<category_id>
     'dish_order_id'
 ```
 
-## Groups
+GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>`
 
-`GET Groups`
+POST `https://revoxef.works/api/external/v2/catalog/categories`
+
+> Create a category (POST) `catalog/categories`
 
 ```sh
-GET https://revoxef.works/api/external/v2/catalog/groups
-GET https://revoxef.works/api/external/v2/catalog/groups/<group_id>
-POST https://revoxef.works/api/external/v2/catalog/groups
-    Create a group:          {"name": "Group 1", "active": 1}
-    Update a group:          {"id":2, "name": "Group 1 updated", "active": 0}
-    Create multiple groups:  {"groups": [
-            {"name": "Group 1", "active": 1},
-            {"name": "Group 2", "active": 1}
-        ]}
-DELETE https://revoxef.works/api/external/v2/catalog/groups/<group_id>
+{"name": "Category 1", "active": 1, "group_id": 2}
 ```
+
+> Update a category  (POST) `catalog/categories`
+
+```sh
+{"id":2, "name": "Category 1 updated", "active": 0, "group_id": 2}
+```          
+
+> Create multiple categories  (POST) `catalog/categories`
+
+```sh
+{"categories": [
+    {"name": "Category 1", "active": 1, "group_id": 2},
+    {"name": "Category 2", "active": 1, "group_id": 1}
+]}
+```  
+
+DELETE `https://revoxef.works/api/external/v2/catalog/categories/<category_id>`
+
+
+## Groups
+
+Can list, show, create, update and delete Groups
+GET `https://revoxef.works/api/external/v2/catalog/groups`
 
 > Response is a groups paginated array with the following fields:
 
-```
+```sh
     'id',
     'name',
     'active',
@@ -154,39 +159,50 @@ DELETE https://revoxef.works/api/external/v2/catalog/groups/<group_id>
     'printer_group_id',
 ```
 
-## Warehouses
+GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
 
-`GET Warehouses`
+POST `https://revoxef.works/api/external/v2/catalog/groups`
+
+> Create a group (POST) `catalog/groups`
 
 ```sh
-GET https://revoxef.works/api/external/v2/warehouses
+{"name": "Group 1", "active": 1}
 ```
+
+> Update a group (POST) `catalog/groups`
+
+```sh
+{"id":2, "name": "Group 1 updated", "active": 0}
+```
+
+> Create multiple groups (POST) `catalog/groups`
+  
+```sh
+{"groups": [
+            {"name": "Group 1", "active": 1},
+            {"name": "Group 2", "active": 1}
+        ]}
+```
+
+DELETE `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
+
+## Warehouses
+
+GET Warehouses `https://revoxef.works/api/external/v2/warehouses`
 
 > Response is a warehouses paginated array with the following fields:
 
-```
+```sh
     'id',
     'name',
     'order',
 ```
 
-
-`GET Warehouses stocks`
-
-```sh
-GET https://revoxef.works/api/external/v2/warehouses/<warehouse_id>
-POST https://revoxef.works/api/external/v2/warehouses/<warehouse_id>/addStock  {"item_id": <item_id>, "quantity": <quantity_to_add>}
-POST https://revoxef.works/api/external/v2/warehouses/<warehouse_id>/setStock  
-    set a item stock to a warehouse     => {"item_id": <item_id>, "quantity": <quantity_to_set>}
-    set multiple stocks to a warehouse  => {"stocks": [
-        {"item_id": <item_id>, "quantity": <quantity_to_set>},
-        {"item_id": <item_id>, "quantity": <quantity_to_set>},
-    ]}
-```
+GET Warehouses stocks `https://revoxef.works/api/external/v2/warehouses/<warehouse_id>`
 
 > Response for a warehouse is a stocks paginated array with the following fields:
 
-```
+```sh
     'id',
     'quantity',
     'defaultQuantity',
@@ -196,13 +212,36 @@ POST https://revoxef.works/api/external/v2/warehouses/<warehouse_id>/setStock
     'unit_id'
 ```
 
-## Purchase
 
-`GET Purchase orders`
+POST `https://revoxef.works/api/external/v2/warehouses/<warehouse_id>/addStock`
+
+> Add a stock to a warehouse (POST) `warehouses/<warehouse_id>/addStock`
 
 ```sh
-GET https://revoxef.works/api/external/v2/purchaseOrders
+{"item_id": <item_id>, "quantity": <quantity_to_add>}
 ```
+
+POST `https://revoxef.works/api/external/v2/warehouses/<warehouse_id>/setStock`
+
+> Set a item stock to a warehouse (POST) `warehouses/<warehouse_id>/setStock`
+
+```sh
+{"item_id": <item_id>, "quantity": <quantity_to_set>}
+```
+
+> Set multiple stocks to a warehouse (POST) `warehouses/<warehouse_id>/setStock`
+
+```sh
+{"stocks": [
+    {"item_id": <item_id>, "quantity": <quantity_to_set>},
+    {"item_id": <item_id>, "quantity": <quantity_to_set>},
+]}
+```
+
+
+## Purchases
+
+GET Purchase orders `https://revoxef.works/api/external/v2/purchaseOrders`
 
 > Response is a purchase orders paginated array with the following fields:
 
@@ -219,11 +258,7 @@ GET https://revoxef.works/api/external/v2/purchaseOrders
     'contentsArray'
 ```
 
-`GET Purchase order contents`
-
-```sh
-GET https://revoxef.works/api/external/v2/purchaseOrders/{purchase_order_id}
-```
+GET Purchase order contents `https://revoxef.works/api/external/v2/purchaseOrders/{purchase_order_id}`
 
 > Response is a purchase order contents paginated array with the following fields:
 

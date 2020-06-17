@@ -298,7 +298,7 @@
                     <a href="#warehouses" class="toc-h2 toc-link" data-title="Warehouses">Warehouses</a>
                   </li>
                   <li>
-                    <a href="#purchase" class="toc-h2 toc-link" data-title="Purchase">Purchase</a>
+                    <a href="#purchases" class="toc-h2 toc-link" data-title="Purchases">Purchases</a>
                   </li>
               </ul>
           </li>
@@ -1099,10 +1099,9 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 </tr>
 </tbody></table>
 <h2 id='items'>Items</h2>
-<p>Can list, create, update and delete Items`</p>
+<p>Can list, show, create, update and delete Items`</p>
 
-<p>GET <code>https://revoxef.works/api/external/v2/catalog/items</code>
-or </p>
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/items</code> or </p>
 
 <p>GET <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;/items</code></p>
 
@@ -1137,17 +1136,17 @@ or </p>
 <p>POST <code>https://revoxef.works/api/external/v2/catalog/items</code></p>
 
 <blockquote>
-<p>Create a item</p>
+<p>Create a item (POST) <code>catalog/items</code></p>
 </blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 2<span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Update a item</p>
+<p>Update a item (POST) <code>catalog/items</code></p>
 </blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Product 1 updated"</span>, <span class="s2">"active"</span>: 0, <span class="s2">"category_id"</span>: 2<span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Create multiple items</p>
+<p>Create multiple items (POST) <code>catalog/items</code></p>
 </blockquote>
 <pre class="highlight sh tab-shell"><code>  <span class="o">{</span><span class="s2">"items"</span>: <span class="o">[</span>
         <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 2<span class="o">}</span>,
@@ -1156,93 +1155,137 @@ or </p>
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
 <h2 id='categories'>Categories</h2>
-<p><code>GET Categories</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/catalog/categories
-GET https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;/categories
-GET https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;
-POST https://revoxef.works/api/external/v2/catalog/categories
-    Create a category:          <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 2<span class="o">}</span>
-    Update a category:          <span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Category 1 updated"</span>, <span class="s2">"active"</span>: 0, <span class="s2">"group_id"</span>: 2<span class="o">}</span>
-    Create multiple categories:  <span class="o">{</span><span class="s2">"categories"</span>: <span class="o">[</span>
-            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 2<span class="o">}</span>,
-            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 2"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 1<span class="o">}</span>
-        <span class="o">]}</span>
-DELETE https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;
-</code></pre>
+<p>Can list, show, create, update and delete Categories`</p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/categories</code> or </p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;/categories</code></p>
+
 <blockquote>
 <p>Response for GET categories is a categories paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>    'id',
-    'name',
-    'group_id',
-    'active',
-    'tax_id',
-    'photo',
-    'super_group_id',
-    'printer_id',
-    'printer_group_id',
-    'modifier_category_id',
-    'modifier_group_id',
-    'dish_order_id'
-</code></pre><h2 id='groups'>Groups</h2>
-<p><code>GET Groups</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/catalog/groups
-GET https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;
-POST https://revoxef.works/api/external/v2/catalog/groups
-    Create a group:          <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
-    Update a group:          <span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Group 1 updated"</span>, <span class="s2">"active"</span>: 0<span class="o">}</span>
-    Create multiple groups:  <span class="o">{</span><span class="s2">"groups"</span>: <span class="o">[</span>
-            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>,
-            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 2"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
-        <span class="o">]}</span>
-DELETE https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;
+<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
+    <span class="s1">'name'</span>,
+    <span class="s1">'group_id'</span>,
+    <span class="s1">'active'</span>,
+    <span class="s1">'tax_id'</span>,
+    <span class="s1">'photo'</span>,
+    <span class="s1">'super_group_id'</span>,
+    <span class="s1">'printer_id'</span>,
+    <span class="s1">'printer_group_id'</span>,
+    <span class="s1">'modifier_category_id'</span>,
+    <span class="s1">'modifier_group_id'</span>,
+    <span class="s1">'dish_order_id'</span>
 </code></pre>
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/categories</code></p>
+
+<blockquote>
+<p>Create a category (POST) <code>catalog/categories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 2<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Update a category  (POST) <code>catalog/categories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Category 1 updated"</span>, <span class="s2">"active"</span>: 0, <span class="s2">"group_id"</span>: 2<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create multiple categories  (POST) <code>catalog/categories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"categories"</span>: <span class="o">[</span>
+    <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 2<span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 2"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 1<span class="o">}</span>
+<span class="o">]}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;</code></p>
+<h2 id='groups'>Groups</h2>
+<p>Can list, show, create, update and delete Groups
+GET <code>https://revoxef.works/api/external/v2/catalog/groups</code></p>
+
 <blockquote>
 <p>Response is a groups paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>    'id',
-    'name',
-    'active',
-    'tax_id',
-    'photo',
-    'super_group_id',
-    'printer_id',
-    'printer_group_id',
-</code></pre><h2 id='warehouses'>Warehouses</h2>
-<p><code>GET Warehouses</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/warehouses
+<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
+    <span class="s1">'name'</span>,
+    <span class="s1">'active'</span>,
+    <span class="s1">'tax_id'</span>,
+    <span class="s1">'photo'</span>,
+    <span class="s1">'super_group_id'</span>,
+    <span class="s1">'printer_id'</span>,
+    <span class="s1">'printer_group_id'</span>,
 </code></pre>
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/groups</code></p>
+
+<blockquote>
+<p>Create a group (POST) <code>catalog/groups</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Update a group (POST) <code>catalog/groups</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Group 1 updated"</span>, <span class="s2">"active"</span>: 0<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create multiple groups (POST) <code>catalog/groups</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"groups"</span>: <span class="o">[</span>
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>,
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 2"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
+        <span class="o">]}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;</code></p>
+<h2 id='warehouses'>Warehouses</h2>
+<p>GET Warehouses <code>https://revoxef.works/api/external/v2/warehouses</code></p>
+
 <blockquote>
 <p>Response is a warehouses paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>    'id',
-    'name',
-    'order',
+<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
+    <span class="s1">'name'</span>,
+    <span class="s1">'order'</span>,
 </code></pre>
-<p><code>GET Warehouses stocks</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;
-POST https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;/addStock  <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_add&gt;<span class="o">}</span>
-POST https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;/setStock  
-    <span class="nb">set </span>a item stock to a warehouse     <span class="o">=</span>&gt; <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>
-    <span class="nb">set </span>multiple stocks to a warehouse  <span class="o">=</span>&gt; <span class="o">{</span><span class="s2">"stocks"</span>: <span class="o">[</span>
-        <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>,
-        <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>,
-    <span class="o">]}</span>
-</code></pre>
+<p>GET Warehouses stocks <code>https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;</code></p>
+
 <blockquote>
 <p>Response for a warehouse is a stocks paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>    'id',
-    'quantity',
-    'defaultQuantity',
-    'alert',
-    'warehouse_id',
-    'item_id',
-    'unit_id'
-</code></pre><h2 id='purchase'>Purchase</h2>
-<p><code>GET Purchase orders</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/purchaseOrders
+<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
+    <span class="s1">'quantity'</span>,
+    <span class="s1">'defaultQuantity'</span>,
+    <span class="s1">'alert'</span>,
+    <span class="s1">'warehouse_id'</span>,
+    <span class="s1">'item_id'</span>,
+    <span class="s1">'unit_id'</span>
 </code></pre>
+<p>POST <code>https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;/addStock</code></p>
+
+<blockquote>
+<p>Add a stock to a warehouse (POST) <code>warehouses/&lt;warehouse_id&gt;/addStock</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_add&gt;<span class="o">}</span>
+</code></pre>
+<p>POST <code>https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;/setStock</code></p>
+
+<blockquote>
+<p>Set a item stock to a warehouse (POST) <code>warehouses/&lt;warehouse_id&gt;/setStock</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Set multiple stocks to a warehouse (POST) <code>warehouses/&lt;warehouse_id&gt;/setStock</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"stocks"</span>: <span class="o">[</span>
+    <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>,
+    <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>,
+<span class="o">]}</span>
+</code></pre><h2 id='purchases'>Purchases</h2>
+<p>GET Purchase orders <code>https://revoxef.works/api/external/v2/purchaseOrders</code></p>
+
 <blockquote>
 <p>Response is a purchase orders paginated array with the following fields:</p>
 </blockquote>
@@ -1257,9 +1300,8 @@ POST https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;/setSt
     'vendorName',
     'contentsArray'
 </code></pre>
-<p><code>GET Purchase order contents</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/purchaseOrders/<span class="o">{</span>purchase_order_id<span class="o">}</span>
-</code></pre>
+<p>GET Purchase order contents <code>https://revoxef.works/api/external/v2/purchaseOrders/{purchase_order_id}</code></p>
+
 <blockquote>
 <p>Response is a purchase order contents paginated array with the following fields:</p>
 </blockquote>
