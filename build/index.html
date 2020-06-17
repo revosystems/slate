@@ -271,6 +271,9 @@
                   <li>
                     <a href="#responses" class="toc-h2 toc-link" data-title="Responses">Responses</a>
                   </li>
+                  <li>
+                    <a href="#customers" class="toc-h2 toc-link" data-title="Customers">Customers</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -290,6 +293,12 @@
                   </li>
                   <li>
                     <a href="#groups" class="toc-h2 toc-link" data-title="Groups">Groups</a>
+                  </li>
+                  <li>
+                    <a href="#warehouses" class="toc-h2 toc-link" data-title="Warehouses">Warehouses</a>
+                  </li>
+                  <li>
+                    <a href="#purchase" class="toc-h2 toc-link" data-title="Purchase">Purchase</a>
                   </li>
               </ul>
           </li>
@@ -1031,7 +1040,31 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>Call failed</td>
 </tr>
 </tbody></table>
-<h1 id='xef-catalog'>Xef Catalog</h1>
+<h2 id='customers'>Customers</h2>
+<p><code>GET Customers</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/customers
+GET https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
+POST https://revoxef.works/api/external/v2/customers
+    Create a customer:          <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Customer 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
+    Update a customer:          <span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Customer 1 updated"</span>, <span class="s2">"active"</span>: 0<span class="o">}</span>
+    Create multiple customers:  <span class="o">[</span>
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Customer 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>,
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Customer 2"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
+        <span class="o">]</span>
+DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
+</code></pre>
+<blockquote>
+<p>Response is a groups paginated array with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    'id',
+    'name',
+    'active',
+    'tax_id',
+    'photo',
+    'super_group_id',
+    'printer_id',
+    'printer_group_id',
+</code></pre><h1 id='xef-catalog'>Xef Catalog</h1>
 <p>Inside catalog there are many resources; items, categories, groups, modifiers and sellingFormats.</p>
 
 <p>To explore those resources as a paginated list we can use a GET request with the following pattern. <code>GET https://revoxef.works/api/external/v2/catalog/{resource}</code> replacing the desired resource on this url. </p>
@@ -1068,9 +1101,19 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <h2 id='items'>Items</h2>
 <p><code>GET Items</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/catalog/items
+GET https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;/items
+GET https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;
+POST https://revoxef.works/api/external/v2/catalog/items
+    Create a item:          <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 2<span class="o">}</span>
+    Update a item:          <span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Product 1 updated"</span>, <span class="s2">"active"</span>: 0, <span class="s2">"category_id"</span>: 2<span class="o">}</span>
+    Create multiple items:  <span class="o">{</span><span class="s2">"items"</span>: <span class="o">[</span>
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 2<span class="o">}</span>,
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 2"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 1<span class="o">}</span>
+        <span class="o">]}</span>
+DELETE https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;
 </code></pre>
 <blockquote>
-<p>Response is a items paginated array with the following fields:</p>
+<p>Response for GET items is an items paginated array with the following fields:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>    'id',
     'name',
@@ -1097,9 +1140,19 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 </code></pre><h2 id='categories'>Categories</h2>
 <p><code>GET Categories</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/catalog/categories
+GET https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;/categories
+GET https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;
+POST https://revoxef.works/api/external/v2/catalog/categories
+    Create a category:          <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 2<span class="o">}</span>
+    Update a category:          <span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Category 1 updated"</span>, <span class="s2">"active"</span>: 0, <span class="s2">"group_id"</span>: 2<span class="o">}</span>
+    Create multiple categories:  <span class="o">{</span><span class="s2">"categories"</span>: <span class="o">[</span>
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 2<span class="o">}</span>,
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 2"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 1<span class="o">}</span>
+        <span class="o">]}</span>
+DELETE https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;
 </code></pre>
 <blockquote>
-<p>Response is a categories paginated array with the following fields:</p>
+<p>Response for GET categories is a categories paginated array with the following fields:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>    'id',
     'name',
@@ -1116,6 +1169,15 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 </code></pre><h2 id='groups'>Groups</h2>
 <p><code>GET Groups</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/catalog/groups
+GET https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;
+POST https://revoxef.works/api/external/v2/catalog/groups
+    Create a group:          <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
+    Update a group:          <span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Group 1 updated"</span>, <span class="s2">"active"</span>: 0<span class="o">}</span>
+    Create multiple groups:  <span class="o">{</span><span class="s2">"groups"</span>: <span class="o">[</span>
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>,
+            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 2"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
+        <span class="o">]}</span>
+DELETE https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;
 </code></pre>
 <blockquote>
 <p>Response is a groups paginated array with the following fields:</p>
@@ -1128,6 +1190,74 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
     'super_group_id',
     'printer_id',
     'printer_group_id',
+</code></pre><h2 id='warehouses'>Warehouses</h2>
+<p><code>GET Warehouses</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/warehouses
+</code></pre>
+<blockquote>
+<p>Response is a warehouses paginated array with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    'id',
+    'name',
+    'order',
+</code></pre>
+<p><code>GET Warehouses stocks</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;
+POST https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;/addStock  <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_add&gt;<span class="o">}</span>
+POST https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;/setStock  
+    <span class="nb">set </span>a item stock to a warehouse     <span class="o">=</span>&gt; <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>
+    <span class="nb">set </span>multiple stocks to a warehouse  <span class="o">=</span>&gt; <span class="o">{</span><span class="s2">"stocks"</span>: <span class="o">[</span>
+        <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>,
+        <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>,
+    <span class="o">]}</span>
+</code></pre>
+<blockquote>
+<p>Response for a warehouse is a stocks paginated array with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    'id',
+    'quantity',
+    'defaultQuantity',
+    'alert',
+    'warehouse_id',
+    'item_id',
+    'unit_id'
+</code></pre><h2 id='purchase'>Purchase</h2>
+<p><code>GET Purchase orders</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/purchaseOrders
+</code></pre>
+<blockquote>
+<p>Response is a purchase orders paginated array with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    'id',
+    'vendor_order_id',
+    'reference',
+    'subtotal',
+    'tax',
+    'total',
+    'status',
+    'vendor_id',
+    'vendorName',
+    'contentsArray'
+</code></pre>
+<p><code>GET Purchase order contents</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/purchaseOrders/<span class="o">{</span>purchase_order_id<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Response is a purchase order contents paginated array with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    'id',
+    'status',
+    'quantity',
+    'received',
+    'price',
+    'subtotal',
+    'tax',
+    'total',
+    'order_id',
+    'item_vendor_id',
+    'itemName',
+    'itemBarcode',
+    'item_id'
 </code></pre><h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='base-url'>Base URL</h2>
 <p><code>https://revoxef.works/api/loyalty/</code></p>
 <h2 id='create-an-order'>Create an order</h2><pre class="highlight plaintext"><code>curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
