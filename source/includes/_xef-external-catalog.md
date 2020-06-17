@@ -27,24 +27,14 @@ Authorization | Bearer {the-token}
 
 ## Items
 
-`GET Items`
+Can list, create, update and delete Items`
 
-```sh
-GET https://revoxef.works/api/external/v2/catalog/items
-GET https://revoxef.works/api/external/v2/catalog/categories/<category_id>/items
-GET https://revoxef.works/api/external/v2/catalog/items/<item_id>
-POST https://revoxef.works/api/external/v2/catalog/items
-    Create a item:          {"name": "Product 1", "active": 1, "category_id": 2}
-    Update a item:          {"id":2, "name": "Product 1 updated", "active": 0, "category_id": 2}
-    Create multiple items:  {"items": [
-            {"name": "Product 1", "active": 1, "category_id": 2},
-            {"name": "Product 2", "active": 1, "category_id": 1}
-        ]}
-DELETE https://revoxef.works/api/external/v2/catalog/items/<item_id>
-```
+GET `https://revoxef.works/api/external/v2/catalog/items`
+or 
+
+GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/items`
 
 > Response for GET items is an items paginated array with the following fields:
-
 ```
     'id',
     'name',
@@ -69,6 +59,27 @@ DELETE https://revoxef.works/api/external/v2/catalog/items/<item_id>
     'minQuantity',
     'dish_order_id'
 ```
+
+GET `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/items`
+
+> Create a item
+```sh
+{"name": "Product 1", "active": 1, "category_id": 2}
+```
+> Update a item
+```
+{"id":2, "name": "Product 1 updated", "active": 0, "category_id": 2}
+```
+> Create multiple items
+```
+  {"items": [
+        {"name": "Product 1", "active": 1, "category_id": 2},
+        {"name": "Product 2", "active": 1, "category_id": 1}
+    ]}
+```
+DELETE `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
 
 
 ## Categories
