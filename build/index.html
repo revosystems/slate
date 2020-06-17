@@ -1107,55 +1107,54 @@ or </p>
 <p>GET <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;/items</code></p>
 
 <blockquote>
-<p>Response for GET items is an items paginated array with the following fields:
-<code>
-    &#39;id&#39;,
-    &#39;name&#39;,
-    &#39;nameKitchen&#39;,
-    &#39;buttonName&#39;,
-    &#39;price&#39;,
-    &#39;photo&#39;,
-    &#39;order&#39;,
-    &#39;info&#39;,
-    &#39;isOpen&#39;,
-    &#39;cookDuration&#39;,
-    &#39;type&#39;,
-    &#39;hasInventory&#39;,
-    &#39;usesWeight&#39;,
-    &#39;super_group_id&#39;,
-    &#39;extra_id&#39;,
-    &#39;printer_id&#39;,
-    &#39;useAverageCostPrice&#39;,
-    &#39;displayInventory&#39;,
-    &#39;allergies&#39;,
-    &#39;barcode&#39;,
-    &#39;minQuantity&#39;,
-    &#39;dish_order_id&#39;
-</code></p>
+<p>Response for GET items is an items paginated array with the following fields:</p>
 </blockquote>
-
+<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
+    <span class="s1">'name'</span>,
+    <span class="s1">'nameKitchen'</span>,
+    <span class="s1">'buttonName'</span>,
+    <span class="s1">'price'</span>,
+    <span class="s1">'photo'</span>,
+    <span class="s1">'order'</span>,
+    <span class="s1">'info'</span>,
+    <span class="s1">'isOpen'</span>,
+    <span class="s1">'cookDuration'</span>,
+    <span class="s1">'type'</span>,
+    <span class="s1">'hasInventory'</span>,
+    <span class="s1">'usesWeight'</span>,
+    <span class="s1">'super_group_id'</span>,
+    <span class="s1">'extra_id'</span>,
+    <span class="s1">'printer_id'</span>,
+    <span class="s1">'useAverageCostPrice'</span>,
+    <span class="s1">'displayInventory'</span>,
+    <span class="s1">'allergies'</span>,
+    <span class="s1">'barcode'</span>,
+    <span class="s1">'minQuantity'</span>,
+    <span class="s1">'dish_order_id'</span>
+</code></pre>
 <p>GET <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
 
 <p>POST <code>https://revoxef.works/api/external/v2/catalog/items</code></p>
 
 <blockquote>
-<p>Create a item
-<code>sh
-{&quot;name&quot;: &quot;Product 1&quot;, &quot;active&quot;: 1, &quot;category_id&quot;: 2}
-</code>
-Update a item
-<code>
-{&quot;id&quot;:2, &quot;name&quot;: &quot;Product 1 updated&quot;, &quot;active&quot;: 0, &quot;category_id&quot;: 2}
-</code>
-Create multiple items
-<code>
-  {&quot;items&quot;: [
-        {&quot;name&quot;: &quot;Product 1&quot;, &quot;active&quot;: 1, &quot;category_id&quot;: 2},
-        {&quot;name&quot;: &quot;Product 2&quot;, &quot;active&quot;: 1, &quot;category_id&quot;: 1}
-    ]}
-</code>
-DELETE <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
+<p>Create a item</p>
 </blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 2<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Update a item</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Product 1 updated"</span>, <span class="s2">"active"</span>: 0, <span class="s2">"category_id"</span>: 2<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create multiple items</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code>  <span class="o">{</span><span class="s2">"items"</span>: <span class="o">[</span>
+        <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 2<span class="o">}</span>,
+        <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 2"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 1<span class="o">}</span>
+    <span class="o">]}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
 <h2 id='categories'>Categories</h2>
 <p><code>GET Categories</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/catalog/categories
