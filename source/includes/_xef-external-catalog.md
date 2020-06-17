@@ -144,6 +144,7 @@ DELETE `https://revoxef.works/api/external/v2/catalog/categories/<category_id>`
 ## Groups
 
 Can list, show, create, update and delete Groups
+
 GET `https://revoxef.works/api/external/v2/catalog/groups`
 
 > Response is a groups paginated array with the following fields:
