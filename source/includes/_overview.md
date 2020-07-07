@@ -10,7 +10,7 @@ To be able to use the external api you need a `revo xef` account and a `access t
 The main URL for this api is
 
 
-`http://overview.revo.works/api/leads`
+`http://overview.revo.works/api`
 
 And you should provide the mandatory headers for the authentication
 
