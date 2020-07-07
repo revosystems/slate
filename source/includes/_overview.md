@@ -94,7 +94,10 @@ The platform maybe has some custom fields for the leads.
 }
 ``
 
+
 ### Tips
+
+
 #### \* General typologies
 
 Key | Value          
@@ -120,6 +123,7 @@ Key | Value
 20 | Eventos / corners
 21 | Espectáculos
 
+
 #### ** Specific typologies
         
 Key | Value          
@@ -137,6 +141,7 @@ Key | Value
 11 | Eventos / corners
 12 | Espectáculos
 
+
 #### *** Property spaces
 
 Key | Value          
@@ -147,6 +152,7 @@ Key | Value
 4 | Estándar
 5 | Diferentes áreas / plantas
 6 | Locales separados
+
 
 #### **** Softs
 
@@ -166,6 +172,7 @@ Key | Value
 12 | GIRnet
 13 | PrestaShop
 14 | WooCommerce
+
 
 ## Responses
 
