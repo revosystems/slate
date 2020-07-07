@@ -28,7 +28,7 @@ Create a lead end point.
 
 `http://overview.revo.works/api/leads`
 
-Following fields can be passed (all of them are optional) =>
+> Following fields can be passed (all of them are optional):
 
 ```sh
 {
@@ -37,6 +37,7 @@ Following fields can be passed (all of them are optional) =>
     'total'                     : 0.0,  // decimal
     'total_devices'             : 10,  // decimal
     'trade_name'                : "Testing business",  // string
+    'channel'                   : "thoughApi", // string (the way to know where the request comes from) (OPTIONAL) 
     'fiscal_name'               : "Testinig INC.", // stringº
     'name'                      : "John",  // string
     'cif'                       : "39393938",  // string
@@ -61,7 +62,7 @@ Following fields can be passed (all of them are optional) =>
     'xef_kds'                   : 1,  // Would likes KDS? boolean
     'xef_kds_quantity'          : 1,  // How many KDS? integer
     'pos'                       : -2,  // Current POS. -2 means None. tinyInteger
-        'pos_other'                 : "",  // If -1 one specified, here an other pos name can be written. string
+    'pos_other'                 : "",  // If -1 one specified, here an other pos name can be written. string
     'retail_sale_mode'          : 1, // Require a sale in front of customer? boolean
     'retail_sale_location'      : 2 // [1 => onLocal, 2 => onMobility] Sale location. bool
     'can_use_another_pos'       : 0,  // tinyInteger
@@ -80,11 +81,8 @@ Response is a json with created lead:
 
 `{"id": 1, "status": 0, ...}`
 
-### Platform custom fields
-Every Organization has associated a platform.
-The platform maybe has some custom fields for the leads.
+> Some Organizations can have custom fields, like it is shown in the following example:
 
-#### B$$A
 ```sh
 {
     'is_already_customer'               : 1, // boolean
@@ -92,7 +90,7 @@ The platform maybe has some custom fields for the leads.
     'share_bandwith_with_customers'     : 2, // tinyInteger [1 => 'yes', 0 => 'no', 3 => 'yesButDontKnowMega' ]
     'is_smart_business_wired'           : 1, // tinyInteger [1 => 'yes', 0 => 'no', 3 => 'dontKnow' ]
 }
-``
+```
 
 
 ### Tips
