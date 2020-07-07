@@ -543,9 +543,6 @@
                   <li>
                     <a href="#create-lead" class="toc-h2 toc-link" data-title="Create lead">Create lead</a>
                   </li>
-                  <li>
-                    <a href="#responses" class="toc-h2 toc-link" data-title="Responses">Responses</a>
-                  </li>
               </ul>
           </li>
       </ul>
@@ -1155,7 +1152,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
 <h2 id='categories'>Categories</h2>
-<p>Can list, show, create, update and delete Categories`</p>
+<p>Can list, show, create, update and delete Categories</p>
 
 <p>GET <code>https://revoxef.works/api/external/v2/catalog/categories</code> or </p>
 
@@ -3717,7 +3714,7 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 </tr>
 </tbody></table>
 <h2 id='create-lead'>Create lead</h2>
-<p>Create a lead and point.</p>
+<p>Create a lead end point.</p>
 
 <p><code>POST leads</code> </p>
 
@@ -3730,6 +3727,7 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     <span class="s1">'total'</span>                     : 0.0,  // decimal
     <span class="s1">'total_devices'</span>             : 10,  // decimal
     <span class="s1">'trade_name'</span>                : <span class="s2">"Testing business"</span>,  // string
+    <span class="s1">'fiscal_name'</span>               : <span class="s2">"Testinig INC."</span>, // stringº
     <span class="s1">'name'</span>                      : <span class="s2">"John"</span>,  // string
     <span class="s1">'cif'</span>                       : <span class="s2">"39393938"</span>,  // string
     <span class="s1">'surname1'</span>                  : <span class="s2">"Snow"</span>,  // string
@@ -3740,7 +3738,8 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     <span class="s1">'product'</span>                   : 2,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; Xef, 2 <span class="o">=</span>&gt; Retail]
     <span class="s1">'type_segment'</span>              : 1,  // <span class="o">[</span>1 <span class="o">=</span>&gt; SEGMENT_SMALL, 2 <span class="o">=</span>&gt; SEGMENT_MEDIUM, 3 <span class="o">=</span>&gt; SEGMENT_LARGE]
     <span class="s1">'general_typology'</span>          : 1,  // GENERAL TYPOLOGIES IDS ARE SPECIFIED BELOW<span class="k">*</span>
-    <span class="s1">'property_spaces'</span>           : 4,  // PROPERTY SPACES IDS ARE  SPECIFIED BELOW<span class="k">**</span>
+    <span class="s1">'specific_typology'</span>         : <span class="o">[</span>1, 2] // SPECIFIC TYPOLOGIES IDS ARE SPECIFIED BELOW<span class="k">**</span>
+    <span class="s1">'property_spaces'</span>           : 4,  // PROPERTY SPACES IDS ARE  SPECIFIED BELOW<span class="k">***</span>
     <span class="s1">'property_quantity'</span>         : 3,  // How many properties does the lead have
     <span class="s1">'property_capacity'</span>         : 99,  // Local Max capacity
     <span class="s1">'property_franchise'</span>        : 1,  // Is a franchise
@@ -3751,164 +3750,115 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     <span class="s1">'xef_printers_quantity'</span>     : 1,  // Kitchen printers. integer
     <span class="s1">'xef_kds'</span>                   : 1,  // Would likes KDS? boolean
     <span class="s1">'xef_kds_quantity'</span>          : 1,  // How many KDS? integer
-    <span class="s1">'soft'</span>                  <span class="o">=</span>&gt; <span class="o">[</span>
-      -2
-    <span class="o">]</span>,  Current SOFTS. -2 means None. array of tinyIntegers
-    <span class="s1">'soft_other'</span>                : <span class="s2">""</span>,  // If -1 one specified, here an other soft name can be written. string
     <span class="s1">'pos'</span>                       : -2,  // Current POS. -2 means None. tinyInteger
-    <span class="s1">'pos_other'</span>                 : <span class="s2">""</span>,  // If -1 one specified, here an other pos name can be written. string
+        <span class="s1">'pos_other'</span>                 : <span class="s2">""</span>,  // If -1 one specified, here an other pos name can be written. string
+    <span class="s1">'retail_sale_mode'</span>          : 1, // Require a sale <span class="k">in </span>front of customer? boolean
+    <span class="s1">'retail_sale_location'</span>      : 2 // <span class="o">[</span>1 <span class="o">=</span>&gt; onLocal, 2 <span class="o">=</span>&gt; onMobility] Sale location. bool
     <span class="s1">'can_use_another_pos'</span>       : 0,  // tinyInteger
-    <span class="s1">'xef_pms'</span>                   : -2,  // Current PMS. -2 means None. tinyInteger
+    <span class="s1">'xef_pms'</span>                   : -1,  // Current PMS. -1 means Other. tinyInteger
     <span class="s1">'xef_pms_other'</span>             : <span class="s2">""</span>,  // If -1 one specified, here an other pms name can be written. string
     <span class="s1">'erp'</span>                       : -2,  // Current ERP. -2 means None. tinyInteger
     <span class="s1">'erp_other'</span>                 : <span class="s2">""</span>,  // If -1 one specified, here an other erp name can be written. string
-    <span class="s1">'telco_number'</span>              : null,  // string
-    <span class="s1">'status'</span>                    : 1,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; NEW,const 2 <span class="o">=</span>&gt; FIRST_CONTACT,const 3 <span class="o">=</span>&gt; VISITED,const 4 <span class="o">=</span>&gt; COMPLETED,const 5 <span class="o">=</span>&gt; FAILED]
+    <span class="s1">'soft_other'</span>                : <span class="s2">""</span>,  // If -1 one specified, here an other soft name can be written. string
+    <span class="s1">'status'</span>                    : 1,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; NEW, 2 <span class="o">=</span>&gt; FIRST_CONTACT, 3 <span class="o">=</span>&gt; VISITED, 4 <span class="o">=</span>&gt; COMPLETED, 5 <span class="o">=</span>&gt; FAILED]
+    <span class="s1">'offer_status'</span>              : 1, // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; PENDING, 2 <span class="o">=</span>&gt; IN_CURSE, 3 <span class="o">=</span>&gt; PRESENTED, 4 <span class="o">=</span>&gt; COMPLETED, 5 <span class="o">=</span>&gt; EXPIRED]
+    <span class="s1">'soft'</span>                  <span class="o">=</span>&gt; <span class="o">[</span> -2 <span class="o">]</span>,  Current SOFTS. -2 means None. array of tinyIntegers SOFTS IDS ARE SPECIFIED BELOW<span class="k">****</span>
 <span class="o">}</span>
 </code></pre>
 <p>Response is a json with created lead:</p>
 
 <p><code>{&quot;id&quot;: 1, &quot;status&quot;: 0, ...}</code></p>
-<h3 id='tips'>Tips</h3><h4 id='general-typologies'>* General typologies</h4>
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>1</td>
-<td>Cafetería</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Bar</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Restaurante</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Discoteca</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Take away</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Delivery</td>
-</tr>
-<tr>
-<td>7</td>
-<td>Hotel</td>
-</tr>
-<tr>
-<td>9</td>
-<td>Panadería</td>
-</tr>
-<tr>
-<td>10</td>
-<td>Foodtruck</td>
-</tr>
-<tr>
-<td>11</td>
-<td>Comida al peso</td>
-</tr>
-<tr>
-<td>12</td>
-<td>Solo eventos</td>
-</tr>
-<tr>
-<td>13</td>
-<td>Retail store</td>
-</tr>
-<tr>
-<td>14</td>
-<td>Distribución de productos y Fuerza comercial</td>
-</tr>
-<tr>
-<td>15</td>
-<td>Autoventa / movilidad</td>
-</tr>
-<tr>
-<td>16</td>
-<td>Peluquería / estética</td>
-</tr>
-<tr>
-<td>17</td>
-<td>Panadería</td>
-</tr>
-<tr>
-<td>18</td>
-<td>Venta a granel</td>
-</tr>
-<tr>
-<td>19</td>
-<td>Aviación / transporte</td>
-</tr>
-<tr>
-<td>20</td>
-<td>Eventos / corners</td>
-</tr>
-<tr>
-<td>21</td>
-<td>Espectáculos</td>
-</tr>
-</tbody></table>
-<h4 id='property-spaces'>** Property spaces</h4>
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>1</td>
-<td>Una única Sala</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Sala + Terraza</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Multiples Salas y/o Terrazas</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Estándar</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Diferentes áreas / plantas</td>
-</tr>
-<tr>
-<td>6</td>
-<td>Locales separados</td>
-</tr>
-</tbody></table>
-<h2 id='responses'>Responses</h2>
-<table><thead>
-<tr>
-<th>Value</th>
-<th>Meaning</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>201</td>
-<td>HTTP_CREATED</td>
-<td>Call succeed</td>
-</tr>
-<tr>
-<td>422</td>
-<td>HTTP_UNPROCESSABLE_ENTITY</td>
-<td>Call failed</td>
-</tr>
-</tbody></table>
+<h3 id='platform-custom-fields'>Platform custom fields</h3>
+<p>Every Organization has associated a platform.
+The platform maybe has some custom fields for the leads.</p>
+<h4 id='b-a'>B$$A</h4><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s1">'is_already_customer'</span>               : 1, // boolean
+    <span class="s1">'is_already_using_organization_tpv'</span> : 0, // boolean
+    <span class="s1">'share_bandwith_with_customers'</span>     : 2, // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; <span class="s1">'yes'</span>, 0 <span class="o">=</span>&gt; <span class="s1">'no'</span>, 3 <span class="o">=</span>&gt; <span class="s1">'yesButDontKnowMega'</span> <span class="o">]</span>
+    <span class="s1">'is_smart_business_wired'</span>           : 1, // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; <span class="s1">'yes'</span>, 0 <span class="o">=</span>&gt; <span class="s1">'no'</span>, 3 <span class="o">=</span>&gt; <span class="s1">'dontKnow'</span> <span class="o">]</span>
+<span class="o">}</span>
+<span class="sb">``</span>
 
+<span class="c">### Tips</span>
+<span class="c">#### \* General typologies</span>
+
+Key | Value          
+------------------|--------------
+1 | Cafetería
+2 | Bar
+3 | Restaurante
+4 | Discoteca
+5 | Take away
+6 | Delivery   
+7 | Hotel      
+9 | Panadería  
+10 | Foodtruck  
+11 | Comida al peso
+12 | Solo eventos
+13 | Retail store
+14 | Distribución de productos y Fuerza comercial
+15 | Autoventa / movilidad
+16 | Peluquería / estética
+17 | Panadería 
+18 | Venta a granel
+19 | Aviación / transporte
+20 | Eventos / corners
+21 | Espectáculos
+
+<span class="c">#### ** Specific typologies</span>
+
+Key | Value          
+------------------|--------------
+1 | Carta
+2 | Eventos
+3 | Menú
+4 | Retail store
+5 | Distribución de productos y Fuerza comercial
+6 | Autoventa / movilidad
+7 | Peluquería / estética
+8 | Panadería
+9 | Venta a granel
+10 | Aviación / transporte
+11 | Eventos / corners
+12 | Espectáculos
+
+<span class="c">#### *** Property spaces</span>
+
+Key | Value          
+------------------|--------------
+1 | Una única Sala
+2 | Sala + Terraza
+3 | Multiples Salas y/o Terrazas
+4 | Estándar
+5 | Diferentes áreas / plantas
+6 | Locales separados
+
+<span class="c">#### **** Softs</span>
+
+Key | Value          
+------------------|--------------
+1 | Gstock
+2 | CHef Control
+3 | Distrito K
+4 | GIRnet
+5 | Revo Flow
+6 | CoverManager
+7 | ElTenedor
+8 | RESTO
+9 | Deliveroo
+10 | Glovo
+11 | tSpoonLab
+12 | GIRnet
+13 | PrestaShop
+14 | WooCommerce
+
+<span class="c">## Responses</span>
+
+Value | Meaning                    | Description
+------|----------------------------|------------------------------------------------
+201   | HTTP_CREATED               | Call succeed
+422   | HTTP_UNPROCESSABLE_ENTITY  | Call failed
+</code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">

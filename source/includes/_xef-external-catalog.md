@@ -90,7 +90,7 @@ DELETE `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
 
 ## Categories
 
-Can list, show, create, update and delete Categories`
+Can list, show, create, update and delete Categories
 
 GET `https://revoxef.works/api/external/v2/catalog/categories` or 
 
