@@ -19,7 +19,7 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
     "tableName" : 		// Optional (In case you want to give another table name)
     "total" : 1460,
     "taxAmount" : 124,
-    "notes" : "You can send some optional notes"
+    "notes" : "You can send some optional notes",
     "contents":[{
         "item_id" : 949,
         "quantity" : 1,
@@ -56,7 +56,12 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
         "total" : 300,
         "taxAmount" : 27
     }
-]}&notification_hook="service:http://www.example.com"' 'https://revoxef.works/api/loyalty/orders'
+]}&delivery={  // Optional; object to specify delivery info.
+    "channel": null,  // Optional; Code according to Delivery plarform (Deliveroo, Ubereats, Deliverect, Just Eats, etc.)
+    "address":"Carrer del Bruc, 23, 1er, 08241 pis, Barcelona",      // Full address
+    "phone": "666666666",  // Optional
+    "date": "2020-09-23 14:01:59"
+}&notification_hook="service:http://www.example.com"' 'https://revoxef.works/api/loyalty/orders'
 ```
 
 `POST orders`
