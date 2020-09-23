@@ -1332,7 +1332,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     "tableName" :       // Optional (In case you want to give another table name)
     "total" : 1460,
     "taxAmount" : 124,
-    "notes" : "You can send some optional notes"
+    "notes" : "You can send some optional notes",
     "contents":[{
         "item_id" : 949,
         "quantity" : 1,
@@ -1369,7 +1369,12 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         "total" : 300,
         "taxAmount" : 27
     }
-]}&amp;notification_hook="service:http://www.example.com"' 'https://revoxef.works/api/loyalty/orders'
+]}&amp;delivery={  // Optional; object to specify delivery info.
+    "channel": null,  // Optional; Code according to Delivery plarform (Deliveroo, Ubereats, Deliverect, Just Eats, etc.)
+    "address":"Carrer del Bruc, 23, 1er, 08241 pis, Barcelona",      // Full address
+    "phone": "666666666",  // Optional
+    "date": "2020-09-23 14:01:59"
+}&amp;notification_hook="service:http://www.example.com"' 'https://revoxef.works/api/loyalty/orders'
 </code></pre>
 <p><code>POST orders</code></p>
 
