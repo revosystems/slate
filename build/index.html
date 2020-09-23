@@ -1413,12 +1413,17 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <tr>
 <td>customer</td>
 <td><code>array</code></td>
-<td>Of name and email <code>[&quot;name&quot; =&gt; &quot;The name&quot;, &quot;email&quot; =&gt; &quot;theEmail@example.com&quot;]</code></td>
+<td><em>optional</em> Of name and email <code>[&quot;name&quot; =&gt; &quot;The name&quot;, &quot;email&quot; =&gt; &quot;theEmail@example.com&quot;]</code></td>
+</tr>
+<tr>
+<td>delivery</td>
+<td><code>json</code></td>
+<td><em>optional</em> Address to delivery object <code>[&quot;Address&quot; =&gt; &quot;The address (&#39;Pickup&#39; if delivery not needed)&quot;, &quot;date&quot; =&gt; &quot;datetime when to order should be delivered&quot;, &quot;phone&quot; =&gt; &quot;The phone&quot;, &quot;channel&quot; =&gt; &quot;The delivery channel if neeeded&quot;]</code></td>
 </tr>
 <tr>
 <td>notification_hook</td>
 <td><code>string</code></td>
-<td>An url where to notify the order status changes prefixed with the service id <code>service:https://notificationurl.com/notify</code></td>
+<td><em>optional</em> An url where to notify the order status changes prefixed with the service id <code>service:https://notificationurl.com/notify</code></td>
 </tr>
 <tr>
 <td>skip_merge</td>
