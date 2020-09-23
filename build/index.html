@@ -1420,6 +1420,16 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <td><code>string</code></td>
 <td>An url where to notify the order status changes prefixed with the service id <code>service:https://notificationurl.com/notify</code></td>
 </tr>
+<tr>
+<td>skip_merge</td>
+<td><code>bool</code></td>
+<td><em>optional</em> if you don&#39;t want the order to be merged if there is another one already opened</td>
+</tr>
+<tr>
+<td>warehouse_id</td>
+<td><code>integer</code></td>
+<td><em>optional</em> Send the xef revo warehouse_id if you want the stock to be discounted</td>
+</tr>
 </tbody></table>
 <pre class="highlight plaintext"><code>Response:
 {
