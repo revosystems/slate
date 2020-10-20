@@ -144,8 +144,8 @@ Field               | Required | Description
 payment={ 
    "amount" : 12.40,
    "tip" : 0.40,
-    "payment_reference" : "your-payment-reference",
-    "payment_method_id" : 1
+   "payment_reference" : "your-payment-reference",
+   "payment_method_id" : 1
 }
 ```
 
