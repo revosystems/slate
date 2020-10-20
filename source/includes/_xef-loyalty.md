@@ -15,7 +15,6 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
 }&order={
     "subtotal" : 1336,
     "sum" : 1336,
-    "id" : null,
     "tableId" : null,	// Optional (In case you want it into a table in xef)
     "tableName" : 		// Optional (In case you want to give another table name)
     "total" : 1460,
@@ -121,8 +120,9 @@ order={
     }],
     "payment" : { 
        "amount" : 12.40,
-        "payment_reference" : "your-payment-reference",
-        "payment_method_id" : 1
+       "tip" : 0.50,
+       "payment_reference" : "your-payment-reference",
+       "payment_method_id" : 1
     }
 }
 
@@ -134,6 +134,7 @@ You can send a payment while creating the order as well by adding the `payment` 
 Field               | Required | Description
 --------------------|----------|--------------
 `amount`            | yes      | The payment amount
+ tip`               | no       | The tip for that payment
 `payment_reference` | no       | A info field that references your payment id
 `payment_method_id` | no       | In case you want it to match with a revo payment, or don't send to use the standard `InTouch` payment
 
@@ -142,6 +143,7 @@ Field               | Required | Description
 ```
 payment={ 
    "amount" : 12.40,
+   "tip" : 0.40,
     "payment_reference" : "your-payment-reference",
     "payment_method_id" : 1
 }
