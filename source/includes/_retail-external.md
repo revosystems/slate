@@ -418,25 +418,6 @@ We can generate stock movements with the following POST (required parameters: wa
 The answer is a 200 JSON with the current warehouse stock  `quantity`.
 
 
-### Get list of Payments Methods
-Get a list of available payment methods (card, cash, others...)
-
-
-`GET https://revoretail.works/api/external/config/payment_methods`
-
-```sh
-[
-    {
-        "id": 1,
-        "name": "Card",
-    },
-    {
-        "id": 2,
-        "name": "Cash",
-    }
-]
-```
-
 ## Create Order
 Store an order.
 
@@ -530,6 +511,27 @@ Create order payments with its invoice.
 This will return an order invoice. As new relevant fields we can get the id.
 
 `{"id": 1, "number": "E-1", ...}`
+
+
+
+### Get list of Payments Methods
+Get a list of available payment methods (card, cash, others...)
+
+
+`GET https://revoretail.works/api/external/config/payment_methods`
+
+```sh
+[
+    {
+        "id": 1,
+        "name": "Card",
+    },
+    {
+        "id": 2,
+        "name": "Cash",
+    }
+]
+```
 
 ## Sync chains
 
