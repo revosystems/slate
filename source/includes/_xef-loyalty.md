@@ -134,7 +134,7 @@ You can send a payment while creating the order as well by adding the `payment` 
 Field               | Required | Description
 --------------------|----------|--------------
 `amount`            | yes      | The payment amount
- tip`               | no       | The tip for that payment
+`tip`               | no       | The tip for that payment
 `payment_reference` | no       | A info field that references your payment id
 `payment_method_id` | no       | In case you want it to match with a revo payment, or don't send to use the standard `InTouch` payment
 
