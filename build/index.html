@@ -1329,7 +1329,6 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 }&amp;order={
     "subtotal" : 1336,
     "sum" : 1336,
-    "id" : null,
     "tableId" : null,   // Optional (In case you want it into a table in xef)
     "tableName" :       // Optional (In case you want to give another table name)
     "total" : 1460,
@@ -1468,8 +1467,9 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     }],
     "payment" : { 
        "amount" : 12.40,
-        "payment_reference" : "your-payment-reference",
-        "payment_method_id" : 1
+       "tip" : 0.50,
+       "payment_reference" : "your-payment-reference",
+       "payment_method_id" : 1
     }
 }
 
@@ -1489,6 +1489,11 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <td>The payment amount</td>
 </tr>
 <tr>
+<td>tip`</td>
+<td>no</td>
+<td>The tip for that payment</td>
+</tr>
+<tr>
 <td><code>payment_reference</code></td>
 <td>no</td>
 <td>A info field that references your payment id</td>
@@ -1501,6 +1506,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 </tbody></table>
 <h2 id='standalone-payment'>Standalone payment</h2><pre class="highlight plaintext"><code>payment={ 
    "amount" : 12.40,
+   "tip" : 0.40,
     "payment_reference" : "your-payment-reference",
     "payment_method_id" : 1
 }
