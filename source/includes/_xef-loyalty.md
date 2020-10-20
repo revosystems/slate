@@ -7,6 +7,7 @@
 
 ## Create an order
 Data can be passed as show in the example. Although it can also be passed as form params, passing `Content-Type: application/json` header. 
+
 ```
 curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
     "name":"Jordi",
