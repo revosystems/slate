@@ -1321,61 +1321,65 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     'item_id'
 </code></pre><h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='base-url'>Base URL</h2>
 <p><code>https://revoxef.works/api/loyalty/</code></p>
-<h2 id='create-an-order'>Create an order</h2><pre class="highlight plaintext"><code>curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
-    "name":"Jordi",
-    "email":"jordi.p@revo.works"
+<h2 id='create-an-order'>Create an order</h2>
+<p>Data can be passed as show in the example. Although it can also be passed as form params, passing <code>Content-Type: application/json</code> header. 
+<code>
+curl -XPOST -H &#39;tenant: {tenant}&#39; -H &#39;Authorization: Bearer {token}&#39; -d &#39;customer={
+    &quot;name&quot;:&quot;Jordi&quot;,
+    &quot;email&quot;:&quot;jordi.p@revo.works&quot;
 }&amp;order={
-    "subtotal" : 1336,
-    "sum" : 1336,
-    "id" : null,
-    "tableId" : null,   // Optional (In case you want it into a table in xef)
-    "tableName" :       // Optional (In case you want to give another table name)
-    "total" : 1460,
-    "taxAmount" : 124,
-    "notes" : "You can send some optional notes",
-    "contents":[{
-        "item_id" : 949,
-        "quantity" : 1,
-        "menuContents" : null,
-        "id" : null,
-        "subtotal" : 910,
-        "itemPrice" : 1000,
-        "tax" : 1000,
-        "modifiers" : [],
-        "total" : 1000,
-        "taxAmount" : 90,
-        "dishOrder" : 2, //Optional
-        "notes" : "You can also send optional notes here"
+    &quot;subtotal&quot; : 1336,
+    &quot;sum&quot; : 1336,
+    &quot;id&quot; : null,
+    &quot;tableId&quot; : null,   // Optional (In case you want it into a table in xef)
+    &quot;tableName&quot; :       // Optional (In case you want to give another table name)
+    &quot;total&quot; : 1460,
+    &quot;taxAmount&quot; : 124,
+    &quot;notes&quot; : &quot;You can send some optional notes&quot;,
+    &quot;contents&quot;:[{
+        &quot;item_id&quot; : 949,
+        &quot;quantity&quot; : 1,
+        &quot;menuContents&quot; : null,
+        &quot;id&quot; : null,
+        &quot;subtotal&quot; : 910,
+        &quot;itemPrice&quot; : 1000,
+        &quot;tax&quot; : 1000,
+        &quot;modifiers&quot; : [],
+        &quot;total&quot; : 1000,
+        &quot;taxAmount&quot; : 90,
+        &quot;dishOrder&quot; : 2, //Optional
+        &quot;notes&quot; : &quot;You can also send optional notes here&quot;
     },{
-        "item_id" : 2041,
-        "quantity" : 1,
-        "menuContents" : null,
-        "id" : null,
-        "subtotal" : 153,
-        "itemPrice" : 160,
-        "tax" : 2000,
-        "modifiers" : [],
-        "total" : 160,
-        "taxAmount" : 7
+        &quot;item_id&quot; : 2041,
+        &quot;quantity&quot; : 1,
+        &quot;menuContents&quot; : null,
+        &quot;id&quot; : null,
+        &quot;subtotal&quot; : 153,
+        &quot;itemPrice&quot; : 160,
+        &quot;tax&quot; : 2000,
+        &quot;modifiers&quot; : [],
+        &quot;total&quot; : 160,
+        &quot;taxAmount&quot; : 7
     },{
-        "item_id" : 927,
-        "quantity" : 1,
-        "menuContents" : null,
-        "id" : null,
-        "subtotal" : 273,
-        "itemPrice" : 300,
-        "tax" : 1000,
-        "modifiers" : [],
-        "total" : 300,
-        "taxAmount" : 27
+        &quot;item_id&quot; : 927,
+        &quot;quantity&quot; : 1,
+        &quot;menuContents&quot; : null,
+        &quot;id&quot; : null,
+        &quot;subtotal&quot; : 273,
+        &quot;itemPrice&quot; : 300,
+        &quot;tax&quot; : 1000,
+        &quot;modifiers&quot; : [],
+        &quot;total&quot; : 300,
+        &quot;taxAmount&quot; : 27
     }
 ]}&amp;delivery={  // Optional; object to specify delivery info.
-    "channel": null,  // Optional; Code according to Delivery plarform (Deliveroo, Ubereats, Deliverect, Just Eats, etc.)
-    "address":"Carrer del Bruc, 23, 1er, 08241 pis, Barcelona",      // Full address
-    "phone": "666666666",  // Optional
-    "date": "2020-09-23 14:01:59"
-}&amp;notification_hook="service:http://www.example.com"' 'https://revoxef.works/api/loyalty/orders'
-</code></pre>
+    &quot;channel&quot;: null,  // Optional; Code according to Delivery plarform (Deliveroo, Ubereats, Deliverect, Just Eats, etc.)
+    &quot;address&quot;:&quot;Carrer del Bruc, 23, 1er, 08241 pis, Barcelona&quot;,      // Full address
+    &quot;phone&quot;: &quot;666666666&quot;,  // Optional
+    &quot;date&quot;: &quot;2020-09-23 14:01:59&quot;
+}&amp;notification_hook=&quot;service:http://www.example.com&quot;&#39; &#39;https://revoxef.works/api/loyalty/orders&#39;
+</code></p>
+
 <p><code>POST orders</code></p>
 
 <p>Headers:</p>
@@ -2239,21 +2243,7 @@ in any of these cases we can send a dictionary with the desired object to create
 <span class="o">}</span>
 </code></pre>
 <p>The answer is a 200 JSON with the current warehouse stock  <code>quantity</code>.</p>
-<h3 id='get-list-of-payments-methods'>Get list of Payments Methods</h3>
-<p>Get a list of available payment methods (card, cash, others...)</p>
-
-<p><code>GET https://revoretail.works/api/external/config/payment_methods</code></p>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 1,
-        <span class="s2">"name"</span>: <span class="s2">"Card"</span>,
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 2,
-        <span class="s2">"name"</span>: <span class="s2">"Cash"</span>,
-    <span class="o">}</span>
-<span class="o">]</span>
-</code></pre><h2 id='create-order'>Create Order</h2>
+<h2 id='create-order'>Create Order</h2>
 <p>Store an order.</p>
 
 <p><code>POST https://revoretail.works/api/external/orders</code></p>
@@ -2337,7 +2327,21 @@ in any of these cases we can send a dictionary with the desired object to create
 <p>This will return an order invoice. As new relevant fields we can get the id.</p>
 
 <p><code>{&quot;id&quot;: 1, &quot;number&quot;: &quot;E-1&quot;, ...}</code></p>
-<h2 id='sync-chains'>Sync chains</h2>
+<h3 id='get-list-of-payments-methods'>Get list of Payments Methods</h3>
+<p>Get a list of available payment methods (card, cash, others...)</p>
+
+<p><code>GET https://revoretail.works/api/external/config/payment_methods</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 1,
+        <span class="s2">"name"</span>: <span class="s2">"Card"</span>,
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"name"</span>: <span class="s2">"Cash"</span>,
+    <span class="o">}</span>
+<span class="o">]</span>
+</code></pre><h2 id='sync-chains'>Sync chains</h2>
 <p><code>Sync account chains data</code></p>
 <pre class="highlight sh tab-shell"><code>POST https://revoretail.works/api/external/chains/sync
 </code></pre>
