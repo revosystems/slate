@@ -15,7 +15,7 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
 }&order={
     "subtotal" : 1336,
     "sum" : 1336,
-    "tableId" : null,	// Optional (In case you want it into a table in xef)
+    "table_id" : null,	// Optional (In case you want it into a table in xef)
     "tableName" : 		// Optional (In case you want to give another table name)
     "total" : 1460,
     "taxAmount" : 124,
