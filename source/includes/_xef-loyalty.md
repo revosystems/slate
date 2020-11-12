@@ -81,7 +81,7 @@ order             | `json`       | Json encoded order
 customer          | `array`      | *optional* Of name and email `["name" => "The name", "email" => "theEmail@example.com"]`
 delivery          | `json`       | *optional* Delivery object `["address" => "The address ('Pickup' if delivery not needed)", "date" => "Datetime when order should be delivered", "phone" => "The phone", "channel" => "The delivery channel, if neeeded"]`
 notification_hook | `string`     | *optional* An url where to notify the order status changes prefixed with the service id `service:https://notificationurl.com/notify`
-skip_merge		  | `bool`       | *optional* if you don't want the order to be merged if there is another one already opened
+skipMerge		  | `bool`       | *optional* if you don't want the order to be merged if there is another one already opened
 warehouse_id	  | `integer`    | *optional* Send the xef revo warehouse_id if you want the stock to be discounted
 
 ```
