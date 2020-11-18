@@ -12,6 +12,7 @@ includes:
   - xef-old
   - xef-external
   - xef-external-catalog
+  - xef-bookings
   - xef-loyalty
   - xef-reports
   - xef-webhooks
