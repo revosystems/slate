@@ -163,7 +163,7 @@ Key | Value
 5 | Revo Flow
 6 | CoverManager
 7 | ElTenedor
-8 | RESTO
+8 | Restoo
 9 | Deliveroo
 10 | Glovo
 11 | tSpoonLab
