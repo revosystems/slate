@@ -26,7 +26,7 @@ ready do
   require './lib/multilang.rb'
 end
 
-activate :sprockets
+#activate :sprockets  // https://github.com/slatedocs/slate/issues/1197#issuecomment-637770807
 
 activate :autoprefixer do |config|
   config.browsers = ['last 2 version', 'Firefox ESR']
