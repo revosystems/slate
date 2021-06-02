@@ -112,6 +112,7 @@ GEM
       execjs (>= 0.3.0, < 3)
 
 PLATFORMS
+  ruby
   x86_64-darwin-20
 
 DEPENDENCIES
