@@ -2,11 +2,12 @@
 
 ## Prerequisistes
 
-To be able to use the external api you need a `revo xef` account and a `access token`
+To be able to use the external api you need a `revo xef` account and a `access token` and your `integrator token`
 
 1. Login into the desired account
 2. Go to account management
 3. Create a new [token](https://revoxef.works/account/tokens)
+4. To get your integration token, [contact us](https://business.revo.works/altaleads/integrations)
 
 
 ## Basic usage
@@ -22,7 +23,7 @@ Header        | Value
 --------------|----------
 tenant        | {account-username}
 Authorization | Bearer {the-token}
-client_token  | {your-integratior-token}
+client_token  | {your-integrator-token}
 
 
 > Contact us to get your *client_token*
