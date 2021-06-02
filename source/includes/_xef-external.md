@@ -1,6 +1,6 @@
 # Xef
 
-## Prerequisistes
+## Prerequisites
 
 To be able to use the external api you need a `revo xef` account and a `access token` and your `integrator token`
 
