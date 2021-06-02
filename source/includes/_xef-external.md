@@ -22,6 +22,10 @@ Header        | Value
 --------------|----------
 tenant        | {account-username}
 Authorization | Bearer {the-token}
+client_token  | {your-integratior-token}
+
+
+> Contact us to get your *client_token*
 
 
 ## Payment Methods
