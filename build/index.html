@@ -1660,17 +1660,15 @@ POST message={
 <p>Get all the tables with is name and id</p>
 
 <p><code>GET tables</code></p>
-<h2 id='tables-availability'>Tables availability</h2>
-<p>Use this method to know if a table is available or not (there is no open order on it)</p>
-
-<p><code>GET tables/{tableId}/available</code></p>
-
-<p>Response </p>
-<pre class="highlight plaintext"><code>{
+<h2 id='tables-availability'>Tables availability</h2><pre class="highlight plaintext"><code>{
     "available" : true
 }
 
-</code></pre><h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
+</code></pre>
+<p>Use this method to know if a table is available or not (there is no open order on it)</p>
+
+<p><code>GET tables/{tableId}/available</code></p>
+<h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
      --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
 https://revoxef.works/api/external/v2
 </code></pre>
