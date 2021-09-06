@@ -1078,6 +1078,44 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>Call failed</td>
 </tr>
 </tbody></table>
+<h3 id='use-gift-card'>Use Gift Card</h3>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"balance"</span>: 1.25,
+    <span class="s2">"customer_id"</span>: <span class="s2">"3"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST GiftCards/{uuid}</code></p>
+
+<table><thead>
+<tr>
+<th>Query parameter</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>required</td>
+<td>Unique identifier for the card</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Post parameter</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>required</td>
+<td>The amount to discount</td>
+</tr>
+</tbody></table>
 <h2 id='customers'>Customers</h2>
 <p><code>GET Customers</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/customers
