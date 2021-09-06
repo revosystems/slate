@@ -204,17 +204,14 @@ Get all the tables with is name and id
 
 ## Tables availability
 
-Use this method to know if a table is available or not (there is no open order on it)
-
-`GET tables/{tableId}/available`
-
-
-Response 
-
 ```
 {
     "available" : true
 }
 
 ```
+
+Use this method to know if a table is available or not (there is no open order on it)
+
+`GET tables/{tableId}/available`
 
