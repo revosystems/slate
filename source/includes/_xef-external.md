@@ -228,7 +228,7 @@ Value | Meaning                    | Description
 422   | HTTP_UNPROCESSABLE_ENTITY  | Call failed
 
 
-### Use Gift Card
+## Use Gift Card
 
 > Response
 
