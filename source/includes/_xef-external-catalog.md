@@ -12,7 +12,7 @@ To be able to use the external api you need a `revo xef` account and a `access t
 
 
 ## Basic usage
-The main URL for the external api is
+The main URL for the external api
 
 `https://revoxef.works/api/external/v2/catalog`
 
