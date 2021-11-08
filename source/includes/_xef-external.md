@@ -228,6 +228,32 @@ Value | Meaning                    | Description
 422   | HTTP_UNPROCESSABLE_ENTITY  | Call failed
 
 
+## Use Gift Card
+
+> Response
+
+```sh
+{
+    "balance": 1.25,
+    "customer_id": "3"
+}
+```
+
+`POST GiftCards/{uuid}`
+
+
+
+| Query parameter |          | Description                                                                           |
+| ----------------|----------|---------------------------------------------------------------------------------------|
+| uuid            | required | Unique identifier for the card                                                        |
+
+
+| Post parameter  |          | Description                                                                            |
+| ----------------|----------|---------------------------------------------------------------------------------------|
+| amount          | required | The amount to discount                                                                |
+
+
+
 
 ## Customers
 

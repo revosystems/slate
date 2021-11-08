@@ -272,6 +272,9 @@
                     <a href="#responses" class="toc-h2 toc-link" data-title="Responses">Responses</a>
                   </li>
                   <li>
+                    <a href="#use-gift-card" class="toc-h2 toc-link" data-title="Use Gift Card">Use Gift Card</a>
+                  </li>
+                  <li>
                     <a href="#customers" class="toc-h2 toc-link" data-title="Customers">Customers</a>
                   </li>
               </ul>
@@ -332,7 +335,22 @@
                     <a href="#standalone-payment" class="toc-h2 toc-link" data-title="Standalone payment">Standalone payment</a>
                   </li>
                   <li>
+                    <a href="#fetch-an-order" class="toc-h2 toc-link" data-title="Fetch an Order">Fetch an Order</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-an-order-with-table-id" class="toc-h2 toc-link" data-title="Fetch an Order with Table Id">Fetch an Order with Table Id</a>
+                  </li>
+                  <li>
                     <a href="#cancel-order" class="toc-h2 toc-link" data-title="Cancel Order">Cancel Order</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-invoice-details" class="toc-h2 toc-link" data-title="Fetch Invoice details">Fetch Invoice details</a>
+                  </li>
+                  <li>
+                    <a href="#fetch-tables" class="toc-h2 toc-link" data-title="Fetch tables">Fetch tables</a>
+                  </li>
+                  <li>
+                    <a href="#tables-availability" class="toc-h2 toc-link" data-title="Tables availability">Tables availability</a>
                   </li>
               </ul>
           </li>
@@ -1063,6 +1081,44 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>Call failed</td>
 </tr>
 </tbody></table>
+<h2 id='use-gift-card'>Use Gift Card</h2>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"balance"</span>: 1.25,
+    <span class="s2">"customer_id"</span>: <span class="s2">"3"</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST GiftCards/{uuid}</code></p>
+
+<table><thead>
+<tr>
+<th>Query parameter</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>required</td>
+<td>Unique identifier for the card</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Post parameter</th>
+<th></th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>required</td>
+<td>The amount to discount</td>
+</tr>
+</tbody></table>
 <h2 id='customers'>Customers</h2>
 <p><code>GET Customers</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/customers
@@ -1549,6 +1605,8 @@ POST message={
        "payment_reference" : "your-payment-reference",
        "payment_method_id" : 1
     }
+    "emailToSendInvoice" : "anemail@example.com",
+    "locale" : "en"
 }
 
 </code></pre>
@@ -1558,7 +1616,7 @@ POST message={
 <tr>
 <th>Field</th>
 <th>Required</th>
-<th> Description</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -1581,6 +1639,16 @@ POST message={
 <td>no</td>
 <td>In case you want it to match with a revo payment, or don&#39;t send to use the standard <code>InTouch</code> payment</td>
 </tr>
+<tr>
+<td><code>emailToSendInvoice</code></td>
+<td>no</td>
+<td>If you want to send the invoice to an email</td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td>no</td>
+<td>The locale to use when sending the email</td>
+</tr>
 </tbody></table>
 <h2 id='standalone-payment'>Standalone payment</h2><pre class="highlight plaintext"><code>payment={ 
     "amount" : 12.40,
@@ -1592,6 +1660,18 @@ POST message={
 <p>Otherwise, you might need the order id before doing the payment, so you can add it afterwards with another call, where the parameters follow the same rules as the above call</p>
 
 <p><code>POST orders/{orderId}/payments</code></p>
+<h2 id='fetch-an-order'>Fetch an Order</h2>
+<p><code>GET orders/{orderId}</code></p>
+
+<p>You can fetch an order information using this endpoint</p>
+<h2 id='fetch-an-order-with-table-id'>Fetch an Order with Table Id</h2>
+<p>If you want to fetch an order for an specific table you can use this endpoint.</p>
+
+<p><code>GET tables/{tableId}/order</code></p>
+
+<blockquote>
+<p>It will return a 404 if there is no open order at that table at the moment</p>
+</blockquote>
 <h2 id='cancel-order'>Cancel Order</h2><pre class="highlight plaintext"><code>curl -XDELETE -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' \
 -d 'reason="Payment Failed"' \
 'https://revoxef.works/api/loyalty/orders/123456'
@@ -1613,6 +1693,22 @@ POST message={
 <td>The reason why the order is canceled</td>
 </tr>
 </tbody></table>
+<h2 id='fetch-invoice-details'>Fetch Invoice details</h2>
+<p>You can use this endpoint to fetch an specific invoice details</p>
+
+<p><code>GET invoices/{invoiceId}</code></p>
+<h2 id='fetch-tables'>Fetch tables</h2>
+<p>Get all the tables with is name and id</p>
+
+<p><code>GET tables</code></p>
+<h2 id='tables-availability'>Tables availability</h2><pre class="highlight plaintext"><code>{
+    "available" : true
+}
+
+</code></pre>
+<p>Use this method to know if a table is available or not (there is no open order on it)</p>
+
+<p><code>GET tables/{tableId}/available</code></p>
 <h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
      --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
 https://revoxef.works/api/external/v2

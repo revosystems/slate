@@ -124,6 +124,8 @@ order={
        "payment_reference" : "your-payment-reference",
        "payment_method_id" : 1
     }
+    "emailToSendInvoice" : "anemail@example.com",
+    "locale" : "en"
 }
 
 ```
@@ -131,12 +133,14 @@ order={
 You can send a payment while creating the order as well by adding the `payment` element inside the order
 
 
-Field               | Required | Description
+Field               | Required | Description
 --------------------|----------|--------------
 `amount`            | yes      | The payment amount
 `tip`               | no       | The tip for that payment
 `payment_reference` | no       | A info field that references your payment id
 `payment_method_id` | no       | In case you want it to match with a revo payment, or don't send to use the standard `InTouch` payment
+`emailToSendInvoice`| no       | If you want to send the invoice to an email
+`locale`            | no       | The locale to use when sending the email
 
 ## Standalone payment
 
@@ -154,6 +158,22 @@ Otherwise, you might need the order id before doing the payment, so you can add 
 `POST orders/{orderId}/payments`
 
 
+## Fetch an Order
+`GET orders/{orderId}`
+
+
+You can fetch an order information using this endpoint
+
+## Fetch an Order with Table Id
+
+If you want to fetch an order for an specific table you can use this endpoint.
+
+`GET tables/{tableId}/order`
+
+
+> It will return a 404 if there is no open order at that table at the moment
+
+
 ## Cancel Order
 ```
 curl -XDELETE -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' \
@@ -169,4 +189,29 @@ Field             | Required | Description
 ------------------|----------|--------------
 `reason`          | yes      | The reason why the order is canceled
 
+## Fetch Invoice details
+
+You can use this endpoint to fetch an specific invoice details
+
+`GET invoices/{invoiceId}`
+
+
+## Fetch tables
+
+Get all the tables with is name and id
+
+`GET tables`
+
+## Tables availability
+
+```
+{
+    "available" : true
+}
+
+```
+
+Use this method to know if a table is available or not (there is no open order on it)
+
+`GET tables/{tableId}/available`
 
