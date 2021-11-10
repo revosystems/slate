@@ -1,16 +1,16 @@
 # Xef Reports
-
 ## Authentication
 
 ```shell 
 curl --header "tenant: {myaccount}" \
      --header "authorization: Bearer {token}" \
-https://revoxef.works/api/external/v2
+     --header 'client-token: {client-token}' \
+https://revoxef.works/api/external/v3
 ```
 
 Base endpoint
 
-`https://revoxef.works/api/external/v2`
+`https://revoxef.works/api/external/v3`
 
 You should send the headers `tenant` with your account username and `authorization` with the token created at `account > tokens`
 
@@ -19,8 +19,8 @@ You should send the headers `tenant` with your account username and `authorizati
 ## Request
 
 ```shell
-curl --header "tenant: {myaccount}" --header "authorization: Bearer {token}" \
-https://revoxef.works/api/external/v2/reports/{reportName}?start_date=2018-01-01&end_date=2018-01-29
+curl --header "tenant: {myaccount}" --header "authorization: Bearer {token}" \ --header 'client-token: {client-token}' \
+https://revoxef.works/api/external/v3/reports/{reportName}?start_date=2018-01-01&end_date=2018-01-29
 ```
 
 `GET reports/{reportName}`
@@ -58,11 +58,8 @@ Here is a list of all available reports
 * contentDiscounts
 * cookDurations
 * customers
-* deliveries
 * discounts
-* freeOrders
 * groupedInvoices
-* groups
 * hours
 * invoices
 * menuProducts
@@ -73,20 +70,17 @@ Here is a list of all available reports
 * payments
 * presences
 * products
-* purchasedProducts
 * rooms
-* stock
 * stocks
 * taxes
 * turns
-* users
+* tenantUsers
 * warehouses
-* withoutInvoiceOrders
 * allProducts
 * canceledContents
-* canceledInvoices
 * canceledOrders
-* canceledPayments
+
+
 
 ### Filters
 
@@ -96,13 +90,12 @@ Filter        | Type       | Description
 `end_date`    | YYYY-mm-dd | (required) The final date for the report
 `start_time`  | HH:mm      | The start time for the report
 `end_time`    | HH:mm      | The end time for the report
-`employee`    | int        | Employee id
 `room`        | int        | Room id
 `dayofweek`   | int        | Where Sunday is 1 and Saturday is 7
 `priceRate`   | int        | Price rate id
-`cashier`     | int        | Cashier id
-`discount`    | int        | Discount id
-`dateField`   | string     | The date field that'll be used on filters query (created_at, updated_at, closed, opened)
+`withContents`|            | Append contents 
+`withItem `   |            | Append item details
+`withInvoices`|            | Append invoices
 
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.

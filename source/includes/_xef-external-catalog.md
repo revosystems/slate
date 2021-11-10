@@ -23,6 +23,7 @@ Header        | Value
 --------------|----------
 tenant        | {account-username}
 Authorization | Bearer {the-token}
+client-token  | {client-token}
 
 
 ## Items

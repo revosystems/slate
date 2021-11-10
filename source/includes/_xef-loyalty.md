@@ -72,6 +72,7 @@ Parameter     | Value
 --------------|-----------------
 tenant        | account name
 Authorization | Bearer {token}
+client-token  | {client-token}
 
 Body:
 
