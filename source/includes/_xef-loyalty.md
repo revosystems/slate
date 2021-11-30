@@ -22,7 +22,7 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
     "notes" : "You can send some optional notes",
     "contents":[{
         "item_id" : 949,
-        "quantity" : 1,
+        "quantity" : 1.000,
         "menuContents" : null,
         "id" : null,
         "subtotal" : 910,
