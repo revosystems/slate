@@ -175,6 +175,21 @@ If you want to fetch an order for an specific table you can use this endpoint.
 > It will return a 404 if there is no open order at that table at the moment
 
 
+## Fetch multiple Order with list of tables id
+
+If you want to fetch an order for an specific table you can use this endpoint.
+It will return the `open` orders paginated by 50.
+
+`GET orders?table_id[]=5&table_id[]=6&table_id[]=7`
+
+> You can send the array using the body as well instead of the query
+
+
+
+
+> It will return a 404 if there is no open order at that table at the moment
+
+
 ## Cancel Order
 ```
 curl -XDELETE -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' \
