@@ -37,28 +37,41 @@ GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/item
 > Response for GET items is an items paginated array with the following fields:
 
 ```sh
-    'id',
-    'name',
-    'nameKitchen',
-    'buttonName',
-    'price',
-    'photo',
-    'order',
-    'info',
-    'isOpen',
-    'cookDuration',
-    'type',
-    'hasInventory',
-    'usesWeight',
-    'super_group_id',
-    'extra_id',
-    'printer_id',
-    'useAverageCostPrice',
-    'displayInventory',
-    'allergies',
-    'barcode',
-    'minQuantity',
-    'dish_order_id'
+    "id"
+    "name"
+    "price"
+    "photo"
+    "order"
+    "active"
+    "info"
+    "type"
+    "hasInventory"
+    "usesWeight"
+    "category_id"
+    "tax_id"
+    "printer_id"
+    "printer_group_id"
+    "modifier_group_id"
+    "modifier_category_id"
+    "isMenu"
+    "shouldAppearInMenuList"
+    "super_group_id"
+    "isOpen"
+    "nameKitchen"
+    "costPrice"
+    "displayInventory"
+    "isLinked"
+    "allergies"
+    "dish_order_id"
+    "barcode"
+    "unit_id"
+    "extra_id"
+    "useAverageCostPrice"
+    "cookDuration"
+    "buttonName"
+    "minQuantity"
+    "report_category_id"
+    "config"
 ```
 
 GET `https://revoxef.works/api/external/v2/catalog/items/<item_id>`

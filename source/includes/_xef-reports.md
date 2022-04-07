@@ -61,6 +61,7 @@ Here is a list of all available reports
 * discounts
 * groupedInvoices
 * hours
+* channels
 * invoices
 * menuProducts
 * menus
@@ -71,7 +72,10 @@ Here is a list of all available reports
 * presences
 * products
 * rooms
+* receipts
 * stocks
+* stockMovements
+* inventoryContents
 * taxes
 * turns
 * tenantUsers
