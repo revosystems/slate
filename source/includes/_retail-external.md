@@ -371,7 +371,7 @@ In any case its responses are a 200 JSON with 2 fields (success and errors):
 ```
 ### Update a product
 
-`PUT https://revoretail.works/api/external/catalog/products/{item_ID}`
+`PUT https://revoretail.works/api/external/catalog/products/{item_id}`
 
 ```sh
 {
