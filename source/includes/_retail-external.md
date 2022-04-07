@@ -347,7 +347,7 @@ In any case its responses are a 200 JSON with 2 fields (success and errors):
 
 ```sh
 {
-    "name": "Category 1",
+    "name": "Product 1",
     "category_id": 1,
     "id":                   // Optional, defaults autoincrement
     "active": 1,            // Optional, defaults to 1
@@ -369,8 +369,33 @@ In any case its responses are a 200 JSON with 2 fields (success and errors):
     "unit_id": 1            // Optional
 }
 ```
+### Update a product
 
+`PUT https://revoretail.works/api/external/catalog/products/{item_id}`
 
+```sh
+{
+    "name": "Product 1",
+    "price": 15,
+    "info": "",
+    "id":                   // Optional, defaults autoincrement
+    "active": 1,            // Optional, defaults to 1
+    "tax_id": 1,            // Optional, defaults to null
+    "reference": "",        // Optional
+    "shortInfo": "",        // Optional
+    "brand": "",            // Optional
+    "season": "",           // Optional
+    "order": "",            // Optional
+    "featured": "",         // Optional
+    "isOpen": "",           // Optional
+    "costPrice": "",        // Optional
+    "barcode": "",          // Optional
+    "main_product_id": "",  // Optional
+    "usesStockManagement": "",  // Optional
+    "usesWeight": "",       // Optional
+    "unit_id": 1            // Optional
+}
+```
 ### Get stocks list
 Get an stock list.
 
