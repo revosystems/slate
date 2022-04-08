@@ -5,12 +5,12 @@
 ```sh
 curl --header "tenant: {myaccount}" \
      --header "authorization: Bearer {token}" \
-     https://revoxef.works/api/external/reports
+     https://revoretail.works/api/external/reports
 ```
 
 Base endpoint
 
-`https://revoxef.works/api/external/reports`
+`https://revoretail.works/api/external/reports`
 
 You should send the headers `tenant` with your account username and `authorization` with the token created at `account > tokens`
 
