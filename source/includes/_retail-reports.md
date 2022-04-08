@@ -3,7 +3,7 @@
 ## Authentication 
 
 ```sh
-curl --header "tenant: {myaccount}" \
+curl --header "username: {myaccount}" \
      --header "authorization: Bearer {token}" \
      https://revoretail.works/api/external/reports
 ```
@@ -12,7 +12,7 @@ Base endpoint
 
 `https://revoretail.works/api/external/reports`
 
-You should send the headers `tenant` with your account username and `authorization` with the token created at `account > tokens`
+You should send the headers `username` with your account username and `authorization` with the token created at `account > tokens`
 
 > Get your token at [https://revoretail.works/admin/account/tokens](https://revoretail.works/admin/account/tokens)
 
