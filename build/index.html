@@ -1194,28 +1194,41 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Response for GET items is an items paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
-    <span class="s1">'name'</span>,
-    <span class="s1">'nameKitchen'</span>,
-    <span class="s1">'buttonName'</span>,
-    <span class="s1">'price'</span>,
-    <span class="s1">'photo'</span>,
-    <span class="s1">'order'</span>,
-    <span class="s1">'info'</span>,
-    <span class="s1">'isOpen'</span>,
-    <span class="s1">'cookDuration'</span>,
-    <span class="s1">'type'</span>,
-    <span class="s1">'hasInventory'</span>,
-    <span class="s1">'usesWeight'</span>,
-    <span class="s1">'super_group_id'</span>,
-    <span class="s1">'extra_id'</span>,
-    <span class="s1">'printer_id'</span>,
-    <span class="s1">'useAverageCostPrice'</span>,
-    <span class="s1">'displayInventory'</span>,
-    <span class="s1">'allergies'</span>,
-    <span class="s1">'barcode'</span>,
-    <span class="s1">'minQuantity'</span>,
-    <span class="s1">'dish_order_id'</span>
+<pre class="highlight sh tab-shell"><code>    <span class="s2">"id"</span>
+    <span class="s2">"name"</span>
+    <span class="s2">"price"</span>
+    <span class="s2">"photo"</span>
+    <span class="s2">"order"</span>
+    <span class="s2">"active"</span>
+    <span class="s2">"info"</span>
+    <span class="s2">"type"</span>
+    <span class="s2">"hasInventory"</span>
+    <span class="s2">"usesWeight"</span>
+    <span class="s2">"category_id"</span>
+    <span class="s2">"tax_id"</span>
+    <span class="s2">"printer_id"</span>
+    <span class="s2">"printer_group_id"</span>
+    <span class="s2">"modifier_group_id"</span>
+    <span class="s2">"modifier_category_id"</span>
+    <span class="s2">"isMenu"</span>
+    <span class="s2">"shouldAppearInMenuList"</span>
+    <span class="s2">"super_group_id"</span>
+    <span class="s2">"isOpen"</span>
+    <span class="s2">"nameKitchen"</span>
+    <span class="s2">"costPrice"</span>
+    <span class="s2">"displayInventory"</span>
+    <span class="s2">"isLinked"</span>
+    <span class="s2">"allergies"</span>
+    <span class="s2">"dish_order_id"</span>
+    <span class="s2">"barcode"</span>
+    <span class="s2">"unit_id"</span>
+    <span class="s2">"extra_id"</span>
+    <span class="s2">"useAverageCostPrice"</span>
+    <span class="s2">"cookDuration"</span>
+    <span class="s2">"buttonName"</span>
+    <span class="s2">"minQuantity"</span>
+    <span class="s2">"report_category_id"</span>
+    <span class="s2">"config"</span>
 </code></pre>
 <p>GET <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
 
@@ -1794,6 +1807,7 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <li>discounts</li>
 <li>groupedInvoices</li>
 <li>hours</li>
+<li>channels</li>
 <li>invoices</li>
 <li>menuProducts</li>
 <li>menus</li>
@@ -1804,7 +1818,10 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <li>presences</li>
 <li>products</li>
 <li>rooms</li>
+<li>receipts</li>
 <li>stocks</li>
+<li>stockMovements</li>
+<li>inventoryContents</li>
 <li>taxes</li>
 <li>turns</li>
 <li>tenantUsers</li>
@@ -2488,7 +2505,7 @@ in any of these cases we can send a dictionary with the desired object to create
 </code></pre><h3 id='create-a-product'>Create a product</h3>
 <p><code>POST https://revoretail.works/api/external/catalog/products</code></p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
-    <span class="s2">"name"</span>: <span class="s2">"Category 1"</span>,
+    <span class="s2">"name"</span>: <span class="s2">"Product 1"</span>,
     <span class="s2">"category_id"</span>: 1,
     <span class="s2">"id"</span>:                   // Optional, defaults autoincrement
     <span class="s2">"active"</span>: 1,            // Optional, defaults to 1
@@ -2502,6 +2519,29 @@ in any of these cases we can send a dictionary with the desired object to create
     <span class="s2">"featured"</span>: <span class="s2">""</span>,         // Optional
     <span class="s2">"isOpen"</span>: <span class="s2">""</span>,           // Optional
     <span class="s2">"price"</span>: <span class="s2">""</span>,            // Optional
+    <span class="s2">"costPrice"</span>: <span class="s2">""</span>,        // Optional
+    <span class="s2">"barcode"</span>: <span class="s2">""</span>,          // Optional
+    <span class="s2">"main_product_id"</span>: <span class="s2">""</span>,  // Optional
+    <span class="s2">"usesStockManagement"</span>: <span class="s2">""</span>,  // Optional
+    <span class="s2">"usesWeight"</span>: <span class="s2">""</span>,       // Optional
+    <span class="s2">"unit_id"</span>: 1            // Optional
+<span class="o">}</span>
+</code></pre><h3 id='update-a-product'>Update a product</h3>
+<p><code>PUT https://revoretail.works/api/external/catalog/products/{item_id}</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Product 1"</span>,
+    <span class="s2">"price"</span>: 15,
+    <span class="s2">"info"</span>: <span class="s2">""</span>,
+    <span class="s2">"id"</span>:                   // Optional, defaults autoincrement
+    <span class="s2">"active"</span>: 1,            // Optional, defaults to 1
+    <span class="s2">"tax_id"</span>: 1,            // Optional, defaults to null
+    <span class="s2">"reference"</span>: <span class="s2">""</span>,        // Optional
+    <span class="s2">"shortInfo"</span>: <span class="s2">""</span>,        // Optional
+    <span class="s2">"brand"</span>: <span class="s2">""</span>,            // Optional
+    <span class="s2">"season"</span>: <span class="s2">""</span>,           // Optional
+    <span class="s2">"order"</span>: <span class="s2">""</span>,            // Optional
+    <span class="s2">"featured"</span>: <span class="s2">""</span>,         // Optional
+    <span class="s2">"isOpen"</span>: <span class="s2">""</span>,           // Optional
     <span class="s2">"costPrice"</span>: <span class="s2">""</span>,        // Optional
     <span class="s2">"barcode"</span>: <span class="s2">""</span>,          // Optional
     <span class="s2">"main_product_id"</span>: <span class="s2">""</span>,  // Optional
@@ -2652,15 +2692,15 @@ in any of these cases we can send a dictionary with the desired object to create
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span><span class="s2">"message"</span>: Synced<span class="o">}</span>,
 <span class="o">}</span>
-</code></pre><h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
+</code></pre><h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {myaccount}"</span> <span class="se">\</span>
      --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
-     https://revoxef.works/api/external/reports
+     https://revoretail.works/api/external/reports
 </code></pre>
 <p>Base endpoint</p>
 
-<p><code>https://revoxef.works/api/external/reports</code></p>
+<p><code>https://revoretail.works/api/external/reports</code></p>
 
-<p>You should send the headers <code>tenant</code> with your account username and <code>authorization</code> with the token created at <code>account &gt; tokens</code></p>
+<p>You should send the headers <code>username</code> with your account username and <code>authorization</code> with the token created at <code>account &gt; tokens</code></p>
 
 <blockquote>
 <p>Get your token at <a href="https://revoretail.works/admin/account/tokens">https://revoretail.works/admin/account/tokens</a></p>
