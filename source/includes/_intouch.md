@@ -73,6 +73,25 @@ birthDate | `date`     | 1950-12-23
 email     | `email`    | bruce@wayne.com
 subscribe | `bool`     | 1
 
+## UploadProfilePhoto
+` POST uploadProfilePhoto`
+
+
+Field     | Type       | Example
+----------|------------|-----------------
+Photo     | `photo`    | /9j/4AAQSkZJRgABA...
+
+
+
+```sh
+{
+    "data": {
+        "result": "OK",
+        "photoName": "ovrA7mVcSQ.jpg"
+    }
+}
+```
+
 
 
 ## Cards
@@ -162,6 +181,116 @@ name  | **string** the name of the new card
 }
 ```
 
+## CardAssociate
+
+### `POST cards/{card}/associate`
+
+Field | Description
+------|-------------
+uuid  | **string** Id of the card to associate
+
+
+```sh
+{
+    "data": {
+        "id": 3,
+        "active": 1,
+        "uuid": "4JQXA9J32SLR",
+        "name": "cardName",
+        "photo": null,
+        "amount": 0,
+        "customer_id": 1,
+        "created_at": "2022-05-23 14:30:10",
+        "updated_at": "2022-05-23 14:30:10"
+    }
+}
+```
+
+## CardTransfer
+
+### `POST cards/{card}/transfer`
+
+Field | Description
+------|-------------
+uuid  | **string** Id of the card to associate
+amount| **string** Amount to transfer to the card
+
+
+```sh
+{
+    "data": {
+        "id": 3,
+        "active": 1,
+        "uuid": "4JQXA9J32SLR",
+        "name": "cardName",
+        "photo": null,
+        "amount": 100,
+        "customer_id": 1,
+        "created_at": "2022-05-23 14:30:10",
+        "updated_at": "2022-05-23 14:30:10"
+    }
+```
+
+## Customer Points
+
+### `Get /customers/{token}/points`
+
+Returns the total points of a customer and the product points. 
+
+Field | Description
+------|-------------
+products  | **json** Array of id of the products
+
+
+
+```sh
+{
+    "data": {
+        "leftPoints": 8000,
+        "productPoints": []
+    }
+}
+
+```
+### `Post /customers/{token}/points`
+
+Returns the left points of a customer and the points spent . 
+
+Field | Description
+------|-------------
+products  | **json** Array of id of the products
+
+
+
+```sh
+{
+    "data": {
+        "spentPoints": 0,
+        "leftPoints": 8000
+    }
+}
+```
+
+## AssociateCustomerGroup
+### `POST associateCustotmerGroup`
+
+Field | Description
+------|-------------
+id  | **string** Id of the group to associate
+
+
+```sh
+// `POST cards`
+{
+    "data": {
+        "id": 2,
+        "name": "Revo",
+        "discount": 10000,
+        "created_at": "2021-06-14 15:54:53"
+    }
+}
+```
+
 ## Syncable models
 Doing a get request with a `from` parameter will return the objects to sync from them. Ideally you can store those objects into your system to be more responsive and sync when something changes
 
@@ -170,6 +299,7 @@ Doing a get request with a `from` parameter will return the objects to sync from
 ## Stores
 
 `GET stores`
+
 
 ```sh
 {
@@ -192,6 +322,59 @@ Doing a get request with a `from` parameter will return the objects to sync from
   }
 }
 ```
+
+## Stores
+
+`GET stores`
+
+Field | Description
+------|-------------
+username  | **json** username in json format.
+
+
+```sh
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "An store"
+        },
+        {
+            "id": 2,
+            "name": "Test Store"
+        }
+    ]
+}
+```
+### StoreStatus
+
+`GET stores/{store}/status`
+
+```sh
+{
+    "data": {
+        "status": "online"
+    }
+}
+```
+### Store StoreStatus
+
+`POST stores/{store}/status`
+
+Field | Description
+------|-------------
+status  | **String** status in String format.
+
+```sh
+{
+    "data": {
+        "previousStatus": "online",
+        "currentStatus": "paused"
+    }
+}
+```
+
+
 
 
 
@@ -375,34 +558,7 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 
 ```
 
-## Modifier Categories
 
-`GET modifierCategories`
- 
-
-```sh
-{
-  "data" : {
-    "new" : [
-      {
-        "id" : 1,
-        "deleted_at" : null,
-        "type" : 1,
-        "name" : "Size",
-        "isMandatory" : 1
-      },
-      {
-        "id" : 2,
-        "type" : 2,
-        "name" : "Toppings",
-        "isMandatory" : 0
-      }
-    ],
-    "updated" : null,
-    "deleted" : null
-  }
-}
-```
 
 ## Modifiers
 
@@ -432,7 +588,36 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 }
 ```
 
-## Product - Modifier Cateogires
+## Modifier Categories
+
+`GET modifierCategories`
+
+
+```sh
+{
+  "data" : {
+    "new" : [
+      {
+        "id" : 1,
+        "deleted_at" : null,
+        "type" : 1,
+        "name" : "Size",
+        "isMandatory" : 1
+      },
+      {
+        "id" : 2,
+        "type" : 2,
+        "name" : "Toppings",
+        "isMandatory" : 0
+      }
+    ],
+    "updated" : null,
+    "deleted" : null
+  }
+}
+```
+
+## Product - Modifier Categories
 
 `GET productModifierCategories`
  
@@ -460,119 +645,9 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 }
 
 ```
-
-
-## Credit Cards
-
-`POST creditCards`
-
-Parameters:
-
-Field    | Description
----------|---------------
-token    | The stripe card token
-
-
-```sh
-{
-  "data" : {
-    "address_line1_check" : null,
-    "dynamic_last4" : null,
-    "last4" : "4242",
-    "address_line2" : null,
-    "metadata" : [
-
-    ],
-    "address_city" : null,
-    "address_zip_check" : null,
-    "address_zip" : null,
-    "country" : "US",
-    "object" : "card",
-    "address_line1" : null,
-    "address_state" : null,
-    "brand" : "Visa",
-    "cvc_check" : "pass",
-    "exp_month" : 4,
-    "name" : null,
-    "fingerprint" : "R92NDa6Z6u42Srgc",
-    "funding" : "credit",
-    "id" : "card_19vovPJVS7gfpCD2mGY750mu",
-    "tokenization_method" : null,
-    "customer" : "cus_AGLc0pme4PvRyf",
-    "address_country" : null,
-    "exp_year" : 2024
-  }
-}
-```
-
 ## Orders
 
-### Last Order
-
-`GET lastOrder`
-
-
-```sh
-{
-  "data" : {
-    "lastContents" : [
-      {
-        "id" : 16,
-        "quantity" : 1,
-        "tax" : 1000,
-        "total" : 1240,
-        "order_id" : 102,
-        "subtotal" : 1128,
-        "price" : 1240,
-        "product_id" : 1,
-        "pointsSpent" : null,
-        "customer_id" : 1,
-        "taxAmount" : 112
-      },
-      {
-        "id" : 11,
-        "quantity" : 1,
-        "tax" : 1000,
-        "total" : 1240,
-        "order_id" : 98,
-        "subtotal" : 1128,
-        "price" : 1240,
-        "product_id" : 1,
-        "pointsSpent" : null,
-        "customer_id" : 1,
-        "taxAmount" : 112
-      },
-    ],
-    "lastOrder" : {
-      "closed_at" : "2017-01-09 11:33:27",
-      "id" : 102,
-      "subtotal" : 1128,
-      "created_at" : "2017-01-05 11:47:15",
-      "contents" : [
-        {
-          "id" : 16,
-          "quantity" : 1,
-          "tax" : 1000,
-          "created_at" : "2017-01-05 11:47:15",
-          "total" : 1240,
-          "order_id" : 102,
-          "subtotal" : 1128,
-          "price" : 1240,
-          "product_id" : 1,
-          "pointsSpent" : null,
-          "taxAmount" : 112
-        }
-      ],
-      "pointsEarned" : 124,
-      "total" : 1240,
-      "customer_id" : 1,
-      "taxAmount" : 112
-    }
-  }
-}
-```
-
-## Create an order
+###Create an order
 
 ```sh
 order={
@@ -642,6 +717,82 @@ contents = [{
   ]
 }]
 ```
+### Get an order
+`GET orders` 
+
+Returns the orders of the current customer.
+
+```sh
+
+{
+  "data" : 
+    [
+          {
+              "id": 7041,
+              "store_id": 18,
+              "customer_id": 1,
+              "delivery_id": 744,
+              "subtotal": 210,
+              "taxAmount": 20,
+              "total": 230,
+              "pointsEarned": 2,
+              "closed_at": "2022-02-24 10:00:02",
+              "created_at": "2022-02-23 08:54:56",
+              "status": 5,
+              "pos_id": 819,
+              "discountAmount": 0,
+              "contact": null,
+              "paid": 0,
+              "delivery":
+              } {
+                  "id": 744,
+                  "address": "Carrer del Bruc, 23",
+                  "city": "Manresa",
+                  "phone": "678984278",
+                  "time": "2022-02-23 09:30:00",
+                  "geolocation": "41.722687,1.817833",
+                  "created_at": "2022-02-23 08:54:56",
+                  "tableId": null,
+                  "job_id": null,
+                  "notes": null,
+                  "delivery_zone_id": null
+              },
+              "contents": [
+                  {
+                      "id": 2318,
+                      "order_id": 7041,
+                      "product_id": 913,
+                      "modifiers": null,
+                      "pointsSpent": null,
+                      "price": 230,
+                      "subtotal": 210,
+                      "taxAmount": 20,
+                      "tax": 1000,
+                      "quantity": 1,
+                      "total": 230,
+                      "created_at": "2022-02-23 08:54:56",
+                      "notes": null,
+                      "menu_contents": []
+                  }
+              ]
+          },
+    ]
+  }
+```
+
+### Update an Order
+
+`PUT orders/{id}`
+
+
+```sh
+{
+    "data": []
+}
+
+```
+
+### Store an Order
 
 `POST orders`
 
@@ -663,7 +814,444 @@ modifiers    | `array json` | the array of modifiers
 menuContents | `array json` | the array of menuContents
 
 
+###Get Last Order
 
+`GET lastOrder`
+
+
+```sh
+{
+  "data" : {
+    "lastContents" : [
+      {
+        "id" : 16,
+        "quantity" : 1,
+        "tax" : 1000,
+        "total" : 1240,
+        "order_id" : 102,
+        "subtotal" : 1128,
+        "price" : 1240,
+        "product_id" : 1,
+        "pointsSpent" : null,
+        "customer_id" : 1,
+        "taxAmount" : 112
+      },
+      {
+        "id" : 11,
+        "quantity" : 1,
+        "tax" : 1000,
+        "total" : 1240,
+        "order_id" : 98,
+        "subtotal" : 1128,
+        "price" : 1240,
+        "product_id" : 1,
+        "pointsSpent" : null,
+        "customer_id" : 1,
+        "taxAmount" : 112
+      },
+    ],
+    "lastOrder" : {
+      "closed_at" : "2017-01-09 11:33:27",
+      "id" : 102,
+      "subtotal" : 1128,
+      "created_at" : "2017-01-05 11:47:15",
+      "contents" : [
+        {
+          "id" : 16,
+          "quantity" : 1,
+          "tax" : 1000,
+          "created_at" : "2017-01-05 11:47:15",
+          "total" : 1240,
+          "order_id" : 102,
+          "subtotal" : 1128,
+          "price" : 1240,
+          "product_id" : 1,
+          "pointsSpent" : null,
+          "taxAmount" : 112
+        }
+      ],
+      "pointsEarned" : 124,
+      "total" : 1240,
+      "customer_id" : 1,
+      "taxAmount" : 112
+    }
+  }
+}
+```
+
+## Points 
+
+`GET orders/{id}`
+
+
+```sh
+{
+    "data": {
+        "points": 58013
+    }
+}
+```
+
+
+## Credit Cards
+
+`POST creditCards`
+
+Parameters:
+
+Field    | Description
+---------|---------------
+token    | The stripe card token
+
+
+```sh
+{
+  "data" : {
+    "address_line1_check" : null,
+    "dynamic_last4" : null,
+    "last4" : "4242",
+    "address_line2" : null,
+    "metadata" : [
+
+    ],
+    "address_city" : null,
+    "address_zip_check" : null,
+    "address_zip" : null,
+    "country" : "US",
+    "object" : "card",
+    "address_line1" : null,
+    "address_state" : null,
+    "brand" : "Visa",
+    "cvc_check" : "pass",
+    "exp_month" : 4,
+    "name" : null,
+    "fingerprint" : "R92NDa6Z6u42Srgc",
+    "funding" : "credit",
+    "id" : "card_19vovPJVS7gfpCD2mGY750mu",
+    "tokenization_method" : null,
+    "customer" : "cus_AGLc0pme4PvRyf",
+    "address_country" : null,
+    "exp_year" : 2024
+  }
+}
+```
+### Get Credit Cards
+`GET creditCards`
+
+Parameters:
+
+Field    | Description
+---------|---------------
+token    | The stripe card token
+
+
+```sh
+{
+  "data" : {
+    "address_line1_check" : null,
+    "dynamic_last4" : null,
+    "last4" : "4242",
+    "address_line2" : null,
+    "metadata" : [
+
+    ],
+    "address_city" : null,
+    "address_zip_check" : null,
+    "address_zip" : null,
+    "country" : "US",
+    "object" : "card",
+    "address_line1" : null,
+    "address_state" : null,
+    "brand" : "Visa",
+    "cvc_check" : "pass",
+    "exp_month" : 4,
+    "name" : null,
+    "fingerprint" : "R92NDa6Z6u42Srgc",
+    "funding" : "credit",
+    "id" : "card_19vovPJVS7gfpCD2mGY750mu",
+    "tokenization_method" : null,
+    "customer" : "cus_AGLc0pme4PvRyf",
+    "address_country" : null,
+    "exp_year" : 2024
+  }
+}
+```
+
+
+
+## TableAvailable
+
+`GET table/{id}/available`
+
+Returns if the desired table is available.
+
+
+```sh
+{
+    "data": {
+        "available": true
+    }
+}
+
+```
+
+## StoreCard
+
+`Post cards`
+
+Field    | Description
+---------|---------------
+name    | Name to create the card
+
+Returns the created card.
+```sh
+{
+    "data": {
+        "uuid": "WJZ9KQXSTQCV",
+        "name": "cardName",
+        "amount": 0,
+        "photo": null,
+        "updated_at": "2022-05-23 10:02:15",
+        "created_at": "2022-05-23 10:02:15",
+        "id": 2,
+        "customer_id": 1
+    }
+}
+
+```
+
+## ProductStore 
+
+`GET productStore`
+
+
+```sh
+{
+  "data" : {
+    "new" : [
+      {
+        "id": 3,
+        "product_id": 2152,
+        "store_id": 7,
+        "active": 1,
+        "price": 70,
+        "deleted_at": null,
+        "created_at": "2021-01-20T14:50:41.000000Z",
+        "updated_at": "2022-01-03T09:12:39.000000Z",
+        "config": null
+      },
+      {
+        "id": 5,
+        "product_id": 914,
+        "store_id": 5,
+        "active": 0,
+        "price": 110,
+        "deleted_at": null,
+        "created_at": "2021-02-10T10:43:57.000000Z",
+        "updated_at": "2021-10-29T09:26:10.000000Z",
+        "config": null
+      }
+    ]
+  }
+}
+
+```
+## SellingFormatStore
+
+`GET sellingFomratStore`
+
+
+```sh
+{
+  "data" : {
+    "new" : [
+      {
+        "id": 2,
+        "selling_format_id": 182,
+        "store_id": 5,
+        "active": 1,
+        "price": 200,
+        "deleted_at": null,
+        "created_at": "2021-04-09T08:30:47.000000Z",
+        "updated_at": "2021-04-09T08:30:49.000000Z"
+      },
+      {
+        "id": 3,
+        "selling_format_id": 330,
+        "store_id": 5,
+        "active": 1,
+        "price": 1000,
+        "deleted_at": null,
+        "created_at": "2021-04-12T15:41:53.000000Z",
+        "updated_at": "2021-10-29T09:26:15.000000Z"
+      }
+    ]
+  }
+}
+
+```
+
+## Pullers
+
+`GET pullers`
+
+
+```sh
+{
+    "data": {
+        "new": [],
+        "updated": [],
+        "deleted": []
+    }
+}
+
+```
+
+## PointShifts
+
+`GET pointsShifts`
+
+
+```sh
+{
+    "data": {
+        "new": [],
+        "updated": [],
+        "deleted": []
+    }
+}
+
+```
+
+## Kiosk
+
+`GET kiosk`
+
+
+```sh
+{
+    "data": {
+        "new": [
+            {
+                "id": 1,
+                "pin": null,
+                "payment_modes": [
+                    "1",
+                    "5"
+                ],
+                "languages": null,
+                "payment_gateway_type": 3,
+                "payment_gateway_config": {
+                    "adyen": {
+                        "poiid": "S1F2-000158213300423"
+                    }
+                },
+                "theme": null,
+                "created_at": "2021-11-15 11:42:35",
+                "name": "Kiosk",
+                "printer_ip": "10.0.1.236",
+                "store_id": 7,
+                "printer_driver": 1,
+                "config": "{\"stop_service_on_print_error\":\"0\"}"
+            },
+            {
+                "id": 2,
+                "pin": null,
+                "payment_modes": [
+                    "1",
+                    "5"
+                ],
+                "languages": null,
+                "payment_gateway_type": 3,
+                "payment_gateway_config": {
+                    "adyen": {
+                        "poiid": "S1F2-000158213300423"
+                    }
+                },
+                "theme": null,
+                "created_at": "2022-03-04 12:20:47",
+                "name": "KIOSK OSKAR",
+                "printer_ip": "10.0.1.236",
+                "store_id": 11,
+                "printer_driver": 2,
+                "config": "{\"stop_service_on_print_error\":\"0\"}"
+            }
+        ],
+        "updated": [],
+        "deleted": []
+    }
+}
+
+```
+
+## Theme
+
+`GET theme`
+
+
+```sh
+{
+    "data": {
+        "theme": {
+            "account": "revosupport",
+            "appName": "Awesome App",
+            "accent": "#d7771d",
+            "accentInverse": "#fafafa",
+            "onlyPayWithGiftCard": "no",
+            "payment_method": 1,
+            "payment_method_config": {
+                "stripe": {
+                    "key": "sk_test_Cme93TuYaEI8bieyEInbVoW1002vB0Oix4",
+                    "publishable_key": null
+                },
+                "sipay": {
+                    "key": null,
+                    "resource": null,
+                    "secret": null
+                }
+            },
+            "stripe_publishable_key": null,
+            "delivery_agency": 1,
+            "delivery_agency_config": null,
+            "rewards_enabled": "no",
+            "online_ordering": "no",
+            "has_slides": "no",
+            "enable_barcode_scan": "no",
+            "only_show_near_store": "no",
+            "minimum_delivery_price": 100,
+            "required_delivery_product_id": "",
+            "disable_gift_card": "no",
+            "points_to_money": "no",
+            "rewards_order": "asc",
+            "enable_invitations": "no",
+            "tables": {
+                "5": {
+                    "3": "12   ",
+                    "4": "13   ",
+                },
+                "6": {
+                    "3": "12   ",
+                    "4": "13   ",
+                },
+                "7": {
+                    "3": "12   ",
+                    "4": "13   ",
+                },
+                "9": {
+                    "1": "Table 1",
+                    "2": "Table 2",
+                },
+                "10": [],
+                "11": {
+                    "3": "12   ",
+                    "4": "13   ",
+                }
+            }
+        }
+    }
+}
+
+```
 
 ## Other routes
 
