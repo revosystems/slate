@@ -1,4 +1,107 @@
 # InTouch
+
+#Api request
+
+```sh
+ POST/GET/PUT {username}.revointouch.works/api/v1/
+```
+
+```sh
+Authorization: Bearer {Api token}
+```
+
+```sh
+curl -X GET 
+     --header "Authorization: Bearer 8J9lMscIvM88IZQjS3JA51ErsgcWO8KCGXsi7rJC0l1SrBuew5VCV94nLafQ"
+     myaccount.revointouch.works/api/v1/stores
+```
+## Customers Points
+
+`GET customers/{token}/points`
+Returns the points of a customer + the points spent with the specified product.
+
+Body parameter| Description
+---------|---------
+product    | **Json** id of the product in Json format.
+
+```sh
+// Response
+{
+    "data": {
+        "leftPoints": 8000,
+        "productPoints": []
+    }
+}
+```
+
+`POST customers/{token}/points`
+Returns the left points of a customer + the points spent for a specified product.
+
+Body parameter| Description
+---------|---------
+product    | **Json** id of the product in Json format.
+
+```sh
+// Response
+{
+    "data": {
+        "spentPoints": 0,
+        "leftPoints": 8000
+    }
+}
+```
+## Stores
+`GET stores`
+Returns a list of the stores from a specified user.
+
+Body parameter| Description
+---------|---------
+username    | **json** username in json format.
+
+```sh
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "An store"
+        },
+        {
+            "id": 2,
+            "name": "Test Store"
+        }
+    ]
+}
+```
+
+## Store Status
+
+`GET stores/{store}/status`
+Returns the status of the specified store.
+
+```sh
+{
+    "data": {
+        "status": "paused"
+    }
+}
+```
+
+`POST stores/{store}/status`
+Returns previous and current updated status after call.
+
+Body parameter| Description
+---------|---------
+status    | **string** status to send.
+
+```sh
+// Response
+{
+    "data": {
+        "previousStatus": "online",
+        "currentStatus": "paused"
+    }
+}
+```
 ## Basic request
 
 ```sh
@@ -31,6 +134,16 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 
 ## Login
 
+`POST login`
+Logs in with Email and specified password.
+
+Parameters
+
+Parameter| Description
+---------|---------
+email    | **string** User email
+password | **string** User password
+
 ```sh
 // Response
 {
@@ -47,20 +160,11 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 }
 ```
 
-`POST login` 
-
-Parameters
-
-Parameter| Description
----------|---------
-email    | **string** User email
-password | **string** User password
-
 
 ## Register
 
 `POST register`
-
+Registers user with the specified fields.
 > Same response as login
 
 Field     | Type       | Example
@@ -75,6 +179,7 @@ subscribe | `bool`     | 1
 
 ## UploadProfilePhoto
 ` POST uploadProfilePhoto`
+Uploads specified profile photo to the current user.
 
 
 Field     | Type       | Example
@@ -95,7 +200,8 @@ Photo     | `photo`    | /9j/4AAQSkZJRgABA...
 
 
 ## Cards
-` GET cards` 
+` GET cards`
+Returns all the cards data.
 
 ```sh
 {
@@ -124,7 +230,7 @@ Photo     | `photo`    | /9j/4AAQSkZJRgABA...
 ```
 
 ### `GET cards/{card_uuid}`
-
+Gets the specified card's data by the card_uuid
 ```sh
 // GET cards/{card_uuid}
 {
@@ -140,7 +246,8 @@ Photo     | `photo`    | /9j/4AAQSkZJRgABA...
 }
 ```
 
-### `PUT cards/{card_uuid}` To reload a gift card
+### `PUT cards/{card_uuid}` 
+To reload a gift card
 
 
 Field           | Description
@@ -161,6 +268,7 @@ payment_token   | **string** (optional) the stripe payment token. If null or not
 
 
 ### `POST cards`
+Creates a new gift card with the desired name.
 
 Field | Description
 ------|-------------
@@ -184,6 +292,8 @@ name  | **string** the name of the new card
 ## CardAssociate
 
 ### `POST cards/{card}/associate`
+
+Associates the specified card by uuid to the current customer.
 
 Field | Description
 ------|-------------
@@ -209,10 +319,11 @@ uuid  | **string** Id of the card to associate
 ## CardTransfer
 
 ### `POST cards/{card}/transfer`
+Transfers the amount to the specified card by uuid.
 
 Field | Description
 ------|-------------
-uuid  | **string** Id of the card to associate
+uuid  | **string** Id of the card to transfer
 amount| **string** Amount to transfer to the card
 
 
@@ -231,48 +342,14 @@ amount| **string** Amount to transfer to the card
     }
 ```
 
-## Customer Points
-
-### `Get /customers/{token}/points`
-
-Returns the total points of a customer and the product points. 
-
-Field | Description
-------|-------------
-products  | **json** Array of id of the products
 
 
 
-```sh
-{
-    "data": {
-        "leftPoints": 8000,
-        "productPoints": []
-    }
-}
-
-```
-### `Post /customers/{token}/points`
-
-Returns the left points of a customer and the points spent . 
-
-Field | Description
-------|-------------
-products  | **json** Array of id of the products
-
-
-
-```sh
-{
-    "data": {
-        "spentPoints": 0,
-        "leftPoints": 8000
-    }
-}
-```
 
 ## AssociateCustomerGroup
-### `POST associateCustotmerGroup`
+### `POST associateCustomerGroup`
+
+Associates a customer to a customerGroup.
 
 Field | Description
 ------|-------------
@@ -280,7 +357,6 @@ id  | **string** Id of the group to associate
 
 
 ```sh
-// `POST cards`
 {
     "data": {
         "id": 2,
@@ -294,12 +370,11 @@ id  | **string** Id of the group to associate
 ## Syncable models
 Doing a get request with a `from` parameter will return the objects to sync from them. Ideally you can store those objects into your system to be more responsive and sync when something changes
 
-
-
 ## Stores
 
 `GET stores`
 
+Returns all the stores data.
 
 ```sh
 {
@@ -323,64 +398,13 @@ Doing a get request with a `from` parameter will return the objects to sync from
 }
 ```
 
-## Stores
-
-`GET stores`
-
-Field | Description
-------|-------------
-username  | **json** username in json format.
-
-
-```sh
-{
-    "data": [
-        {
-            "id": 1,
-            "name": "An store"
-        },
-        {
-            "id": 2,
-            "name": "Test Store"
-        }
-    ]
-}
-```
-### StoreStatus
-
-`GET stores/{store}/status`
-
-```sh
-{
-    "data": {
-        "status": "online"
-    }
-}
-```
-### Store StoreStatus
-
-`POST stores/{store}/status`
-
-Field | Description
-------|-------------
-status  | **String** status in String format.
-
-```sh
-{
-    "data": {
-        "previousStatus": "online",
-        "currentStatus": "paused"
-    }
-}
-```
-
-
-
 
 
 ## Categories
 
 `GET categories`
+
+Returns all categories data.
 
 
 ```sh
@@ -404,9 +428,11 @@ status  | **String** status in String format.
 ```
 
 ## Shifts
- 
+
 
 `GET shifts`
+
+Returns all shifts.
 
 ```sh
 {
@@ -435,9 +461,11 @@ status  | **String** status in String format.
 
 ## DeliveryShifts
 These only should be used when `store.use_delivery_shifts` is true, if it is false, use the standard shifts for deliveries as well
- 
+
 
 `GET deliveryShifts`
+
+Returns all delivery shifts
 
 ```sh
 {
@@ -466,8 +494,8 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 
 ## Products
 
-`GET products`
- 
+`GET products` Returns all products.
+
 
 ```sh
 {
@@ -515,6 +543,7 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 
 ## Menu Categories
 `GET menuCategories`
+Returns all menuCategories
 
 ```sh
 {
@@ -537,6 +566,8 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 ## Menu Products
 
 `GET menuProducts`
+
+Returns all menuproducts
 
 
 ```sh
@@ -563,7 +594,7 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 ## Modifiers
 
 `GET modifiers`
- 
+Returns all modifiers.
 
 ```sh
 {
@@ -591,6 +622,8 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 ## Modifier Categories
 
 `GET modifierCategories`
+
+Returns all modifier categories.
 
 
 ```sh
@@ -620,7 +653,9 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 ## Product - Modifier Categories
 
 `GET productModifierCategories`
- 
+
+Returns all productModifierCategories
+
 
 ```sh
 {
@@ -648,6 +683,26 @@ These only should be used when `store.use_delivery_shifts` is true, if it is fal
 ## Orders
 
 ###Create an order
+
+`POST orders`
+
+Parameters:
+
+Field    | Type         | Description
+---------|--------------|-----------
+order    | `json`       | the order json following the format below
+contents | `array json` | the array of contents json following the format below
+card     | `string`     | the customer gift card to use to do the charge
+store    | `int`        | (optional) the store id to to create the order (it can be ignored if there is only one store)
+delivery | `json`       | (optional) The delivery information it should contain `address` `city` `phone` `geolocation` and `time` fields
+
+Contents can have optional parameters such as `modifiers` and `menuContents`
+
+Field        | Type         | Description
+-------------|--------------|-----------------------
+modifiers    | `array json` | the array of modifiers
+menuContents | `array json` | the array of menuContents
+
 
 ```sh
 order={
@@ -718,7 +773,7 @@ contents = [{
 }]
 ```
 ### Get an order
-`GET orders` 
+`GET orders`
 
 Returns the orders of the current customer.
 
@@ -783,7 +838,7 @@ Returns the orders of the current customer.
 ### Update an Order
 
 `PUT orders/{id}`
-
+Updates the order with the specified id.
 
 ```sh
 {
@@ -792,32 +847,13 @@ Returns the orders of the current customer.
 
 ```
 
-### Store an Order
-
-`POST orders`
-
-Parameters:
-
-Field    | Type         | Description
----------|--------------|-----------
-order    | `json`       | the order json following the format below
-contents | `array json` | the array of contents json following the format below
-card     | `string`     | the customer gift card to use to do the charge
-store    | `int`        | (optional) the store id to to create the order (it can be ignored if there is only one store)
-delivery | `json`       | (optional) The delivery information it should contain `address` `city` `phone` `geolocation` and `time` fields
-
-Contents can have optional parameters such as `modifiers` and `menuContents`
-
-Field        | Type         | Description
--------------|--------------|-----------------------
-modifiers    | `array json` | the array of modifiers
-menuContents | `array json` | the array of menuContents
 
 
 ###Get Last Order
 
 `GET lastOrder`
 
+Returns the last order for the customer.
 
 ```sh
 {
@@ -879,10 +915,10 @@ menuContents | `array json` | the array of menuContents
 }
 ```
 
-## Points 
+## Points
 
-`GET orders/{id}`
-
+`GET points`
+Returns points for the current customer.
 
 ```sh
 {
@@ -896,6 +932,8 @@ menuContents | `array json` | the array of menuContents
 ## Credit Cards
 
 `POST creditCards`
+
+Creates a credit card with the stripe card token.
 
 Parameters:
 
@@ -938,7 +976,7 @@ token    | The stripe card token
 ### Get Credit Cards
 `GET creditCards`
 
-Parameters:
+Returns credit card with the stripe card token.
 
 Field    | Description
 ---------|---------------
@@ -983,7 +1021,7 @@ token    | The stripe card token
 
 `GET table/{id}/available`
 
-Returns if the desired table is available.
+Returns if the table with the specified id is available.
 
 
 ```sh
@@ -998,6 +1036,8 @@ Returns if the desired table is available.
 ## StoreCard
 
 `Post cards`
+
+CCreates a card with the specified name.
 
 Field    | Description
 ---------|---------------
@@ -1020,9 +1060,11 @@ Returns the created card.
 
 ```
 
-## ProductStore 
+## ProductStore
 
 `GET productStore`
+
+Returns productStore for current customer.
 
 
 ```sh
@@ -1058,8 +1100,9 @@ Returns the created card.
 ```
 ## SellingFormatStore
 
-`GET sellingFomratStore`
+`GET sellingFormatStore`
 
+Returns sellingFormatStore for current customer.
 
 ```sh
 {
@@ -1111,6 +1154,7 @@ Returns the created card.
 
 `GET pointsShifts`
 
+Returns PointShifts.
 
 ```sh
 {
@@ -1127,6 +1171,7 @@ Returns the created card.
 
 `GET kiosk`
 
+Returns kiosk Data.
 
 ```sh
 {
@@ -1188,6 +1233,7 @@ Returns the created card.
 
 `GET theme`
 
+Returns app theme.
 
 ```sh
 {
@@ -1257,17 +1303,17 @@ Returns the created card.
 
 Verb     | Route
 ---------|------------   
-GET      | /                           
-PUT      | /                           
-GET      | cards                       
-GET      | cards/{uuid}                
-POST     | cards                       
-PUT      | cards/{uuid}                       
-POST     | cards/{card}/associate      
-POST     | cards/{card}/transfer       
-GET      | orders                      
-POST     | orders                      
-PUT      | orders/{id}                 
+GET      | /
+PUT      | /
+GET      | cards
+GET      | cards/{uuid}
+POST     | cards
+PUT      | cards/{uuid}
+POST     | cards/{card}/associate
+POST     | cards/{card}/transfer
+GET      | orders
+POST     | orders
+PUT      | orders/{id}
 GET      | points
 GET      | creditCards
 POST     | creditCards
