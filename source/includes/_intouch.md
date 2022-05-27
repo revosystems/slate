@@ -18,9 +18,9 @@ curl -X GET
 ## Customers Points
 
 `GET customers/{token}/points`
-Returns the points of a customer + the points spent with the specified product.
+Returns the points of a customer + theœ points spent with the specified product.
 
-Body parameter| Description
+Body Field  | Description
 ---------|---------
 product    | **Json** id of the product in Json format.
 
@@ -36,8 +36,8 @@ product    | **Json** id of the product in Json format.
 
 `POST customers/{token}/points`
 Returns the left points of a customer + the points spent for a specified product.
-
-Body parameter| Description
+œ
+Body Field  | Description
 ---------|---------
 product    | **Json** id of the product in Json format.
 
@@ -54,7 +54,7 @@ product    | **Json** id of the product in Json format.
 `GET stores`
 Returns a list of the stores from a specified user.
 
-Body parameter| Description
+Body Field  | Description
 ---------|---------
 username    | **json** username in json format.
 
@@ -89,7 +89,7 @@ Returns the status of the specified store.
 `POST stores/{store}/status`
 Returns previous and current updated status after call.
 
-Body parameter| Description
+Body Field  | Description
 ---------|---------
 status    | **string** status to send.
 
@@ -139,7 +139,7 @@ Logs in with Email and specified password.
 
 Parameters
 
-Parameter| Description
+Body Field  | Description
 ---------|---------
 email    | **string** User email
 password | **string** User password
@@ -167,7 +167,7 @@ password | **string** User password
 Registers user with the specified fields.
 > Same response as login
 
-Field     | Type       | Example
+Body Field   | Type       | Example
 ----------|------------|-----------------
 name      | `string`   | Bruce
 lastName  | `string`   | Wayne
@@ -182,7 +182,7 @@ subscribe | `bool`     | 1
 Uploads specified profile photo to the current user.
 
 
-Field     | Type       | Example
+Body Field   | Type       | Example
 ----------|------------|-----------------
 Photo     | `photo`    | /9j/4AAQSkZJRgABA...
 
@@ -250,7 +250,7 @@ Gets the specified card's data by the card_uuid
 To reload a gift card
 
 
-Field           | Description
+Body Field   | Description
 ----------------|-------------------------------------
 amount          | **int** amount in cents
 payment_token   | **string** (optional) the stripe payment token. If null or not present it will use customer's default credit card
@@ -270,7 +270,7 @@ payment_token   | **string** (optional) the stripe payment token. If null or not
 ### `POST cards`
 Creates a new gift card with the desired name.
 
-Field | Description
+Body Field  | Description
 ------|-------------
 name  | **string** the name of the new card
 
@@ -295,7 +295,7 @@ name  | **string** the name of the new card
 
 Associates the specified card by uuid to the current customer.
 
-Field | Description
+Body Field  | Description
 ------|-------------
 uuid  | **string** Id of the card to associate
 
@@ -321,7 +321,7 @@ uuid  | **string** Id of the card to associate
 ### `POST cards/{card}/transfer`
 Transfers the amount to the specified card by uuid.
 
-Field | Description
+Body Field  | Description
 ------|-------------
 uuid  | **string** Id of the card to transfer
 amount| **string** Amount to transfer to the card
@@ -351,7 +351,7 @@ amount| **string** Amount to transfer to the card
 
 Associates a customer to a customerGroup.
 
-Field | Description
+Body Field  | Description
 ------|-------------
 id  | **string** Id of the group to associate
 
@@ -395,6 +395,29 @@ Returns all the stores data.
     "updated" : null,
     "deleted" : null
   }
+}
+```
+
+`GET stores`
+
+Returns all the stores from a user specified by username.
+
+Body Field    | Type         | Description
+---------|--------------|-----------
+username    | `json`       | The username in json format
+
+```sh
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "An store"
+        },
+        {
+            "id": 2,
+            "name": "Test Store"
+        }
+    ]
 }
 ```
 
@@ -688,7 +711,7 @@ Returns all productModifierCategories
 
 Parameters:
 
-Field    | Type         | Description
+Body Field   | Type         | Description
 ---------|--------------|-----------
 order    | `json`       | the order json following the format below
 contents | `array json` | the array of contents json following the format below
@@ -698,7 +721,7 @@ delivery | `json`       | (optional) The delivery information it should contain 
 
 Contents can have optional parameters such as `modifiers` and `menuContents`
 
-Field        | Type         | Description
+Body Field     | Type         | Description
 -------------|--------------|-----------------------
 modifiers    | `array json` | the array of modifiers
 menuContents | `array json` | the array of menuContents
@@ -937,7 +960,7 @@ Creates a credit card with the stripe card token.
 
 Parameters:
 
-Field    | Description
+Body Field  | Description
 ---------|---------------
 token    | The stripe card token
 
@@ -978,7 +1001,7 @@ token    | The stripe card token
 
 Returns credit card with the stripe card token.
 
-Field    | Description
+Body Field  | Description
 ---------|---------------
 token    | The stripe card token
 
