@@ -503,7 +503,19 @@
           </li>
           <li>
             <a href="#intouch" class="toc-h1 toc-link" data-title="InTouch">InTouch</a>
+          </li>
+          <li>
+            <a href="#api-request" class="toc-h1 toc-link" data-title="Api request">Api request</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#customers-points" class="toc-h2 toc-link" data-title="Customers Points">Customers Points</a>
+                  </li>
+                  <li>
+                    <a href="#stores" class="toc-h2 toc-link" data-title="Stores">Stores</a>
+                  </li>
+                  <li>
+                    <a href="#store-status" class="toc-h2 toc-link" data-title="Store Status">Store Status</a>
+                  </li>
                   <li>
                     <a href="#basic-request" class="toc-h2 toc-link" data-title="Basic request">Basic request</a>
                   </li>
@@ -517,13 +529,25 @@
                     <a href="#register" class="toc-h2 toc-link" data-title="Register">Register</a>
                   </li>
                   <li>
+                    <a href="#uploadprofilephoto" class="toc-h2 toc-link" data-title="UploadProfilePhoto">UploadProfilePhoto</a>
+                  </li>
+                  <li>
                     <a href="#cards" class="toc-h2 toc-link" data-title="Cards">Cards</a>
+                  </li>
+                  <li>
+                    <a href="#cardassociate" class="toc-h2 toc-link" data-title="CardAssociate">CardAssociate</a>
+                  </li>
+                  <li>
+                    <a href="#cardtransfer" class="toc-h2 toc-link" data-title="CardTransfer">CardTransfer</a>
+                  </li>
+                  <li>
+                    <a href="#associatecustomergroup" class="toc-h2 toc-link" data-title="AssociateCustomerGroup">AssociateCustomerGroup</a>
                   </li>
                   <li>
                     <a href="#syncable-models" class="toc-h2 toc-link" data-title="Syncable models">Syncable models</a>
                   </li>
                   <li>
-                    <a href="#stores" class="toc-h2 toc-link" data-title="Stores">Stores</a>
+                    <a href="#stores-2" class="toc-h2 toc-link" data-title="Stores">Stores</a>
                   </li>
                   <li>
                     <a href="#categories" class="toc-h2 toc-link" data-title="Categories">Categories</a>
@@ -544,22 +568,43 @@
                     <a href="#menu-products" class="toc-h2 toc-link" data-title="Menu Products">Menu Products</a>
                   </li>
                   <li>
-                    <a href="#modifier-categories" class="toc-h2 toc-link" data-title="Modifier Categories">Modifier Categories</a>
-                  </li>
-                  <li>
                     <a href="#modifiers" class="toc-h2 toc-link" data-title="Modifiers">Modifiers</a>
                   </li>
                   <li>
-                    <a href="#product-modifier-cateogires" class="toc-h2 toc-link" data-title="Product - Modifier Cateogires">Product - Modifier Cateogires</a>
+                    <a href="#modifier-categories" class="toc-h2 toc-link" data-title="Modifier Categories">Modifier Categories</a>
                   </li>
                   <li>
-                    <a href="#credit-cards" class="toc-h2 toc-link" data-title="Credit Cards">Credit Cards</a>
+                    <a href="#product-modifier-categories" class="toc-h2 toc-link" data-title="Product - Modifier Categories">Product - Modifier Categories</a>
                   </li>
                   <li>
                     <a href="#orders" class="toc-h2 toc-link" data-title="Orders">Orders</a>
                   </li>
                   <li>
-                    <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
+                    <a href="#points" class="toc-h2 toc-link" data-title="Points">Points</a>
+                  </li>
+                  <li>
+                    <a href="#credit-cards" class="toc-h2 toc-link" data-title="Credit Cards">Credit Cards</a>
+                  </li>
+                  <li>
+                    <a href="#tableavailable" class="toc-h2 toc-link" data-title="TableAvailable">TableAvailable</a>
+                  </li>
+                  <li>
+                    <a href="#storecard" class="toc-h2 toc-link" data-title="StoreCard">StoreCard</a>
+                  </li>
+                  <li>
+                    <a href="#sellingformatstore" class="toc-h2 toc-link" data-title="SellingFormatStore">SellingFormatStore</a>
+                  </li>
+                  <li>
+                    <a href="#pullers" class="toc-h2 toc-link" data-title="Pullers">Pullers</a>
+                  </li>
+                  <li>
+                    <a href="#pointshifts" class="toc-h2 toc-link" data-title="PointShifts">PointShifts</a>
+                  </li>
+                  <li>
+                    <a href="#kiosk" class="toc-h2 toc-link" data-title="Kiosk">Kiosk</a>
+                  </li>
+                  <li>
+                    <a href="#theme" class="toc-h2 toc-link" data-title="Theme">Theme</a>
                   </li>
                   <li>
                     <a href="#other-routes" class="toc-h2 toc-link" data-title="Other routes">Other routes</a>
@@ -3332,7 +3377,105 @@ The page and limit must be set in request.</p>
 </span></code></pre>
 <p>Use this function to create a new Order to Revo,
 You can send payments where <code>payment_method_id</code> is <code>1</code> (Card) or <code>2</code> (Cash)</p>
-<h1 id='intouch'>InTouch</h1><h2 id='basic-request'>Basic request</h2><pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/customer
+<h1 id='intouch'>InTouch</h1><h1 id='api-request'>Api request</h1><pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/
+</code></pre><pre class="highlight sh tab-shell"><code>Authorization: Bearer <span class="o">{</span>Api token<span class="o">}</span>
+</code></pre><pre class="highlight sh tab-shell"><code>curl -X GET 
+     --header <span class="s2">"Authorization: Bearer 8J9lMscIvM88IZQjS3JA51ErsgcWO8KCGXsi7rJC0l1SrBuew5VCV94nLafQ"</span>
+     myaccount.revointouch.works/api/v1/stores
+</code></pre><h2 id='customers-points'>Customers Points</h2>
+<p><code>GET customers/{token}/points</code>
+Returns the points of a customer + theœ points spent with the specified product.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product</td>
+<td><strong>Json</strong> id of the product in Json format.</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code>// Response
+<span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"leftPoints"</span>: 8000,
+        <span class="s2">"productPoints"</span>: <span class="o">[]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST customers/{token}/points</code>
+Returns the left points of a customer + the points spent for a specified product.
+œ
+Body Field  | Description
+---------|---------
+product    | <strong>Json</strong> id of the product in Json format.</p>
+<pre class="highlight sh tab-shell"><code>// Response
+<span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"spentPoints"</span>: 0,
+        <span class="s2">"leftPoints"</span>: 8000
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='stores'>Stores</h2>
+<p><code>GET stores</code>
+Returns a list of the stores from a specified user.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td><strong>json</strong> username in json format.</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1,
+            <span class="s2">"name"</span>: <span class="s2">"An store"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2,
+            <span class="s2">"name"</span>: <span class="s2">"Test Store"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h2 id='store-status'>Store Status</h2>
+<p><code>GET stores/{store}/status</code>
+Returns the status of the specified store.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"status"</span>: <span class="s2">"paused"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<p><code>POST stores/{store}/status</code>
+Returns previous and current updated status after call.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td><strong>string</strong> status to send.</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code>// Response
+<span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"previousStatus"</span>: <span class="s2">"online"</span>,
+        <span class="s2">"currentStatus"</span>: <span class="s2">"paused"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='basic-request'>Basic request</h2><pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/customer
 </code></pre><pre class="highlight sh tab-shell"><code>Authorization: Bearer <span class="o">{</span>token<span class="o">}</span>
 </code></pre><pre class="highlight sh tab-shell"><code>curl -X GET 
      --header <span class="s2">"Authorization: Bearer K2YBo90R2bil1mVKTkHh9cRlzstQYHIqYjX3oAYFT9HWluGcq9DaDh4LxVUI"</span>
@@ -3346,27 +3489,15 @@ All requests will have the same structure. </p>
 <p><code>
 https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{xef-account}/images/{url}
 </code></p>
-<h2 id='login'>Login</h2><pre class="highlight sh tab-shell"><code>// Response
-<span class="o">{</span>
-  <span class="s2">"data"</span> : <span class="o">{</span>
-    <span class="s2">"api_token"</span> : <span class="s2">"token"</span>,
-    <span class="s2">"info"</span> : <span class="o">{</span>
-      <span class="s2">"points"</span> : 378,
-      <span class="s2">"id"</span> : 1,
-      <span class="s2">"postalCode"</span> : <span class="s2">"08240"</span>,
-      <span class="s2">"email"</span> : <span class="s2">"jordi.p@revo.works"</span>,
-      <span class="s2">"name"</span> : <span class="s2">"Jordi Puigdellívol"</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-<p><code>POST login</code> </p>
+<h2 id='login'>Login</h2>
+<p><code>POST login</code>
+Logs in with Email and specified password.</p>
 
 <p>Parameters</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Body Field</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -3379,8 +3510,22 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 <td><strong>string</strong> User password</td>
 </tr>
 </tbody></table>
-<h2 id='register'>Register</h2>
-<p><code>POST register</code></p>
+<pre class="highlight sh tab-shell"><code>// Response
+<span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"api_token"</span> : <span class="s2">"token"</span>,
+    <span class="s2">"info"</span> : <span class="o">{</span>
+      <span class="s2">"points"</span> : 378,
+      <span class="s2">"id"</span> : 1,
+      <span class="s2">"postalCode"</span> : <span class="s2">"08240"</span>,
+      <span class="s2">"email"</span> : <span class="s2">"jordi.p@revo.works"</span>,
+      <span class="s2">"name"</span> : <span class="s2">"Jordi Puigdellívol"</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='register'>Register</h2>
+<p><code>POST register</code>
+Registers user with the specified fields.</p>
 
 <blockquote>
 <p>Same response as login</p>
@@ -3388,7 +3533,7 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 
 <table><thead>
 <tr>
-<th>Field</th>
+<th>Body Field</th>
 <th>Type</th>
 <th>Example</th>
 </tr>
@@ -3429,8 +3574,32 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 <td>1</td>
 </tr>
 </tbody></table>
-<h2 id='cards'>Cards</h2>
-<p><code>GET cards</code> </p>
+<h2 id='uploadprofilephoto'>UploadProfilePhoto</h2>
+<p><code>POST uploadProfilePhoto</code>
+Uploads specified profile photo to the current user.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Photo</td>
+<td><code>photo</code></td>
+<td>/9j/4AAQSkZJRgABA...</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"result"</span>: <span class="s2">"OK"</span>,
+        <span class="s2">"photoName"</span>: <span class="s2">"ovrA7mVcSQ.jpg"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='cards'>Cards</h2>
+<p><code>GET cards</code>
+Returns all the cards data.</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
   // GET cards
   <span class="s2">"data"</span> : <span class="o">[</span>
@@ -3454,22 +3623,28 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     <span class="o">}</span>,
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre><h3 id='get-cards-card_uuid'><code>GET cards/{card_uuid}</code></h3><pre class="highlight sh tab-shell"><code>// GET cards/<span class="o">{</span>card_uuid<span class="o">}</span>
-<span class="o">{</span>
-  <span class="s2">"data"</span> : <span class="o">{</span>
-    <span class="s2">"active"</span> : 1,
-    <span class="s2">"amount"</span> : 0,
-    <span class="s2">"id"</span> : 8,
-    <span class="s2">"uuid"</span> : <span class="s2">"58b194cc08bfa"</span>,
-    <span class="s2">"photo"</span> : <span class="s2">"hi5bOD"</span>,
-    <span class="s2">"customer_id"</span> : 1,
-    <span class="s2">"name"</span> : <span class="s2">"My gift card"</span>,
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre><h3 id='put-cards-card_uuid-to-reload-a-gift-card'><code>PUT cards/{card_uuid}</code> To reload a gift card</h3>
+</code></pre><h3 id='get-cards-card_uuid'><code>GET cards/{card_uuid}</code></h3>
+<p>Gets the specified card&#39;s data by the card_uuid
+<code>sh
+// GET cards/{card_uuid}
+{
+  &quot;data&quot; : {
+    &quot;active&quot; : 1,
+    &quot;amount&quot; : 0,
+    &quot;id&quot; : 8,
+    &quot;uuid&quot; : &quot;58b194cc08bfa&quot;,
+    &quot;photo&quot; : &quot;hi5bOD&quot;,
+    &quot;customer_id&quot; : 1,
+    &quot;name&quot; : &quot;My gift card&quot;,
+  }
+}
+</code></p>
+<h3 id='put-cards-card_uuid'><code>PUT cards/{card_uuid}</code></h3>
+<p>To reload a gift card</p>
+
 <table><thead>
 <tr>
-<th>Field</th>
+<th>Body Field</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -3490,9 +3665,11 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 <span class="o">}</span>
 
 </code></pre><h3 id='post-cards'><code>POST cards</code></h3>
+<p>Creates a new gift card with the desired name.</p>
+
 <table><thead>
 <tr>
-<th>Field</th>
+<th>Body Field</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -3512,10 +3689,91 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     <span class="s2">"customer_id"</span> : 1
   <span class="o">}</span>
 <span class="o">}</span>
+</code></pre><h2 id='cardassociate'>CardAssociate</h2><h3 id='post-cards-card-associate'><code>POST cards/{card}/associate</code></h3>
+<p>Associates the specified card by uuid to the current customer.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td><strong>string</strong> Id of the card to associate</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"id"</span>: 3,
+        <span class="s2">"active"</span>: 1,
+        <span class="s2">"uuid"</span>: <span class="s2">"4JQXA9J32SLR"</span>,
+        <span class="s2">"name"</span>: <span class="s2">"cardName"</span>,
+        <span class="s2">"photo"</span>: null,
+        <span class="s2">"amount"</span>: 0,
+        <span class="s2">"customer_id"</span>: 1,
+        <span class="s2">"created_at"</span>: <span class="s2">"2022-05-23 14:30:10"</span>,
+        <span class="s2">"updated_at"</span>: <span class="s2">"2022-05-23 14:30:10"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='cardtransfer'>CardTransfer</h2><h3 id='post-cards-card-transfer'><code>POST cards/{card}/transfer</code></h3>
+<p>Transfers the amount to the specified card by uuid.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td><strong>string</strong> Id of the card to transfer</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><strong>string</strong> Amount to transfer to the card</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"id"</span>: 3,
+        <span class="s2">"active"</span>: 1,
+        <span class="s2">"uuid"</span>: <span class="s2">"4JQXA9J32SLR"</span>,
+        <span class="s2">"name"</span>: <span class="s2">"cardName"</span>,
+        <span class="s2">"photo"</span>: null,
+        <span class="s2">"amount"</span>: 100,
+        <span class="s2">"customer_id"</span>: 1,
+        <span class="s2">"created_at"</span>: <span class="s2">"2022-05-23 14:30:10"</span>,
+        <span class="s2">"updated_at"</span>: <span class="s2">"2022-05-23 14:30:10"</span>
+    <span class="o">}</span>
+</code></pre><h2 id='associatecustomergroup'>AssociateCustomerGroup</h2><h3 id='post-associatecustomergroup'><code>POST associateCustomerGroup</code></h3>
+<p>Associates a customer to a customerGroup.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><strong>string</strong> Id of the group to associate</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"name"</span>: <span class="s2">"Revo"</span>,
+        <span class="s2">"discount"</span>: 10000,
+        <span class="s2">"created_at"</span>: <span class="s2">"2021-06-14 15:54:53"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h2 id='syncable-models'>Syncable models</h2>
 <p>Doing a get request with a <code>from</code> parameter will return the objects to sync from them. Ideally you can store those objects into your system to be more responsive and sync when something changes</p>
-<h2 id='stores'>Stores</h2>
+<h2 id='stores-2'>Stores</h2>
 <p><code>GET stores</code></p>
+
+<p>Returns all the stores data.</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
@@ -3535,8 +3793,40 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     <span class="s2">"deleted"</span> : null
   <span class="o">}</span>
 <span class="o">}</span>
+</code></pre>
+<p><code>GET stores</code></p>
+
+<p>Returns all the stores from a user specified by username.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td><code>json</code></td>
+<td>The username in json format</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1,
+            <span class="s2">"name"</span>: <span class="s2">"An store"</span>
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2,
+            <span class="s2">"name"</span>: <span class="s2">"Test Store"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
 </code></pre><h2 id='categories'>Categories</h2>
 <p><code>GET categories</code></p>
+
+<p>Returns all categories data.</p>
 <pre class="highlight sh tab-shell"><code>  <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -3556,6 +3846,8 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 <span class="o">}</span>
 </code></pre><h2 id='shifts'>Shifts</h2>
 <p><code>GET shifts</code></p>
+
+<p>Returns all shifts.</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
@@ -3582,6 +3874,8 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 <p>These only should be used when <code>store.use_delivery_shifts</code> is true, if it is false, use the standard shifts for deliveries as well</p>
 
 <p><code>GET deliveryShifts</code></p>
+
+<p>Returns all delivery shifts</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
@@ -3605,7 +3899,7 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><h2 id='products'>Products</h2>
-<p><code>GET products</code></p>
+<p><code>GET products</code> Returns all products.</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
@@ -3648,7 +3942,8 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
   <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><h2 id='menu-categories'>Menu Categories</h2>
-<p><code>GET menuCategories</code></p>
+<p><code>GET menuCategories</code>
+Returns all menuCategories</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="o">{</span>
         <span class="s2">"id"</span> : 1
@@ -3666,6 +3961,8 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 
 </code></pre><h2 id='menu-products'>Menu Products</h2>
 <p><code>GET menuProducts</code></p>
+
+<p>Returns all menuproducts</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="o">{</span>
         <span class="s2">"product_id"</span> : 1,
@@ -3682,8 +3979,33 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
 
 <span class="o">}</span>
 
+</code></pre><h2 id='modifiers'>Modifiers</h2>
+<p><code>GET modifiers</code>
+Returns all modifiers.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 1,
+        <span class="s2">"price"</span> : 0,
+        <span class="s2">"modifier_category_id"</span> : 1,
+        <span class="s2">"name"</span> : <span class="s2">"Small"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 2,
+        <span class="s2">"price"</span> : 1050,
+        <span class="s2">"modifier_category_id"</span> : 1,
+        <span class="s2">"name"</span> : <span class="s2">"XL"</span>
+      <span class="o">}</span>,
+    <span class="o">]</span>,
+    <span class="s2">"updated"</span> : null,
+    <span class="s2">"deleted"</span> : null
+  <span class="o">}</span>
+<span class="o">}</span>
 </code></pre><h2 id='modifier-categories'>Modifier Categories</h2>
 <p><code>GET modifierCategories</code></p>
+
+<p>Returns all modifier categories.</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
@@ -3705,30 +4027,10 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
     <span class="s2">"deleted"</span> : null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='modifiers'>Modifiers</h2>
-<p><code>GET modifiers</code></p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
-<span class="s2">"data"</span> : <span class="o">{</span>
-    <span class="s2">"new"</span> : <span class="o">[</span>
-      <span class="o">{</span>
-        <span class="s2">"id"</span> : 1,
-        <span class="s2">"price"</span> : 0,
-        <span class="s2">"modifier_category_id"</span> : 1,
-        <span class="s2">"name"</span> : <span class="s2">"Small"</span>
-      <span class="o">}</span>,
-      <span class="o">{</span>
-        <span class="s2">"id"</span> : 2,
-        <span class="s2">"price"</span> : 1050,
-        <span class="s2">"modifier_category_id"</span> : 1,
-        <span class="s2">"name"</span> : <span class="s2">"XL"</span>
-      <span class="o">}</span>,
-    <span class="o">]</span>,
-    <span class="s2">"updated"</span> : null,
-    <span class="s2">"deleted"</span> : null
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre><h2 id='product-modifier-cateogires'>Product - Modifier Cateogires</h2>
+</code></pre><h2 id='product-modifier-categories'>Product - Modifier Categories</h2>
 <p><code>GET productModifierCategories</code></p>
+
+<p>Returns all productModifierCategories</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
@@ -3750,111 +4052,66 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
   <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre><h2 id='credit-cards'>Credit Cards</h2>
-<p><code>POST creditCards</code></p>
+</code></pre><h2 id='orders'>Orders</h2><h3 id='create-an-order'>Create an order</h3>
+<p><code>POST orders</code></p>
 
 <p>Parameters:</p>
 
 <table><thead>
 <tr>
-<th>Field</th>
+<th>Body Field</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>token</td>
-<td>The stripe card token</td>
+<td>order</td>
+<td><code>json</code></td>
+<td>the order json following the format below</td>
+</tr>
+<tr>
+<td>contents</td>
+<td><code>array json</code></td>
+<td>the array of contents json following the format below</td>
+</tr>
+<tr>
+<td>card</td>
+<td><code>string</code></td>
+<td>the customer gift card to use to do the charge</td>
+</tr>
+<tr>
+<td>store</td>
+<td><code>int</code></td>
+<td>(optional) the store id to to create the order (it can be ignored if there is only one store)</td>
+</tr>
+<tr>
+<td>delivery</td>
+<td><code>json</code></td>
+<td>(optional) The delivery information it should contain <code>address</code> <code>city</code> <code>phone</code> <code>geolocation</code> and <code>time</code> fields</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
-  <span class="s2">"data"</span> : <span class="o">{</span>
-    <span class="s2">"address_line1_check"</span> : null,
-    <span class="s2">"dynamic_last4"</span> : null,
-    <span class="s2">"last4"</span> : <span class="s2">"4242"</span>,
-    <span class="s2">"address_line2"</span> : null,
-    <span class="s2">"metadata"</span> : <span class="o">[</span>
 
-    <span class="o">]</span>,
-    <span class="s2">"address_city"</span> : null,
-    <span class="s2">"address_zip_check"</span> : null,
-    <span class="s2">"address_zip"</span> : null,
-    <span class="s2">"country"</span> : <span class="s2">"US"</span>,
-    <span class="s2">"object"</span> : <span class="s2">"card"</span>,
-    <span class="s2">"address_line1"</span> : null,
-    <span class="s2">"address_state"</span> : null,
-    <span class="s2">"brand"</span> : <span class="s2">"Visa"</span>,
-    <span class="s2">"cvc_check"</span> : <span class="s2">"pass"</span>,
-    <span class="s2">"exp_month"</span> : 4,
-    <span class="s2">"name"</span> : null,
-    <span class="s2">"fingerprint"</span> : <span class="s2">"R92NDa6Z6u42Srgc"</span>,
-    <span class="s2">"funding"</span> : <span class="s2">"credit"</span>,
-    <span class="s2">"id"</span> : <span class="s2">"card_19vovPJVS7gfpCD2mGY750mu"</span>,
-    <span class="s2">"tokenization_method"</span> : null,
-    <span class="s2">"customer"</span> : <span class="s2">"cus_AGLc0pme4PvRyf"</span>,
-    <span class="s2">"address_country"</span> : null,
-    <span class="s2">"exp_year"</span> : 2024
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre><h2 id='orders'>Orders</h2><h3 id='last-order'>Last Order</h3>
-<p><code>GET lastOrder</code></p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
-  <span class="s2">"data"</span> : <span class="o">{</span>
-    <span class="s2">"lastContents"</span> : <span class="o">[</span>
-      <span class="o">{</span>
-        <span class="s2">"id"</span> : 16,
-        <span class="s2">"quantity"</span> : 1,
-        <span class="s2">"tax"</span> : 1000,
-        <span class="s2">"total"</span> : 1240,
-        <span class="s2">"order_id"</span> : 102,
-        <span class="s2">"subtotal"</span> : 1128,
-        <span class="s2">"price"</span> : 1240,
-        <span class="s2">"product_id"</span> : 1,
-        <span class="s2">"pointsSpent"</span> : null,
-        <span class="s2">"customer_id"</span> : 1,
-        <span class="s2">"taxAmount"</span> : 112
-      <span class="o">}</span>,
-      <span class="o">{</span>
-        <span class="s2">"id"</span> : 11,
-        <span class="s2">"quantity"</span> : 1,
-        <span class="s2">"tax"</span> : 1000,
-        <span class="s2">"total"</span> : 1240,
-        <span class="s2">"order_id"</span> : 98,
-        <span class="s2">"subtotal"</span> : 1128,
-        <span class="s2">"price"</span> : 1240,
-        <span class="s2">"product_id"</span> : 1,
-        <span class="s2">"pointsSpent"</span> : null,
-        <span class="s2">"customer_id"</span> : 1,
-        <span class="s2">"taxAmount"</span> : 112
-      <span class="o">}</span>,
-    <span class="o">]</span>,
-    <span class="s2">"lastOrder"</span> : <span class="o">{</span>
-      <span class="s2">"closed_at"</span> : <span class="s2">"2017-01-09 11:33:27"</span>,
-      <span class="s2">"id"</span> : 102,
-      <span class="s2">"subtotal"</span> : 1128,
-      <span class="s2">"created_at"</span> : <span class="s2">"2017-01-05 11:47:15"</span>,
-      <span class="s2">"contents"</span> : <span class="o">[</span>
-        <span class="o">{</span>
-          <span class="s2">"id"</span> : 16,
-          <span class="s2">"quantity"</span> : 1,
-          <span class="s2">"tax"</span> : 1000,
-          <span class="s2">"created_at"</span> : <span class="s2">"2017-01-05 11:47:15"</span>,
-          <span class="s2">"total"</span> : 1240,
-          <span class="s2">"order_id"</span> : 102,
-          <span class="s2">"subtotal"</span> : 1128,
-          <span class="s2">"price"</span> : 1240,
-          <span class="s2">"product_id"</span> : 1,
-          <span class="s2">"pointsSpent"</span> : null,
-          <span class="s2">"taxAmount"</span> : 112
-        <span class="o">}</span>
-      <span class="o">]</span>,
-      <span class="s2">"pointsEarned"</span> : 124,
-      <span class="s2">"total"</span> : 1240,
-      <span class="s2">"customer_id"</span> : 1,
-      <span class="s2">"taxAmount"</span> : 112
-    <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</code></pre><h2 id='create-an-order'>Create an order</h2><pre class="highlight sh tab-shell"><code><span class="nv">order</span><span class="o">={</span>
+<p>Contents can have optional parameters such as <code>modifiers</code> and <code>menuContents</code></p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>modifiers</td>
+<td><code>array json</code></td>
+<td>the array of modifiers</td>
+</tr>
+<tr>
+<td>menuContents</td>
+<td><code>array json</code></td>
+<td>the array of menuContents</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="nv">order</span><span class="o">={</span>
   <span class="s2">"subtotal"</span> : 1673,
   <span class="s2">"id"</span> : null,
   <span class="s2">"total"</span> : 1840,
@@ -3914,66 +4171,488 @@ https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.co
       <span class="s2">"modifiers"</span> : <span class="o">[]</span>
   <span class="o">]</span>
 <span class="o">}]</span>
-</code></pre>
-<p><code>POST orders</code></p>
+</code></pre><h3 id='get-an-order'>Get an order</h3>
+<p><code>GET orders</code></p>
+
+<p>Returns the orders of the current customer.</p>
+<pre class="highlight sh tab-shell"><code>
+<span class="o">{</span>
+  <span class="s2">"data"</span> : 
+    <span class="o">[</span>
+          <span class="o">{</span>
+              <span class="s2">"id"</span>: 7041,
+              <span class="s2">"store_id"</span>: 18,
+              <span class="s2">"customer_id"</span>: 1,
+              <span class="s2">"delivery_id"</span>: 744,
+              <span class="s2">"subtotal"</span>: 210,
+              <span class="s2">"taxAmount"</span>: 20,
+              <span class="s2">"total"</span>: 230,
+              <span class="s2">"pointsEarned"</span>: 2,
+              <span class="s2">"closed_at"</span>: <span class="s2">"2022-02-24 10:00:02"</span>,
+              <span class="s2">"created_at"</span>: <span class="s2">"2022-02-23 08:54:56"</span>,
+              <span class="s2">"status"</span>: 5,
+              <span class="s2">"pos_id"</span>: 819,
+              <span class="s2">"discountAmount"</span>: 0,
+              <span class="s2">"contact"</span>: null,
+              <span class="s2">"paid"</span>: 0,
+              <span class="s2">"delivery"</span>:
+              <span class="o">}</span> <span class="o">{</span>
+                  <span class="s2">"id"</span>: 744,
+                  <span class="s2">"address"</span>: <span class="s2">"Carrer del Bruc, 23"</span>,
+                  <span class="s2">"city"</span>: <span class="s2">"Manresa"</span>,
+                  <span class="s2">"phone"</span>: <span class="s2">"678984278"</span>,
+                  <span class="s2">"time"</span>: <span class="s2">"2022-02-23 09:30:00"</span>,
+                  <span class="s2">"geolocation"</span>: <span class="s2">"41.722687,1.817833"</span>,
+                  <span class="s2">"created_at"</span>: <span class="s2">"2022-02-23 08:54:56"</span>,
+                  <span class="s2">"tableId"</span>: null,
+                  <span class="s2">"job_id"</span>: null,
+                  <span class="s2">"notes"</span>: null,
+                  <span class="s2">"delivery_zone_id"</span>: null
+              <span class="o">}</span>,
+              <span class="s2">"contents"</span>: <span class="o">[</span>
+                  <span class="o">{</span>
+                      <span class="s2">"id"</span>: 2318,
+                      <span class="s2">"order_id"</span>: 7041,
+                      <span class="s2">"product_id"</span>: 913,
+                      <span class="s2">"modifiers"</span>: null,
+                      <span class="s2">"pointsSpent"</span>: null,
+                      <span class="s2">"price"</span>: 230,
+                      <span class="s2">"subtotal"</span>: 210,
+                      <span class="s2">"taxAmount"</span>: 20,
+                      <span class="s2">"tax"</span>: 1000,
+                      <span class="s2">"quantity"</span>: 1,
+                      <span class="s2">"total"</span>: 230,
+                      <span class="s2">"created_at"</span>: <span class="s2">"2022-02-23 08:54:56"</span>,
+                      <span class="s2">"notes"</span>: null,
+                      <span class="s2">"menu_contents"</span>: <span class="o">[]</span>
+                  <span class="o">}</span>
+              <span class="o">]</span>
+          <span class="o">}</span>,
+    <span class="o">]</span>
+  <span class="o">}</span>
+</code></pre><h3 id='update-an-order'>Update an Order</h3>
+<p><code>PUT orders/{id}</code>
+Updates the order with the specified id.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">[]</span>
+<span class="o">}</span>
+
+</code></pre><h3 id='get-last-order'>Get Last Order</h3>
+<p><code>GET lastOrder</code></p>
+
+<p>Returns the last order for the customer.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"lastContents"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 16,
+        <span class="s2">"quantity"</span> : 1,
+        <span class="s2">"tax"</span> : 1000,
+        <span class="s2">"total"</span> : 1240,
+        <span class="s2">"order_id"</span> : 102,
+        <span class="s2">"subtotal"</span> : 1128,
+        <span class="s2">"price"</span> : 1240,
+        <span class="s2">"product_id"</span> : 1,
+        <span class="s2">"pointsSpent"</span> : null,
+        <span class="s2">"customer_id"</span> : 1,
+        <span class="s2">"taxAmount"</span> : 112
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"id"</span> : 11,
+        <span class="s2">"quantity"</span> : 1,
+        <span class="s2">"tax"</span> : 1000,
+        <span class="s2">"total"</span> : 1240,
+        <span class="s2">"order_id"</span> : 98,
+        <span class="s2">"subtotal"</span> : 1128,
+        <span class="s2">"price"</span> : 1240,
+        <span class="s2">"product_id"</span> : 1,
+        <span class="s2">"pointsSpent"</span> : null,
+        <span class="s2">"customer_id"</span> : 1,
+        <span class="s2">"taxAmount"</span> : 112
+      <span class="o">}</span>,
+    <span class="o">]</span>,
+    <span class="s2">"lastOrder"</span> : <span class="o">{</span>
+      <span class="s2">"closed_at"</span> : <span class="s2">"2017-01-09 11:33:27"</span>,
+      <span class="s2">"id"</span> : 102,
+      <span class="s2">"subtotal"</span> : 1128,
+      <span class="s2">"created_at"</span> : <span class="s2">"2017-01-05 11:47:15"</span>,
+      <span class="s2">"contents"</span> : <span class="o">[</span>
+        <span class="o">{</span>
+          <span class="s2">"id"</span> : 16,
+          <span class="s2">"quantity"</span> : 1,
+          <span class="s2">"tax"</span> : 1000,
+          <span class="s2">"created_at"</span> : <span class="s2">"2017-01-05 11:47:15"</span>,
+          <span class="s2">"total"</span> : 1240,
+          <span class="s2">"order_id"</span> : 102,
+          <span class="s2">"subtotal"</span> : 1128,
+          <span class="s2">"price"</span> : 1240,
+          <span class="s2">"product_id"</span> : 1,
+          <span class="s2">"pointsSpent"</span> : null,
+          <span class="s2">"taxAmount"</span> : 112
+        <span class="o">}</span>
+      <span class="o">]</span>,
+      <span class="s2">"pointsEarned"</span> : 124,
+      <span class="s2">"total"</span> : 1240,
+      <span class="s2">"customer_id"</span> : 1,
+      <span class="s2">"taxAmount"</span> : 112
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='points'>Points</h2>
+<p><code>GET points</code>
+Returns points for the current customer.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"points"</span>: 58013
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='credit-cards'>Credit Cards</h2>
+<p><code>POST creditCards</code></p>
+
+<p>Creates a credit card with the stripe card token.</p>
 
 <p>Parameters:</p>
 
 <table><thead>
 <tr>
-<th>Field</th>
-<th>Type</th>
+<th>Body Field</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>order</td>
-<td><code>json</code></td>
-<td>the order json following the format below</td>
-</tr>
-<tr>
-<td>contents</td>
-<td><code>array json</code></td>
-<td>the array of contents json following the format below</td>
-</tr>
-<tr>
-<td>card</td>
-<td><code>string</code></td>
-<td>the customer gift card to use to do the charge</td>
-</tr>
-<tr>
-<td>store</td>
-<td><code>int</code></td>
-<td>(optional) the store id to to create the order (it can be ignored if there is only one store)</td>
-</tr>
-<tr>
-<td>delivery</td>
-<td><code>json</code></td>
-<td>(optional) The delivery information it should contain <code>address</code> <code>city</code> <code>phone</code> <code>geolocation</code> and <code>time</code> fields</td>
+<td>token</td>
+<td>The stripe card token</td>
 </tr>
 </tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"address_line1_check"</span> : null,
+    <span class="s2">"dynamic_last4"</span> : null,
+    <span class="s2">"last4"</span> : <span class="s2">"4242"</span>,
+    <span class="s2">"address_line2"</span> : null,
+    <span class="s2">"metadata"</span> : <span class="o">[</span>
 
-<p>Contents can have optional parameters such as <code>modifiers</code> and <code>menuContents</code></p>
+    <span class="o">]</span>,
+    <span class="s2">"address_city"</span> : null,
+    <span class="s2">"address_zip_check"</span> : null,
+    <span class="s2">"address_zip"</span> : null,
+    <span class="s2">"country"</span> : <span class="s2">"US"</span>,
+    <span class="s2">"object"</span> : <span class="s2">"card"</span>,
+    <span class="s2">"address_line1"</span> : null,
+    <span class="s2">"address_state"</span> : null,
+    <span class="s2">"brand"</span> : <span class="s2">"Visa"</span>,
+    <span class="s2">"cvc_check"</span> : <span class="s2">"pass"</span>,
+    <span class="s2">"exp_month"</span> : 4,
+    <span class="s2">"name"</span> : null,
+    <span class="s2">"fingerprint"</span> : <span class="s2">"R92NDa6Z6u42Srgc"</span>,
+    <span class="s2">"funding"</span> : <span class="s2">"credit"</span>,
+    <span class="s2">"id"</span> : <span class="s2">"card_19vovPJVS7gfpCD2mGY750mu"</span>,
+    <span class="s2">"tokenization_method"</span> : null,
+    <span class="s2">"customer"</span> : <span class="s2">"cus_AGLc0pme4PvRyf"</span>,
+    <span class="s2">"address_country"</span> : null,
+    <span class="s2">"exp_year"</span> : 2024
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='get-credit-cards'>Get Credit Cards</h3>
+<p><code>GET creditCards</code></p>
+
+<p>Returns credit card with the stripe card token.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>The stripe card token</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"address_line1_check"</span> : null,
+    <span class="s2">"dynamic_last4"</span> : null,
+    <span class="s2">"last4"</span> : <span class="s2">"4242"</span>,
+    <span class="s2">"address_line2"</span> : null,
+    <span class="s2">"metadata"</span> : <span class="o">[</span>
+
+    <span class="o">]</span>,
+    <span class="s2">"address_city"</span> : null,
+    <span class="s2">"address_zip_check"</span> : null,
+    <span class="s2">"address_zip"</span> : null,
+    <span class="s2">"country"</span> : <span class="s2">"US"</span>,
+    <span class="s2">"object"</span> : <span class="s2">"card"</span>,
+    <span class="s2">"address_line1"</span> : null,
+    <span class="s2">"address_state"</span> : null,
+    <span class="s2">"brand"</span> : <span class="s2">"Visa"</span>,
+    <span class="s2">"cvc_check"</span> : <span class="s2">"pass"</span>,
+    <span class="s2">"exp_month"</span> : 4,
+    <span class="s2">"name"</span> : null,
+    <span class="s2">"fingerprint"</span> : <span class="s2">"R92NDa6Z6u42Srgc"</span>,
+    <span class="s2">"funding"</span> : <span class="s2">"credit"</span>,
+    <span class="s2">"id"</span> : <span class="s2">"card_19vovPJVS7gfpCD2mGY750mu"</span>,
+    <span class="s2">"tokenization_method"</span> : null,
+    <span class="s2">"customer"</span> : <span class="s2">"cus_AGLc0pme4PvRyf"</span>,
+    <span class="s2">"address_country"</span> : null,
+    <span class="s2">"exp_year"</span> : 2024
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='tableavailable'>TableAvailable</h2>
+<p><code>GET table/{id}/available</code></p>
+
+<p>Returns if the table with the specified id is available.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"available"</span>: <span class="nb">true</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre><h2 id='storecard'>StoreCard</h2>
+<p><code>Post cards</code></p>
+
+<p>CCreates a card with the specified name.</p>
 
 <table><thead>
 <tr>
 <th>Field</th>
-<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>modifiers</td>
-<td><code>array json</code></td>
-<td>the array of modifiers</td>
-</tr>
-<tr>
-<td>menuContents</td>
-<td><code>array json</code></td>
-<td>the array of menuContents</td>
+<td>name</td>
+<td>Name to create the card</td>
 </tr>
 </tbody></table>
-<h2 id='other-routes'>Other routes</h2>
+
+<p>Returns the created card.
+```sh
+{
+    &quot;data&quot;: {
+        &quot;uuid&quot;: &quot;WJZ9KQXSTQCV&quot;,
+        &quot;name&quot;: &quot;cardName&quot;,
+        &quot;amount&quot;: 0,
+        &quot;photo&quot;: null,
+        &quot;updated_at&quot;: &quot;2022-05-23 10:02:15&quot;,
+        &quot;created_at&quot;: &quot;2022-05-23 10:02:15&quot;,
+        &quot;id&quot;: 2,
+        &quot;customer_id&quot;: 1
+    }
+}</p>
+<pre class="highlight plaintext"><code>
+## ProductStore
+
+`GET productStore`
+
+Returns productStore for current customer.
+
+
+```sh
+{
+  "data" : {
+    "new" : [
+      {
+        "id": 3,
+        "product_id": 2152,
+        "store_id": 7,
+        "active": 1,
+        "price": 70,
+        "deleted_at": null,
+        "created_at": "2021-01-20T14:50:41.000000Z",
+        "updated_at": "2022-01-03T09:12:39.000000Z",
+        "config": null
+      },
+      {
+        "id": 5,
+        "product_id": 914,
+        "store_id": 5,
+        "active": 0,
+        "price": 110,
+        "deleted_at": null,
+        "created_at": "2021-02-10T10:43:57.000000Z",
+        "updated_at": "2021-10-29T09:26:10.000000Z",
+        "config": null
+      }
+    ]
+  }
+}
+
+</code></pre><h2 id='sellingformatstore'>SellingFormatStore</h2>
+<p><code>GET sellingFormatStore</code></p>
+
+<p>Returns sellingFormatStore for current customer.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"selling_format_id"</span>: 182,
+        <span class="s2">"store_id"</span>: 5,
+        <span class="s2">"active"</span>: 1,
+        <span class="s2">"price"</span>: 200,
+        <span class="s2">"deleted_at"</span>: null,
+        <span class="s2">"created_at"</span>: <span class="s2">"2021-04-09T08:30:47.000000Z"</span>,
+        <span class="s2">"updated_at"</span>: <span class="s2">"2021-04-09T08:30:49.000000Z"</span>
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"id"</span>: 3,
+        <span class="s2">"selling_format_id"</span>: 330,
+        <span class="s2">"store_id"</span>: 5,
+        <span class="s2">"active"</span>: 1,
+        <span class="s2">"price"</span>: 1000,
+        <span class="s2">"deleted_at"</span>: null,
+        <span class="s2">"created_at"</span>: <span class="s2">"2021-04-12T15:41:53.000000Z"</span>,
+        <span class="s2">"updated_at"</span>: <span class="s2">"2021-10-29T09:26:15.000000Z"</span>
+      <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre><h2 id='pullers'>Pullers</h2>
+<p><code>GET pullers</code></p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"new"</span>: <span class="o">[]</span>,
+        <span class="s2">"updated"</span>: <span class="o">[]</span>,
+        <span class="s2">"deleted"</span>: <span class="o">[]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre><h2 id='pointshifts'>PointShifts</h2>
+<p><code>GET pointsShifts</code></p>
+
+<p>Returns PointShifts.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"new"</span>: <span class="o">[]</span>,
+        <span class="s2">"updated"</span>: <span class="o">[]</span>,
+        <span class="s2">"deleted"</span>: <span class="o">[]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre><h2 id='kiosk'>Kiosk</h2>
+<p><code>GET kiosk</code></p>
+
+<p>Returns kiosk Data.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"new"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">"id"</span>: 1,
+                <span class="s2">"pin"</span>: null,
+                <span class="s2">"payment_modes"</span>: <span class="o">[</span>
+                    <span class="s2">"1"</span>,
+                    <span class="s2">"5"</span>
+                <span class="o">]</span>,
+                <span class="s2">"languages"</span>: null,
+                <span class="s2">"payment_gateway_type"</span>: 3,
+                <span class="s2">"payment_gateway_config"</span>: <span class="o">{</span>
+                    <span class="s2">"adyen"</span>: <span class="o">{</span>
+                        <span class="s2">"poiid"</span>: <span class="s2">"S1F2-000158213300423"</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>,
+                <span class="s2">"theme"</span>: null,
+                <span class="s2">"created_at"</span>: <span class="s2">"2021-11-15 11:42:35"</span>,
+                <span class="s2">"name"</span>: <span class="s2">"Kiosk"</span>,
+                <span class="s2">"printer_ip"</span>: <span class="s2">"10.0.1.236"</span>,
+                <span class="s2">"store_id"</span>: 7,
+                <span class="s2">"printer_driver"</span>: 1,
+                <span class="s2">"config"</span>: <span class="s2">"{</span><span class="se">\"</span><span class="s2">stop_service_on_print_error</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0</span><span class="se">\"</span><span class="s2">}"</span>
+            <span class="o">}</span>,
+            <span class="o">{</span>
+                <span class="s2">"id"</span>: 2,
+                <span class="s2">"pin"</span>: null,
+                <span class="s2">"payment_modes"</span>: <span class="o">[</span>
+                    <span class="s2">"1"</span>,
+                    <span class="s2">"5"</span>
+                <span class="o">]</span>,
+                <span class="s2">"languages"</span>: null,
+                <span class="s2">"payment_gateway_type"</span>: 3,
+                <span class="s2">"payment_gateway_config"</span>: <span class="o">{</span>
+                    <span class="s2">"adyen"</span>: <span class="o">{</span>
+                        <span class="s2">"poiid"</span>: <span class="s2">"S1F2-000158213300423"</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>,
+                <span class="s2">"theme"</span>: null,
+                <span class="s2">"created_at"</span>: <span class="s2">"2022-03-04 12:20:47"</span>,
+                <span class="s2">"name"</span>: <span class="s2">"KIOSK OSKAR"</span>,
+                <span class="s2">"printer_ip"</span>: <span class="s2">"10.0.1.236"</span>,
+                <span class="s2">"store_id"</span>: 11,
+                <span class="s2">"printer_driver"</span>: 2,
+                <span class="s2">"config"</span>: <span class="s2">"{</span><span class="se">\"</span><span class="s2">stop_service_on_print_error</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0</span><span class="se">\"</span><span class="s2">}"</span>
+            <span class="o">}</span>
+        <span class="o">]</span>,
+        <span class="s2">"updated"</span>: <span class="o">[]</span>,
+        <span class="s2">"deleted"</span>: <span class="o">[]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre><h2 id='theme'>Theme</h2>
+<p><code>GET theme</code></p>
+
+<p>Returns app theme.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"theme"</span>: <span class="o">{</span>
+            <span class="s2">"account"</span>: <span class="s2">"revosupport"</span>,
+            <span class="s2">"appName"</span>: <span class="s2">"Awesome App"</span>,
+            <span class="s2">"accent"</span>: <span class="s2">"#d7771d"</span>,
+            <span class="s2">"accentInverse"</span>: <span class="s2">"#fafafa"</span>,
+            <span class="s2">"onlyPayWithGiftCard"</span>: <span class="s2">"no"</span>,
+            <span class="s2">"payment_method"</span>: 1,
+            <span class="s2">"payment_method_config"</span>: <span class="o">{</span>
+                <span class="s2">"stripe"</span>: <span class="o">{</span>
+                    <span class="s2">"key"</span>: <span class="s2">"sk_test_Cme93TuYaEI8bieyEInbVoW1002vB0Oix4"</span>,
+                    <span class="s2">"publishable_key"</span>: null
+                <span class="o">}</span>,
+                <span class="s2">"sipay"</span>: <span class="o">{</span>
+                    <span class="s2">"key"</span>: null,
+                    <span class="s2">"resource"</span>: null,
+                    <span class="s2">"secret"</span>: null
+                <span class="o">}</span>
+            <span class="o">}</span>,
+            <span class="s2">"stripe_publishable_key"</span>: null,
+            <span class="s2">"delivery_agency"</span>: 1,
+            <span class="s2">"delivery_agency_config"</span>: null,
+            <span class="s2">"rewards_enabled"</span>: <span class="s2">"no"</span>,
+            <span class="s2">"online_ordering"</span>: <span class="s2">"no"</span>,
+            <span class="s2">"has_slides"</span>: <span class="s2">"no"</span>,
+            <span class="s2">"enable_barcode_scan"</span>: <span class="s2">"no"</span>,
+            <span class="s2">"only_show_near_store"</span>: <span class="s2">"no"</span>,
+            <span class="s2">"minimum_delivery_price"</span>: 100,
+            <span class="s2">"required_delivery_product_id"</span>: <span class="s2">""</span>,
+            <span class="s2">"disable_gift_card"</span>: <span class="s2">"no"</span>,
+            <span class="s2">"points_to_money"</span>: <span class="s2">"no"</span>,
+            <span class="s2">"rewards_order"</span>: <span class="s2">"asc"</span>,
+            <span class="s2">"enable_invitations"</span>: <span class="s2">"no"</span>,
+            <span class="s2">"tables"</span>: <span class="o">{</span>
+                <span class="s2">"5"</span>: <span class="o">{</span>
+                    <span class="s2">"3"</span>: <span class="s2">"12   "</span>,
+                    <span class="s2">"4"</span>: <span class="s2">"13   "</span>,
+                <span class="o">}</span>,
+                <span class="s2">"6"</span>: <span class="o">{</span>
+                    <span class="s2">"3"</span>: <span class="s2">"12   "</span>,
+                    <span class="s2">"4"</span>: <span class="s2">"13   "</span>,
+                <span class="o">}</span>,
+                <span class="s2">"7"</span>: <span class="o">{</span>
+                    <span class="s2">"3"</span>: <span class="s2">"12   "</span>,
+                    <span class="s2">"4"</span>: <span class="s2">"13   "</span>,
+                <span class="o">}</span>,
+                <span class="s2">"9"</span>: <span class="o">{</span>
+                    <span class="s2">"1"</span>: <span class="s2">"Table 1"</span>,
+                    <span class="s2">"2"</span>: <span class="s2">"Table 2"</span>,
+                <span class="o">}</span>,
+                <span class="s2">"10"</span>: <span class="o">[]</span>,
+                <span class="s2">"11"</span>: <span class="o">{</span>
+                    <span class="s2">"3"</span>: <span class="s2">"12   "</span>,
+                    <span class="s2">"4"</span>: <span class="s2">"13   "</span>,
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre><h2 id='other-routes'>Other routes</h2>
 <table><thead>
 <tr>
 <th>Verb</th>
