@@ -2,7 +2,7 @@
 
 The Intouch Api is an api made for the Intouch App, an app made for customers to earn and spend loyalty points.
 
-The Intouch Api there are two types of request.
+In the Intouch Api there are two types of request.
 The ones that use a Customer Token, and the ones that use 
 an Api token authorization. 
 
