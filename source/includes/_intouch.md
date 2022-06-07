@@ -1,6 +1,19 @@
 # InTouch
 
-#Api request
+The Intouch Api is an api made for the Intouch App, an app made for customers to earn and spend loyalty points.
+
+In the Intouch Api there are two types of request.
+The ones that use a Customer Token, and the ones that use 
+an Api token authorization. 
+
+#Api authorization type request
+Revo-InTouch comes with an easy to use `REST` API Interface.
+All requests will have the same structure.
+
+With the autorization header when calling authenticated based resources
+
+For this type of Authorization you need an Api token as seen in this example.
+
 
 ```sh
  POST/GET/PUT {username}.revointouch.works/api/v1/
@@ -18,14 +31,15 @@ curl -X GET
 ## Customers Points
 
 `GET customers/{token}/points`
-Returns the points of a customer + theœ points spent with the specified product.
+
+Returns the points of a customer + the points spent with the specified product.
 
 Body Field  | Description
 ---------|---------
 product    | **Json** id of the product in Json format.
 
+
 ```sh
-// Response
 {
     "data": {
         "leftPoints": 8000,
@@ -36,13 +50,13 @@ product    | **Json** id of the product in Json format.
 
 `POST customers/{token}/points`
 Returns the left points of a customer + the points spent for a specified product.
-œ
+
+
 Body Field  | Description
 ---------|---------
 product    | **Json** id of the product in Json format.
 
 ```sh
-// Response
 {
     "data": {
         "spentPoints": 0,
@@ -102,7 +116,11 @@ status    | **string** status to send.
     }
 }
 ```
-## Basic request
+#Customer Authorization type request
+
+For this type of Authorization you need a Customer token .
+The following requests until the end of the documentation are of this type.
+
 
 ```sh
  POST/GET/PUT {username}.revointouch.works/api/v1/customer
@@ -117,11 +135,6 @@ curl -X GET
      --header "Authorization: Bearer K2YBo90R2bil1mVKTkHh9cRlzstQYHIqYjX3oAYFT9HWluGcq9DaDh4LxVUI"
      myaccount.revointouch.works/api/v1/customer/cards 
 ```
-
-Revo-InTouch comes with an easy to use `REST` API Interface.
-All requests will have the same structure. 
-
-With the autorization header when calling authenticated based resources
 
 
 
@@ -205,7 +218,6 @@ Returns all the cards data.
 
 ```sh
 {
-  // GET cards
   "data" : [
     {
       "active" : 1,
@@ -232,7 +244,6 @@ Returns all the cards data.
 ### `GET cards/{card_uuid}`
 Gets the specified card's data by the card_uuid
 ```sh
-// GET cards/{card_uuid}
 {
   "data" : {
     "active" : 1,
@@ -257,13 +268,11 @@ payment_token   | **string** (optional) the stripe payment token. If null or not
 
 
 ```sh
-// `PUT cards/{card_uuid}` To reload a gift card
 {
   "data" : {
     "newAmount" : 1000
   }
 }
-
 ```
 
 
@@ -276,7 +285,6 @@ name  | **string** the name of the new card
 
 
 ```sh
-// `POST cards`
 {
   "data" : {
     "amount" : 0,
@@ -1060,13 +1068,15 @@ Returns if the table with the specified id is available.
 
 `Post cards`
 
-CCreates a card with the specified name.
+Creates a card with the specified name.
 
 Field    | Description
 ---------|---------------
 name    | Name to create the card
 
 Returns the created card.
+
+
 ```sh
 {
     "data": {
@@ -1080,7 +1090,6 @@ Returns the created card.
         "customer_id": 1
     }
 }
-
 ```
 
 ## ProductStore
@@ -1321,7 +1330,7 @@ Returns app theme.
 }
 
 ```
-
+{% comment %}
 ## Other routes
 
 Verb     | Route
@@ -1343,3 +1352,5 @@ POST     | creditCards
 DELETE   | creditCards/{id}
 PUT      | creditCards/{id}
 POST     | invoices/{id}/points/obtain
+
+{% endcomment %}
