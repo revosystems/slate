@@ -358,6 +358,35 @@
               </ul>
           </li>
           <li>
+            <a href="#xef-loyalty-webview" class="toc-h1 toc-link" data-title="Xef Loyalty WebView">Xef Loyalty WebView</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#introduction" class="toc-h2 toc-link" data-title="Introduction">Introduction</a>
+                  </li>
+                  <li>
+                    <a href="#get-order" class="toc-h2 toc-link" data-title="GET ORDER">GET ORDER</a>
+                  </li>
+                  <li>
+                    <a href="#add-existing-discount" class="toc-h2 toc-link" data-title="ADD EXISTING DISCOUNT">ADD EXISTING DISCOUNT</a>
+                  </li>
+                  <li>
+                    <a href="#add-percentage-discount" class="toc-h2 toc-link" data-title="ADD PERCENTAGE DISCOUNT">ADD PERCENTAGE DISCOUNT</a>
+                  </li>
+                  <li>
+                    <a href="#add-amount-discount" class="toc-h2 toc-link" data-title="ADD AMOUNT DISCOUNT">ADD AMOUNT DISCOUNT</a>
+                  </li>
+                  <li>
+                    <a href="#add-product" class="toc-h2 toc-link" data-title="ADD PRODUCT">ADD PRODUCT</a>
+                  </li>
+                  <li>
+                    <a href="#add-payment" class="toc-h2 toc-link" data-title="ADD Payment">ADD Payment</a>
+                  </li>
+                  <li>
+                    <a href="#close" class="toc-h2 toc-link" data-title="CLOSE">CLOSE</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#xef-reports" class="toc-h1 toc-link" data-title="Xef Reports">Xef Reports</a>
               <ul class="toc-list-h2">
                   <li>
@@ -505,7 +534,7 @@
             <a href="#intouch" class="toc-h1 toc-link" data-title="InTouch">InTouch</a>
           </li>
           <li>
-            <a href="#api-request" class="toc-h1 toc-link" data-title="Api request">Api request</a>
+            <a href="#api-authorization-type-request" class="toc-h1 toc-link" data-title="Api authorization type request">Api authorization type request</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#customers-points" class="toc-h2 toc-link" data-title="Customers Points">Customers Points</a>
@@ -516,9 +545,11 @@
                   <li>
                     <a href="#store-status" class="toc-h2 toc-link" data-title="Store Status">Store Status</a>
                   </li>
-                  <li>
-                    <a href="#basic-request" class="toc-h2 toc-link" data-title="Basic request">Basic request</a>
-                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#customer-authorization-type-request" class="toc-h1 toc-link" data-title="Customer Authorization type request">Customer Authorization type request</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#images" class="toc-h2 toc-link" data-title="Images">Images</a>
                   </li>
@@ -590,6 +621,9 @@
                   </li>
                   <li>
                     <a href="#storecard" class="toc-h2 toc-link" data-title="StoreCard">StoreCard</a>
+                  </li>
+                  <li>
+                    <a href="#productstore" class="toc-h2 toc-link" data-title="ProductStore">ProductStore</a>
                   </li>
                   <li>
                     <a href="#sellingformatstore" class="toc-h2 toc-link" data-title="SellingFormatStore">SellingFormatStore</a>
@@ -1789,7 +1823,148 @@ It will return the <code>open</code> orders paginated by 50.</p>
 <p>Use this method to know if a table is available or not (there is no open order on it)</p>
 
 <p><code>GET tables/{tableId}/available</code></p>
-<h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
+<h1 id='xef-loyalty-webview'>Xef Loyalty WebView</h1><h2 id='introduction'>Introduction</h2>
+<p>Since Revo Xef 4.1 we include a new integration that lets you manipulate the current order through a webview and a powerful Javascript Api.</p>
+
+<p>You can enable it by adding the integration called <code>RevoLoyalty WebView</code> and providing your <code>URL</code>.
+When this integration is enabled in the edit order screen, there will appear a new action that will open your site and inject the <code>RevoLoyaltyJs</code> framework for you to be able to interact with the current order.</p>
+
+<p>This api includes a few methods described below</p>
+
+<blockquote>
+<p>To be able to interact with iOS all the function will have a callback parameter that will be called when the action is finished in the POS</p>
+</blockquote>
+<h2 id='get-order'>GET ORDER</h2>
+<p>Gets all the information of the current order</p>
+<pre class="highlight plaintext"><code>    RevoLoyalty.getOrder(function(json) {
+        var order = JSON.parse(json)
+        const total = order["total"]
+    })
+</code></pre><h2 id='add-existing-discount'>ADD EXISTING DISCOUNT</h2>
+<p>Adds a discount that exists in the database to the whole order</p>
+<pre class="highlight plaintext"><code>    RevoLoyalty.addExistingDiscount({id}, function(error) {
+
+    })
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><code>int</code></td>
+<td>The id of the discount on the database</td>
+</tr>
+</tbody></table>
+
+<p>Result: Error if the discount does not exist</p>
+<h2 id='add-percentage-discount'>ADD PERCENTAGE DISCOUNT</h2>
+<p>Adds a new discount with percentage to the whole order</p>
+<pre class="highlight plaintext"><code>RevoLoyalty.addPercentageDiscount({name}, {percentage}, function() {
+
+})
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>The name of the discount to show on the ticket</td>
+</tr>
+<tr>
+<td>percentage</td>
+<td><code>number</code></td>
+<td>The percentage for the discount</td>
+</tr>
+</tbody></table>
+<h2 id='add-amount-discount'>ADD AMOUNT DISCOUNT</h2>
+<p>Adds a new discount with amount to the whole order</p>
+<pre class="highlight plaintext"><code>RevoLoyalty.addAmountDiscount({name}, {amount}, function() {
+
+})
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>The name of the discount to show on the ticket</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><code>number</code></td>
+<td>The amount for the discount</td>
+</tr>
+</tbody></table>
+<h2 id='add-product'>ADD PRODUCT</h2>
+<p>Adds a new content to the order, the product must me of type <code>standard</code> as no popups can be shown</p>
+<pre class="highlight plaintext"><code>RevoLoyalty.addProduct({id}, {price}, function(error) {
+
+})
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><code>int</code></td>
+<td>The id of the product</td>
+</tr>
+<tr>
+<td>price</td>
+<td><code>number</code></td>
+<td><em>optional</em> The price of the product, send null to use the database price</td>
+</tr>
+</tbody></table>
+
+<p>Error when the product does not exists or is not standard</p>
+<h2 id='add-payment'>ADD Payment</h2>
+<p>Adds a payment to the order, it will create an invoice there isn&#39;t one yet</p>
+<pre class="highlight plaintext"><code>RevoLoyalty.addPayment({id}, {amount}, function(error) {
+
+})
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td><code>int</code></td>
+<td>The id of the payment method</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><code>number</code></td>
+<td>The amount paid</td>
+</tr>
+</tbody></table>
+
+<p>error when the payment method does not exist</p>
+<h2 id='close'>CLOSE</h2>
+<p>Closes the webview</p>
+<pre class="highlight plaintext"><code>    RevoLoyalty.close()
+</code></pre><h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
      --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
      --header <span class="s1">'client-token: {client-token}'</span> <span class="se">\</span>
 https://revoxef.works/api/external/v3
@@ -3377,14 +3552,28 @@ The page and limit must be set in request.</p>
 </span></code></pre>
 <p>Use this function to create a new Order to Revo,
 You can send payments where <code>payment_method_id</code> is <code>1</code> (Card) or <code>2</code> (Cash)</p>
-<h1 id='intouch'>InTouch</h1><h1 id='api-request'>Api request</h1><pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/
+<h1 id='intouch'>InTouch</h1>
+<p>The Intouch Api is an api made for the Intouch App, an app made for customers to earn and spend loyalty points.</p>
+
+<p>In the Intouch Api there are two types of request.
+The ones that use a Customer Token, and the ones that use 
+an Api token authorization. </p>
+<h1 id='api-authorization-type-request'>Api authorization type request</h1>
+<p>Revo-InTouch comes with an easy to use <code>REST</code> API Interface.
+All requests will have the same structure.</p>
+
+<p>With the autorization header when calling authenticated based resources</p>
+
+<p>For this type of Authorization you need an Api token as seen in this example.</p>
+<pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/
 </code></pre><pre class="highlight sh tab-shell"><code>Authorization: Bearer <span class="o">{</span>Api token<span class="o">}</span>
 </code></pre><pre class="highlight sh tab-shell"><code>curl -X GET 
      --header <span class="s2">"Authorization: Bearer 8J9lMscIvM88IZQjS3JA51ErsgcWO8KCGXsi7rJC0l1SrBuew5VCV94nLafQ"</span>
      myaccount.revointouch.works/api/v1/stores
 </code></pre><h2 id='customers-points'>Customers Points</h2>
-<p><code>GET customers/{token}/points</code>
-Returns the points of a customer + theœ points spent with the specified product.</p>
+<p><code>GET customers/{token}/points</code></p>
+
+<p>Returns the points of a customer + the points spent with the specified product.</p>
 
 <table><thead>
 <tr>
@@ -3397,8 +3586,7 @@ Returns the points of a customer + theœ points spent with the specified product
 <td><strong>Json</strong> id of the product in Json format.</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>// Response
-<span class="o">{</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"leftPoints"</span>: 8000,
         <span class="s2">"productPoints"</span>: <span class="o">[]</span>
@@ -3406,13 +3594,20 @@ Returns the points of a customer + theœ points spent with the specified product
 <span class="o">}</span>
 </code></pre>
 <p><code>POST customers/{token}/points</code>
-Returns the left points of a customer + the points spent for a specified product.
-œ
-Body Field  | Description
----------|---------
-product    | <strong>Json</strong> id of the product in Json format.</p>
-<pre class="highlight sh tab-shell"><code>// Response
-<span class="o">{</span>
+Returns the left points of a customer + the points spent for a specified product.</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product</td>
+<td><strong>Json</strong> id of the product in Json format.</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"spentPoints"</span>: 0,
         <span class="s2">"leftPoints"</span>: 8000
@@ -3475,17 +3670,15 @@ Returns previous and current updated status after call.</p>
         <span class="s2">"currentStatus"</span>: <span class="s2">"paused"</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='basic-request'>Basic request</h2><pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/customer
+</code></pre><h1 id='customer-authorization-type-request'>Customer Authorization type request</h1>
+<p>For this type of Authorization you need a Customer token .
+The following requests until the end of the documentation are of this type.</p>
+<pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/customer
 </code></pre><pre class="highlight sh tab-shell"><code>Authorization: Bearer <span class="o">{</span>token<span class="o">}</span>
 </code></pre><pre class="highlight sh tab-shell"><code>curl -X GET 
      --header <span class="s2">"Authorization: Bearer K2YBo90R2bil1mVKTkHh9cRlzstQYHIqYjX3oAYFT9HWluGcq9DaDh4LxVUI"</span>
      myaccount.revointouch.works/api/v1/customer/cards 
-</code></pre>
-<p>Revo-InTouch comes with an easy to use <code>REST</code> API Interface.
-All requests will have the same structure. </p>
-
-<p>With the autorization header when calling authenticated based resources</p>
-<h2 id='images'>Images</h2>
+</code></pre><h2 id='images'>Images</h2>
 <p><code>
 https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{xef-account}/images/{url}
 </code></p>
@@ -3601,7 +3794,6 @@ Uploads specified profile photo to the current user.</p>
 <p><code>GET cards</code>
 Returns all the cards data.</p>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
-  // GET cards
   <span class="s2">"data"</span> : <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"active"</span> : 1,
@@ -3626,7 +3818,6 @@ Returns all the cards data.</p>
 </code></pre><h3 id='get-cards-card_uuid'><code>GET cards/{card_uuid}</code></h3>
 <p>Gets the specified card&#39;s data by the card_uuid
 <code>sh
-// GET cards/{card_uuid}
 {
   &quot;data&quot; : {
     &quot;active&quot; : 1,
@@ -3657,13 +3848,11 @@ Returns all the cards data.</p>
 <td><strong>string</strong> (optional) the stripe payment token. If null or not present it will use customer&#39;s default credit card</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>// <span class="sb">`</span>PUT cards/<span class="o">{</span>card_uuid<span class="o">}</span><span class="sb">`</span> To reload a gift card
-<span class="o">{</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"newAmount"</span> : 1000
   <span class="o">}</span>
 <span class="o">}</span>
-
 </code></pre><h3 id='post-cards'><code>POST cards</code></h3>
 <p>Creates a new gift card with the desired name.</p>
 
@@ -3678,8 +3867,7 @@ Returns all the cards data.</p>
 <td><strong>string</strong> the name of the new card</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>// <span class="sb">`</span>POST cards<span class="sb">`</span>
-<span class="o">{</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"amount"</span> : 0,
     <span class="s2">"id"</span> : 9,
@@ -4411,7 +4599,7 @@ Returns points for the current customer.</p>
 </code></pre><h2 id='storecard'>StoreCard</h2>
 <p><code>Post cards</code></p>
 
-<p>CCreates a card with the specified name.</p>
+<p>Creates a card with the specified name.</p>
 
 <table><thead>
 <tr>
@@ -4425,57 +4613,51 @@ Returns points for the current customer.</p>
 </tr>
 </tbody></table>
 
-<p>Returns the created card.
-```sh
-{
-    &quot;data&quot;: {
-        &quot;uuid&quot;: &quot;WJZ9KQXSTQCV&quot;,
-        &quot;name&quot;: &quot;cardName&quot;,
-        &quot;amount&quot;: 0,
-        &quot;photo&quot;: null,
-        &quot;updated_at&quot;: &quot;2022-05-23 10:02:15&quot;,
-        &quot;created_at&quot;: &quot;2022-05-23 10:02:15&quot;,
-        &quot;id&quot;: 2,
-        &quot;customer_id&quot;: 1
-    }
-}</p>
-<pre class="highlight plaintext"><code>
-## ProductStore
+<p>Returns the created card.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"uuid"</span>: <span class="s2">"WJZ9KQXSTQCV"</span>,
+        <span class="s2">"name"</span>: <span class="s2">"cardName"</span>,
+        <span class="s2">"amount"</span>: 0,
+        <span class="s2">"photo"</span>: null,
+        <span class="s2">"updated_at"</span>: <span class="s2">"2022-05-23 10:02:15"</span>,
+        <span class="s2">"created_at"</span>: <span class="s2">"2022-05-23 10:02:15"</span>,
+        <span class="s2">"id"</span>: 2,
+        <span class="s2">"customer_id"</span>: 1
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='productstore'>ProductStore</h2>
+<p><code>GET productStore</code></p>
 
-`GET productStore`
-
-Returns productStore for current customer.
-
-
-```sh
-{
-  "data" : {
-    "new" : [
-      {
-        "id": 3,
-        "product_id": 2152,
-        "store_id": 7,
-        "active": 1,
-        "price": 70,
-        "deleted_at": null,
-        "created_at": "2021-01-20T14:50:41.000000Z",
-        "updated_at": "2022-01-03T09:12:39.000000Z",
-        "config": null
-      },
-      {
-        "id": 5,
-        "product_id": 914,
-        "store_id": 5,
-        "active": 0,
-        "price": 110,
-        "deleted_at": null,
-        "created_at": "2021-02-10T10:43:57.000000Z",
-        "updated_at": "2021-10-29T09:26:10.000000Z",
-        "config": null
-      }
-    ]
-  }
-}
+<p>Returns productStore for current customer.</p>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+  <span class="s2">"data"</span> : <span class="o">{</span>
+    <span class="s2">"new"</span> : <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"id"</span>: 3,
+        <span class="s2">"product_id"</span>: 2152,
+        <span class="s2">"store_id"</span>: 7,
+        <span class="s2">"active"</span>: 1,
+        <span class="s2">"price"</span>: 70,
+        <span class="s2">"deleted_at"</span>: null,
+        <span class="s2">"created_at"</span>: <span class="s2">"2021-01-20T14:50:41.000000Z"</span>,
+        <span class="s2">"updated_at"</span>: <span class="s2">"2022-01-03T09:12:39.000000Z"</span>,
+        <span class="s2">"config"</span>: null
+      <span class="o">}</span>,
+      <span class="o">{</span>
+        <span class="s2">"id"</span>: 5,
+        <span class="s2">"product_id"</span>: 914,
+        <span class="s2">"store_id"</span>: 5,
+        <span class="s2">"active"</span>: 0,
+        <span class="s2">"price"</span>: 110,
+        <span class="s2">"deleted_at"</span>: null,
+        <span class="s2">"created_at"</span>: <span class="s2">"2021-02-10T10:43:57.000000Z"</span>,
+        <span class="s2">"updated_at"</span>: <span class="s2">"2021-10-29T09:26:10.000000Z"</span>,
+        <span class="s2">"config"</span>: null
+      <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>
+<span class="o">}</span>
 
 </code></pre><h2 id='sellingformatstore'>SellingFormatStore</h2>
 <p><code>GET sellingFormatStore</code></p>
@@ -4652,7 +4834,9 @@ Returns productStore for current customer.
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre><h2 id='other-routes'>Other routes</h2>
+</code></pre>
+<p>{% comment %}</p>
+<h2 id='other-routes'>Other routes</h2>
 <table><thead>
 <tr>
 <th>Verb</th>
@@ -4728,6 +4912,8 @@ Returns productStore for current customer.
 <td>invoices/{id}/points/obtain</td>
 </tr>
 </tbody></table>
+
+<p>{% endcomment %}</p>
 <h1 id='overview'>Overview</h1><h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code></p>
 
