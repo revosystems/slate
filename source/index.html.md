@@ -14,6 +14,7 @@ includes:
   - xef-external-catalog
   - xef-bookings
   - xef-loyalty
+  - xef-loyalty-webview
   - xef-reports
   - xef-webhooks
   
