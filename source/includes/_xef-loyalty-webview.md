@@ -63,6 +63,55 @@ Parameter         | Type         | Description
 name              | `string`     | The name of the discount to show on the ticket
 amount            | `number`     | The amount for the discount
 
+
+## ADD EXISTING CONTENT DISCOUNT
+Adds a discount that exists in the database to the whole order
+
+```
+    RevoLoyalty.addContentExistingDiscount({line}, {id}, function(error) {
+
+    })
+```
+
+Parameter         | Type         | Description 
+------------------|--------------|-------------------------
+line              | `int`        | The index of the array of the content received in the getOrder to apply the discount
+id                | `int`        | The id of the discount on the database
+
+Result: Error if the discount does not exist
+
+## ADD CONTENT PERCENTAGE DISCOUNT
+Adds a new discount with percentage to the whole order
+
+```
+RevoLoyalty.addContentPercentageDiscount({line}, {name}, {percentage}, {withoutExtras}, function() {
+    
+})
+```
+
+Parameter         | Type         | Description 
+------------------|--------------|-------------------------
+line              | `int`        | The index of the array of the content received in the getOrder to apply the discount
+name              | `string`     | The name of the discount to show on the ticket
+percentage        | `number`     | The percentage for the discount
+withoutExtras     | `bool`       | If the discount should be applied to the extras or not (ex: modifiers)
+
+## ADD CONTENT AMOUNT DISCOUNT
+Adds a new discount with amount to the whole order
+
+```
+RevoLoyalty.addContentAmountDiscount({line}, {name}, {amount}, {withoutExtras}, function() {
+
+})
+```
+
+Parameter         | Type         | Description 
+------------------|--------------|-------------------------
+line              | `int`        | The index of the array of the content received in the getOrder to apply the discount
+name              | `string`     | The name of the discount to show on the ticket
+amount            | `number`     | The amount for the discount
+withoutExtras     | `bool`       | If the discount should be applied to the extras or not (ex: modifiers)
+
 ## ADD PRODUCT
 Adds a new content to the order, the product must me of type `standard` as no popups can be shown
 
