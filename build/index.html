@@ -376,6 +376,15 @@
                     <a href="#add-amount-discount" class="toc-h2 toc-link" data-title="ADD AMOUNT DISCOUNT">ADD AMOUNT DISCOUNT</a>
                   </li>
                   <li>
+                    <a href="#add-existing-content-discount" class="toc-h2 toc-link" data-title="ADD EXISTING CONTENT DISCOUNT">ADD EXISTING CONTENT DISCOUNT</a>
+                  </li>
+                  <li>
+                    <a href="#add-content-percentage-discount" class="toc-h2 toc-link" data-title="ADD CONTENT PERCENTAGE DISCOUNT">ADD CONTENT PERCENTAGE DISCOUNT</a>
+                  </li>
+                  <li>
+                    <a href="#add-content-amount-discount" class="toc-h2 toc-link" data-title="ADD CONTENT AMOUNT DISCOUNT">ADD CONTENT AMOUNT DISCOUNT</a>
+                  </li>
+                  <li>
                     <a href="#add-product" class="toc-h2 toc-link" data-title="ADD PRODUCT">ADD PRODUCT</a>
                   </li>
                   <li>
@@ -1907,6 +1916,100 @@ When this integration is enabled in the edit order screen, there will appear a n
 <td>amount</td>
 <td><code>number</code></td>
 <td>The amount for the discount</td>
+</tr>
+</tbody></table>
+<h2 id='add-existing-content-discount'>ADD EXISTING CONTENT DISCOUNT</h2>
+<p>Adds a discount that exists in the database to the whole order</p>
+<pre class="highlight plaintext"><code>    RevoLoyalty.addContentExistingDiscount({line}, {id}, function(error) {
+
+    })
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>line</td>
+<td><code>int</code></td>
+<td>The index of the array of the content received in the getOrder to apply the discount</td>
+</tr>
+<tr>
+<td>id</td>
+<td><code>int</code></td>
+<td>The id of the discount on the database</td>
+</tr>
+</tbody></table>
+
+<p>Result: Error if the discount does not exist</p>
+<h2 id='add-content-percentage-discount'>ADD CONTENT PERCENTAGE DISCOUNT</h2>
+<p>Adds a new discount with percentage to the whole order</p>
+<pre class="highlight plaintext"><code>RevoLoyalty.addContentPercentageDiscount({line}, {name}, {percentage}, {withoutExtras}, function() {
+
+})
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>line</td>
+<td><code>int</code></td>
+<td>The index of the array of the content received in the getOrder to apply the discount</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>The name of the discount to show on the ticket</td>
+</tr>
+<tr>
+<td>percentage</td>
+<td><code>number</code></td>
+<td>The percentage for the discount</td>
+</tr>
+<tr>
+<td>withoutExtras</td>
+<td><code>bool</code></td>
+<td>If the discount should be applied to the extras or not (ex: modifiers)</td>
+</tr>
+</tbody></table>
+<h2 id='add-content-amount-discount'>ADD CONTENT AMOUNT DISCOUNT</h2>
+<p>Adds a new discount with amount to the whole order</p>
+<pre class="highlight plaintext"><code>RevoLoyalty.addContentAmountDiscount({line}, {name}, {amount}, {withoutExtras}, function() {
+
+})
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>line</td>
+<td><code>int</code></td>
+<td>The index of the array of the content received in the getOrder to apply the discount</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>string</code></td>
+<td>The name of the discount to show on the ticket</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><code>number</code></td>
+<td>The amount for the discount</td>
+</tr>
+<tr>
+<td>withoutExtras</td>
+<td><code>bool</code></td>
+<td>If the discount should be applied to the extras or not (ex: modifiers)</td>
 </tr>
 </tbody></table>
 <h2 id='add-product'>ADD PRODUCT</h2>
