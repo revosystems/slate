@@ -367,6 +367,12 @@
                     <a href="#get-order" class="toc-h2 toc-link" data-title="GET ORDER">GET ORDER</a>
                   </li>
                   <li>
+                    <a href="#get-account" class="toc-h2 toc-link" data-title="GET ACCOUNT">GET ACCOUNT</a>
+                  </li>
+                  <li>
+                    <a href="#get-items" class="toc-h2 toc-link" data-title="GET ITEMS">GET ITEMS</a>
+                  </li>
+                  <li>
                     <a href="#add-existing-discount" class="toc-h2 toc-link" data-title="ADD EXISTING DISCOUNT">ADD EXISTING DISCOUNT</a>
                   </li>
                   <li>
@@ -1848,6 +1854,20 @@ When this integration is enabled in the edit order screen, there will appear a n
 <pre class="highlight plaintext"><code>    RevoLoyalty.getOrder(function(json) {
         var order = JSON.parse(json)
         const total = order["total"]
+    })
+</code></pre><h2 id='get-account'>GET ACCOUNT</h2>
+<p>Gets the account id and the account name</p>
+<pre class="highlight plaintext"><code>    RevoLoyalty.getAccount(function(json) {
+        var items = JSON.parse(json)
+        document.getElementById("text").innerHTML = json
+        document.getElementById("orderTotal").innerHTML = "Account id: "+ account["id"]
+    })
+</code></pre><h2 id='get-items'>GET ITEMS</h2>
+<p>Gets all the information of the items requested by its ids, array of ints. If there is no item with a requested id, it won&#39;t be in the response</p>
+<pre class="highlight plaintext"><code>    RevoLoyalty.getItems([itemId1, itemId2, itemId3], function(json) {
+        var items = JSON.parse(json)
+        document.getElementById("text").innerHTML = json
+        document.getElementById("orderTotal").innerHTML = "Account id: "+ account["id"]
     })
 </code></pre><h2 id='add-existing-discount'>ADD EXISTING DISCOUNT</h2>
 <p>Adds a discount that exists in the database to the whole order</p>
