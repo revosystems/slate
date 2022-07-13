@@ -20,6 +20,28 @@ Gets all the information of the current order
     })
 ```
 
+## GET ACCOUNT
+Gets the account id and the account name
+
+```
+    RevoLoyalty.getAccount(function(json) {
+        var items = JSON.parse(json)
+        document.getElementById("text").innerHTML = json
+        document.getElementById("orderTotal").innerHTML = "Account id: "+ account["id"]
+    })
+```
+
+## GET ITEMS
+Gets all the information of the items requested by its ids, array of ints. If there is no item with a requested id, it won't be in the response
+
+```
+    RevoLoyalty.getItems([itemId1, itemId2, itemId3], function(json) {
+        var items = JSON.parse(json)
+        document.getElementById("text").innerHTML = json
+        document.getElementById("orderTotal").innerHTML = "Account id: "+ account["id"]
+    })
+```
+
 ## ADD EXISTING DISCOUNT
 Adds a discount that exists in the database to the whole order
 
