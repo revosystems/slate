@@ -549,7 +549,7 @@
             <a href="#intouch" class="toc-h1 toc-link" data-title="InTouch">InTouch</a>
           </li>
           <li>
-            <a href="#api-authorization-type-request" class="toc-h1 toc-link" data-title="Api authorization type request">Api authorization type request</a>
+            <a href="#api-authorization-type-request" class="toc-h1 toc-link" data-title="API authorization type request">API authorization type request</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#customers-points" class="toc-h2 toc-link" data-title="Customers Points">Customers Points</a>
@@ -565,9 +565,6 @@
           <li>
             <a href="#customer-authorization-type-request" class="toc-h1 toc-link" data-title="Customer Authorization type request">Customer Authorization type request</a>
               <ul class="toc-list-h2">
-                  <li>
-                    <a href="#images" class="toc-h2 toc-link" data-title="Images">Images</a>
-                  </li>
                   <li>
                     <a href="#login" class="toc-h2 toc-link" data-title="Login">Login</a>
                   </li>
@@ -3676,23 +3673,43 @@ The page and limit must be set in request.</p>
 <p>Use this function to create a new Order to Revo,
 You can send payments where <code>payment_method_id</code> is <code>1</code> (Card) or <code>2</code> (Cash)</p>
 <h1 id='intouch'>InTouch</h1>
-<p>The Intouch Api is an api made for the Intouch App, an app made for customers to earn and spend loyalty points.</p>
+<p>The Intouch API is an API made for the Intouch App, an app made for customers to earn and spend loyalty points.</p>
 
-<p>In the Intouch Api there are two types of request.
+<p>In the Intouch API there are two types of request.
 The ones that use a Customer Token, and the ones that use 
-an Api token authorization. </p>
-<h1 id='api-authorization-type-request'>Api authorization type request</h1>
+an API token authorization. </p>
+<h1 id='api-authorization-type-request'>API authorization type request</h1>
 <p>Revo-InTouch comes with an easy to use <code>REST</code> API Interface.
 All requests will have the same structure.</p>
 
-<p>With the autorization header when calling authenticated based resources</p>
+<p>With the autorization header when calling authenticated based resources.</p>
 
-<p>For this type of Authorization you need an Api token as seen in this example.</p>
-<pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/
-</code></pre><pre class="highlight sh tab-shell"><code>Authorization: Bearer <span class="o">{</span>Api token<span class="o">}</span>
-</code></pre><pre class="highlight sh tab-shell"><code>curl -X GET 
-     --header <span class="s2">"Authorization: Bearer 8J9lMscIvM88IZQjS3JA51ErsgcWO8KCGXsi7rJC0l1SrBuew5VCV94nLafQ"</span>
-     myaccount.revointouch.works/api/v1/stores
+<p>For this type of Authorization you will need an API token as shown in this example:</p>
+
+<p>The main URL for the InTouch API is</p>
+
+<p><code>https://revointouch.works/api/v1/</code></p>
+
+<p>And you should provide the mandatory headers for the authentication</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account</td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {the-token}</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: Bearer {the-token}'</span> <span class="se">\</span>
+  --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
 </code></pre><h2 id='customers-points'>Customers Points</h2>
 <p><code>GET customers/{token}/points</code></p>
 
@@ -3786,8 +3803,7 @@ Returns previous and current updated status after call.</p>
 <td><strong>string</strong> status to send.</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>// Response
-<span class="o">{</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"previousStatus"</span>: <span class="s2">"online"</span>,
         <span class="s2">"currentStatus"</span>: <span class="s2">"paused"</span>
@@ -3796,15 +3812,31 @@ Returns previous and current updated status after call.</p>
 </code></pre><h1 id='customer-authorization-type-request'>Customer Authorization type request</h1>
 <p>For this type of Authorization you need a Customer token .
 The following requests until the end of the documentation are of this type.</p>
-<pre class="highlight sh tab-shell"><code> POST/GET/PUT <span class="o">{</span>username<span class="o">}</span>.revointouch.works/api/v1/customer
-</code></pre><pre class="highlight sh tab-shell"><code>Authorization: Bearer <span class="o">{</span>token<span class="o">}</span>
-</code></pre><pre class="highlight sh tab-shell"><code>curl -X GET 
-     --header <span class="s2">"Authorization: Bearer K2YBo90R2bil1mVKTkHh9cRlzstQYHIqYjX3oAYFT9HWluGcq9DaDh4LxVUI"</span>
-     myaccount.revointouch.works/api/v1/customer/cards 
-</code></pre><h2 id='images'>Images</h2>
-<p><code>
-https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{xef-account}/images/{url}
-</code></p>
+
+<p><code>https://revointouch.works/api/v1/</code></p>
+
+<p>And you should provide the mandatory headers for the authentication</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account</td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {the-token}</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: Bearer {the-token}'</span> <span class="se">\</span>
+  --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
+</code></pre>
+<p>In the customer authorization type request, you will need to login with a customer to get the: Bearer {the-token}.</p>
 <h2 id='login'>Login</h2>
 <p><code>POST login</code>
 Logs in with Email and specified password.</p>
@@ -3826,10 +3858,26 @@ Logs in with Email and specified password.</p>
 <td><strong>string</strong> User password</td>
 </tr>
 </tbody></table>
+
+<p>And you should provide the mandatory headers for the login</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account</td>
+<td>{account-username}</td>
+</tr>
+</tbody></table>
+
+<p>Then you will get the Bearer {the-token} in the response.</p>
 <pre class="highlight sh tab-shell"><code>// Response
 <span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
-    <span class="s2">"api_token"</span> : <span class="s2">"token"</span>,
+    <span class="s2">"api_token"</span> : <span class="s2">"the-token"</span>,
     <span class="s2">"info"</span> : <span class="o">{</span>
       <span class="s2">"points"</span> : 378,
       <span class="s2">"id"</span> : 1,
@@ -5035,8 +5083,6 @@ Returns points for the current customer.</p>
 <td>invoices/{id}/points/obtain</td>
 </tr>
 </tbody></table>
-
-<p>{% endcomment %}</p>
 <h1 id='overview'>Overview</h1><h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code></p>
 
