@@ -1,32 +1,37 @@
 # InTouch
 
-The Intouch Api is an api made for the Intouch App, an app made for customers to earn and spend loyalty points.
+The Intouch API is an API made for the Intouch App, an app made for customers to earn and spend loyalty points.
 
-In the Intouch Api there are two types of request.
+In the Intouch API there are two types of request.
 The ones that use a Customer Token, and the ones that use 
-an Api token authorization. 
+an API token authorization. 
 
-#Api authorization type request
+#API authorization type request
 Revo-InTouch comes with an easy to use `REST` API Interface.
 All requests will have the same structure.
 
-With the autorization header when calling authenticated based resources
+With the autorization header when calling authenticated based resources.
 
-For this type of Authorization you need an Api token as seen in this example.
+For this type of Authorization you will need an API token as shown in this example:
+
+
+The main URL for the InTouch API is
+
+`https://revointouch.works/api/v1/`
+
+And you should provide the mandatory headers for the authentication
+
+
+Header        | Value
+--------------|----------
+account       | {account-username}
+Authorization | Bearer {the-token}
 
 
 ```sh
- POST/GET/PUT {username}.revointouch.works/api/v1/
-```
-
-```sh
-Authorization: Bearer {Api token}
-```
-
-```sh
-curl -X GET 
-     --header "Authorization: Bearer 8J9lMscIvM88IZQjS3JA51ErsgcWO8KCGXsi7rJC0l1SrBuew5VCV94nLafQ"
-     myaccount.revointouch.works/api/v1/stores
+curl --location --request GET 'https://revointouch.works/api/v1/' \
+  --header 'Authorization: Bearer {the-token}' \
+  --header 'account: {account-username}' \
 ```
 ## Customers Points
 
@@ -108,7 +113,6 @@ Body Field  | Description
 status    | **string** status to send.
 
 ```sh
-// Response
 {
     "data": {
         "previousStatus": "online",
@@ -122,27 +126,25 @@ For this type of Authorization you need a Customer token .
 The following requests until the end of the documentation are of this type.
 
 
+
+`https://revointouch.works/api/v1/`
+
+And you should provide the mandatory headers for the authentication
+
+
+Header        | Value
+--------------|----------
+account       | {account-username}
+Authorization | Bearer {the-token}
+
+
 ```sh
- POST/GET/PUT {username}.revointouch.works/api/v1/customer
+curl --location --request GET 'https://revointouch.works/api/v1/' \
+  --header 'Authorization: Bearer {the-token}' \
+  --header 'account: {account-username}' \
 ```
 
-```sh
-Authorization: Bearer {token}
-```
-
-```sh
-curl -X GET 
-     --header "Authorization: Bearer K2YBo90R2bil1mVKTkHh9cRlzstQYHIqYjX3oAYFT9HWluGcq9DaDh4LxVUI"
-     myaccount.revointouch.works/api/v1/customer/cards 
-```
-
-
-
-## Images
-
-`
-https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{xef-account}/images/{url}
-`
+In the customer authorization type request, you will need to login with a customer to get the: Bearer {the-token}.
 
 
 ## Login
@@ -157,11 +159,19 @@ Body Field  | Description
 email    | **string** User email
 password | **string** User password
 
+And you should provide the mandatory headers for the login
+
+Header        | Value
+--------------|----------
+account       | {account-username}
+
+Then you will get the Bearer {the-token} in the response.
+
 ```sh
 // Response
 {
   "data" : {
-    "api_token" : "token",
+    "api_token" : "the-token",
     "info" : {
       "points" : 378,
       "id" : 1,
@@ -1352,5 +1362,3 @@ POST     | creditCards
 DELETE   | creditCards/{id}
 PUT      | creditCards/{id}
 POST     | invoices/{id}/points/obtain
-
-{% endcomment %}
