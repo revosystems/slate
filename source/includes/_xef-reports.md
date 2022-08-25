@@ -124,4 +124,14 @@ tenant        | account        | Master account name,
 authorization | Bearer {token} | The [token](https://revoxef.works/account/tokens) created at backoffice
 chain         | chain          |chain username returned in the accounts GET method
 
-```
+
+### Chain fetch order
+
+`GET https://revoxef.works/api/external/v2/accounts/orders/{id}`
+
+You can fetch one (or multiple orders) for an specific chain using the same header as in the previous example.
+
+> The `id` field can be a single order id or multiple orders separated by , such as `id1,id2,id3`
+
+
+
