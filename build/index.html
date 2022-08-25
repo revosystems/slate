@@ -2265,7 +2265,15 @@ Take into account that not all filters are available for all reports. To exactly
 <td>chain username returned in the accounts GET method</td>
 </tr>
 </tbody></table>
-<pre class="highlight plaintext"><code></code></pre><h1 id='xef-webhooks'>Xef Webhooks</h1><h2 id='introduction'>Introduction</h2>
+<h3 id='chain-fetch-order'>Chain fetch order</h3>
+<p><code>GET https://revoxef.works/api/external/v2/accounts/orders/{id}</code></p>
+
+<p>You can fetch one (or multiple orders) for an specific chain using the same header as in the previous example.</p>
+
+<blockquote>
+<p>The <code>id</code> field can be a single order id or multiple orders separated by , such as <code>id1,id2,id3</code></p>
+</blockquote>
+<h1 id='xef-webhooks'>Xef Webhooks</h1><h2 id='introduction'>Introduction</h2>
 <p>Revo Xef comes with <a href="https://es.wikipedia.org/wiki/Webhook">webhooks</a>. You can add as many as you need in the <code>webhooks</code> page <a href="https://revoxef.works/account/webhooks">https://revoxef.works/account/webhooks</a></p>
 
 <p>Once you create your first webhook a secret key will be generated and this will be used to create a hash that we will send in every webhook call so you can verify it is us who send it.</p>
