@@ -3,8 +3,7 @@
 The Intouch API is an API made for the Intouch App, an app made for customers to earn and spend loyalty points.
 
 In the Intouch API there are two types of request.
-The ones that use a Customer Token, and the ones that use 
-an API token authorization. 
+The ones that use an API token authorization, and the ones that use a Customer Token.
 
 #API authorization type request
 Revo-InTouch comes with an easy to use `REST` API Interface.
@@ -25,57 +24,18 @@ And you should provide the mandatory headers for the authentication
 Header        | Value
 --------------|----------
 account       | {account-username}
-Authorization | Bearer {the-token}
+Authorization | Bearer {api-token}
 
+The `api-token` is a unique token generated for each account and can be found in the Back-Office.
 
 ```sh
 curl --location --request GET 'https://revointouch.works/api/v1/' \
-  --header 'Authorization: Bearer {the-token}' \
+  --header 'Authorization: Bearer {api-token}' \
   --header 'account: {account-username}' \
-```
-## Customers Points
-
-`GET customers/{token}/points`
-
-Returns the points of a customer + the points spent with the specified product.
-
-Body Field  | Description
----------|---------
-product    | **Json** id of the product in Json format.
-
-
-```sh
-{
-    "data": {
-        "leftPoints": 8000,
-        "productPoints": []
-    }
-}
-```
-
-`POST customers/{token}/points`
-Returns the left points of a customer + the points spent for a specified product.
-
-
-Body Field  | Description
----------|---------
-product    | **Json** id of the product in Json format.
-
-```sh
-{
-    "data": {
-        "spentPoints": 0,
-        "leftPoints": 8000
-    }
-}
 ```
 ## Stores
 `GET stores`
 Returns a list of the stores from a specified user.
-
-Body Field  | Description
----------|---------
-username    | **json** username in json format.
 
 ```sh
 {
@@ -120,31 +80,59 @@ status    | **string** status to send.
     }
 }
 ```
-#Customer Authorization type request
 
-For this type of Authorization you need a Customer token .
-The following requests until the end of the documentation are of this type.
+## Customers Points
 
+To get the {customer-token} you need to login with a customer. Explained in the next section (Customer Authorization type request).
 
+`GET customers/{customer-token}/points`
+Returns the points of a customer + the points spent with the specified product.
 
-`https://revointouch.works/api/v1/`
+Body Field  | Description
+---------|---------
+products | **Json** id of the product in Json format.
 
-And you should provide the mandatory headers for the authentication
-
-
-Header        | Value
---------------|----------
-account       | {account-username}
-Authorization | Bearer {the-token}
-
-
+Body example:
+```json
+{
+    "products": "[1,2]"
+}
+```
+Response:
 ```sh
-curl --location --request GET 'https://revointouch.works/api/v1/' \
-  --header 'Authorization: Bearer {the-token}' \
-  --header 'account: {account-username}' \
+{
+    "data": {
+        "leftPoints": 8000,
+        "productPoints": []
+    }
+}
 ```
 
-In the customer authorization type request, you will need to login with a customer to get the: Bearer {the-token}.
+`POST customers/{customer-token}/points`
+Returns the left points of a customer + the points spent for a specified product.
+
+
+Body Field  | Description
+---------|---------
+products    | **Json** id of the product in Json format.
+
+```sh
+{
+    "data": {
+        "spentPoints": 0,
+        "leftPoints": 8000
+    }
+}
+```
+
+#Customer Authorization type request
+
+For this type of Authorization you need a Customer token.
+The following requests until the end of the documentation are of this type.
+
+`https://revointouch.works/api/v1/customer`
+
+In the customer authorization type request, you will need to login with a customer to get the Bearer {customer-token}.
 
 
 ## Login
@@ -165,13 +153,13 @@ Header        | Value
 --------------|----------
 account       | {account-username}
 
-Then you will get the Bearer {the-token} in the response.
+Then you will get the Bearer {customer-token} in the response.
 
+Response:
 ```sh
-// Response
 {
   "data" : {
-    "api_token" : "the-token",
+    "api_token" : "customer-token",
     "info" : {
       "points" : 378,
       "id" : 1,
@@ -182,7 +170,6 @@ Then you will get the Bearer {the-token} in the response.
   }
 }
 ```
-
 
 ## Register
 
@@ -200,16 +187,30 @@ birthDate | `date`     | 1950-12-23
 email     | `email`    | bruce@wayne.com
 subscribe | `bool`     | 1
 
+
+##For the rest of the endpoints...
+
+Header        | Value
+--------------|----------
+account       | {account-username}
+Authorization | Bearer {customer-token}
+
+
+```sh
+curl --location --request GET 'https://revointouch.works/api/v1/customer' \
+  --header 'account: {account-username}' \
+  --header 'Authorization: Bearer {customer-token}' \
+```
+
 ## UploadProfilePhoto
 ` POST uploadProfilePhoto`
-Uploads specified profile photo to the current user.
+Uploads specified profile photo to the current customer.
 
+Body Field | Example
+-----------|---------------------
+Photo      | /9j/4AAQSkZJRgABA...
 
-Body Field   | Type       | Example
-----------|------------|-----------------
-Photo     | `photo`    | /9j/4AAQSkZJRgABA...
-
-
+Photo must be in base64 encoded format.
 
 ```sh
 {
@@ -415,31 +416,6 @@ Returns all the stores data.
   }
 }
 ```
-
-`GET stores`
-
-Returns all the stores from a user specified by username.
-
-Body Field    | Type         | Description
----------|--------------|-----------
-username    | `json`       | The username in json format
-
-```sh
-{
-    "data": [
-        {
-            "id": 1,
-            "name": "An store"
-        },
-        {
-            "id": 2,
-            "name": "Test Store"
-        }
-    ]
-}
-```
-
-
 
 ## Categories
 
