@@ -1,6 +1,6 @@
 # InTouch
 
-The Intouch API is an API made for the Intouch App, an app made for customers to earn and spend loyalty points.
+The Intouch API is an API made for the Intouch App and SOLO environment, an app made for customers to earn and spend loyalty points.
 
 In the InTouch API there are different types of requests.
 The ones that use an API token authorization, the ones that use a Customer token auth with POS connection and the public ones that only need a POS connection.
@@ -12,9 +12,9 @@ All requests will have the same structure.
 
 ## Prerequisites
 
-To be able to use this type of request you must need a `Revo InTouch` account and an `access token` showed in the Back-Office.
+To be able to use this type of request you need a `Revo InTouch` account and an `access token` available in the Back-Office.
 
-1. Login into the desired account
+1. Login in the desired account
 2. Go to Others > [Development](https://revointouch.works/development) and get the Api Token
 
 ## Basic usage
@@ -40,7 +40,7 @@ curl --location --request GET 'https://revointouch.works/api/v1/' \
 ```
 ## Stores
 #### `GET stores`
-Returns a list of the stores from a specified user.
+Returns a list of the stores from a specified account.
 
 ```sh
 {
@@ -194,11 +194,10 @@ Registers user with the specified fields.
 Body Field   | Type       | Example
 ----------|------------|-----------------
 name      | `string`   | Bruce
-lastName  | `string`   | Wayne
+email     | `email`    | bruce@wayne.com
 password  | `string`   | batman
 postalCode| `string`   | 08240
 birthDate | `date`     | 1950-12-23
-email     | `email`    | bruce@wayne.com
 subscribe | `bool`     | 1
 
 ### For the rest of the Customer Authorization type request endpoints...
@@ -343,7 +342,7 @@ To reload a gift card
 Body Field   | Description
 ----------------|-------------------------------------
 amount          | **int** amount in cents
-payment_token   | **string** (optional) the stripe payment token. If null or not present it will use customer's default credit card
+<!-- payment_token   | **string** (optional) the stripe payment token. If null or not present it will use customer's default credit card -->
 
 
 ```sh
@@ -378,13 +377,9 @@ name  | **string** the name of the new card
 
 ## CardAssociate
 
-#### `POST cards/{card}/associate`
+#### `POST cards/{uuid}/associate`
 
 Associates the specified card by uuid to the current customer.
-
-Body Field  | Description
-------|-------------
-uuid  | **string** Id of the card to associate
 
 
 ```sh
@@ -461,7 +456,7 @@ id  | **string** Id of the group to associate
 
 Parameters:
 
-Body Field   | Type         | Description
+Key   | Value         | Description
 ---------|--------------|-----------
 order    | `json`       | the order json following the format below
 contents | `array json` | the array of contents json following the format below
@@ -608,13 +603,26 @@ Returns the orders of the current customer.
   }
 ```
 
-### Update an Order
+### Close an Order
 #### `PUT orders/{id}`
-Updates the order with the specified id.
+It closes the order with the specified id.
 
+Returns the order info:
 ```sh
 {
-    "data": []
+    "data": {
+        "id": 1,
+        "store_id": 1,
+        "customer_id": 1,
+        "delivery_id": null,
+        "subtotal": 8,
+        "taxAmount": 2,
+        "discountAmount": 0,
+        "total": 10,
+        "pointsEarned": 0,
+        "pos_id": 1,
+        "status": 5,
+    }
 }
 
 ```
@@ -791,34 +799,6 @@ token    | The stripe card token
 ### DELETE Credit Card
 #### `DELETE creditCards/{id}` -->
 
-
-## StoreCard
-
-#### `Post cards`
-
-Creates a card with the specified name.
-
-Field    | Description
----------|---------------
-name    | Name to create the card
-
-Returns the created card.
-
-
-```sh
-{
-    "data": {
-        "uuid": "WJZ9KQXSTQCV",
-        "name": "cardName",
-        "amount": 0,
-        "photo": null,
-        "updated_at": "2022-05-23 10:02:15",
-        "created_at": "2022-05-23 10:02:15",
-        "id": 2,
-        "customer_id": 1
-    }
-}
-```
 
 ## Theme
 
@@ -1227,7 +1207,7 @@ Returns all productModifierCategories
 
 #### `GET table/{id}/available`
 
-Returns if the table with the specified id is available.
+Returns if the table (of the first store with a POS Integration) with the specified id is available.
 
 
 ```sh
@@ -1310,39 +1290,6 @@ Returns sellingFormatStore for current customer.
       }
     ]
   }
-}
-
-```
-
-## Pullers
-
-#### `GET pullers`
-
-
-```sh
-{
-    "data": {
-        "new": [],
-        "updated": [],
-        "deleted": []
-    }
-}
-
-```
-
-## PointShifts
-
-#### `GET pointsShifts`
-
-Returns PointShifts.
-
-```sh
-{
-    "data": {
-        "new": [],
-        "updated": [],
-        "deleted": []
-    }
 }
 
 ```
