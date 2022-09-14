@@ -375,7 +375,7 @@ name  | **string** the name of the new card
 }
 ```
 
-## CardAssociate
+<!-- ## CardAssociate
 
 #### `POST cards/{uuid}/associate`
 
@@ -421,7 +421,7 @@ amount| **string** Amount to transfer to the card
         "created_at": "2022-05-23 14:30:10",
         "updated_at": "2022-05-23 14:30:10"
     }
-```
+``` -->
 
 
 
@@ -1293,6 +1293,21 @@ Returns sellingFormatStore for current customer.
 }
 
 ```
+
+<!-- #### `GET pointsShifts`
+
+Returns PointShifts.
+
+```sh
+{
+    "data": {
+        "new": [],
+        "updated": [],
+        "deleted": []
+    }
+}
+
+``` -->
 
 ## Kiosk
 
