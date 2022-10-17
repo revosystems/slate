@@ -147,22 +147,6 @@ item_id      | `int` | Is the ID of the item to decrease
 quantity     | `int` | Is the quantity to decrease
 
 
-## Get images 
-To get the image, you need to do a get request the ideal thing for the images is to store it in your server and only request the image if the path changed,
-
-`https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{account}/images/{image_path}`
-
-or 
-
-`https://a89f683ae563759322a9-3330e0d085d4ba4fd7f5395ee3f3cd7a.ssl.cf3.rackcdn.com/{account}/images/resized_100_{image_path}`
-
-For a thumbnail
-
-Field       | Type      | Description
-------------|-----------|---------------
-account     | `string`  | Is your account name, same name used for login into the app
-image_path  | `string`  | is the photo variable of the model
-
 ## Revo Display Images
 
 Returns an array of paths for each [Revo Display](/display) ads image.

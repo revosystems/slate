@@ -284,3 +284,25 @@ DELETE https://revoxef.works/api/external/v2/customers/<customer_id>
     'printer_id',
     'printer_group_id',
 ```
+
+## Others
+
+## Get images 
+
+To get the image, you need to do a get request the ideal thing for the images is to store it in your server and only request the image if the path changed.
+
+Normal size:
+
+`https://storage.googleapis.com/revo-cloud-bucket/xef/{account}/images/{image_path}`
+
+
+Thumbnail size:
+
+`https://storage.googleapis.com/revo-cloud-bucket/xef/{account}/images/resized_100_{image_path}`
+
+Field       | Type      | Description
+------------|-----------|---------------
+account     | `string`  | Is your account name, same name used for login into the app
+image_path  | `string`  | is the photo variable of the model
+
+The image_path is the photo name (with the extension). You can get the photos in the [catalog](https://api.revo.works/#xef-catalog).

@@ -42,6 +42,10 @@ curl --location --request GET 'https://revointouch.works/api/v1/' \
 #### `GET stores`
 Returns a list of the stores from a specified account.
 
+Body Field  | Description
+---------|---------
+username    | **json** username in json format.
+
 ```sh
 {
     "data": [
