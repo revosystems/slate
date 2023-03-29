@@ -293,3 +293,133 @@ GET Purchase order contents `https://revoxef.works/api/external/v2/purchaseOrder
     'item_id'
 ```
 
+## Vendors
+
+GET `https://revoxef.works/api/external/v2/vendors`
+>GET ...vendors
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "name": "RevoVendor",
+            "address": "Address",
+            "city": "City",
+            "state": "State",
+            "country": "Country",
+            "postalCode": "00000",
+            "nif": "000000000B",
+            "web": null,
+            "email": null,
+            "phone": "111222333",
+            "notes": null,
+            "shouldBeNotified": 0
+        },
+        ...
+```
+GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
+>GET ...vendors/{vendor_id}
+```json
+{
+    "id": 1,
+    "name": "RevoVendor",
+    "address": "Address",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "postalCode": "00000",
+    "nif": "000000000B",
+    "web": null,
+    "email": null,
+    "phone": "111222333",
+    "notes": null,
+    "shouldBeNotified": 0
+}
+```
+POST `https://revoxef.works/api/external/v2/vendors`
+>POST ...vendors
+```json
+{
+    "name": "RevoVendor", // required
+    "address": "Address", // required
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "postalCode": "00000",
+    "nif": "000000000B", // required | unique
+    "web": null,
+    "email": null,
+    "phone": "111222333",
+    "notes": null,
+    "shouldBeNotified": 0
+}
+```
+PUT `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
+>PUT ...vendors/{vendor_id}
+```json
+{
+    "name": "RevoVendor",
+    "address": "Address",
+    "city": "City",
+    "state": "State",
+    "country": "Country",
+    "postalCode": "00000",
+    "nif": "000000000B", // unique
+    "web": null,
+    "email": null,
+    "phone": "111222333",
+    "notes": null,
+    "shouldBeNotified": 0
+}
+```
+DELETE `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
+
+## Vendor Items
+
+GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
+>GET ...items
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "item_id": 1,
+            "reference": "",
+            "costPrice": "1.00",
+            "unit_id": 1,
+            "pack": 1,
+            "tax_id": null
+        },
+        ...
+```
+POST `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
+>POST ...items
+>With this endpoint you can create or update, if the vendor.item_id already exists.
+```json
+{
+    "items": [
+        {
+            "item_id": 1, // required
+            "costPrice": "1.00",  // required
+            "pack": 2,  // required
+            "tax_id": 2,
+            "unit_id": 1
+        },
+        {
+            "item_id": 2, // required
+            "costPrice": "2.00",  // required
+            "pack": 2,  // required
+            "reference": "Reference"
+        }
+    ]
+}
+```
+DELETE `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
+>DELETE ...items
+>All items_id must exist to delete their relation to vendor.
+```json
+{ 
+	"items": [ item1_id, item3_id, item10_id ]
+}
+```

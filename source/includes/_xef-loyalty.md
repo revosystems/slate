@@ -61,7 +61,7 @@ curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'custome
     "address":"Carrer del Bruc, 23, 1er, 08241 pis, Barcelona",      // Full address
     "phone": "666666666",  // Optional
     "date": "2020-09-23 14:01:59"
-}&notification_hook="service:http://www.example.com"' 'https://revoxef.works/api/loyalty/orders'
+}
 ```
 
 `POST orders`
@@ -81,7 +81,6 @@ Parameter         | Type         | Description
 order             | `json`       | Json encoded order   
 customer          | `array`      | *optional* Of name and email `["name" => "The name", "email" => "theEmail@example.com"]`
 delivery          | `json`       | *optional* Delivery object `["address" => "The address ('Pickup' if delivery not needed)", "date" => "Datetime when order should be delivered", "phone" => "The phone", "channel" => "The delivery channel, if neeeded"]`
-notification_hook | `string`     | *optional* An url where to notify the order status changes prefixed with the service id `service:https://notificationurl.com/notify`
 skipMerge		  | `bool`       | *optional* if you don't want the order to be merged if there is another one already opened
 warehouse_id	  | `integer`    | *optional* Send the xef revo warehouse_id if you want the stock to be discounted
 
