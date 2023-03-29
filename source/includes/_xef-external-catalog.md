@@ -296,8 +296,10 @@ GET Purchase order contents `https://revoxef.works/api/external/v2/purchaseOrder
 ## Vendors
 
 GET `https://revoxef.works/api/external/v2/vendors`
+
 >GET ...vendors
-```json
+
+```sh
 {
     "current_page": 1,
     "data": [
@@ -318,9 +320,13 @@ GET `https://revoxef.works/api/external/v2/vendors`
         },
         ...
 ```
+
+
 GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
+
 >GET ...vendors/{vendor_id}
-```json
+
+```sh
 {
     "id": 1,
     "name": "RevoVendor",
@@ -337,9 +343,13 @@ GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
     "shouldBeNotified": 0
 }
 ```
+
+
 POST `https://revoxef.works/api/external/v2/vendors`
+
 >POST ...vendors
-```json
+
+```sh
 {
     "name": "RevoVendor", // required
     "address": "Address", // required
@@ -355,9 +365,12 @@ POST `https://revoxef.works/api/external/v2/vendors`
     "shouldBeNotified": 0
 }
 ```
+
 PUT `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
+
 >PUT ...vendors/{vendor_id}
-```json
+
+```sh
 {
     "name": "RevoVendor",
     "address": "Address",
@@ -373,13 +386,16 @@ PUT `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
     "shouldBeNotified": 0
 }
 ```
+
 DELETE `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
 
 ## Vendor Items
 
 GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
+
 >GET ...items
-```json
+
+```sh
 {
     "current_page": 1,
     "data": [
@@ -393,10 +409,13 @@ GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
         },
         ...
 ```
+
 POST `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
+
 >POST ...items
 >With this endpoint you can create or update, if the vendor.item_id already exists.
-```json
+
+```sh
 {
     "items": [
         {
@@ -415,10 +434,13 @@ POST `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
     ]
 }
 ```
+
 DELETE `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
+
 >DELETE ...items
 >All items_id must exist to delete their relation to vendor.
-```json
+
+```sh
 { 
 	"items": [ item1_id, item3_id, item10_id ]
 }
