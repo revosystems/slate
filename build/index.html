@@ -306,6 +306,12 @@
                   <li>
                     <a href="#purchases" class="toc-h2 toc-link" data-title="Purchases">Purchases</a>
                   </li>
+                  <li>
+                    <a href="#vendors" class="toc-h2 toc-link" data-title="Vendors">Vendors</a>
+                  </li>
+                  <li>
+                    <a href="#vendor-items" class="toc-h2 toc-link" data-title="Vendor Items">Vendor Items</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1522,7 +1528,140 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     'itemName',
     'itemBarcode',
     'item_id'
-</code></pre><h1 id='flow-api'>Flow Api</h1><h2 id='prerequisistes'>Prerequisistes</h2>
+</code></pre><h2 id='vendors'>Vendors</h2>
+<p>GET <code>https://revoxef.works/api/external/v2/vendors</code></p>
+
+<blockquote>
+<p>GET ...vendors
+<code>json
+{
+    &quot;current_page&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;RevoVendor&quot;,
+            &quot;address&quot;: &quot;Address&quot;,
+            &quot;city&quot;: &quot;City&quot;,
+            &quot;state&quot;: &quot;State&quot;,
+            &quot;country&quot;: &quot;Country&quot;,
+            &quot;postalCode&quot;: &quot;00000&quot;,
+            &quot;nif&quot;: &quot;000000000B&quot;,
+            &quot;web&quot;: null,
+            &quot;email&quot;: null,
+            &quot;phone&quot;: &quot;111222333&quot;,
+            &quot;notes&quot;: null,
+            &quot;shouldBeNotified&quot;: 0
+        },
+        ...
+</code>
+GET <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code>
+GET ...vendors/{vendor_id}
+<code>json
+{
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;RevoVendor&quot;,
+    &quot;address&quot;: &quot;Address&quot;,
+    &quot;city&quot;: &quot;City&quot;,
+    &quot;state&quot;: &quot;State&quot;,
+    &quot;country&quot;: &quot;Country&quot;,
+    &quot;postalCode&quot;: &quot;00000&quot;,
+    &quot;nif&quot;: &quot;000000000B&quot;,
+    &quot;web&quot;: null,
+    &quot;email&quot;: null,
+    &quot;phone&quot;: &quot;111222333&quot;,
+    &quot;notes&quot;: null,
+    &quot;shouldBeNotified&quot;: 0
+}
+</code>
+POST <code>https://revoxef.works/api/external/v2/vendors</code>
+POST ...vendors
+<code>json
+{
+    &quot;name&quot;: &quot;RevoVendor&quot;, // required
+    &quot;address&quot;: &quot;Address&quot;, // required
+    &quot;city&quot;: &quot;City&quot;,
+    &quot;state&quot;: &quot;State&quot;,
+    &quot;country&quot;: &quot;Country&quot;,
+    &quot;postalCode&quot;: &quot;00000&quot;,
+    &quot;nif&quot;: &quot;000000000B&quot;, // required | unique
+    &quot;web&quot;: null,
+    &quot;email&quot;: null,
+    &quot;phone&quot;: &quot;111222333&quot;,
+    &quot;notes&quot;: null,
+    &quot;shouldBeNotified&quot;: 0
+}
+</code>
+PUT <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code>
+PUT ...vendors/{vendor_id}
+<code>json
+{
+    &quot;name&quot;: &quot;RevoVendor&quot;,
+    &quot;address&quot;: &quot;Address&quot;,
+    &quot;city&quot;: &quot;City&quot;,
+    &quot;state&quot;: &quot;State&quot;,
+    &quot;country&quot;: &quot;Country&quot;,
+    &quot;postalCode&quot;: &quot;00000&quot;,
+    &quot;nif&quot;: &quot;000000000B&quot;, // unique
+    &quot;web&quot;: null,
+    &quot;email&quot;: null,
+    &quot;phone&quot;: &quot;111222333&quot;,
+    &quot;notes&quot;: null,
+    &quot;shouldBeNotified&quot;: 0
+}
+</code>
+DELETE <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code></p>
+</blockquote>
+<h2 id='vendor-items'>Vendor Items</h2>
+<p>GET <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code></p>
+
+<blockquote>
+<p>GET ...items
+<code>json
+{
+    &quot;current_page&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;item_id&quot;: 1,
+            &quot;reference&quot;: &quot;&quot;,
+            &quot;costPrice&quot;: &quot;1.00&quot;,
+            &quot;unit_id&quot;: 1,
+            &quot;pack&quot;: 1,
+            &quot;tax_id&quot;: null
+        },
+        ...
+</code>
+POST <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code>
+POST ...items
+With this endpoint you can create or update, if the vendor.item_id already exists.
+<code>json
+{
+    &quot;items&quot;: [
+        {
+            &quot;item_id&quot;: 1, // required
+            &quot;costPrice&quot;: &quot;1.00&quot;,  // required
+            &quot;pack&quot;: 2,  // required
+            &quot;tax_id&quot;: 2,
+            &quot;unit_id&quot;: 1
+        },
+        {
+            &quot;item_id&quot;: 2, // required
+            &quot;costPrice&quot;: &quot;2.00&quot;,  // required
+            &quot;pack&quot;: 2,  // required
+            &quot;reference&quot;: &quot;Reference&quot;
+        }
+    ]
+}
+</code>
+DELETE <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code>
+DELETE ...items
+All items_id must exist to delete their relation to vendor.
+<code>json
+{ 
+    &quot;items&quot;: [ item1_id, item3_id, item10_id ]
+}
+</code></p>
+</blockquote>
+<h1 id='flow-api'>Flow Api</h1><h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the Flow api you need a <code>revo xef</code> account and a <code>access token</code></p>
 
 <ol>
@@ -1633,7 +1772,7 @@ POST message={
     "address":"Carrer del Bruc, 23, 1er, 08241 pis, Barcelona",      // Full address
     "phone": "666666666",  // Optional
     "date": "2020-09-23 14:01:59"
-}&amp;notification_hook="service:http://www.example.com"' 'https://revoxef.works/api/loyalty/orders'
+}
 </code></pre>
 <p><code>POST orders</code></p>
 
@@ -1682,11 +1821,6 @@ POST message={
 <td>delivery</td>
 <td><code>json</code></td>
 <td><em>optional</em> Delivery object <code>[&quot;address&quot; =&gt; &quot;The address (&#39;Pickup&#39; if delivery not needed)&quot;, &quot;date&quot; =&gt; &quot;Datetime when order should be delivered&quot;, &quot;phone&quot; =&gt; &quot;The phone&quot;, &quot;channel&quot; =&gt; &quot;The delivery channel, if neeeded&quot;]</code></td>
-</tr>
-<tr>
-<td>notification_hook</td>
-<td><code>string</code></td>
-<td><em>optional</em> An url where to notify the order status changes prefixed with the service id <code>service:https://notificationurl.com/notify</code></td>
 </tr>
 <tr>
 <td>skipMerge</td>
