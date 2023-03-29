@@ -297,7 +297,7 @@ GET Purchase order contents `https://revoxef.works/api/external/v2/purchaseOrder
 
 GET `https://revoxef.works/api/external/v2/vendors`
 
->GET ...vendors
+> GET ...vendors
 
 ```sh
 {
@@ -324,7 +324,7 @@ GET `https://revoxef.works/api/external/v2/vendors`
 
 GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
 
->GET ...vendors/{vendor_id}
+> GET ...vendors/{vendor_id}
 
 ```sh
 {
@@ -347,7 +347,7 @@ GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
 
 POST `https://revoxef.works/api/external/v2/vendors`
 
->POST ...vendors
+> POST ...vendors
 
 ```sh
 {
@@ -368,7 +368,7 @@ POST `https://revoxef.works/api/external/v2/vendors`
 
 PUT `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
 
->PUT ...vendors/{vendor_id}
+> PUT ...vendors/{vendor_id}
 
 ```sh
 {
@@ -393,7 +393,7 @@ DELETE `https://revoxef.works/api/external/v2/vendors/{vendor_id}`
 
 GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
 
->GET ...items
+> GET ...items
 
 ```sh
 {
@@ -412,8 +412,9 @@ GET `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
 
 POST `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
 
->POST ...items
->With this endpoint you can create or update, if the vendor.item_id already exists.
+> POST ...items
+
+> With this endpoint you can create or update, if the vendor.item_id already exists.
 
 ```sh
 {
@@ -437,8 +438,9 @@ POST `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
 
 DELETE `https://revoxef.works/api/external/v2/vendors/{vendor_id}/items`
 
->DELETE ...items
->All items_id must exist to delete their relation to vendor.
+> DELETE ...items
+
+> All items_id must exist to delete their relation to vendor.
 
 ```sh
 { 
