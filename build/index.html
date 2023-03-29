@@ -1638,8 +1638,9 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <p>POST <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code></p>
 
 <blockquote>
-<p>POST ...items
-With this endpoint you can create or update, if the vendor.item_id already exists.</p>
+<p>POST ...items</p>
+
+<p>With this endpoint you can create or update, if the vendor.item_id already exists.</p>
 </blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"items"</span>: <span class="o">[</span>
@@ -1662,8 +1663,9 @@ With this endpoint you can create or update, if the vendor.item_id already exist
 <p>DELETE <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code></p>
 
 <blockquote>
-<p>DELETE ...items
-All items_id must exist to delete their relation to vendor.</p>
+<p>DELETE ...items</p>
+
+<p>All items_id must exist to delete their relation to vendor.</p>
 </blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span> 
     <span class="s2">"items"</span>: <span class="o">[</span> item1_id, item3_id, item10_id <span class="o">]</span>
