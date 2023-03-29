@@ -1532,136 +1532,143 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <p>GET <code>https://revoxef.works/api/external/v2/vendors</code></p>
 
 <blockquote>
-<p>GET ...vendors
-<code>json
-{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;RevoVendor&quot;,
-            &quot;address&quot;: &quot;Address&quot;,
-            &quot;city&quot;: &quot;City&quot;,
-            &quot;state&quot;: &quot;State&quot;,
-            &quot;country&quot;: &quot;Country&quot;,
-            &quot;postalCode&quot;: &quot;00000&quot;,
-            &quot;nif&quot;: &quot;000000000B&quot;,
-            &quot;web&quot;: null,
-            &quot;email&quot;: null,
-            &quot;phone&quot;: &quot;111222333&quot;,
-            &quot;notes&quot;: null,
-            &quot;shouldBeNotified&quot;: 0
-        },
-        ...
-</code>
-GET <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code>
-GET ...vendors/{vendor_id}
-<code>json
-{
-    &quot;id&quot;: 1,
-    &quot;name&quot;: &quot;RevoVendor&quot;,
-    &quot;address&quot;: &quot;Address&quot;,
-    &quot;city&quot;: &quot;City&quot;,
-    &quot;state&quot;: &quot;State&quot;,
-    &quot;country&quot;: &quot;Country&quot;,
-    &quot;postalCode&quot;: &quot;00000&quot;,
-    &quot;nif&quot;: &quot;000000000B&quot;,
-    &quot;web&quot;: null,
-    &quot;email&quot;: null,
-    &quot;phone&quot;: &quot;111222333&quot;,
-    &quot;notes&quot;: null,
-    &quot;shouldBeNotified&quot;: 0
-}
-</code>
-POST <code>https://revoxef.works/api/external/v2/vendors</code>
-POST ...vendors
-<code>json
-{
-    &quot;name&quot;: &quot;RevoVendor&quot;, // required
-    &quot;address&quot;: &quot;Address&quot;, // required
-    &quot;city&quot;: &quot;City&quot;,
-    &quot;state&quot;: &quot;State&quot;,
-    &quot;country&quot;: &quot;Country&quot;,
-    &quot;postalCode&quot;: &quot;00000&quot;,
-    &quot;nif&quot;: &quot;000000000B&quot;, // required | unique
-    &quot;web&quot;: null,
-    &quot;email&quot;: null,
-    &quot;phone&quot;: &quot;111222333&quot;,
-    &quot;notes&quot;: null,
-    &quot;shouldBeNotified&quot;: 0
-}
-</code>
-PUT <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code>
-PUT ...vendors/{vendor_id}
-<code>json
-{
-    &quot;name&quot;: &quot;RevoVendor&quot;,
-    &quot;address&quot;: &quot;Address&quot;,
-    &quot;city&quot;: &quot;City&quot;,
-    &quot;state&quot;: &quot;State&quot;,
-    &quot;country&quot;: &quot;Country&quot;,
-    &quot;postalCode&quot;: &quot;00000&quot;,
-    &quot;nif&quot;: &quot;000000000B&quot;, // unique
-    &quot;web&quot;: null,
-    &quot;email&quot;: null,
-    &quot;phone&quot;: &quot;111222333&quot;,
-    &quot;notes&quot;: null,
-    &quot;shouldBeNotified&quot;: 0
-}
-</code>
-DELETE <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code></p>
+<p>GET ...vendors</p>
 </blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"current_page"</span>: 1,
+    <span class="s2">"data"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1,
+            <span class="s2">"name"</span>: <span class="s2">"RevoVendor"</span>,
+            <span class="s2">"address"</span>: <span class="s2">"Address"</span>,
+            <span class="s2">"city"</span>: <span class="s2">"City"</span>,
+            <span class="s2">"state"</span>: <span class="s2">"State"</span>,
+            <span class="s2">"country"</span>: <span class="s2">"Country"</span>,
+            <span class="s2">"postalCode"</span>: <span class="s2">"00000"</span>,
+            <span class="s2">"nif"</span>: <span class="s2">"000000000B"</span>,
+            <span class="s2">"web"</span>: null,
+            <span class="s2">"email"</span>: null,
+            <span class="s2">"phone"</span>: <span class="s2">"111222333"</span>,
+            <span class="s2">"notes"</span>: null,
+            <span class="s2">"shouldBeNotified"</span>: 0
+        <span class="o">}</span>,
+        ...
+</code></pre>
+<p>GET <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code></p>
+
+<blockquote>
+<p>GET ...vendors/{vendor_id}</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1,
+    <span class="s2">"name"</span>: <span class="s2">"RevoVendor"</span>,
+    <span class="s2">"address"</span>: <span class="s2">"Address"</span>,
+    <span class="s2">"city"</span>: <span class="s2">"City"</span>,
+    <span class="s2">"state"</span>: <span class="s2">"State"</span>,
+    <span class="s2">"country"</span>: <span class="s2">"Country"</span>,
+    <span class="s2">"postalCode"</span>: <span class="s2">"00000"</span>,
+    <span class="s2">"nif"</span>: <span class="s2">"000000000B"</span>,
+    <span class="s2">"web"</span>: null,
+    <span class="s2">"email"</span>: null,
+    <span class="s2">"phone"</span>: <span class="s2">"111222333"</span>,
+    <span class="s2">"notes"</span>: null,
+    <span class="s2">"shouldBeNotified"</span>: 0
+<span class="o">}</span>
+</code></pre>
+<p>POST <code>https://revoxef.works/api/external/v2/vendors</code></p>
+
+<blockquote>
+<p>POST ...vendors</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"RevoVendor"</span>, // required
+    <span class="s2">"address"</span>: <span class="s2">"Address"</span>, // required
+    <span class="s2">"city"</span>: <span class="s2">"City"</span>,
+    <span class="s2">"state"</span>: <span class="s2">"State"</span>,
+    <span class="s2">"country"</span>: <span class="s2">"Country"</span>,
+    <span class="s2">"postalCode"</span>: <span class="s2">"00000"</span>,
+    <span class="s2">"nif"</span>: <span class="s2">"000000000B"</span>, // required | unique
+    <span class="s2">"web"</span>: null,
+    <span class="s2">"email"</span>: null,
+    <span class="s2">"phone"</span>: <span class="s2">"111222333"</span>,
+    <span class="s2">"notes"</span>: null,
+    <span class="s2">"shouldBeNotified"</span>: 0
+<span class="o">}</span>
+</code></pre>
+<p>PUT <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code></p>
+
+<blockquote>
+<p>PUT ...vendors/{vendor_id}</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"RevoVendor"</span>,
+    <span class="s2">"address"</span>: <span class="s2">"Address"</span>,
+    <span class="s2">"city"</span>: <span class="s2">"City"</span>,
+    <span class="s2">"state"</span>: <span class="s2">"State"</span>,
+    <span class="s2">"country"</span>: <span class="s2">"Country"</span>,
+    <span class="s2">"postalCode"</span>: <span class="s2">"00000"</span>,
+    <span class="s2">"nif"</span>: <span class="s2">"000000000B"</span>, // unique
+    <span class="s2">"web"</span>: null,
+    <span class="s2">"email"</span>: null,
+    <span class="s2">"phone"</span>: <span class="s2">"111222333"</span>,
+    <span class="s2">"notes"</span>: null,
+    <span class="s2">"shouldBeNotified"</span>: 0
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code></p>
 <h2 id='vendor-items'>Vendor Items</h2>
 <p>GET <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code></p>
 
 <blockquote>
-<p>GET ...items
-<code>json
-{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;item_id&quot;: 1,
-            &quot;reference&quot;: &quot;&quot;,
-            &quot;costPrice&quot;: &quot;1.00&quot;,
-            &quot;unit_id&quot;: 1,
-            &quot;pack&quot;: 1,
-            &quot;tax_id&quot;: null
-        },
-        ...
-</code>
-POST <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code>
-POST ...items
-With this endpoint you can create or update, if the vendor.item_id already exists.
-<code>json
-{
-    &quot;items&quot;: [
-        {
-            &quot;item_id&quot;: 1, // required
-            &quot;costPrice&quot;: &quot;1.00&quot;,  // required
-            &quot;pack&quot;: 2,  // required
-            &quot;tax_id&quot;: 2,
-            &quot;unit_id&quot;: 1
-        },
-        {
-            &quot;item_id&quot;: 2, // required
-            &quot;costPrice&quot;: &quot;2.00&quot;,  // required
-            &quot;pack&quot;: 2,  // required
-            &quot;reference&quot;: &quot;Reference&quot;
-        }
-    ]
-}
-</code>
-DELETE <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code>
-DELETE ...items
-All items_id must exist to delete their relation to vendor.
-<code>json
-{ 
-    &quot;items&quot;: [ item1_id, item3_id, item10_id ]
-}
-</code></p>
+<p>GET ...items</p>
 </blockquote>
-<h1 id='flow-api'>Flow Api</h1><h2 id='prerequisistes'>Prerequisistes</h2>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"current_page"</span>: 1,
+    <span class="s2">"data"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"item_id"</span>: 1,
+            <span class="s2">"reference"</span>: <span class="s2">""</span>,
+            <span class="s2">"costPrice"</span>: <span class="s2">"1.00"</span>,
+            <span class="s2">"unit_id"</span>: 1,
+            <span class="s2">"pack"</span>: 1,
+            <span class="s2">"tax_id"</span>: null
+        <span class="o">}</span>,
+        ...
+</code></pre>
+<p>POST <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code></p>
+
+<blockquote>
+<p>POST ...items
+With this endpoint you can create or update, if the vendor.item_id already exists.</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"items"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"item_id"</span>: 1, // required
+            <span class="s2">"costPrice"</span>: <span class="s2">"1.00"</span>,  // required
+            <span class="s2">"pack"</span>: 2,  // required
+            <span class="s2">"tax_id"</span>: 2,
+            <span class="s2">"unit_id"</span>: 1
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"item_id"</span>: 2, // required
+            <span class="s2">"costPrice"</span>: <span class="s2">"2.00"</span>,  // required
+            <span class="s2">"pack"</span>: 2,  // required
+            <span class="s2">"reference"</span>: <span class="s2">"Reference"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code></p>
+
+<blockquote>
+<p>DELETE ...items
+All items_id must exist to delete their relation to vendor.</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span> 
+    <span class="s2">"items"</span>: <span class="o">[</span> item1_id, item3_id, item10_id <span class="o">]</span>
+<span class="o">}</span>
+</code></pre><h1 id='flow-api'>Flow Api</h1><h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the Flow api you need a <code>revo xef</code> account and a <code>access token</code></p>
 
 <ol>
