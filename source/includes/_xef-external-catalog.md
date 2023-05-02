@@ -12,9 +12,13 @@ To be able to use the external api you need a `revo xef` account and a `access t
 
 
 ## Basic usage
-The main URL for the external api
+The main URL for the external API:
 
 `https://revoxef.works/api/external/v2/catalog`
+
+The URL for the integrations API environment:
+
+`https://integrations.revoxef.works/api/external/v2/catalog`
 
 And you should provide the mandatory headers for the authentication
 
@@ -259,6 +263,104 @@ POST `https://revoxef.works/api/external/v2/catalog/items`
 --->
 
 DELETE `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
+
+## Selling Formats
+
+Can list, show, create, update and delete Selling Formats
+
+GET `https://revoxef.works/api/external/v2/catalog/sellingFormats`
+
+> Response for GET selling formats is a selling formats paginated array with the following fields:
+
+```sh
+    "id",
+    "name",
+    "photo",
+    "order",
+    "active"
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/sellingFormats/<format_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/sellingFormats`
+
+> Create a selling format (POST) `catalog/sellingFormats`
+
+```sh
+{
+    "name": "Selling format 1", // required
+    "active": 1 // default: 1
+    ...
+}
+```
+
+> Update a selling format (POST) `catalog/sellingFormats`
+
+```sh
+{
+    "id": 1, // required to update
+    "name": "Selling format 1 updated",
+    "active": 0
+    ...
+}
+```
+
+DELETE `https://revoxef.works/api/external/v2/catalog/sellingFormats/<format_id>`
+
+
+### Selling Format Pivots
+
+An *Item* can be of *Selling format* type.
+
+This can be distinguished by *item.type* = 4.
+
+The *Selling format item* can manage different *Selling formats*, with different prices and quantities, for its TPV selling.
+
+Can list, show, create, update and delete Selling Format Pivots
+
+GET `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots`
+
+> Response for GET selling format pivots is a selling format pivots paginated array with the following fields:
+
+```sh
+    "id",
+    "quantity",
+    "price",
+    "order",
+    "format_id",
+    "item_id",
+    "combination_group_id",
+    "unit_id"
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/<format_pivot_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots`
+
+> Create a selling format pivot (POST) `catalog/sellingFormatPivots`
+
+```sh
+{
+    "price": 5.00, // required
+    "quantity": 1, // required
+    "format_id": 1, // required
+    "item_id": 1, // required
+    "active": 1 // default: 1
+    ...
+}
+```
+
+> Update a selling format pivot (POST) `catalog/sellingFormatPivots`
+
+```sh
+{
+    "id": 1, // required to update
+    "quantity": 2
+    ...
+}
+```
+
+DELETE `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/<format_pivot_id>`
 
 ## Warehouses
 
