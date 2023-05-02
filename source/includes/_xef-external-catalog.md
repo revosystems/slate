@@ -26,9 +26,156 @@ Authorization | Bearer {the-token}
 client-token  | {client-token}
 
 
+## Catalog structure
+
+The main catalog structure is the following:
+
+Groups $\Rightarrow$ Categories $\Rightarrow$ Items
+
+*Items* cannot exist without *Categories*, and *Categories* cannot exists without *Groups*.
+
+## Groups
+
+Can list, show, create, update and delete Groups
+
+GET `https://revoxef.works/api/external/v2/catalog/groups`
+
+> Response is a groups paginated array with the following fields:
+
+```sh
+    'id',
+    'name',
+    'photo',
+    'active',
+    'tax_id',
+    'printer_id',
+    'printer_group_id',
+    'super_group_id',
+    'extra_id',
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/groups`
+
+> Create a group (POST) `catalog/groups`
+
+> All parameters are optional.
+
+```sh
+{
+    "name": "Group 1", // default: "Category Group"
+    "active": 1, // default: 1
+    ...
+}
+```
+
+> Update a group (POST) `catalog/groups`
+
+```sh
+{
+    "id": 2, // required to update
+    "name": "Group 1 updated",
+    "active": 0
+    ...
+}
+```
+
+ <!---
+> Create multiple groups (POST) `catalog/groups`
+  
+```sh
+{
+    "groups": [
+        {
+            "name": "Group 1",
+            "active": 1
+        },
+        {
+            "name": "Group 2",
+            "active": 1
+        }
+    ]
+}
+```
+--->
+
+DELETE `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
+
+## Categories
+
+Can list, show, create, update and delete Categories
+
+GET `https://revoxef.works/api/external/v2/catalog/categories` or 
+
+GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>/categories`
+
+> Response for GET categories is a categories paginated array with the following fields:
+
+```sh
+    'id',
+    'name',
+    'photo',
+    'active',
+    'group_id',
+    'tax_id',
+    'printer_id',
+    'printer_group_id',
+    'modifier_category_id',
+    'modifier_group_id',
+    'super_group_id',
+    'dish_order_id',
+    'extra_id'
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/categories`
+
+> Create a category (POST) `catalog/categories`
+
+```sh
+{
+    "name": "Category 1", // default: "Menu Category"
+    "active": 1, // default: 1
+    "group_id": 1 // required
+    ...
+}
+```
+
+> Update a category  (POST) `catalog/categories`
+
+```sh
+{
+    "id": 1, // required to update
+    "name": "Category 1 updated",
+    "active": 0
+    ...
+}
+```
+
+<!--
+> Create multiple categories  (POST) `catalog/categories`
+
+```sh
+{"categories": [
+    {"name": "Category 1", "active": 1, "group_id": 2},
+    {"name": "Category 2", "active": 1, "group_id": 1}
+]}
+```
+--->
+
+DELETE `https://revoxef.works/api/external/v2/catalog/categories/<category_id>`
+
 ## Items
 
-Can list, show, create, update and delete Items`
+For the *Items*, there are the following types:
+
+- *Normal Items*: *item.type = 0*
+- *Menu Items*: *item.type = 1*
+- *Selling format Items*: *item.type = 4* 
+
+Can list, show, create, update and delete *Items*
 
 GET `https://revoxef.works/api/external/v2/catalog/items` or 
 
@@ -41,7 +188,6 @@ GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/item
     "name"
     "price"
     "photo"
-    "order"
     "active"
     "info"
     "type"
@@ -81,15 +227,27 @@ POST `https://revoxef.works/api/external/v2/catalog/items`
 > Create a item (POST) `catalog/items`
 
 ```sh
-{"name": "Product 1", "active": 1, "category_id": 2}
+{
+    "name": "Product 1", // default: "New Item"
+    "price": 8.50,
+    "active": 1, // default: 1
+    "category_id": 1 // required
+    ...
+}
 ```
 
 > Update a item (POST) `catalog/items`
 
 ```sh
-{"id":2, "name": "Product 1 updated", "active": 0, "category_id": 2}
+{
+    "id": 1, // required to update
+    "name": "Category 1 updated",
+    "active": 0
+    ...
+}
 ```
 
+<!---
 > Create multiple items (POST) `catalog/items`
 
 ```sh
@@ -98,108 +256,9 @@ POST `https://revoxef.works/api/external/v2/catalog/items`
         {"name": "Product 2", "active": 1, "category_id": 1}
     ]}
 ```
+--->
 
 DELETE `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
-
-
-## Categories
-
-Can list, show, create, update and delete Categories
-
-GET `https://revoxef.works/api/external/v2/catalog/categories` or 
-
-GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>/categories`
-
-> Response for GET categories is a categories paginated array with the following fields:
-
-```sh
-    'id',
-    'name',
-    'group_id',
-    'active',
-    'tax_id',
-    'photo',
-    'super_group_id',
-    'printer_id',
-    'printer_group_id',
-    'modifier_category_id',
-    'modifier_group_id',
-    'dish_order_id'
-```
-
-GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>`
-
-POST `https://revoxef.works/api/external/v2/catalog/categories`
-
-> Create a category (POST) `catalog/categories`
-
-```sh
-{"name": "Category 1", "active": 1, "group_id": 2}
-```
-
-> Update a category  (POST) `catalog/categories`
-
-```sh
-{"id":2, "name": "Category 1 updated", "active": 0, "group_id": 2}
-```          
-
-> Create multiple categories  (POST) `catalog/categories`
-
-```sh
-{"categories": [
-    {"name": "Category 1", "active": 1, "group_id": 2},
-    {"name": "Category 2", "active": 1, "group_id": 1}
-]}
-```  
-
-DELETE `https://revoxef.works/api/external/v2/catalog/categories/<category_id>`
-
-
-## Groups
-
-Can list, show, create, update and delete Groups
-
-GET `https://revoxef.works/api/external/v2/catalog/groups`
-
-> Response is a groups paginated array with the following fields:
-
-```sh
-    'id',
-    'name',
-    'active',
-    'tax_id',
-    'photo',
-    'super_group_id',
-    'printer_id',
-    'printer_group_id',
-```
-
-GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
-
-POST `https://revoxef.works/api/external/v2/catalog/groups`
-
-> Create a group (POST) `catalog/groups`
-
-```sh
-{"name": "Group 1", "active": 1}
-```
-
-> Update a group (POST) `catalog/groups`
-
-```sh
-{"id":2, "name": "Group 1 updated", "active": 0}
-```
-
-> Create multiple groups (POST) `catalog/groups`
-  
-```sh
-{"groups": [
-            {"name": "Group 1", "active": 1},
-            {"name": "Group 2", "active": 1}
-        ]}
-```
-
-DELETE `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
 
 ## Warehouses
 
