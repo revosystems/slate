@@ -29,6 +29,16 @@ tenant        | {account-username}
 Authorization | Bearer {the-token}
 client-token  | {client-token}
 
+#### URL parameters
+
+You can add the next URL parameters for the paginated responses:
+
+| Key          | Type   | Required | Description                                                                             |
+|--------------|--------|----------|-----------------------------------------------------------------------------------------|
+| `pagination` | number | optional | Number of objects per page. The default value is **50** and the max allowed is **200**. |
+| `page`       | number | optional | Page of the iteration.                                                                  |
+
+At the bottom of the request, it is specified information about the current page and pagination.
 
 ## Catalog structure
 
@@ -361,6 +371,104 @@ POST `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots`
 ```
 
 DELETE `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/<format_pivot_id>`
+
+## Modifiers
+
+The *Modifiers* structure is the following:
+
+*Modifier groups* ($\Leftarrow$ *Modifier pivot* $\Rightarrow$) *Modifier categories* $\Rightarrow$ *Modifiers*.
+
+*Modifiers* must exist in a *Modifier category*, and *Modifier categories* can exist independently or in a *Modifier group*.
+
+Both *Modifier groups* and *Modifier categories* can be linked to catalog *Categories* and *Items*.
+
+Can list, show, create, update and delete Modifiers
+
+GET `https://revoxef.works/api/external/v2/catalog/modifiers`
+
+> Response for GET modifiers is a modifiers paginated array with the following fields:
+
+```sh
+    "id",
+    "name",
+    "price",
+    "photo",
+    "order",
+    "category_id", // modifier_category_id
+    "cookDuration",
+    "active",
+    "extra_id"
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/modifiers/<modifier_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/modifiers`
+
+> Create a modifier (POST) `catalog/modifiers`
+
+```sh
+{
+    "name": "Modifier 1", // default: "New Modifier"
+    "price": 1.00, // default: 0.00
+    "category_id": 1, // required
+    "active": 1 // default: 1
+    ...
+}
+```
+
+> Update a modifier (POST) `catalog/modifier`
+
+```sh
+{
+    "id": 1, // required to update
+    "price": 2.00
+    ...
+}
+```
+
+DELETE `https://revoxef.works/api/external/v2/catalog/modifiers/<modifier_id>`
+
+### Modifier Categories
+
+Can list, show, create, update and delete Modifier Categories
+
+GET `https://revoxef.works/api/external/v2/catalog/modifierCategories`
+
+> Response for GET modifier categories is a modifier categories paginated array with the following fields:
+
+```sh
+    "id",
+    "name",
+    "order",
+    "isChoice", // 0 for select one, 1 for multiple choice
+    "isOptional",
+    "active"
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/modifierCategories/<modifier_category_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/modifierCategories`
+
+> Create a modifier category (POST) `catalog/modifierCategories`
+
+```sh
+{
+    "name": "Modifier category 1", // default: "Modifier Category"
+    ...
+}
+```
+
+> Update a modifier category (POST) `catalog/modifierCategories`
+
+```sh
+{
+    "id": 1, // required to update
+    "isChoice": 0
+    ...
+}
+```
+
+DELETE `https://revoxef.works/api/external/v2/catalog/modifierCategories/<modifier__category_id>`
 
 ## Warehouses
 
