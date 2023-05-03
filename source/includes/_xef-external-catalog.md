@@ -453,7 +453,7 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierCategories`
 
 ```sh
 {
-    "name": "Modifier category 1", // default: "Modifier Category"
+    "name": "Modifier category 1" // default: "Modifier Category"
     ...
 }
 ```
@@ -468,7 +468,90 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierCategories`
 }
 ```
 
-DELETE `https://revoxef.works/api/external/v2/catalog/modifierCategories/<modifier__category_id>`
+DELETE `https://revoxef.works/api/external/v2/catalog/modifierCategories/<modifier_category_id>`
+
+### Modifier Groups
+
+Can list, show, create, update and delete Modifier Groups
+
+GET `https://revoxef.works/api/external/v2/catalog/modifierGroups`
+
+> Response for GET modifier groups is a modifier groups paginated array with the following fields:
+
+```sh
+    "id",
+    "name",
+    "order",
+    "dont_show_automatically" // 0 or 1
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/modifierGroups/<modifier_group_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/modifierGroups`
+
+> Create a modifier group (POST) `catalog/modifierGroups`
+
+```sh
+{
+    "name": "Modifier group 1" // default: "Modifier group"
+    ...
+}
+```
+
+> Update a modifier group (POST) `catalog/modifierGroups`
+
+```sh
+{
+    "id": 1, // required to update
+    "name": "Modifier group updated 1"
+    ...
+}
+```
+
+DELETE `https://revoxef.works/api/external/v2/catalog/modifierGroups/<modifier_group_id>`
+
+### Modifier Pivot
+
+The next pivot endpoints define the (optional) relationship between *Modifier Categories* and *Modifier Groups*.
+
+Can list, show, create, update and delete Modifier Pivots
+
+GET `https://revoxef.works/api/external/v2/catalog/modifierPivots`
+
+> Response for GET modifier pivots is a modifier pivots paginated array with the following fields:
+
+```sh
+    "id",
+    "order",
+    "group_id", // modifier_group_id
+    "category_id" // modifier_category_id
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/modifierPivots/<modifier_pivot_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/modifierPivots`
+
+> Create a modifier pivot (POST) `catalog/modifierPivots`
+
+```sh
+{
+    "group_id": 1, // required
+    "category_id": 1 // required
+    ...
+}
+```
+
+> Update a modifier pivot (POST) `catalog/modifierPivots`
+
+```sh
+{
+    "id": 1, // required to update
+    "group_id": 2
+    ...
+}
+```
+
+DELETE `https://revoxef.works/api/external/v2/catalog/modifierPivots/<modifier_pivot_id>`
 
 ## Warehouses
 
