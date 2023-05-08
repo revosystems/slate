@@ -25,10 +25,12 @@ https://revoxef.works/api/external/v3/reports/{reportName}?start_date=2018-01-01
 
 `GET reports/{reportName}`
 
-Field        | Type       | Description
--------------|------------|---------------------------
-`start_date` | YYYY-mm-dd | The initial date for the report
-`end_date`   | YYYY-mm-dd | The final date for the report
+| Field        | Type       | Required | Description                                                               |
+|--------------|------------|----------|---------------------------------------------------------------------------|
+| `start_date` | YYYY-mm-dd | optional | The initial date for the report. Default: start of month.                 |
+| `end_date`   | YYYY-mm-dd | optional | The final date for the report. Default: today.                            |
+| `page`       | number     | optional | As the data is paginated, use this parameter to select the page to fetch. |
+| `pagination` | number     | optional | Number of objects per page. The default value is **50** and the max allowed is **200**. |
 
 
 ### Response

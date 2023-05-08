@@ -33,10 +33,10 @@ client-token  | {client-token}
 
 You can add the next URL parameters for the paginated responses:
 
-| Key          | Type   | Required | Description                                                                             |
-|--------------|--------|----------|-----------------------------------------------------------------------------------------|
+| Key          | Type   | Required | Description                                                               |
+|--------------|--------|----------|---------------------------------------------------------------------------|
+| `page`       | number | optional | As the data is paginated, use this parameter to select the page to fetch. |
 | `pagination` | number | optional | Number of objects per page. The default value is **50** and the max allowed is **200**. |
-| `page`       | number | optional | Page of the iteration.                                                                  |
 
 At the bottom of the request, it is specified information about the current page and pagination.
 
@@ -44,7 +44,7 @@ At the bottom of the request, it is specified information about the current page
 
 The main catalog structure is the following:
 
-Groups $\Rightarrow$ Categories $\Rightarrow$ Items
+*Groups* $\Rightarrow$ *Categories* $\Rightarrow$ *Items*
 
 *Items* cannot exist without *Categories*, and *Categories* cannot exists without *Groups*.
 
@@ -552,6 +552,109 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierPivots`
 ```
 
 DELETE `https://revoxef.works/api/external/v2/catalog/modifierPivots/<modifier_pivot_id>`
+
+## Menu Categories
+
+An *Item* can be of Menu type.
+
+This can be distinguished by item.type = 1.
+
+Each *Menu Item* can contain different *Menu Categories* and each *Menu Category* can have multiple *Normal Items (item.type = 0)*:
+
+*Menu Item* $\Rightarrow$ *Menu Categories* $\Rightarrow$ *Normal Items*
+
+Can list, show, create, update and delete *Menu Categories*
+
+GET `https://revoxef.works/api/external/v2/catalog/menuMenuCategories`
+
+> Response for GET menu categories is a menu categories paginated array with the following fields:
+
+```sh
+    "id",
+    "name",
+    "order",
+    "isMultipleChoice", // Select One: 0, Multiple choice: 1, Select one mandatory: 2, Select by default (min-max): 3, Custom (min-max): 4
+    "max",
+    "min",
+    "item_id", // Menu Item (item.type = 1)
+    "dish_order_id"
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/menuMenuCategories/<menu_category_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/menuMenuCategories`
+
+> Create a menu category (POST) `catalog/menuMenuCategories`
+
+```sh
+{
+    "name": "First dishes", // default: Menu Category
+    "item_id": 1 // required
+    "isMultipleChoice": 2, // default: 1
+    ...
+}
+```
+
+> Update a menu category (POST) `catalog/menuMenuCategories`
+
+```sh
+{
+    "id": 1, // required to update
+    "isMultipleChoice": 2
+    ...
+}
+```
+
+DELETE `https://revoxef.works/api/external/v2/catalog/menuMenuCategories/<menu_category_id>`
+
+### Menu Item-Category Pivot
+
+This endpoint links the *Normal Items*, from the menu, with their *Menu Category*.
+
+Can list, show, create, update and delete *Menu Item-Category Pivot*
+
+GET `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots`
+
+> Response for GET menu item-category pivots is a menu item-category pivots paginated array with the following fields:
+
+```sh
+    "id",
+    "active",
+    "order",
+    "price",
+    "addModifiersPrice",
+    "item_id",
+    "category_id",
+    "separatorName",
+    "modifier_group_id",
+    "format_pivot_id"
+```
+
+GET `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots/<menu_item_category_pivot_id>`
+
+POST `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots`
+
+> Create a menu item-category pivot (POST) `catalog/menuMenuItemCategoryPivots`
+
+```sh
+{
+    "item_id": 1, // required (item.type = 0)
+    "category_id": 1 // required (Menu Category)
+    ...
+}
+```
+
+> Update a menu item-category pivot (POST) `catalog/menuMenuItemCategoryPivots`
+
+```sh
+{
+    "id": 1, // required to update
+    "price": 1.00
+    ...
+}
+```
+
+DELETE `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots/<menu_item_category_pivot_id>`
 
 ## Warehouses
 

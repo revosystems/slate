@@ -113,11 +113,12 @@ GET https://revoxef.works/api/external/v2/orders?from=2017-01-02&to=2017-01-04
       } 
 ```
 
-| Field    | Required | Description                                                                 |
-| ---------|----------|-----------------------------------------------------------------------------|
-| `from`   | optional | The starting date of the orders fetched                                     |
-| `to`     | optional | The ending date of the orders fetched                                       |
-| `page`   | optional | As the orders are paginated, use this parameter to select the page to fetch |
+| Field        | Type       | Required | Description                                                                 |
+| -------------|------------|----------|-----------------------------------------------------------------------------|
+| `from`       | YYYY-mm-dd | required | The starting date of the orders fetched.                                     |
+| `to`         | YYYY-mm-dd | required | The ending date of the orders fetched.                                       |
+| `page`       | number     | optional | As the orders are paginated, use this parameter to select the page to fetch. |
+| `pagination` | number     | optional | Number of objects per page. The default value is **50** and the max allowed is **200**. |
 
   
 > You can add `?withPayments` parameter. This way apart from `orderContents` another array will be loaded called `orderInvoices`, it will contain an array of invoices and each invoice will contain an array of `orderPayments`. 
