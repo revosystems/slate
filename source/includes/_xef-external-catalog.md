@@ -56,17 +56,17 @@ GET `https://revoxef.works/api/external/v2/catalog/groups`
 
 > Response is a groups paginated array with the following fields:
 
-```sh
-    'id',
-    'name',
-    'photo',
-    'active',
-    'tax_id',
-    'printer_id',
-    'printer_group_id',
-    'super_group_id',
-    'extra_id',
-```
+| Field            | Type    | Required | Extra info                |
+|------------------|---------|----------|---------------------------|
+| id               | number  | -        | autoincrement             |
+| name             | string  | required |                           |
+| photo            | string  | optional |                           |
+| active           | boolean | optional | default: 1                |
+| tax_id           | number  | optional |                           |
+| printer_id       | number  | optional |                           |
+| printer_group_id | number  | optional |                           |
+| super_group_id   | number  | optional |                           |
+| extra_id         | string  | optional |                           |
 
 GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
 
@@ -78,8 +78,8 @@ POST `https://revoxef.works/api/external/v2/catalog/groups`
 
 ```sh
 {
-    "name": "Group 1", // default: "Category Group"
-    "active": 1, // default: 1
+    "name": "Group 1",
+    "active": 1
     ...
 }
 ```
@@ -126,21 +126,21 @@ GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>/categories`
 
 > Response for GET categories is a categories paginated array with the following fields:
 
-```sh
-    'id',
-    'name',
-    'photo',
-    'active',
-    'group_id',
-    'tax_id',
-    'printer_id',
-    'printer_group_id',
-    'modifier_category_id',
-    'modifier_group_id',
-    'super_group_id',
-    'dish_order_id',
-    'extra_id'
-```
+| Field                | Type    | Required | Extra info    |
+|----------------------|---------|----------|---------------|
+| id                   | number  | -        | autoincrement |
+| name                 | string  | required |               |
+| photo                | string  | optional |               |
+| active               | boolean | optional | default: 1    |
+| group_id             | number  | required |               |
+| tax_id               | number  | optional |               |
+| printer_id           | number  | optional |               |
+| printer_group_id     | number  | optional |               |
+| modifier_category_id | number  | optional |               |
+| modifier_group_id    | number  | optional |               |
+| super_group_id       | number  | optional |               |
+| dish_order_id        | number  | optional |               |
+| extra_id             | string  | optional |               |
 
 GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>`
 
@@ -150,9 +150,9 @@ POST `https://revoxef.works/api/external/v2/catalog/categories`
 
 ```sh
 {
-    "name": "Category 1", // default: "Menu Category"
-    "active": 1, // default: 1
-    "group_id": 1 // required
+    "name": "Category 1",
+    "active": 1,
+    "group_id": 1
     ...
 }
 ```
@@ -197,42 +197,65 @@ GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/item
 
 > Response for GET items is an items paginated array with the following fields:
 
-```sh
-    "id"
-    "name"
-    "price"
-    "photo"
-    "active"
-    "info"
-    "type"
-    "hasInventory"
-    "usesWeight"
-    "category_id"
-    "tax_id"
-    "printer_id"
-    "printer_group_id"
-    "modifier_group_id"
-    "modifier_category_id"
-    "isMenu"
-    "shouldAppearInMenuList"
-    "super_group_id"
-    "isOpen"
-    "nameKitchen"
-    "costPrice"
-    "displayInventory"
-    "isLinked"
-    "allergies"
-    "dish_order_id"
-    "barcode"
-    "unit_id"
-    "extra_id"
-    "useAverageCostPrice"
-    "cookDuration"
-    "buttonName"
-    "minQuantity"
-    "report_category_id"
-    "config"
-```
+| Field                  | Type    | Required | Extra info                               |
+|------------------------|---------|----------|------------------------------------------|
+| id                     | number  |          | autoincrement                            |
+| name                   | string  | required |                                          |
+| price                  | decimal | required |                                          |
+| photo                  | string  | optional |                                          |
+| active                 | boolean | optional | default: 1                               |
+| info                   | string  | optional |                                          |
+| type                   | number  | required | normal = 0, menu = 1, selling format = 4 |
+| hasInventory           | boolean | optional | default: 0                               |
+| usesWeight             | boolean | optional | default: 0                               |
+| category_id            | number  | required |                                          |
+| tax_id                 | number  | optional |                                          |
+| printer_id             | number  | optional |                                          |
+| printer_group_id       | number  | optional |                                          |
+| modifier_group_id      | number  | optional |                                          |
+| modifier_category_id   | number  | optional |                                          |
+| isMenu                 | boolean | optional | default: 0                               |
+| shouldAppearInMenuList | boolean | optional | default: 0                               |
+| super_group_id         | number  | optional |                                          |
+| isOpen                 | boolean | optional | default: 0                               |
+| nameKitchen            | string  | optional |                                          |
+| costPrice              | decimal | required |                                          |
+| displayInventory       | boolean | optional | default: 0                               |
+| isLinked               | boolean | optional | default: 0                               |
+| allergies              | string  | optional | [see Allergies](#allergies)              |
+| dish_order_id          | number  | optional |                                          |
+| barcode                | string  | optional |                                          |
+| unit_id                | number  | optional |                                          |
+| extra_id               | string  | optional |                                          |
+| useAverageCostPrice    | boolean | optional | default: 0                               |
+| cookDuration           | number  | optional |                                          |
+| buttonName             | string  | optional |                                          |
+| minQuantity            | number  | optional |                                          |
+| report_category_id     | number  | optional |                                          |
+| config                 | string  | optional |                                          |
+
+#### Allergies
+
+There are the following allergies:
+
+| Allergie    | Value |
+|-------------|-------|
+| eggs        | 1     |
+| sesame      | 2     |
+| lupin       | 3     |
+| mustard     | 4     |
+| fish        | 5     |
+| celery      | 6     |
+| crustaceans | 7     |
+| peanuts     | 8     |
+| mollusks    | 9     |
+| soy         | 10    |
+| nuts        | 11    |
+| sulfites    | 12    |
+| dairy       | 13    |
+
+To save (POST) the allergies, you must send the values split by ';'
+Example: "2;3;6;10"
 
 GET `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
 
@@ -242,10 +265,10 @@ POST `https://revoxef.works/api/external/v2/catalog/items`
 
 ```sh
 {
-    "name": "Product 1", // default: "New Item"
+    "name": "Product 1",
     "price": 8.50,
-    "active": 1, // default: 1
-    "category_id": 1 // required
+    "active": 1,
+    "category_id": 1
     ...
 }
 ```
