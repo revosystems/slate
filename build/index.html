@@ -292,13 +292,25 @@
                     <a href="#basic-usage" class="toc-h2 toc-link" data-title="Basic usage">Basic usage</a>
                   </li>
                   <li>
-                    <a href="#items" class="toc-h2 toc-link" data-title="Items">Items</a>
+                    <a href="#catalog-structure" class="toc-h2 toc-link" data-title="Catalog structure">Catalog structure</a>
+                  </li>
+                  <li>
+                    <a href="#groups" class="toc-h2 toc-link" data-title="Groups">Groups</a>
                   </li>
                   <li>
                     <a href="#categories" class="toc-h2 toc-link" data-title="Categories">Categories</a>
                   </li>
                   <li>
-                    <a href="#groups" class="toc-h2 toc-link" data-title="Groups">Groups</a>
+                    <a href="#items" class="toc-h2 toc-link" data-title="Items">Items</a>
+                  </li>
+                  <li>
+                    <a href="#selling-formats" class="toc-h2 toc-link" data-title="Selling Formats">Selling Formats</a>
+                  </li>
+                  <li>
+                    <a href="#modifiers" class="toc-h2 toc-link" data-title="Modifiers">Modifiers</a>
+                  </li>
+                  <li>
+                    <a href="#menu-categories" class="toc-h2 toc-link" data-title="Menu Categories">Menu Categories</a>
                   </li>
                   <li>
                     <a href="#warehouses" class="toc-h2 toc-link" data-title="Warehouses">Warehouses</a>
@@ -1024,24 +1036,34 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <table><thead>
 <tr>
 <th>Field</th>
+<th>Type</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>from</code></td>
-<td>optional</td>
-<td>The starting date of the orders fetched</td>
+<td>YYYY-mm-dd</td>
+<td>required</td>
+<td>The starting date of the orders fetched.</td>
 </tr>
 <tr>
 <td><code>to</code></td>
-<td>optional</td>
-<td>The ending date of the orders fetched</td>
+<td>YYYY-mm-dd</td>
+<td>required</td>
+<td>The ending date of the orders fetched.</td>
 </tr>
 <tr>
 <td><code>page</code></td>
+<td>number</td>
 <td>optional</td>
-<td>As the orders are paginated, use this parameter to select the page to fetch</td>
+<td>As the orders are paginated, use this parameter to select the page to fetch.</td>
+</tr>
+<tr>
+<td><code>pagination</code></td>
+<td>number</td>
+<td>optional</td>
+<td>Number of objects per page. The default value is <strong>50</strong> and the max allowed is <strong>200</strong>.</td>
 </tr>
 </tbody></table>
 
@@ -1269,9 +1291,13 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <li>Create a new <a href="https://revoxef.works/account/tokens">token</a></li>
 </ol>
 <h2 id='basic-usage'>Basic usage</h2>
-<p>The main URL for the external api</p>
+<p>The main URL for the external API:</p>
 
 <p><code>https://revoxef.works/api/external/v2/catalog</code></p>
+
+<p>The URL for the integrations API environment:</p>
+
+<p><code>https://integrations.revoxef.works/api/external/v2/catalog</code></p>
 
 <p>And you should provide the mandatory headers for the authentication</p>
 
@@ -1294,75 +1320,135 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <td>{client-token}</td>
 </tr>
 </tbody></table>
-<h2 id='items'>Items</h2>
-<p>Can list, show, create, update and delete Items`</p>
+<h3 id='url-parameters'>URL parameters</h3>
+<p>You can add the next URL parameters for the paginated responses:</p>
 
-<p>GET <code>https://revoxef.works/api/external/v2/catalog/items</code> or </p>
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>number</td>
+<td>optional</td>
+<td>As the data is paginated, use this parameter to select the page to fetch.</td>
+</tr>
+<tr>
+<td><code>pagination</code></td>
+<td>number</td>
+<td>optional</td>
+<td>Number of objects per page. The default value is <strong>50</strong> and the max allowed is <strong>200</strong>.</td>
+</tr>
+</tbody></table>
 
-<p>GET <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;/items</code></p>
+<p>At the bottom of the request, it is specified information about the current page and pagination.</p>
+<h2 id='catalog-structure'>Catalog structure</h2>
+<p>The main catalog structure is the following:</p>
+
+<p><em>Groups</em> =&gt; <em>Categories</em> =&gt; <em>Items</em></p>
+
+<p><em>Items</em> cannot exist without <em>Categories</em>, and <em>Categories</em> cannot exists without <em>Groups</em>.</p>
+<h2 id='groups'>Groups</h2>
+<p>Can list, show, create, update and delete Groups</p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/groups</code></p>
+
+<p>Response is a groups paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>photo</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>tax_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>printer_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>printer_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>super_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>extra_id</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/groups</code></p>
 
 <blockquote>
-<p>Response for GET items is an items paginated array with the following fields:</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code>    <span class="s2">"id"</span>
-    <span class="s2">"name"</span>
-    <span class="s2">"price"</span>
-    <span class="s2">"photo"</span>
-    <span class="s2">"order"</span>
-    <span class="s2">"active"</span>
-    <span class="s2">"info"</span>
-    <span class="s2">"type"</span>
-    <span class="s2">"hasInventory"</span>
-    <span class="s2">"usesWeight"</span>
-    <span class="s2">"category_id"</span>
-    <span class="s2">"tax_id"</span>
-    <span class="s2">"printer_id"</span>
-    <span class="s2">"printer_group_id"</span>
-    <span class="s2">"modifier_group_id"</span>
-    <span class="s2">"modifier_category_id"</span>
-    <span class="s2">"isMenu"</span>
-    <span class="s2">"shouldAppearInMenuList"</span>
-    <span class="s2">"super_group_id"</span>
-    <span class="s2">"isOpen"</span>
-    <span class="s2">"nameKitchen"</span>
-    <span class="s2">"costPrice"</span>
-    <span class="s2">"displayInventory"</span>
-    <span class="s2">"isLinked"</span>
-    <span class="s2">"allergies"</span>
-    <span class="s2">"dish_order_id"</span>
-    <span class="s2">"barcode"</span>
-    <span class="s2">"unit_id"</span>
-    <span class="s2">"extra_id"</span>
-    <span class="s2">"useAverageCostPrice"</span>
-    <span class="s2">"cookDuration"</span>
-    <span class="s2">"buttonName"</span>
-    <span class="s2">"minQuantity"</span>
-    <span class="s2">"report_category_id"</span>
-    <span class="s2">"config"</span>
-</code></pre>
-<p>GET <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
+<p>Create a group (POST) <code>catalog/groups</code></p>
 
-<p>POST <code>https://revoxef.works/api/external/v2/catalog/items</code></p>
-
-<blockquote>
-<p>Create a item (POST) <code>catalog/items</code></p>
+<p>All parameters are optional.</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 2<span class="o">}</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Group 1"</span>,
+    <span class="s2">"active"</span>: 1
+    ...
+<span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Update a item (POST) <code>catalog/items</code></p>
+<p>Update a group (POST) <code>catalog/groups</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Product 1 updated"</span>, <span class="s2">"active"</span>: 0, <span class="s2">"category_id"</span>: 2<span class="o">}</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 2, // required to update
+    <span class="s2">"name"</span>: <span class="s2">"Group 1 updated"</span>,
+    <span class="s2">"active"</span>: 0
+    ...
+<span class="o">}</span>
 </code></pre>
-<blockquote>
-<p>Create multiple items (POST) <code>catalog/items</code></p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code>  <span class="o">{</span><span class="s2">"items"</span>: <span class="o">[</span>
-        <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 2<span class="o">}</span>,
-        <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Product 2"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"category_id"</span>: 1<span class="o">}</span>
-    <span class="o">]}</span>
-</code></pre>
-<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;</code></p>
 <h2 id='categories'>Categories</h2>
 <p>Can list, show, create, update and delete Categories</p>
 
@@ -1370,22 +1456,96 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 
 <p>GET <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;/categories</code></p>
 
-<blockquote>
 <p>Response for GET categories is a categories paginated array with the following fields:</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
-    <span class="s1">'name'</span>,
-    <span class="s1">'group_id'</span>,
-    <span class="s1">'active'</span>,
-    <span class="s1">'tax_id'</span>,
-    <span class="s1">'photo'</span>,
-    <span class="s1">'super_group_id'</span>,
-    <span class="s1">'printer_id'</span>,
-    <span class="s1">'printer_group_id'</span>,
-    <span class="s1">'modifier_category_id'</span>,
-    <span class="s1">'modifier_group_id'</span>,
-    <span class="s1">'dish_order_id'</span>
-</code></pre>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>photo</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>group_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>tax_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>printer_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>printer_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>modifier_category_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>modifier_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>super_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>dish_order_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>extra_id</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+</tbody></table>
+
 <p>GET <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;</code></p>
 
 <p>POST <code>https://revoxef.works/api/external/v2/catalog/categories</code></p>
@@ -1393,62 +1553,1019 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a category (POST) <code>catalog/categories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 2<span class="o">}</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Category 1"</span>,
+    <span class="s2">"active"</span>: 1,
+    <span class="s2">"group_id"</span>: 1
+    ...
+<span class="o">}</span>
 </code></pre>
 <blockquote>
 <p>Update a category  (POST) <code>catalog/categories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Category 1 updated"</span>, <span class="s2">"active"</span>: 0, <span class="s2">"group_id"</span>: 2<span class="o">}</span>
-</code></pre>
-<blockquote>
-<p>Create multiple categories  (POST) <code>catalog/categories</code></p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"categories"</span>: <span class="o">[</span>
-    <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 1"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 2<span class="o">}</span>,
-    <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Category 2"</span>, <span class="s2">"active"</span>: 1, <span class="s2">"group_id"</span>: 1<span class="o">}</span>
-<span class="o">]}</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"name"</span>: <span class="s2">"Category 1 updated"</span>,
+    <span class="s2">"active"</span>: 0
+    ...
+<span class="o">}</span>
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;</code></p>
-<h2 id='groups'>Groups</h2>
-<p>Can list, show, create, update and delete Groups</p>
+<h2 id='items'>Items</h2>
+<p>For the <em>Items</em>, there are the following types:</p>
 
-<p>GET <code>https://revoxef.works/api/external/v2/catalog/groups</code></p>
+<ul>
+<li><em>Normal Items</em>: <em>item.type = 0</em></li>
+<li><em>Menu Items</em>: <em>item.type = 1</em></li>
+<li><em>Selling format Items</em>: <em>item.type = 4</em> </li>
+</ul>
+
+<p>Can list, show, create, update and delete <em>Items</em></p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/items</code> or </p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;/items</code></p>
+
+<p>Response for GET items is an items paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>photo</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>info</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>normal = 0, menu = 1, selling format = 4</td>
+</tr>
+<tr>
+<td>hasInventory</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>usesWeight</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>category_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>tax_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>printer_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>printer_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>modifier_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>modifier_category_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>isMenu</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>shouldAppearInMenuList</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>super_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>isOpen</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>nameKitchen</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>costPrice</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>displayInventory</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>isLinked</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>allergies</td>
+<td>string</td>
+<td>optional</td>
+<td><a href="#allergies">see Allergies</a></td>
+</tr>
+<tr>
+<td>dish_order_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>barcode</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>unit_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>extra_id</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>useAverageCostPrice</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>cookDuration</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>buttonName</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>minQuantity</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>report_category_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>config</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id='allergies'>Allergies</h3>
+<p>There are the following allergies:</p>
+
+<table><thead>
+<tr>
+<th>Allergies</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>eggs</td>
+<td>1</td>
+</tr>
+<tr>
+<td>sesame</td>
+<td>2</td>
+</tr>
+<tr>
+<td>lupin</td>
+<td>3</td>
+</tr>
+<tr>
+<td>mustard</td>
+<td>4</td>
+</tr>
+<tr>
+<td>fish</td>
+<td>5</td>
+</tr>
+<tr>
+<td>celery</td>
+<td>6</td>
+</tr>
+<tr>
+<td>crustaceans</td>
+<td>7</td>
+</tr>
+<tr>
+<td>peanuts</td>
+<td>8</td>
+</tr>
+<tr>
+<td>mollusks</td>
+<td>9</td>
+</tr>
+<tr>
+<td>soy</td>
+<td>10</td>
+</tr>
+<tr>
+<td>nuts</td>
+<td>11</td>
+</tr>
+<tr>
+<td>sulfites</td>
+<td>12</td>
+</tr>
+<tr>
+<td>dairy</td>
+<td>13</td>
+</tr>
+</tbody></table>
+
+<p>To save (POST) the allergies, you must send the values split by &#39;;&#39; <code>Example: &quot;2;3;6;10&quot;</code></p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/items</code></p>
 
 <blockquote>
-<p>Response is a groups paginated array with the following fields:</p>
+<p>Create a item (POST) <code>catalog/items</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
-    <span class="s1">'name'</span>,
-    <span class="s1">'active'</span>,
-    <span class="s1">'tax_id'</span>,
-    <span class="s1">'photo'</span>,
-    <span class="s1">'super_group_id'</span>,
-    <span class="s1">'printer_id'</span>,
-    <span class="s1">'printer_group_id'</span>,
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Product 1"</span>,
+    <span class="s2">"price"</span>: 8.50,
+    <span class="s2">"active"</span>: 1,
+    <span class="s2">"category_id"</span>: 1
+    ...
+<span class="o">}</span>
 </code></pre>
-<p>GET <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;</code></p>
+<blockquote>
+<p>Update a item (POST) <code>catalog/items</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"name"</span>: <span class="s2">"Category 1 updated"</span>,
+    <span class="s2">"active"</span>: 0
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
+<h2 id='selling-formats'>Selling Formats</h2>
+<p>Can list, show, create, update and delete Selling Formats</p>
 
-<p>POST <code>https://revoxef.works/api/external/v2/catalog/groups</code></p>
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/sellingFormats</code></p>
+
+<p>Response for GET selling formats is a selling formats paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>photo</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/sellingFormats/&lt;format_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/sellingFormats</code></p>
 
 <blockquote>
-<p>Create a group (POST) <code>catalog/groups</code></p>
+<p>Create a selling format (POST) <code>catalog/sellingFormats</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Selling format 1"</span>,
+    <span class="s2">"active"</span>: 1
+    ...
+<span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Update a group (POST) <code>catalog/groups</code></p>
+<p>Update a selling format (POST) <code>catalog/sellingFormats</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"id"</span>:2, <span class="s2">"name"</span>: <span class="s2">"Group 1 updated"</span>, <span class="s2">"active"</span>: 0<span class="o">}</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"name"</span>: <span class="s2">"Selling format 1 updated"</span>,
+    <span class="s2">"active"</span>: 0
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/sellingFormats/&lt;format_id&gt;</code></p>
+<h3 id='selling-format-pivots'>Selling Format Pivots</h3>
+<p>An <em>Item</em> can be of <em>Selling format</em> type.</p>
+
+<p>This can be distinguished by <em>item.type</em> = 4.</p>
+
+<p>The <em>Selling format item</em> can manage different <em>Selling formats</em>, with different prices and quantities, for its TPV selling.</p>
+
+<p>Can list, show, create, update and delete Selling Format Pivots</p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/sellingFormatPivots</code></p>
+
+<p>Response for GET selling format pivots is a selling format pivots paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>format_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>selling format</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>item.type = 4</td>
+</tr>
+<tr>
+<td>combination_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>unit_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/&lt;format_pivot_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/sellingFormatPivots</code></p>
+
+<blockquote>
+<p>Create a selling format pivot (POST) <code>catalog/sellingFormatPivots</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"price"</span>: 5.00,
+    <span class="s2">"quantity"</span>: 1,
+    <span class="s2">"format_id"</span>: 1,
+    <span class="s2">"item_id"</span>: 1,
+    ...
+<span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Create multiple groups (POST) <code>catalog/groups</code></p>
+<p>Update a selling format pivot (POST) <code>catalog/sellingFormatPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"groups"</span>: <span class="o">[</span>
-            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>,
-            <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Group 2"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
-        <span class="o">]}</span>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"quantity"</span>: 2
+    ...
+<span class="o">}</span>
 </code></pre>
-<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;</code></p>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/&lt;format_pivot_id&gt;</code></p>
+<h2 id='modifiers'>Modifiers</h2>
+<p>The <em>Modifiers</em> structure is the following:</p>
+
+<p><em>Modifier groups</em> (&lt;= <em>Modifier pivot</em> =&gt;) <em>Modifier categories</em> =&gt; <em>Modifiers</em>.</p>
+
+<p><em>Modifiers</em> must exist in a <em>Modifier category</em>, and <em>Modifier categories</em> can exist independently or in a <em>Modifier group</em>.</p>
+
+<p>Both <em>Modifier groups</em> and <em>Modifier categories</em> can be linked to catalog <em>Categories</em> and <em>Items</em>.</p>
+
+<p>Can list, show, create, update and delete Modifiers</p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/modifiers</code></p>
+
+<p>Response for GET modifiers is a modifiers paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>photo</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>category_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>modifier category</td>
+</tr>
+<tr>
+<td>cookDuration</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>extra_id</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/modifiers/&lt;modifier_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/modifiers</code></p>
+
+<blockquote>
+<p>Create a modifier (POST) <code>catalog/modifiers</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Modifier 1"</span>,
+    <span class="s2">"price"</span>: 1.00,
+    <span class="s2">"category_id"</span>: 1,
+    <span class="s2">"active"</span>: 1
+    ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Update a modifier (POST) <code>catalog/modifier</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"price"</span>: 2.00
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifiers/&lt;modifier_id&gt;</code></p>
+<h3 id='modifier-categories'>Modifier Categories</h3>
+<p>Can list, show, create, update and delete Modifier Categories</p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/modifierCategories</code></p>
+
+<p>Response for GET modifier categories is a modifier categories paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>isChoice</td>
+<td>boolean</td>
+<td>optional</td>
+<td>0 for select one, 1 (default) for multiple choice</td>
+</tr>
+<tr>
+<td>isOptional</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/modifierCategories/&lt;modifier_category_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/modifierCategories</code></p>
+
+<blockquote>
+<p>Create a modifier category (POST) <code>catalog/modifierCategories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Modifier category 1"</span>
+    ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Update a modifier category (POST) <code>catalog/modifierCategories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"isChoice"</span>: 0
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifierCategories/&lt;modifier_category_id&gt;</code></p>
+<h3 id='modifier-groups'>Modifier Groups</h3>
+<p>Can list, show, create, update and delete Modifier Groups</p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/modifierGroups</code></p>
+
+<p>Response for GET modifier groups is a modifier groups paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>dont_show_automatically</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/modifierGroups/&lt;modifier_group_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/modifierGroups</code></p>
+
+<blockquote>
+<p>Create a modifier group (POST) <code>catalog/modifierGroups</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Modifier group 1"</span>
+    ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Update a modifier group (POST) <code>catalog/modifierGroups</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"name"</span>: <span class="s2">"Modifier group updated 1"</span>
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifierGroups/&lt;modifier_group_id&gt;</code></p>
+<h3 id='modifier-pivot'>Modifier Pivot</h3>
+<p>The next pivot endpoints define the (optional) relationship between <em>Modifier Categories</em> and <em>Modifier Groups</em>.</p>
+
+<p>Can list, show, create, update and delete Modifier Pivots</p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/modifierPivots</code></p>
+
+<p>Response for GET modifier pivots is a modifier pivots paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>group_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>modifier group</td>
+</tr>
+<tr>
+<td>category_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>modifier category</td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/modifierPivots/&lt;modifier_pivot_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/modifierPivots</code></p>
+
+<blockquote>
+<p>Create a modifier pivot (POST) <code>catalog/modifierPivots</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"group_id"</span>: 1,
+    <span class="s2">"category_id"</span>: 1
+    ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Update a modifier pivot (POST) <code>catalog/modifierPivots</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"group_id"</span>: 2
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifierPivots/&lt;modifier_pivot_id&gt;</code></p>
+<h2 id='menu-categories'>Menu Categories</h2>
+<p>An <em>Item</em> can be of Menu type.</p>
+
+<p>This can be distinguished by item.type = 1.</p>
+
+<p>Each <em>Menu Item</em> can contain different <em>Menu Categories</em> and each <em>Menu Category</em> can have multiple <em>Normal Items (item.type = 0)</em>:</p>
+
+<p><em>Menu Item</em> =&gt; <em>Menu Categories</em> =&gt; <em>Normal Items</em></p>
+
+<p>Can list, show, create, update and delete <em>Menu Categories</em></p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/menuMenuCategories</code></p>
+
+<p>Response for GET menu categories is a menu categories paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>isMultipleChoice</td>
+<td>number</td>
+<td>optional</td>
+<td>Select One: 0, Multiple choice: 1 (default), Select one mandatory: 2, Select by default (min-max): 3, Custom (min-max): 4</td>
+</tr>
+<tr>
+<td>max</td>
+<td>number</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>min</td>
+<td>number</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>item.type = 1</td>
+</tr>
+<tr>
+<td>dish_order_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/menuMenuCategories/&lt;menu_category_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/menuMenuCategories</code></p>
+
+<blockquote>
+<p>Create a menu category (POST) <code>catalog/menuMenuCategories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"First dishes"</span>,
+    <span class="s2">"item_id"</span>: 1
+    <span class="s2">"isMultipleChoice"</span>: 2,
+    ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Update a menu category (POST) <code>catalog/menuMenuCategories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"isMultipleChoice"</span>: 2
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/menuMenuCategories/&lt;menu_category_id&gt;</code></p>
+<h3 id='menu-item-category-pivot'>Menu Item-Category Pivot</h3>
+<p>This endpoint links the <em>Normal Items</em>, from the menu, with their <em>Menu Category</em>.</p>
+
+<p>Can list, show, create, update and delete <em>Menu Item-Category Pivot</em></p>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots</code></p>
+
+<p>Response for GET menu item-category pivots is a menu item-category pivots paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>-</td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>price</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>addModifiersPrice</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>item.type = 0</td>
+</tr>
+<tr>
+<td>category_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>menu category</td>
+</tr>
+<tr>
+<td>separatorName</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>modifier_group_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>format_pivot_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots/&lt;menu_item_category_pivot_id&gt;</code></p>
+
+<p>POST <code>https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots</code></p>
+
+<blockquote>
+<p>Create a menu item-category pivot (POST) <code>catalog/menuMenuItemCategoryPivots</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"item_id"</span>: 1,
+    <span class="s2">"category_id"</span>: 1
+    ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Update a menu item-category pivot (POST) <code>catalog/menuMenuItemCategoryPivots</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"id"</span>: 1, // required to update
+    <span class="s2">"price"</span>: 1.00
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots/&lt;menu_item_category_pivot_id&gt;</code></p>
 <h2 id='warehouses'>Warehouses</h2>
 <p>GET Warehouses <code>https://revoxef.works/api/external/v2/warehouses</code></p>
 
@@ -2263,18 +3380,33 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <tr>
 <th>Field</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>start_date</code></td>
 <td>YYYY-mm-dd</td>
-<td>The initial date for the report</td>
+<td>optional</td>
+<td>The initial date for the report. Default: start of month.</td>
 </tr>
 <tr>
 <td><code>end_date</code></td>
 <td>YYYY-mm-dd</td>
-<td>The final date for the report</td>
+<td>optional</td>
+<td>The final date for the report. Default: today.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>number</td>
+<td>optional</td>
+<td>As the data is paginated, use this parameter to select the page to fetch.</td>
+</tr>
+<tr>
+<td><code>pagination</code></td>
+<td>number</td>
+<td>optional</td>
+<td>Number of objects per page. The default value is <strong>50</strong> and the max allowed is <strong>200</strong>.</td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3><pre class="highlight shell tab-shell"><code><span class="o">{</span>
