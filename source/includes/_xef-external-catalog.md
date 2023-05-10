@@ -199,7 +199,7 @@ GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/item
 
 | Field                  | Type    | Required | Extra info                               |
 |------------------------|---------|----------|------------------------------------------|
-| id                     | number  |          | autoincrement                            |
+| id                     | number  | -         | autoincrement                            |
 | name                   | string  | **required** |                                          |
 | price                  | decimal | **required** |                                          |
 | photo                  | string  | optional |                                          |
@@ -307,7 +307,7 @@ GET `https://revoxef.works/api/external/v2/catalog/sellingFormats`
 
 | Field  | Type    | Required | Extra info    |
 |--------|---------|----------|---------------|
-| id     | number  |          | autoincrement |
+| id     | number  | -         | autoincrement |
 | name   | string  | **required** |               |
 | photo  | string  | optional |               |
 | order  | number  | optional |               |
@@ -357,7 +357,7 @@ GET `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots`
 
 | Field                | Type    | Required | Extra info     |
 |----------------------|---------|----------|----------------|
-| id                   | number  |          | autoincrement  |
+| id                   | number  | -         | autoincrement  |
 | quantity             | decimal | **required** |                |
 | price                | decimal | **required** |                |
 | order                | number  | optional |                |
@@ -412,7 +412,7 @@ GET `https://revoxef.works/api/external/v2/catalog/modifiers`
 
 | Field        | Type    | Required | Extra info        |
 |--------------|---------|----------|-------------------|
-| id           | number  |          | autoincrement     |
+| id           | number  | -         | autoincrement     |
 | name         | string  | **required** |                   |
 | price        | decimal | **required** |                   |
 | photo        | string  | optional |                   |
@@ -460,7 +460,7 @@ GET `https://revoxef.works/api/external/v2/catalog/modifierCategories`
 
 | Field      | Type    | Required     | Extra info                                        |
 |------------|---------|--------------|---------------------------------------------------|
-| id         | number  |              | autoincrement                                     |
+| id         | number  | -             | autoincrement                                     |
 | name       | string  | **required** |                                                   |
 | order      | number  | optional     |                                                   |
 | isChoice   | boolean | optional     | 0 for select one, 1 (default) for multiple choice |
@@ -503,7 +503,7 @@ GET `https://revoxef.works/api/external/v2/catalog/modifierGroups`
 
 | Field                   | Type    | Required     | Extra info    |
 |-------------------------|---------|--------------|---------------|
-| id                      | number  |              | autoincrement |
+| id                      | number  | -             | autoincrement |
 | name                    | string  | **required** |               |
 | order                   | number  | optional     |               |
 | dont_show_automatically | boolean | optional     | default: 0    |
@@ -545,7 +545,7 @@ GET `https://revoxef.works/api/external/v2/catalog/modifierPivots`
 
 | Field       | Type   | Required | Extra info        |
 |-------------|--------|----------|-------------------|
-| id          | number |          | autoincrement     |
+| id          | number | -         | autoincrement     |
 | order       | number | optional |                   |
 | group_id    | number | **required** | modifier group    |
 | category_id | number | **required** | modifier category |
@@ -594,7 +594,7 @@ GET `https://revoxef.works/api/external/v2/catalog/menuMenuCategories`
 
 | Field            | Type   | Required     | Extra info                                                                                                                |
 |------------------|--------|--------------|---------------------------------------------------------------------------------------------------------------------------|
-| id               | number |              | autoincrement                                                                                                             |
+| id               | number | -             | autoincrement                                                                                                             |
 | name             | string | **required** |                                                                                                                           |
 | order            | number | optional     |                                                                                                                           |
 | isMultipleChoice | number | optional     | Select One: 0, Multiple choice: 1 (default), Select one mandatory: 2, Select by default (min-max): 3, Custom (min-max): 4 |
@@ -642,7 +642,7 @@ GET `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots`
 
 | Field             | Type    | Required     | Extra info    |
 |-------------------|---------|--------------|---------------|
-| id                | number  |              | autoincrement |
+| id                | number  | -             | autoincrement |
 | active            | boolean | optional     | default: 1    |
 | order             | number  | optional     |               |
 | price             | decimal | **required** |               |
