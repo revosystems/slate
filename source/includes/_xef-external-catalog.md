@@ -59,7 +59,7 @@ GET `https://revoxef.works/api/external/v2/catalog/groups`
 | Field            | Type    | Required | Extra info                |
 |------------------|---------|----------|---------------------------|
 | id               | number  | -        | autoincrement             |
-| name             | string  | required |                           |
+| name             | string  | **required** |                           |
 | photo            | string  | optional |                           |
 | active           | boolean | optional | default: 1                |
 | tax_id           | number  | optional |                           |
@@ -129,10 +129,10 @@ GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>/categories`
 | Field                | Type    | Required | Extra info    |
 |----------------------|---------|----------|---------------|
 | id                   | number  | -        | autoincrement |
-| name                 | string  | required |               |
+| name                 | string  | **required** |               |
 | photo                | string  | optional |               |
 | active               | boolean | optional | default: 1    |
-| group_id             | number  | required |               |
+| group_id             | number  | **required** |               |
 | tax_id               | number  | optional |               |
 | printer_id           | number  | optional |               |
 | printer_group_id     | number  | optional |               |
@@ -200,15 +200,15 @@ GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/item
 | Field                  | Type    | Required | Extra info                               |
 |------------------------|---------|----------|------------------------------------------|
 | id                     | number  |          | autoincrement                            |
-| name                   | string  | required |                                          |
-| price                  | decimal | required |                                          |
+| name                   | string  | **required** |                                          |
+| price                  | decimal | **required** |                                          |
 | photo                  | string  | optional |                                          |
 | active                 | boolean | optional | default: 1                               |
 | info                   | string  | optional |                                          |
-| type                   | number  | required | normal = 0, menu = 1, selling format = 4 |
+| type                   | number  | **required** | normal = 0, menu = 1, selling format = 4 |
 | hasInventory           | boolean | optional | default: 0                               |
 | usesWeight             | boolean | optional | default: 0                               |
-| category_id            | number  | required |                                          |
+| category_id            | number  | **required** |                                          |
 | tax_id                 | number  | optional |                                          |
 | printer_id             | number  | optional |                                          |
 | printer_group_id       | number  | optional |                                          |
@@ -219,7 +219,7 @@ GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/item
 | super_group_id         | number  | optional |                                          |
 | isOpen                 | boolean | optional | default: 0                               |
 | nameKitchen            | string  | optional |                                          |
-| costPrice              | decimal | required |                                          |
+| costPrice              | decimal | **required** |                                          |
 | displayInventory       | boolean | optional | default: 0                               |
 | isLinked               | boolean | optional | default: 0                               |
 | allergies              | string  | optional | [see Allergies](#allergies)              |
@@ -238,7 +238,7 @@ GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/item
 
 There are the following allergies:
 
-| Allergie    | Value |
+| Allergies   | Value |
 |-------------|-------|
 | eggs        | 1     |
 | sesame      | 2     |
@@ -305,13 +305,13 @@ GET `https://revoxef.works/api/external/v2/catalog/sellingFormats`
 
 > Response for GET selling formats is a selling formats paginated array with the following fields:
 
-```sh
-    "id",
-    "name",
-    "photo",
-    "order",
-    "active"
-```
+| Field  | Type    | Required | Extra info    |
+|--------|---------|----------|---------------|
+| id     | number  |          | autoincrement |
+| name   | string  | **required** |               |
+| photo  | string  | optional |               |
+| order  | number  | optional |               |
+| active | boolean | optional | default: 1    |
 
 GET `https://revoxef.works/api/external/v2/catalog/sellingFormats/<format_id>`
 
@@ -321,8 +321,8 @@ POST `https://revoxef.works/api/external/v2/catalog/sellingFormats`
 
 ```sh
 {
-    "name": "Selling format 1", // required
-    "active": 1 // default: 1
+    "name": "Selling format 1",
+    "active": 1
     ...
 }
 ```
@@ -355,16 +355,16 @@ GET `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots`
 
 > Response for GET selling format pivots is a selling format pivots paginated array with the following fields:
 
-```sh
-    "id",
-    "quantity",
-    "price",
-    "order",
-    "format_id",
-    "item_id",
-    "combination_group_id",
-    "unit_id"
-```
+| Field                | Type    | Required | Extra info     |
+|----------------------|---------|----------|----------------|
+| id                   | number  |          | autoincrement  |
+| quantity             | decimal | **required** |                |
+| price                | decimal | **required** |                |
+| order                | number  | optional |                |
+| format_id            | number  | **required** | selling format |
+| item_id              | number  | **required** | item.type = 4  |
+| combination_group_id | number  | optional |                |
+| unit_id              | number  | optional |                |
 
 GET `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/<format_pivot_id>`
 
@@ -374,11 +374,10 @@ POST `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots`
 
 ```sh
 {
-    "price": 5.00, // required
-    "quantity": 1, // required
-    "format_id": 1, // required
-    "item_id": 1, // required
-    "active": 1 // default: 1
+    "price": 5.00,
+    "quantity": 1,
+    "format_id": 1,
+    "item_id": 1,
     ...
 }
 ```
@@ -411,17 +410,17 @@ GET `https://revoxef.works/api/external/v2/catalog/modifiers`
 
 > Response for GET modifiers is a modifiers paginated array with the following fields:
 
-```sh
-    "id",
-    "name",
-    "price",
-    "photo",
-    "order",
-    "category_id", // modifier_category_id
-    "cookDuration",
-    "active",
-    "extra_id"
-```
+| Field        | Type    | Required | Extra info        |
+|--------------|---------|----------|-------------------|
+| id           | number  |          | autoincrement     |
+| name         | string  | **required** |                   |
+| price        | decimal | **required** |                   |
+| photo        | string  | optional |                   |
+| order        | number  | optional |                   |
+| category_id  | number  | **required** | modifier category |
+| cookDuration | number  | optional |                   |
+| active       | boolean | optional | default: 1        |
+| extra_id     | string  | optional |                   |
 
 GET `https://revoxef.works/api/external/v2/catalog/modifiers/<modifier_id>`
 
@@ -431,10 +430,10 @@ POST `https://revoxef.works/api/external/v2/catalog/modifiers`
 
 ```sh
 {
-    "name": "Modifier 1", // default: "New Modifier"
-    "price": 1.00, // default: 0.00
-    "category_id": 1, // required
-    "active": 1 // default: 1
+    "name": "Modifier 1",
+    "price": 1.00,
+    "category_id": 1,
+    "active": 1
     ...
 }
 ```
@@ -459,14 +458,15 @@ GET `https://revoxef.works/api/external/v2/catalog/modifierCategories`
 
 > Response for GET modifier categories is a modifier categories paginated array with the following fields:
 
-```sh
-    "id",
-    "name",
-    "order",
-    "isChoice", // 0 for select one, 1 for multiple choice
-    "isOptional",
-    "active"
-```
+| Field      | Type    | Required     | Extra info                                        |
+|------------|---------|--------------|---------------------------------------------------|
+| id         | number  |              | autoincrement                                     |
+| name       | string  | **required** |                                                   |
+| order      | number  | optional     |                                                   |
+| isChoice   | boolean | optional     | 0 for select one, 1 (default) for multiple choice |
+| isOptional | boolean | optional     | default: 1                                        |
+| active     | boolean | optional     | default: 1                                        |
+
 
 GET `https://revoxef.works/api/external/v2/catalog/modifierCategories/<modifier_category_id>`
 
@@ -476,7 +476,7 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierCategories`
 
 ```sh
 {
-    "name": "Modifier category 1" // default: "Modifier Category"
+    "name": "Modifier category 1"
     ...
 }
 ```
@@ -501,12 +501,12 @@ GET `https://revoxef.works/api/external/v2/catalog/modifierGroups`
 
 > Response for GET modifier groups is a modifier groups paginated array with the following fields:
 
-```sh
-    "id",
-    "name",
-    "order",
-    "dont_show_automatically" // 0 or 1
-```
+| Field                   | Type    | Required     | Extra info    |
+|-------------------------|---------|--------------|---------------|
+| id                      | number  |              | autoincrement |
+| name                    | string  | **required** |               |
+| order                   | number  | optional     |               |
+| dont_show_automatically | boolean | optional     | default: 0    |
 
 GET `https://revoxef.works/api/external/v2/catalog/modifierGroups/<modifier_group_id>`
 
@@ -516,7 +516,7 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierGroups`
 
 ```sh
 {
-    "name": "Modifier group 1" // default: "Modifier group"
+    "name": "Modifier group 1"
     ...
 }
 ```
@@ -543,12 +543,12 @@ GET `https://revoxef.works/api/external/v2/catalog/modifierPivots`
 
 > Response for GET modifier pivots is a modifier pivots paginated array with the following fields:
 
-```sh
-    "id",
-    "order",
-    "group_id", // modifier_group_id
-    "category_id" // modifier_category_id
-```
+| Field       | Type   | Required | Extra info        |
+|-------------|--------|----------|-------------------|
+| id          | number |          | autoincrement     |
+| order       | number | optional |                   |
+| group_id    | number | **required** | modifier group    |
+| category_id | number | **required** | modifier category |
 
 GET `https://revoxef.works/api/external/v2/catalog/modifierPivots/<modifier_pivot_id>`
 
@@ -558,8 +558,8 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierPivots`
 
 ```sh
 {
-    "group_id": 1, // required
-    "category_id": 1 // required
+    "group_id": 1,
+    "category_id": 1
     ...
 }
 ```
@@ -592,16 +592,16 @@ GET `https://revoxef.works/api/external/v2/catalog/menuMenuCategories`
 
 > Response for GET menu categories is a menu categories paginated array with the following fields:
 
-```sh
-    "id",
-    "name",
-    "order",
-    "isMultipleChoice", // Select One: 0, Multiple choice: 1, Select one mandatory: 2, Select by default (min-max): 3, Custom (min-max): 4
-    "max",
-    "min",
-    "item_id", // Menu Item (item.type = 1)
-    "dish_order_id"
-```
+| Field            | Type   | Required     | Extra info                                                                                                                |
+|------------------|--------|--------------|---------------------------------------------------------------------------------------------------------------------------|
+| id               | number |              | autoincrement                                                                                                             |
+| name             | string | **required** |                                                                                                                           |
+| order            | number | optional     |                                                                                                                           |
+| isMultipleChoice | number | optional     | Select One: 0, Multiple choice: 1 (default), Select one mandatory: 2, Select by default (min-max): 3, Custom (min-max): 4 |
+| max              | number | optional     | default: 1                                                                                                                |
+| min              | number | optional     | default: 0                                                                                                                |
+| item_id          | number | **required** | item.type = 1                                                                                                             |
+| dish_order_id    | number | optional     |                                                                                                                           |
 
 GET `https://revoxef.works/api/external/v2/catalog/menuMenuCategories/<menu_category_id>`
 
@@ -611,9 +611,9 @@ POST `https://revoxef.works/api/external/v2/catalog/menuMenuCategories`
 
 ```sh
 {
-    "name": "First dishes", // default: Menu Category
-    "item_id": 1 // required
-    "isMultipleChoice": 2, // default: 1
+    "name": "First dishes",
+    "item_id": 1
+    "isMultipleChoice": 2,
     ...
 }
 ```
@@ -640,18 +640,18 @@ GET `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots`
 
 > Response for GET menu item-category pivots is a menu item-category pivots paginated array with the following fields:
 
-```sh
-    "id",
-    "active",
-    "order",
-    "price",
-    "addModifiersPrice",
-    "item_id",
-    "category_id",
-    "separatorName",
-    "modifier_group_id",
-    "format_pivot_id"
-```
+| Field             | Type    | Required     | Extra info    |
+|-------------------|---------|--------------|---------------|
+| id                | number  |              | autoincrement |
+| active            | boolean | optional     | default: 1    |
+| order             | number  | optional     |               |
+| price             | decimal | **required** |               |
+| addModifiersPrice | boolean | optional     | default: 1    |
+| item_id           | number  | **required** | item.type = 0 |
+| category_id       | number  | **required** | menu category |
+| separatorName     | string  | optional     |               |
+| modifier_group_id | number  | optional     |               |
+| format_pivot_id   | number  | optional     |               |
 
 GET `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots/<menu_item_category_pivot_id>`
 
@@ -661,8 +661,8 @@ POST `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots`
 
 ```sh
 {
-    "item_id": 1, // required (item.type = 0)
-    "category_id": 1 // required (Menu Category)
+    "item_id": 1,
+    "category_id": 1
     ...
 }
 ```
