@@ -29,7 +29,7 @@ tenant        | {account-username}
 Authorization | Bearer {the-token}
 client-token  | {client-token}
 
-#### URL parameters
+### URL parameters
 
 You can add the next URL parameters for the paginated responses:
 
@@ -44,7 +44,7 @@ At the bottom of the request, it is specified information about the current page
 
 The main catalog structure is the following:
 
-*Groups* $\Rightarrow$ *Categories* $\Rightarrow$ *Items*
+*Groups* => *Categories* => *Items*
 
 *Items* cannot exist without *Categories*, and *Categories* cannot exists without *Groups*.
 
@@ -54,7 +54,7 @@ Can list, show, create, update and delete Groups
 
 GET `https://revoxef.works/api/external/v2/catalog/groups`
 
-> Response is a groups paginated array with the following fields:
+Response is a groups paginated array with the following fields:
 
 | Field            | Type    | Required | Extra info                |
 |------------------|---------|----------|---------------------------|
@@ -67,6 +67,7 @@ GET `https://revoxef.works/api/external/v2/catalog/groups`
 | printer_group_id | number  | optional |                           |
 | super_group_id   | number  | optional |                           |
 | extra_id         | string  | optional |                           |
+
 
 GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
 
@@ -95,25 +96,6 @@ POST `https://revoxef.works/api/external/v2/catalog/groups`
 }
 ```
 
- <!---
-> Create multiple groups (POST) `catalog/groups`
-  
-```sh
-{
-    "groups": [
-        {
-            "name": "Group 1",
-            "active": 1
-        },
-        {
-            "name": "Group 2",
-            "active": 1
-        }
-    ]
-}
-```
---->
-
 DELETE `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
 
 ## Categories
@@ -124,7 +106,7 @@ GET `https://revoxef.works/api/external/v2/catalog/categories` or
 
 GET `https://revoxef.works/api/external/v2/catalog/groups/<group_id>/categories`
 
-> Response for GET categories is a categories paginated array with the following fields:
+Response for GET categories is a categories paginated array with the following fields:
 
 | Field                | Type    | Required | Extra info    |
 |----------------------|---------|----------|---------------|
@@ -168,17 +150,6 @@ POST `https://revoxef.works/api/external/v2/catalog/categories`
 }
 ```
 
-<!--
-> Create multiple categories  (POST) `catalog/categories`
-
-```sh
-{"categories": [
-    {"name": "Category 1", "active": 1, "group_id": 2},
-    {"name": "Category 2", "active": 1, "group_id": 1}
-]}
-```
---->
-
 DELETE `https://revoxef.works/api/external/v2/catalog/categories/<category_id>`
 
 ## Items
@@ -195,7 +166,7 @@ GET `https://revoxef.works/api/external/v2/catalog/items` or
 
 GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/items`
 
-> Response for GET items is an items paginated array with the following fields:
+Response for GET items is an items paginated array with the following fields:
 
 | Field                  | Type    | Required | Extra info                               |
 |------------------------|---------|----------|------------------------------------------|
@@ -234,7 +205,7 @@ GET `https://revoxef.works/api/external/v2/catalog/categories/<category_id>/item
 | report_category_id     | number  | optional |                                          |
 | config                 | string  | optional |                                          |
 
-#### Allergies
+### Allergies
 
 There are the following allergies:
 
@@ -254,8 +225,7 @@ There are the following allergies:
 | sulfites    | 12    |
 | dairy       | 13    |
 
-To save (POST) the allergies, you must send the values split by ';'
-Example: "2;3;6;10"
+To save (POST) the allergies, you must send the values split by ';' `Example: "2;3;6;10"`
 
 GET `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
 
@@ -284,16 +254,6 @@ POST `https://revoxef.works/api/external/v2/catalog/items`
 }
 ```
 
-<!---
-> Create multiple items (POST) `catalog/items`
-
-```sh
-  {"items": [
-        {"name": "Product 1", "active": 1, "category_id": 2},
-        {"name": "Product 2", "active": 1, "category_id": 1}
-    ]}
-```
---->
 
 DELETE `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
 
@@ -303,7 +263,7 @@ Can list, show, create, update and delete Selling Formats
 
 GET `https://revoxef.works/api/external/v2/catalog/sellingFormats`
 
-> Response for GET selling formats is a selling formats paginated array with the following fields:
+Response for GET selling formats is a selling formats paginated array with the following fields:
 
 | Field  | Type    | Required | Extra info    |
 |--------|---------|----------|---------------|
@@ -353,7 +313,7 @@ Can list, show, create, update and delete Selling Format Pivots
 
 GET `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots`
 
-> Response for GET selling format pivots is a selling format pivots paginated array with the following fields:
+Response for GET selling format pivots is a selling format pivots paginated array with the following fields:
 
 | Field                | Type    | Required | Extra info     |
 |----------------------|---------|----------|----------------|
@@ -398,7 +358,7 @@ DELETE `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/<forma
 
 The *Modifiers* structure is the following:
 
-*Modifier groups* ($\Leftarrow$ *Modifier pivot* $\Rightarrow$) *Modifier categories* $\Rightarrow$ *Modifiers*.
+*Modifier groups* (<= *Modifier pivot* =>) *Modifier categories* => *Modifiers*.
 
 *Modifiers* must exist in a *Modifier category*, and *Modifier categories* can exist independently or in a *Modifier group*.
 
@@ -408,7 +368,7 @@ Can list, show, create, update and delete Modifiers
 
 GET `https://revoxef.works/api/external/v2/catalog/modifiers`
 
-> Response for GET modifiers is a modifiers paginated array with the following fields:
+Response for GET modifiers is a modifiers paginated array with the following fields:
 
 | Field        | Type    | Required | Extra info        |
 |--------------|---------|----------|-------------------|
@@ -456,7 +416,7 @@ Can list, show, create, update and delete Modifier Categories
 
 GET `https://revoxef.works/api/external/v2/catalog/modifierCategories`
 
-> Response for GET modifier categories is a modifier categories paginated array with the following fields:
+Response for GET modifier categories is a modifier categories paginated array with the following fields:
 
 | Field      | Type    | Required     | Extra info                                        |
 |------------|---------|--------------|---------------------------------------------------|
@@ -499,7 +459,7 @@ Can list, show, create, update and delete Modifier Groups
 
 GET `https://revoxef.works/api/external/v2/catalog/modifierGroups`
 
-> Response for GET modifier groups is a modifier groups paginated array with the following fields:
+Response for GET modifier groups is a modifier groups paginated array with the following fields:
 
 | Field                   | Type    | Required     | Extra info    |
 |-------------------------|---------|--------------|---------------|
@@ -541,7 +501,7 @@ Can list, show, create, update and delete Modifier Pivots
 
 GET `https://revoxef.works/api/external/v2/catalog/modifierPivots`
 
-> Response for GET modifier pivots is a modifier pivots paginated array with the following fields:
+Response for GET modifier pivots is a modifier pivots paginated array with the following fields:
 
 | Field       | Type   | Required | Extra info        |
 |-------------|--------|----------|-------------------|
@@ -584,13 +544,13 @@ This can be distinguished by item.type = 1.
 
 Each *Menu Item* can contain different *Menu Categories* and each *Menu Category* can have multiple *Normal Items (item.type = 0)*:
 
-*Menu Item* $\Rightarrow$ *Menu Categories* $\Rightarrow$ *Normal Items*
+*Menu Item* => *Menu Categories* => *Normal Items*
 
 Can list, show, create, update and delete *Menu Categories*
 
 GET `https://revoxef.works/api/external/v2/catalog/menuMenuCategories`
 
-> Response for GET menu categories is a menu categories paginated array with the following fields:
+Response for GET menu categories is a menu categories paginated array with the following fields:
 
 | Field            | Type   | Required     | Extra info                                                                                                                |
 |------------------|--------|--------------|---------------------------------------------------------------------------------------------------------------------------|
@@ -638,7 +598,7 @@ Can list, show, create, update and delete *Menu Item-Category Pivot*
 
 GET `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots`
 
-> Response for GET menu item-category pivots is a menu item-category pivots paginated array with the following fields:
+Response for GET menu item-category pivots is a menu item-category pivots paginated array with the following fields:
 
 | Field             | Type    | Required     | Extra info    |
 |-------------------|---------|--------------|---------------|
