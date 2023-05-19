@@ -40,7 +40,7 @@ curl --location --request GET 'https://revointouch.works/api/v1/' \
 ```
 ## Stores
 #### `GET stores`
-Returns a list of the stores from a specified account.
+Returns a list of the stores from a specified POS username.
 
 Body Field  | Description
 ---------|---------
