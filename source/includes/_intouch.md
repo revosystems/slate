@@ -134,6 +134,61 @@ products    | **Json** id of the product in Json format.
 }
 ```
 
+## SOLO URLs
+
+With this endpoint you can get all the SOLO access URLs.
+
+#### `GET solo/urls`
+
+You can use the following optional URL parameter:
+
+| Parameter | Type  | Required | Extra info                                          |
+|-----------|-------|----------|-----------------------------------------------------|
+| stores    | array | optional | Filter by stores. Example: [store_1_id, store_2_id] |
+
+> cURL request example:
+
+```sh
+curl --location --request GET 'https://revointouch.works/api/v1/solo/urls' \
+  --header 'account: {account-username}' \
+  --header 'Authorization: Bearer {customer-token}' \
+  --header 'Accept: application/json' \
+```
+
+> Response example:
+
+```sh
+{
+    "data": {
+        "delivery_url": "https://delivery_url",
+        "pickup_url": "https://pickup_url",
+        "stores": [
+            {
+                "id": 1,
+                "name": "Store 1",
+                "pickup_asap": "https://pickup_asap",
+                "delivery_or_pickup": "https://delivery_or_pickup",
+                "digital_menu": "https://digital_menu",
+                "tables": [
+                    {
+                        "id": 3,
+                        "name": "12   ",
+                        "url": "https://url"
+                    },
+                    {
+                        "id": 4,
+                        "name": "13   ",
+                        "url": "https://url"
+                    }
+                    ...
+                ]
+            }
+            ...
+        ]
+    }
+}
+```
+
 # InTouch - Customer Authorization type request
 
 

@@ -587,6 +587,9 @@
                   <li>
                     <a href="#customers-points" class="toc-h2 toc-link" data-title="Customers Points">Customers Points</a>
                   </li>
+                  <li>
+                    <a href="#solo-urls" class="toc-h2 toc-link" data-title="SOLO URLs">SOLO URLs</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -5113,6 +5116,67 @@ Response:
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"spentPoints"</span>: 0,
         <span class="s2">"leftPoints"</span>: 8000
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h2 id='solo-urls'>SOLO URLs</h2>
+<p>With this endpoint you can get all the SOLO access URLs.</p>
+<h4 id='get-solo-urls'><code>GET solo/urls</code></h4>
+<p>You can use the following optional URL parameter:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>stores</td>
+<td>array</td>
+<td>optional</td>
+<td>Filter by stores. Example: [store_1_id, store_2_id]</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>cURL request example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/solo/urls'</span> <span class="se">\</span>
+  --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
+  --header <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Response example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">{</span>
+        <span class="s2">"delivery_url"</span>: <span class="s2">"https://delivery_url"</span>,
+        <span class="s2">"pickup_url"</span>: <span class="s2">"https://pickup_url"</span>,
+        <span class="s2">"stores"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                <span class="s2">"id"</span>: 1,
+                <span class="s2">"name"</span>: <span class="s2">"Store 1"</span>,
+                <span class="s2">"pickup_asap"</span>: <span class="s2">"https://pickup_asap"</span>,
+                <span class="s2">"delivery_or_pickup"</span>: <span class="s2">"https://delivery_or_pickup"</span>,
+                <span class="s2">"digital_menu"</span>: <span class="s2">"https://digital_menu"</span>,
+                <span class="s2">"tables"</span>: <span class="o">[</span>
+                    <span class="o">{</span>
+                        <span class="s2">"id"</span>: 3,
+                        <span class="s2">"name"</span>: <span class="s2">"12   "</span>,
+                        <span class="s2">"url"</span>: <span class="s2">"https://url"</span>
+                    <span class="o">}</span>,
+                    <span class="o">{</span>
+                        <span class="s2">"id"</span>: 4,
+                        <span class="s2">"name"</span>: <span class="s2">"13   "</span>,
+                        <span class="s2">"url"</span>: <span class="s2">"https://url"</span>
+                    <span class="o">}</span>
+                    ...
+                <span class="o">]</span>
+            <span class="o">}</span>
+            ...
+        <span class="o">]</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><h1 id='intouch-customer-authorization-type-request'>InTouch - Customer Authorization type request</h1>
