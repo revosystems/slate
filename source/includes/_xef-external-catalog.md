@@ -1,7 +1,8 @@
 # Xef Catalog
 Inside catalog there are many resources; items, categories, groups, modifiers and sellingFormats.
 
-To explore those resources as a paginated list we can use a GET request with the following pattern. `GET https://revoxef.works/api/external/v2/catalog/{resource}` replacing the desired resource on this url. 
+To explore those resources as a paginated list we can use a GET request with the following pattern:
+- `GET https://revoxef.works/api/external/v2/catalog/{resource}` replacing the desired resource on this url. 
 
 ## Prerequisistes
 To be able to use the external api you need a `revo xef` account and a `access token`
@@ -28,6 +29,7 @@ Header        | Value
 tenant        | {account-username}
 Authorization | Bearer {the-token}
 client-token  | {client-token}
+Content-Type  | application/json
 
 ### URL parameters
 
@@ -96,6 +98,26 @@ POST `https://revoxef.works/api/external/v2/catalog/groups`
 }
 ```
 
+> Create/update múltiple groups (POST) `catalog/groups`
+
+```sh
+{
+    "groups": [
+        {
+            "id": 1, // only required to update
+            "name": "Group 1",
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "name": "Group 2",
+            ...
+        }
+        ...
+    ]
+}
+```
+
 DELETE `https://revoxef.works/api/external/v2/catalog/groups/<group_id>`
 
 ## Categories
@@ -147,6 +169,26 @@ POST `https://revoxef.works/api/external/v2/catalog/categories`
     "name": "Category 1 updated",
     "active": 0
     ...
+}
+```
+
+> Create/update múltiple categories (POST) `catalog/categories`
+
+```sh
+{
+    "categories": [
+        {
+            "id": 1, // only required to update
+            "name": "Category 1",
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "name": "Category 2",
+            ...
+        }
+        ...
+    ]
 }
 ```
 
@@ -254,6 +296,25 @@ POST `https://revoxef.works/api/external/v2/catalog/items`
 }
 ```
 
+> Create/update múltiple items (POST) `catalog/items`
+
+```sh
+{
+    "items": [
+        {
+            "id": 1, // only required to update
+            "name": "Item 1",
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "name": "Item 2",
+            ...
+        }
+        ...
+    ]
+}
+```
 
 DELETE `https://revoxef.works/api/external/v2/catalog/items/<item_id>`
 
@@ -295,6 +356,26 @@ POST `https://revoxef.works/api/external/v2/catalog/sellingFormats`
     "name": "Selling format 1 updated",
     "active": 0
     ...
+}
+```
+
+> Create/update múltiple selling formats (POST) `catalog/sellingFormats`
+
+```sh
+{
+    "sellingFormats": [
+        {
+            "id": 1, // only required to update
+            "name": "Selling format 1",
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "name": "Selling format 2",
+            ...
+        }
+        ...
+    ]
 }
 ```
 
@@ -352,6 +433,30 @@ POST `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots`
 }
 ```
 
+> Create/update múltiple selling format pivots (POST) `catalog/sellingFormatPivots`
+
+```sh
+{
+    "sellingFormatPivots": [
+        {
+            "id": 1, // only required to update
+            "quantity": 1,
+            "format_id": 1,
+            "item_id": 1,
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "quantity": 2,
+            "format_id": 2,
+            "item_id": 2,
+            ...
+        }
+        ...
+    ]
+}
+```
+
 DELETE `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/<format_pivot_id>`
 
 ## Modifiers
@@ -398,13 +503,33 @@ POST `https://revoxef.works/api/external/v2/catalog/modifiers`
 }
 ```
 
-> Update a modifier (POST) `catalog/modifier`
+> Update a modifier (POST) `catalog/modifiers`
 
 ```sh
 {
     "id": 1, // required to update
     "price": 2.00
     ...
+}
+```
+
+> Create/update múltiple modifiers (POST) `catalog/modifiers`
+
+```sh
+{
+    "modifiers": [
+        {
+            "id": 1, // only required to update
+            "name": "Modifier 1",
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "name": "Modifier 2",
+            ...
+        }
+        ...
+    ]
 }
 ```
 
@@ -451,6 +576,27 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierCategories`
 }
 ```
 
+> Create/update múltiple modifier categories (POST) `catalog/modifierCategories`
+
+```sh
+{
+    "modifierCategories": [
+        {
+            "id": 1, // only required to update
+            "name": "Modifier category 1",
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "name": "Modifier category 2",
+            ...
+        }
+        ...
+    ]
+}
+```
+
+
 DELETE `https://revoxef.works/api/external/v2/catalog/modifierCategories/<modifier_category_id>`
 
 ### Modifier Groups
@@ -490,6 +636,27 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierGroups`
     ...
 }
 ```
+
+> Create/update múltiple modifier groups (POST) `catalog/modifierGroups`
+
+```sh
+{
+    "modifierGroups": [
+        {
+            "id": 1, // only required to update
+            "name": "Modifier group 1",
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "name": "Modifier group 2",
+            ...
+        }
+        ...
+    ]
+}
+```
+
 
 DELETE `https://revoxef.works/api/external/v2/catalog/modifierGroups/<modifier_group_id>`
 
@@ -533,6 +700,27 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierPivots`
     ...
 }
 ```
+
+> Create/update múltiple modifier pivots (POST) `catalog/modifierPivots`
+
+```sh
+{
+    "modifierPivots": [
+        {
+            "id": 1, // only required to update
+            "category_id": 1,
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "category_id": 1,
+            ...
+        }
+        ...
+    ]
+}
+```
+
 
 DELETE `https://revoxef.works/api/external/v2/catalog/modifierPivots/<modifier_pivot_id>`
 
@@ -588,6 +776,29 @@ POST `https://revoxef.works/api/external/v2/catalog/menuMenuCategories`
 }
 ```
 
+> Create/update múltiple menu menu categories (POST) `catalog/menuMenuCategories`
+
+```sh
+{
+    "menuMenuCategories": [
+        {
+            "id": 1, // only required to update
+            "name": "Menu category 1",
+            "item_id": 1,
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "name": "Menu category 2",
+            "item_id": 2,
+            ...
+        }
+        ...
+    ]
+}
+```
+
+
 DELETE `https://revoxef.works/api/external/v2/catalog/menuMenuCategories/<menu_category_id>`
 
 ### Menu Item-Category Pivot
@@ -636,6 +847,29 @@ POST `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots`
     ...
 }
 ```
+
+> Create/update múltiple menu item-category pivots (POST) `catalog/menuMenuItemCategoryPivots`
+
+```sh
+{
+    "menuMenuItemCategoryPivots": [
+        {
+            "id": 1, // only required to update
+            "item_id": 1,
+            "category_id": 1
+            ...
+        },
+        {
+            "id": 2, // only required to update
+            "item_id": 2,
+            "category_id": 1
+            ...
+        }
+        ...
+    ]
+}
+```
+
 
 DELETE `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots/<menu_item_category_pivot_id>`
 
