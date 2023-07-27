@@ -99,7 +99,7 @@ POST `https://revoxef.works/api/external/v2/catalog/groups`
 }
 ```
 
-> Create/update múltiple groups (POST) `catalog/groups`
+> Create/update multiple groups (POST) `catalog/groups`
 
 ```sh
 {
@@ -173,7 +173,7 @@ POST `https://revoxef.works/api/external/v2/catalog/categories`
 }
 ```
 
-> Create/update múltiple categories (POST) `catalog/categories`
+> Create/update multiple categories (POST) `catalog/categories`
 
 ```sh
 {
@@ -297,7 +297,7 @@ POST `https://revoxef.works/api/external/v2/catalog/items`
 }
 ```
 
-> Create/update múltiple items (POST) `catalog/items`
+> Create/update multiple items (POST) `catalog/items`
 
 ```sh
 {
@@ -360,7 +360,7 @@ POST `https://revoxef.works/api/external/v2/catalog/sellingFormats`
 }
 ```
 
-> Create/update múltiple selling formats (POST) `catalog/sellingFormats`
+> Create/update multiple selling formats (POST) `catalog/sellingFormats`
 
 ```sh
 {
@@ -434,7 +434,7 @@ POST `https://revoxef.works/api/external/v2/catalog/sellingFormatPivots`
 }
 ```
 
-> Create/update múltiple selling format pivots (POST) `catalog/sellingFormatPivots`
+> Create/update multiple selling format pivots (POST) `catalog/sellingFormatPivots`
 
 ```sh
 {
@@ -514,7 +514,7 @@ POST `https://revoxef.works/api/external/v2/catalog/modifiers`
 }
 ```
 
-> Create/update múltiple modifiers (POST) `catalog/modifiers`
+> Create/update multiple modifiers (POST) `catalog/modifiers`
 
 ```sh
 {
@@ -577,7 +577,7 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierCategories`
 }
 ```
 
-> Create/update múltiple modifier categories (POST) `catalog/modifierCategories`
+> Create/update multiple modifier categories (POST) `catalog/modifierCategories`
 
 ```sh
 {
@@ -638,7 +638,7 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierGroups`
 }
 ```
 
-> Create/update múltiple modifier groups (POST) `catalog/modifierGroups`
+> Create/update multiple modifier groups (POST) `catalog/modifierGroups`
 
 ```sh
 {
@@ -702,7 +702,7 @@ POST `https://revoxef.works/api/external/v2/catalog/modifierPivots`
 }
 ```
 
-> Create/update múltiple modifier pivots (POST) `catalog/modifierPivots`
+> Create/update multiple modifier pivots (POST) `catalog/modifierPivots`
 
 ```sh
 {
@@ -777,7 +777,7 @@ POST `https://revoxef.works/api/external/v2/catalog/menuMenuCategories`
 }
 ```
 
-> Create/update múltiple menu menu categories (POST) `catalog/menuMenuCategories`
+> Create/update multiple menu menu categories (POST) `catalog/menuMenuCategories`
 
 ```sh
 {
@@ -849,7 +849,7 @@ POST `https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots`
 }
 ```
 
-> Create/update múltiple menu item-category pivots (POST) `catalog/menuMenuItemCategoryPivots`
+> Create/update multiple menu item-category pivots (POST) `catalog/menuMenuItemCategoryPivots`
 
 ```sh
 {
