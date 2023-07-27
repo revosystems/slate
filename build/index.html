@@ -1284,7 +1284,8 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <h1 id='xef-catalog'>Xef Catalog</h1>
 <p>Inside catalog there are many resources; items, categories, groups, modifiers and sellingFormats.</p>
 
-<p>To explore those resources as a paginated list we can use a GET request with the following pattern. <code>GET https://revoxef.works/api/external/v2/catalog/{resource}</code> replacing the desired resource on this url. </p>
+<p>To explore those resources as a paginated list we can use a GET request with the following pattern:
+- <code>GET https://revoxef.works/api/external/v2/catalog/{resource}</code> replacing the desired resource on this url. </p>
 <h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code></p>
 
@@ -1321,6 +1322,10 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <tr>
 <td>client-token</td>
 <td>{client-token}</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
 </tr>
 </tbody></table>
 <h3 id='url-parameters'>URL parameters</h3>
@@ -1451,6 +1456,25 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     ...
 <span class="o">}</span>
 </code></pre>
+<blockquote>
+<p>Create/update múltiple groups (POST) <code>catalog/groups</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"groups"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Group 1"</span>,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Group 2"</span>,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;</code></p>
 <h2 id='categories'>Categories</h2>
 <p>Can list, show, create, update and delete Categories</p>
@@ -1571,6 +1595,25 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     <span class="s2">"name"</span>: <span class="s2">"Category 1 updated"</span>,
     <span class="s2">"active"</span>: 0
     ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create/update múltiple categories (POST) <code>catalog/categories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"categories"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Category 1"</span>,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Category 2"</span>,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;</code></p>
@@ -1894,6 +1937,25 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     ...
 <span class="o">}</span>
 </code></pre>
+<blockquote>
+<p>Create/update múltiple items (POST) <code>catalog/items</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"items"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Item 1"</span>,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Item 2"</span>,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
 <h2 id='selling-formats'>Selling Formats</h2>
 <p>Can list, show, create, update and delete Selling Formats</p>
@@ -1963,6 +2025,25 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     <span class="s2">"name"</span>: <span class="s2">"Selling format 1 updated"</span>,
     <span class="s2">"active"</span>: 0
     ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create/update múltiple selling formats (POST) <code>catalog/sellingFormats</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"sellingFormats"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Selling format 1"</span>,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Selling format 2"</span>,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/sellingFormats/&lt;format_id&gt;</code></p>
@@ -2061,6 +2142,29 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     ...
 <span class="o">}</span>
 </code></pre>
+<blockquote>
+<p>Create/update múltiple selling format pivots (POST) <code>catalog/sellingFormatPivots</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"sellingFormatPivots"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"quantity"</span>: 1,
+            <span class="s2">"format_id"</span>: 1,
+            <span class="s2">"item_id"</span>: 1,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"quantity"</span>: 2,
+            <span class="s2">"format_id"</span>: 2,
+            <span class="s2">"item_id"</span>: 2,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/&lt;format_pivot_id&gt;</code></p>
 <h2 id='modifiers'>Modifiers</h2>
 <p>The <em>Modifiers</em> structure is the following:</p>
@@ -2157,12 +2261,31 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Update a modifier (POST) <code>catalog/modifier</code></p>
+<p>Update a modifier (POST) <code>catalog/modifiers</code></p>
 </blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"price"</span>: 2.00
     ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create/update múltiple modifiers (POST) <code>catalog/modifiers</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"modifiers"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Modifier 1"</span>,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Modifier 2"</span>,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifiers/&lt;modifier_id&gt;</code></p>
@@ -2240,6 +2363,25 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     ...
 <span class="o">}</span>
 </code></pre>
+<blockquote>
+<p>Create/update múltiple modifier categories (POST) <code>catalog/modifierCategories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"modifierCategories"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Modifier category 1"</span>,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Modifier category 2"</span>,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifierCategories/&lt;modifier_category_id&gt;</code></p>
 <h3 id='modifier-groups'>Modifier Groups</h3>
 <p>Can list, show, create, update and delete Modifier Groups</p>
@@ -2301,6 +2443,25 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"name"</span>: <span class="s2">"Modifier group updated 1"</span>
     ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create/update múltiple modifier groups (POST) <code>catalog/modifierGroups</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"modifierGroups"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Modifier group 1"</span>,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Modifier group 2"</span>,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifierGroups/&lt;modifier_group_id&gt;</code></p>
@@ -2367,6 +2528,25 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"group_id"</span>: 2
     ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create/update múltiple modifier pivots (POST) <code>catalog/modifierPivots</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"modifierPivots"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"category_id"</span>: 1,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"category_id"</span>: 1,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifierPivots/&lt;modifier_pivot_id&gt;</code></p>
@@ -2464,6 +2644,27 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"isMultipleChoice"</span>: 2
     ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create/update múltiple menu menu categories (POST) <code>catalog/menuMenuCategories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"menuMenuCategories"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Menu category 1"</span>,
+            <span class="s2">"item_id"</span>: 1,
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"name"</span>: <span class="s2">"Menu category 2"</span>,
+            <span class="s2">"item_id"</span>: 2,
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/menuMenuCategories/&lt;menu_category_id&gt;</code></p>
@@ -2566,6 +2767,27 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"price"</span>: 1.00
     ...
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Create/update múltiple menu item-category pivots (POST) <code>catalog/menuMenuItemCategoryPivots</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"menuMenuItemCategoryPivots"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1, // only required to update
+            <span class="s2">"item_id"</span>: 1,
+            <span class="s2">"category_id"</span>: 1
+            ...
+        <span class="o">}</span>,
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 2, // only required to update
+            <span class="s2">"item_id"</span>: 2,
+            <span class="s2">"category_id"</span>: 1
+            ...
+        <span class="o">}</span>
+        ...
+    <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots/&lt;menu_item_category_pivot_id&gt;</code></p>
