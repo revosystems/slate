@@ -4122,6 +4122,10 @@ Take into account that not all filters are available for all reports. To exactly
 <p>Get a list of groups</p>
 
 <p><code>GET https://revoretail.works/api/external/catalog/groups</code></p>
+
+<blockquote>
+<p>GET groups</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
@@ -4146,6 +4150,10 @@ Take into account that not all filters are available for all reports. To exactly
 <p>Get a list of categories, can filter by group</p>
 
 <p><code>GET https://revoretail.works/api/external/catalog/categories?group=</code></p>
+
+<blockquote>
+<p>GET categories?group=</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
@@ -4170,6 +4178,10 @@ Take into account that not all filters are available for all reports. To exactly
 <p>Get a list of products, can filter by category</p>
 
 <p><code>GET https://revoretail.works/api/external/catalog/products?category=</code></p>
+
+<blockquote>
+<p>GET products?category=</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
@@ -4221,6 +4233,10 @@ Take into account that not all filters are available for all reports. To exactly
 </code></pre>
 <p>If we add <code>withStocks</code> parameter we&#39;ll get an stocks list within each product.
 For example:</p>
+
+<blockquote>
+<p>GET filtered by withStocks</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
@@ -4243,6 +4259,10 @@ For example:</p>
 Variant kind, for example, size or color.</p>
 
 <p><code>GET https://revoretail.works/api/external/catalog/variantSets</code></p>
+
+<blockquote>
+<p>GET variantSets</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span><span class="s2">"id"</span>: 1, <span class="s2">"name"</span>: <span class="s2">"Color"</span><span class="o">}</span>,
     <span class="o">{</span><span class="s2">"id"</span>: 1, <span class="s2">"name"</span>: <span class="s2">"Size"</span><span class="o">}</span>
@@ -4252,6 +4272,10 @@ Variant kind, for example, size or color.</p>
 <code>Variants</code> are every variantSet variant, so blue, red, yellow,… for colors or L, XL,… for sizes. </p>
 
 <p><code>GET https://revoretail.works/api/external/catalog/variants</code></p>
+
+<blockquote>
+<p>GET variants</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
    <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
@@ -4287,6 +4311,10 @@ Variant kind, for example, size or color.</p>
 Then we have product variants that are variants linked to products.</p>
 
 <p><code>GET https://revoretail.works/api/external/catalog/productsVariants</code></p>
+
+<blockquote>
+<p>GET productsVariants</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
@@ -4317,6 +4345,10 @@ Then we have product variants that are variants linked to products.</p>
 <p>Get a list of available taxes</p>
 
 <p><code>GET https://revoretail.works/api/external/config/taxes</code></p>
+
+<blockquote>
+<p>GET taxes</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
@@ -4334,6 +4366,10 @@ Then we have product variants that are variants linked to products.</p>
 in any of these cases we can send a dictionary with the desired object to create (group, category or product) or we can send a list of dictionaries to create multiple objects at the same time. e.g.:</p>
 
 <p><code>POST https://revoretail.works/api/external/catalog/groups</code></p>
+
+<blockquote>
+<p>POST groups</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code>// BODY Dictionary:
 <span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Group 1"</span>,
@@ -4354,12 +4390,20 @@ in any of these cases we can send a dictionary with the desired object to create
 <span class="o">]</span>
 </code></pre>
 <p>In any case its responses are a 200 JSON with 2 fields (success and errors): </p>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"success"</span>: 1,                   // Amount of created objects
     <span class="s2">"errors"</span>: <span class="o">[{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span><span class="o">}]</span> // List of object that couldn<span class="s1">'t be created
 }
 </span></code></pre><h3 id='create-a-category'>Create a category</h3>
 <p><code>POST https://revoretail.works/api/external/catalog/categories</code></p>
+
+<blockquote>
+<p>POST categories</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Category 1"</span>,
     <span class="s2">"group_id"</span>: 1,
@@ -4368,6 +4412,10 @@ in any of these cases we can send a dictionary with the desired object to create
 <span class="o">}</span>
 </code></pre><h3 id='create-a-product'>Create a product</h3>
 <p><code>POST https://revoretail.works/api/external/catalog/products</code></p>
+
+<blockquote>
+<p>POST products</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Product 1"</span>,
     <span class="s2">"category_id"</span>: 1,
@@ -4392,6 +4440,10 @@ in any of these cases we can send a dictionary with the desired object to create
 <span class="o">}</span>
 </code></pre><h3 id='update-a-product'>Update a product</h3>
 <p><code>PUT https://revoretail.works/api/external/catalog/products/{item_id}</code></p>
+
+<blockquote>
+<p>PUT products/{item_id}</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Product 1"</span>,
     <span class="s2">"price"</span>: 15,
@@ -4417,6 +4469,10 @@ in any of these cases we can send a dictionary with the desired object to create
 <p>Get an stock list.</p>
 
 <p><code>GET https://revoretail.works/api/external/catalog/stocks</code></p>
+
+<blockquote>
+<p>GET stocks</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
@@ -4441,6 +4497,10 @@ in any of these cases we can send a dictionary with the desired object to create
 <p>We can generate stock movements with the following POST (required parameters: warehouse id, product id and quantity to move)</p>
 
 <p><code>POST https://revoretail.works/api/external/stocks/add</code></p>
+
+<blockquote>
+<p>POST stocks/add</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"product_id"</span>: 1,
     <span class="s2">"warehouse_id"</span>: 1,
@@ -4452,6 +4512,10 @@ in any of these cases we can send a dictionary with the desired object to create
 <p>Store an order.</p>
 
 <p><code>POST https://revoretail.works/api/external/orders</code></p>
+
+<blockquote>
+<p>POST orders </p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"notes"</span>: <span class="s2">""</span>,
     <span class="s2">"shippingAmount"</span>: 0,
@@ -4518,6 +4582,10 @@ in any of these cases we can send a dictionary with the desired object to create
 <p>Create order payments with its invoice.</p>
 
 <p><code>POST https://revoretail.works/api/external/orders/{order_id}/invoices</code></p>
+
+<blockquote>
+<p>POST orders/{order_id}/invoices </p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"payments"</span>: <span class="o">[</span>
     <span class="o">{</span>
@@ -4536,6 +4604,10 @@ in any of these cases we can send a dictionary with the desired object to create
 <p>Get a list of available payment methods (card, cash, others...)</p>
 
 <p><code>GET https://revoretail.works/api/external/config/payment_methods</code></p>
+
+<blockquote>
+<p>GET payment_methods</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
