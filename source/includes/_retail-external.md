@@ -50,6 +50,8 @@ Get a list of groups
 
 `GET https://revoretail.works/api/external/catalog/groups`
 
+> GET groups
+
 ```sh
 [
     {
@@ -78,6 +80,8 @@ Get a list of categories, can filter by group
 
 
 `GET https://revoretail.works/api/external/catalog/categories?group=`
+
+> GET categories?group=
 
 ```sh
 [
@@ -108,6 +112,8 @@ Get a list of products, can filter by category
 
 
 `GET https://revoretail.works/api/external/catalog/products?category=`
+
+> GET products?category=
 
 ```sh
 [
@@ -163,6 +169,8 @@ Get a list of products, can filter by category
 If we add `withStocks` parameter we'll get an stocks list within each product.
 For example:
 
+> GET filtered by withStocks
+
 ```sh
 [
     {
@@ -190,6 +198,8 @@ Variant kind, for example, size or color.
 
 `GET https://revoretail.works/api/external/catalog/variantSets`
 
+> GET variantSets
+
 ```sh
 [
     {"id": 1, "name": "Color"},
@@ -201,6 +211,8 @@ Variant kind, for example, size or color.
 `Variants` are every variantSet variant, so blue, red, yellow,… for colors or L, XL,… for sizes. 
 
 `GET https://revoretail.works/api/external/catalog/variants`
+
+> GET variants
 
 ```sh
 [
@@ -240,6 +252,8 @@ Then we have product variants that are variants linked to products.
 
 `GET https://revoretail.works/api/external/catalog/productsVariants`
 
+> GET productsVariants
+
 ```sh
 [
     {
@@ -274,6 +288,8 @@ Get a list of available taxes
 
 `GET https://revoretail.works/api/external/config/taxes`
 
+> GET taxes
+
 ```sh
 [
     {
@@ -294,6 +310,8 @@ In order to generate a catalog via API we can create groups, group's categories 
 in any of these cases we can send a dictionary with the desired object to create (group, category or product) or we can send a list of dictionaries to create multiple objects at the same time. e.g.:
 
 `POST https://revoretail.works/api/external/catalog/groups`
+
+> POST groups
 
 ```sh
 // BODY Dictionary:
@@ -321,6 +339,8 @@ in any of these cases we can send a dictionary with the desired object to create
 
 In any case its responses are a 200 JSON with 2 fields (success and errors): 
 
+> Response:
+
 ```sh
 {
     "success": 1,                   // Amount of created objects
@@ -331,6 +351,8 @@ In any case its responses are a 200 JSON with 2 fields (success and errors):
 ### Create a category
 
 `POST https://revoretail.works/api/external/catalog/categories`
+
+> POST categories
 
 ```sh
 {
@@ -344,6 +366,8 @@ In any case its responses are a 200 JSON with 2 fields (success and errors):
 ### Create a product
 
 `POST https://revoretail.works/api/external/catalog/products`
+
+> POST products
 
 ```sh
 {
@@ -373,6 +397,8 @@ In any case its responses are a 200 JSON with 2 fields (success and errors):
 
 `PUT https://revoretail.works/api/external/catalog/products/{item_id}`
 
+> PUT products/{item_id}
+
 ```sh
 {
     "name": "Product 1",
@@ -401,6 +427,8 @@ Get an stock list.
 
 
 `GET https://revoretail.works/api/external/catalog/stocks`
+
+> GET stocks
 
 ```sh
 [
@@ -432,6 +460,8 @@ We can generate stock movements with the following POST (required parameters: wa
 
 `POST https://revoretail.works/api/external/stocks/add`
 
+> POST stocks/add
+
 ```sh
 {
     "product_id": 1,
@@ -448,6 +478,8 @@ Store an order.
 
 
 `POST https://revoretail.works/api/external/orders`
+
+> POST orders 
 
 ```sh
 {
@@ -520,6 +552,8 @@ Create order payments with its invoice.
 
 `POST https://revoretail.works/api/external/orders/{order_id}/invoices`
 
+> POST orders/{order_id}/invoices 
+
 ```sh
 {
     "payments": [
@@ -544,6 +578,8 @@ Get a list of available payment methods (card, cash, others...)
 
 
 `GET https://revoretail.works/api/external/config/payment_methods`
+
+> GET payment_methods
 
 ```sh
 [
