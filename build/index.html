@@ -242,6 +242,9 @@
                   <li>
                     <a href="#revo-display-images" class="toc-h2 toc-link" data-title="Revo Display Images">Revo Display Images</a>
                   </li>
+                  <li>
+                    <a href="#orders" class="toc-h2 toc-link" data-title="Orders">Orders</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -255,9 +258,6 @@
                   </li>
                   <li>
                     <a href="#payment-methods" class="toc-h2 toc-link" data-title="Payment Methods">Payment Methods</a>
-                  </li>
-                  <li>
-                    <a href="#orders" class="toc-h2 toc-link" data-title="Orders">Orders</a>
                   </li>
                   <li>
                     <a href="#rooms" class="toc-h2 toc-link" data-title="Rooms">Rooms</a>
@@ -925,56 +925,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>the image path returned in the array</td>
 </tr>
 </tbody></table>
-<h1 id='xef'>Xef</h1><h2 id='prerequisites'>Prerequisites</h2>
-<p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code> and your <code>integrator token</code></p>
-
-<ol>
-<li>Login into the desired account</li>
-<li>Go to account management</li>
-<li>Create a new <a href="https://revoxef.works/account/tokens">token</a></li>
-<li>To get your integration token, <a href="https://business.revo.works/altaleads/integrations">contact us</a></li>
-</ol>
-<h2 id='basic-usage'>Basic usage</h2>
-<p>The main URL for the external api is</p>
-
-<p><code>https://revoxef.works/api/external/v2/</code></p>
-
-<p>And you should provide the mandatory headers for the authentication</p>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>tenant</td>
-<td>{account-username}</td>
-</tr>
-<tr>
-<td>Authorization</td>
-<td>Bearer {the-token}</td>
-</tr>
-<tr>
-<td>client-token</td>
-<td>{your-integrator-token}</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Contact us to get your <em>client-token</em></p>
-</blockquote>
-<h2 id='payment-methods'>Payment Methods</h2>
-<p><code>GET PaymentMethods</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/paymentMethods
-</code></pre>
-<blockquote>
-<p>Response is an array of payment methods with the following fields:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>"id": 1,
-"name": "Payment method name",
-"active": true,
-</code></pre><h2 id='orders'>Orders</h2>
+<h2 id='orders'>Orders</h2>
 <p><code>GET Orders</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/orders?from<span class="o">=</span>2017-01-02&amp;to<span class="o">=</span>2017-01-04
 </code></pre>
@@ -1099,6 +1050,55 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         <span class="s2">"name"</span>  : &lt;roomName&gt;
     <span class="o">}</span>,
 <span class="o">}</span>
+</code></pre><h1 id='xef'>Xef</h1><h2 id='prerequisites'>Prerequisites</h2>
+<p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code> and your <code>integrator token</code></p>
+
+<ol>
+<li>Login into the desired account</li>
+<li>Go to account management</li>
+<li>Create a new <a href="https://revoxef.works/account/tokens">token</a></li>
+<li>To get your integration token, <a href="https://business.revo.works/altaleads/integrations">contact us</a></li>
+</ol>
+<h2 id='basic-usage'>Basic usage</h2>
+<p>The main URL for the external api is</p>
+
+<p><code>https://revoxef.works/api/external/v2/</code></p>
+
+<p>And you should provide the mandatory headers for the authentication</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tenant</td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {the-token}</td>
+</tr>
+<tr>
+<td>client-token</td>
+<td>{your-integrator-token}</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Contact us to get your <em>client-token</em></p>
+</blockquote>
+<h2 id='payment-methods'>Payment Methods</h2>
+<p><code>GET PaymentMethods</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/paymentMethods
+</code></pre>
+<blockquote>
+<p>Response is an array of payment methods with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>"id": 1,
+"name": "Payment method name",
+"active": true,
 </code></pre><h2 id='rooms'>Rooms</h2>
 <p><code>GET Rooms</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/rooms
@@ -3730,9 +3730,24 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <td>Price rate id</td>
 </tr>
 <tr>
+<td><code>withInvoices</code></td>
+<td></td>
+<td>Append invoices</td>
+</tr>
+<tr>
+<td><code>withPayments</code></td>
+<td></td>
+<td>Append payments</td>
+</tr>
+<tr>
 <td><code>withContents</code></td>
 <td></td>
 <td>Append contents</td>
+</tr>
+<tr>
+<td><code>withSubContents</code></td>
+<td></td>
+<td>Append subContents</td>
 </tr>
 <tr>
 <td><code>withItem</code></td>
@@ -3740,9 +3755,14 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <td>Append item details</td>
 </tr>
 <tr>
-<td><code>withInvoices</code></td>
+<td><code>withModifiers</code></td>
 <td></td>
-<td>Append invoices</td>
+<td>Append contents modifiers</td>
+</tr>
+<tr>
+<td><code>withDelivery</code></td>
+<td></td>
+<td>Append delivery information</td>
 </tr>
 </tbody></table>
 
