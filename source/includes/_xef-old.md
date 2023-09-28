@@ -159,3 +159,111 @@ Field       | Type      | Description
 ------------|-----------|---------------
 account     | `string`  | the account name
 image_path  | `string`  | the image path returned in the array
+
+## Orders
+
+`GET Orders`
+
+```sh
+GET https://revoxef.works/api/external/v2/orders?from=2017-01-02&to=2017-01-04
+```
+
+> Response is paginated for every 50 
+
+```sh
+    "id": 4,
+    "opened": "2017-12-15 08:40:52",
+    "closed": "2017-01-03 00:00:00",
+    "merged": null,
+    "canceled": null,
+    "guests": "4",
+    "status": "0",
+    "orderDiscountAmount": "0",
+    "sum": "0",
+    "discountAmount": "0",
+    "subtotal": "0",
+    "taxAmount": "0",
+    "total": "14.5",
+    "alreadyPaid": "0.0",
+    "tenantUser_id": null,
+    "tenantUserName": null,
+    "discount": null,
+    "table_id": null,
+    "tableName": null,
+    "margin": null,
+    "delivery_id": null,
+    "orderInvoices": [],
+    "delivery": null,
+    "orderContents": [
+        {
+            "id": 1,
+            "order_id": "4",
+            "item_id": "1",
+            "dishOrder": "0",
+            "seat": "0",
+            "quantity": "2",
+            "weight": "0",
+            "itemName": "Oran Cartwright",
+            "itemPrice": "17.49",
+            "alreadyPaidQuantity": "0",
+            "alreadyPrintedQuantity": "0",
+            "modifiers": null,
+            "discount": null,
+            "taxPercentage": "0",
+            "discountAmount": "79.84",
+            "taxAmount": "85.91",
+            "total": "98.98",
+            "extrasAmount": "12.96",
+            "subtotal": "74.96",
+            "priceWithExtrasIndividual": "66.52",
+            "notes": null,
+            "price_id": null,
+            "optional_modifiers": null,
+            "format_pivot_id": null,
+            "margin": null,
+            "menuMenuContents": [],
+        }
+       ],
+      } 
+```
+
+| Field        | Type       | Required | Description                                                                 |
+| -------------|------------|----------|-----------------------------------------------------------------------------|
+| `from`       | YYYY-mm-dd | required | The starting date of the orders fetched.                                     |
+| `to`         | YYYY-mm-dd | required | The ending date of the orders fetched.                                       |
+| `page`       | number     | optional | As the orders are paginated, use this parameter to select the page to fetch. |
+| `pagination` | number     | optional | Number of objects per page. The default value is **50** and the max allowed is **200**. |
+
+  
+> You can add `?withPayments` parameter. This way apart from `orderContents` another array will be loaded called `orderInvoices`, it will contain an array of invoices and each invoice will contain an array of `orderPayments`. 
+
+  
+```sh  
+"orderContents": [{…}, {…}, …],
+"orderInvoices": [
+    {
+        "orderPayments": [
+            {
+                "payAmount": 10,
+                "paymentMethod": 1,
+                …
+            }, {…}, …
+        ], …
+    }, {…}, …
+]
+```  
+  
+> You can add **?withRooms** parameter. This way apart from `orderContents` another array will be loaded called `table` which will contain a `room`. 
+  
+```sh
+"orderContents": [{…}, {…}, …],
+"table": {
+    "id"        : <table_id>,
+    "name"      : <tableName>,
+    "room_id"   : <room_id>,
+    "room"      : {
+        "id"    : <room_id>,
+        "name"  : <roomName>
+    },
+}
+```  

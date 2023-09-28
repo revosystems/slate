@@ -99,9 +99,13 @@ Filter        | Type       | Description
 `room`        | int        | Room id
 `dayofweek`   | int        | Where Sunday is 1 and Saturday is 7
 `priceRate`   | int        | Price rate id
-`withContents`|            | Append contents 
-`withItem `   |            | Append item details
 `withInvoices`|            | Append invoices
+`withPayments`|            | Append payments
+`withContents`|            | Append contents 
+`withSubContents`|         | Append subContents 
+`withItem`    |            | Append item details
+`withModifiers` |          | Append contents modifiers
+`withDelivery` |          | Append delivery information
 
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
