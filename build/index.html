@@ -242,6 +242,9 @@
                   <li>
                     <a href="#revo-display-images" class="toc-h2 toc-link" data-title="Revo Display Images">Revo Display Images</a>
                   </li>
+                  <li>
+                    <a href="#orders" class="toc-h2 toc-link" data-title="Orders">Orders</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -255,9 +258,6 @@
                   </li>
                   <li>
                     <a href="#payment-methods" class="toc-h2 toc-link" data-title="Payment Methods">Payment Methods</a>
-                  </li>
-                  <li>
-                    <a href="#orders" class="toc-h2 toc-link" data-title="Orders">Orders</a>
                   </li>
                   <li>
                     <a href="#rooms" class="toc-h2 toc-link" data-title="Rooms">Rooms</a>
@@ -344,7 +344,7 @@
             <a href="#xef-loyalty" class="toc-h1 toc-link" data-title="Xef Loyalty">Xef Loyalty</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#base-url" class="toc-h2 toc-link" data-title="Base URL">Base URL</a>
+                    <a href="#basic-usage" class="toc-h2 toc-link" data-title="Basic usage">Basic usage</a>
                   </li>
                   <li>
                     <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
@@ -925,56 +925,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>the image path returned in the array</td>
 </tr>
 </tbody></table>
-<h1 id='xef'>Xef</h1><h2 id='prerequisites'>Prerequisites</h2>
-<p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code> and your <code>integrator token</code></p>
-
-<ol>
-<li>Login into the desired account</li>
-<li>Go to account management</li>
-<li>Create a new <a href="https://revoxef.works/account/tokens">token</a></li>
-<li>To get your integration token, <a href="https://business.revo.works/altaleads/integrations">contact us</a></li>
-</ol>
-<h2 id='basic-usage'>Basic usage</h2>
-<p>The main URL for the external api is</p>
-
-<p><code>https://revoxef.works/api/external/v2/</code></p>
-
-<p>And you should provide the mandatory headers for the authentication</p>
-
-<table><thead>
-<tr>
-<th>Header</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>tenant</td>
-<td>{account-username}</td>
-</tr>
-<tr>
-<td>Authorization</td>
-<td>Bearer {the-token}</td>
-</tr>
-<tr>
-<td>client-token</td>
-<td>{your-integrator-token}</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Contact us to get your <em>client-token</em></p>
-</blockquote>
-<h2 id='payment-methods'>Payment Methods</h2>
-<p><code>GET PaymentMethods</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/paymentMethods
-</code></pre>
-<blockquote>
-<p>Response is an array of payment methods with the following fields:</p>
-</blockquote>
-<pre class="highlight plaintext"><code>"id": 1,
-"name": "Payment method name",
-"active": true,
-</code></pre><h2 id='orders'>Orders</h2>
+<h2 id='orders'>Orders</h2>
 <p><code>GET Orders</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/orders?from<span class="o">=</span>2017-01-02&amp;to<span class="o">=</span>2017-01-04
 </code></pre>
@@ -1099,6 +1050,55 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         <span class="s2">"name"</span>  : &lt;roomName&gt;
     <span class="o">}</span>,
 <span class="o">}</span>
+</code></pre><h1 id='xef'>Xef</h1><h2 id='prerequisites'>Prerequisites</h2>
+<p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code> and your <code>integrator token</code></p>
+
+<ol>
+<li>Login into the desired account</li>
+<li>Go to account management</li>
+<li>Create a new <a href="https://revoxef.works/account/tokens">token</a></li>
+<li>To get your integration token, <a href="https://business.revo.works/altaleads/integrations">contact us</a></li>
+</ol>
+<h2 id='basic-usage'>Basic usage</h2>
+<p>The main URL for the external api is</p>
+
+<p><code>https://revoxef.works/api/external/v2/</code></p>
+
+<p>And you should provide the mandatory headers for the authentication</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tenant</td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {the-token}</td>
+</tr>
+<tr>
+<td>client-token</td>
+<td>{your-integrator-token}</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Contact us to get your <em>client-token</em></p>
+</blockquote>
+<h2 id='payment-methods'>Payment Methods</h2>
+<p><code>GET PaymentMethods</code></p>
+<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/paymentMethods
+</code></pre>
+<blockquote>
+<p>Response is an array of payment methods with the following fields:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>"id": 1,
+"name": "Payment method name",
+"active": true,
 </code></pre><h2 id='rooms'>Rooms</h2>
 <p><code>GET Rooms</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/rooms
@@ -3070,11 +3070,240 @@ POST message={
         }
   }
 </code></p>
-<h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='base-url'>Base URL</h2>
-<p><code>https://revoxef.works/api/loyalty/</code></p>
+<h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='basic-usage'>Basic usage</h2>
+<p>The main URL for the external API:</p>
+
+<p><code>https://revoxef.works/api/loyalty</code></p>
+
+<p>The URL for the integrations API environment:</p>
+
+<p><code>https://integrations.revoxef.works/api/loyalty</code></p>
+
+<p>And you should provide the mandatory headers for the authentication</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tenant</td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {the-token}</td>
+</tr>
+<tr>
+<td>client-token</td>
+<td>{client-token}</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
 <h2 id='create-an-order'>Create an order</h2>
-<p>Data can be passed as show in the example. Although it can also be passed as form params, passing <code>Content-Type: application/json</code> header. </p>
-<pre class="highlight plaintext"><code>curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
+<p>POST <code>https://revoxef.works/api/loyalty/orders</code></p>
+
+<p>The payload to create the order, must be sent as a JSON.</p>
+
+<p>The parameters for the payload, are the following:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td>JSON</td>
+<td><strong>required</strong></td>
+<td><a href="#order-payload">see Order payload</a></td>
+</tr>
+<tr>
+<td>customer</td>
+<td>JSON</td>
+<td>optional</td>
+<td><a href="#customer-payload">see Customer payload</a></td>
+</tr>
+<tr>
+<td>delivery</td>
+<td>JSON</td>
+<td>optional</td>
+<td><a href="#delivery-payload">see Delivery payload</a></td>
+</tr>
+<tr>
+<td>skipMerge</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: false. If you don&#39;t want the order to be merged if there is another one already opened.</td>
+</tr>
+<tr>
+<td>warehouse_id</td>
+<td>number</td>
+<td>optional</td>
+<td>Send the Revo XEF <a href="#warehouses">warehouse_id</a> if you want the stock to be discounted.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>General payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        ...
+    <span class="o">}</span>,
+    <span class="s2">"customer"</span>: <span class="o">{</span>
+        ...
+    <span class="o">}</span>,
+    <span class="s2">"delivery"</span>: <span class="o">{</span>
+        ...
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order_id"</span>: 1
+<span class="o">}</span>
+</code></pre><h3 id='order-payload'>Order payload</h3>
+<p>Most of the parameters are recalculated when the order is processed in the POS.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td>Must be the sum of the order contents with their extra modifiers. Discounts must be applied too.</td>
+</tr>
+<tr>
+<td>table_id</td>
+<td>number</td>
+<td>optional</td>
+<td>If not sent, order is set as a delivery.</td>
+</tr>
+<tr>
+<td>tableName</td>
+<td>string</td>
+<td>optional</td>
+<td>default: &#39;InTouch&#39;. If table_id sent, gets real tableName, otherwise gets payload data.</td>
+</tr>
+<tr>
+<td>guests</td>
+<td>number</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>extraId</td>
+<td>string</td>
+<td>optional</td>
+<td>Used to register an external order_id/reference.</td>
+</tr>
+<tr>
+<td>orderDiscount</td>
+<td>JSON</td>
+<td>optional</td>
+<td><a href="#order-discount-payload">see Order discount payload</a></td>
+</tr>
+<tr>
+<td>contents</td>
+<td>array</td>
+<td><strong>required</strong></td>
+<td>Must be an array of JSON. <a href="#contents-payload">see Contents payload</a></td>
+</tr>
+<tr>
+<td>payment</td>
+<td>JSON</td>
+<td>optional</td>
+<td><a href="#payment-payload">see Payment payload</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Order payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        <span class="s2">"total"</span>: 10.50,
+        <span class="s2">"table_id"</span>: 1,
+        <span class="s2">"tableName"</span>: <span class="s2">"TableName"</span>,
+        <span class="s2">"guests"</span>: 1,
+        <span class="s2">"notes"</span>: <span class="s2">"Notes"</span>,
+        <span class="s2">"extraId"</span>: <span class="s2">"Ext-1"</span>,
+        <span class="s2">"orderDiscount"</span>: <span class="o">{</span>
+            ...
+        <span class="o">}</span>,
+        <span class="s2">"contents"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                ...
+            <span class="o">}</span>,
+            ...
+        <span class="o">]</span>,
+        <span class="s2">"payment"</span>: <span class="o">{</span>
+            ...
+        <span class="o">}</span>,
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='order-discount-payload'>Order discount payload</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>optional</td>
+<td>default: &#39;Discount&#39;</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td>Must have negative sign.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Order discount payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        <span class="s2">"total"</span>: 8.00, // discount subtracted
+        ...
+        <span class="s2">"orderDiscount"</span>: <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"Discount"</span>,
+            <span class="s2">"amount"</span>: -2.50
+        <span class="o">}</span>,
+        ...
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><h3 id='contents-payload'>Contents payload</h3>
+<p>Contents must be an array of JSON.</p>
+<h3 id='payment-payload'>Payment payload</h3><h3 id='customer-payload'>Customer payload</h3><h3 id='delivery-payload'>Delivery payload</h3><pre class="highlight plaintext"><code>curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
     "name":"Jordi",
     "email":"jordi.p@revo.works"
 }&amp;order={
@@ -3730,9 +3959,24 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <td>Price rate id</td>
 </tr>
 <tr>
+<td><code>withInvoices</code></td>
+<td></td>
+<td>Append invoices</td>
+</tr>
+<tr>
+<td><code>withPayments</code></td>
+<td></td>
+<td>Append payments</td>
+</tr>
+<tr>
 <td><code>withContents</code></td>
 <td></td>
 <td>Append contents</td>
+</tr>
+<tr>
+<td><code>withSubContents</code></td>
+<td></td>
+<td>Append subContents</td>
 </tr>
 <tr>
 <td><code>withItem</code></td>
@@ -3740,9 +3984,14 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <td>Append item details</td>
 </tr>
 <tr>
-<td><code>withInvoices</code></td>
+<td><code>withModifiers</code></td>
 <td></td>
-<td>Append invoices</td>
+<td>Append contents modifiers</td>
+</tr>
+<tr>
+<td><code>withDelivery</code></td>
+<td></td>
+<td>Append delivery information</td>
 </tr>
 </tbody></table>
 
