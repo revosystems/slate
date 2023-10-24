@@ -25,6 +25,7 @@ tenant        | {account-username}
 Authorization | Bearer {the-token}
 client-token  | {your-integrator-token}
 
+> The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
 
 > Contact us to get your *client-token*
 

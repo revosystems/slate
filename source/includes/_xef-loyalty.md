@@ -4,6 +4,7 @@
 
 `https://revoxef.works/api/loyalty/`
 
+> The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
 
 ## Create an order
 Data can be passed as show in the example. Although it can also be passed as form params, passing `Content-Type: application/json` header. 
