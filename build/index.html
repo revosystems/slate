@@ -769,7 +769,7 @@ See <a href="#xef-catalog">Xef Catalog</a> section one instead</p>
 </tbody></table>
 
 <blockquote>
-<p>The api has a limit of 60 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
+<p>The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
 </blockquote>
 <h2 id='get'>Get</h2>
 <p>Returns the full data for an specific model and id.</p>
@@ -1087,6 +1087,8 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 </tbody></table>
 
 <blockquote>
+<p>The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
+
 <p>Contact us to get your <em>client-token</em></p>
 </blockquote>
 <h2 id='payment-methods'>Payment Methods</h2>
@@ -1289,6 +1291,10 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <ul>
 <li><code>GET https://revoxef.works/api/external/v2/catalog/{resource}</code> replacing the desired resource on this url. </li>
 </ul>
+
+<blockquote>
+<p>The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
+</blockquote>
 <h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code></p>
 
@@ -3072,6 +3078,10 @@ POST message={
 </code></p>
 <h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='base-url'>Base URL</h2>
 <p><code>https://revoxef.works/api/loyalty/</code></p>
+
+<blockquote>
+<p>The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
+</blockquote>
 <h2 id='create-an-order'>Create an order</h2>
 <p>Data can be passed as show in the example. Although it can also be passed as form params, passing <code>Content-Type: application/json</code> header. </p>
 <pre class="highlight plaintext"><code>curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
@@ -3597,6 +3607,8 @@ https://revoxef.works/api/external/v3
 <p>You should send the headers <code>tenant</code> with your account username and <code>authorization</code> with the token created at <code>account &gt; tokens</code></p>
 
 <blockquote>
+<p>The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
+
 <p>Get your token at <a href="https://revoxef.works/account/tokens">https://revoxef.works/account/tokens</a></p>
 </blockquote>
 <h2 id='request'>Request</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\ </span>--header <span class="s1">'client-token: {client-token}'</span> <span class="se">\</span>
@@ -5201,7 +5213,7 @@ The page and limit must be set in request.</p>
 </tbody></table>
 
 <blockquote>
-<p>The api has a limit of 60 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
+<p>The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
 </blockquote>
 <h2 id='sync'>Sync</h2>
 <p>Returns the full data for an specific model and id.</p>
