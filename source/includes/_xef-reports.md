@@ -43,8 +43,8 @@ https://revoxef.works/api/external/v3/reports/{reportName}?start_date=2018-01-01
     "data": {"HERE WILL GO THE SPECIFIC REPORT DATA"},
     "from": 1,
     "last_page": 4,
-    "next_page_url": "https://revoxef.works/api/external/v2/reports/{reportName}?page=2",
-    "path": "https://revoxef.works/api/external/v2/reports/{reportName}",
+    "next_page_url": "https://revoxef.works/api/external/v3/reports/{reportName}?page=2",
+    "path": "https://revoxef.works/api/external/v3/reports/{reportName}",
     "per_page": 50,
     "prev_page_url": null,
     "to": 50,
@@ -102,6 +102,7 @@ Filter        | Type       | Description
 `dayofweek`   | int        | Where Sunday is 1 and Saturday is 7
 `priceRate`   | int        | Price rate id
 `withInvoices`|            | Append invoices
+`withFiscal`  |            | Append fiscal data to invoice
 `withPayments`|            | Append payments
 `withContents`|            | Append contents 
 `withSubContents`|         | Append subContents 
