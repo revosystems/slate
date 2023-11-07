@@ -42,9 +42,11 @@ curl --location --request GET 'https://revointouch.works/api/v1/' \
 #### `GET stores`
 Returns a list of the stores from a specified POS username.
 
-Body Field  | Description
+URL(query) parameter  | Description
 ---------|---------
-username    | **json** username in json format.
+username | Username from POS integration
+
+> GET stores?username=USERNAME
 
 ```sh
 {
