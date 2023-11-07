@@ -5357,15 +5357,19 @@ All requests will have the same structure.</p>
 
 <table><thead>
 <tr>
-<th>Body Field</th>
+<th>URL(query) parameter</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>username</td>
-<td><strong>json</strong> username in json format.</td>
+<td>Username from POS integration</td>
 </tr>
 </tbody></table>
+
+<blockquote>
+<p>GET stores?username=USERNAME</p>
+</blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">[</span>
         <span class="o">{</span>
