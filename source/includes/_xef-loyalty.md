@@ -299,7 +299,9 @@ Via API, a menu item can only contain a normal item or a selling format item. So
 | contents | array | optional | Pay per items. Array of content IDs. The amount must match contents+modifiers sum amount. |
 
 Regarding the payment methods, there are 2 fix payment methods for all accounts:
+
 - Card => "payment_method_id": 1
+
 - Cash => "payment_method_id": 2
 
 > Payment payload example:
