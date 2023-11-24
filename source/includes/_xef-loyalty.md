@@ -1,163 +1,401 @@
 # Xef Loyalty
 
-## Base URL
+## Basic usage
+The main URL for the external API:
 
-`https://revoxef.works/api/loyalty/`
+`https://revoxef.works/api/loyalty`
 
 > The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
 
-## Create an order
-Data can be passed as show in the example. Although it can also be passed as form params, passing `Content-Type: application/json` header. 
+The URL for the integrations API environment:
 
-```
-curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
-    "name":"Jordi",
-    "email":"jordi.p@revo.works"
-}&order={
-    "subtotal" : 1336,
-    "sum" : 1336,
-    "table_id" : null,	// Optional (In case you want it into a table in xef)
-    "tableName" : 		// Optional (In case you want to give another table name)
-    "total" : 1460,
-    "taxAmount" : 124,
-    "notes" : "You can send some optional notes",
-    "contents":[{
-        "item_id" : 949,
-        "quantity" : 1.000,
-        "menuContents" : null,
-        "id" : null,
-        "subtotal" : 910,
-        "itemPrice" : 1000,
-        "tax" : 1000,
-        "modifiers" : [],
-        "total" : 1000,
-        "taxAmount" : 90,
-        "dishOrder" : 2, //Optional
-        "notes" : "You can also send optional notes here"
-    },{
-        "item_id" : 2041,
-        "quantity" : 1,
-        "menuContents" : null,
-        "id" : null,
-        "subtotal" : 153,
-        "itemPrice" : 160,
-        "tax" : 2000,
-        "modifiers" : [],
-        "total" : 160,
-        "taxAmount" : 7
-    },{
-        "item_id" : 927,
-        "quantity" : 1,
-        "menuContents" : null,
-        "id" : null,
-        "subtotal" : 273,
-        "itemPrice" : 300,
-        "tax" : 1000,
-        "modifiers" : [],
-        "total" : 300,
-        "taxAmount" : 27
-    }
-]}&delivery={  // Optional; object to specify delivery info.
-    "channel": null,  // Optional; Code according to Delivery plarform (Deliveroo, Ubereats, Deliverect, Just Eats, etc.)
-    "address":"Carrer del Bruc, 23, 1er, 08241 pis, Barcelona",      // Full address
-    "phone": "666666666",  // Optional
-    "date": "2020-09-23 14:01:59"
-}
-```
+`https://integrations.revoxef.works/api/loyalty`
 
-`POST orders`
+And you should provide the mandatory headers for the authentication
 
-Headers:
 
-Parameter     | Value
---------------|-----------------
-tenant        | account name
-Authorization | Bearer {token}
+Header        | Value
+--------------|----------
+tenant        | {account-username}
+Authorization | Bearer {the-token}
 client-token  | {client-token}
+Content-Type  | application/json
 
-Body:
+## Create an order
 
-Parameter         | Type         | Description 
-------------------|--------------|-------------------------
-order             | `json`       | Json encoded order   
-customer          | `array`      | *optional* Of name and email `["name" => "The name", "email" => "theEmail@example.com"]`
-delivery          | `json`       | *optional* Delivery object `["address" => "The address ('Pickup' if delivery not needed)", "date" => "Datetime when order should be delivered", "phone" => "The phone", "channel" => "The delivery channel, if neeeded"]`
-skipMerge		  | `bool`       | *optional* if you don't want the order to be merged if there is another one already opened
-warehouse_id	  | `integer`    | *optional* Send the xef revo warehouse_id if you want the stock to be discounted
+POST `https://revoxef.works/api/loyalty/orders`
 
-```
-Response:
+The payload to create the order, must be sent as a JSON.
+
+The parameters for the payload, are the following:
+
+| Field        | Type    | Required     | Extra info                                                                                        |
+|--------------|---------|--------------|---------------------------------------------------------------------------------------------------|
+| order        | JSON    | **required** | [see Order payload](#order-payload)                                                               |
+| customer     | JSON    | optional     | [see Customer payload](#customer-payload)                                                         |
+| delivery     | JSON    | optional     | [see Delivery payload](#delivery-payload)                                                         |
+| skipMerge    | boolean | optional     | default: false. If you don't want the order to be merged if there is another one already opened.  |
+| warehouse_id | number  | optional     | Send the Revo XEF [warehouse_id](#warehouses) if you want the stock to be discounted.                            |
+| emailToSendInvoice | string  | optional     | Email where the invoice will be sent. |
+
+> General payload example:
+
+```sh
 {
-    "total"     : 12.23,
-    "taxAmount" : 1.23,
-    "subtotal"  : 10,
-    "sum"       : 10,
-    "contents"  : [
-        [
-            "item_id"       : 1,
-            "total"         : 7,
-            "taxAmount"     : 2,
-            "subtotal"      : 5,
-            "itemPrice"     : 7,
-            "taxPercentage" : 10,
-        ], [
-            "item_id"       : 2,
-            "total"         : 7,
-            "taxAmount"     : 2,
-            "subtotal"      : 5,
-            "itemPrice"     : 7,
-            "taxPercentage" : 10,
-        ]
-    ]
-}
-```
-
-## Order with payment
-
-```
-order={
-    "contents" : [{
+    "order": {
         ...
-    }],
-    "payment" : { 
-       "amount" : 12.40,
-       "tip" : 0.50,
-       "payment_reference" : "your-payment-reference",
-       "payment_method_id" : 1
+    },
+    "customer": {
+        ...
+    },
+    "delivery": {
+        ...
     }
-    "emailToSendInvoice" : "anemail@example.com",
-    "locale" : "en"
 }
-
 ```
 
-You can send a payment while creating the order as well by adding the `payment` element inside the order
+> Response:
+
+```sh
+{
+    "order_id": 1
+}
+```
+
+### Order payload
+
+Most of the parameters are recalculated when the order is processed in the POS.
+
+| Field         | Type    | Required     | Extra info                                                                                       |
+|---------------|---------|--------------|--------------------------------------------------------------------------------------------------|
+| total         | decimal | **required** | must be the sum of the order contents with their extra modifiers. Discounts must be applied too. |
+| table_id      | number  | optional     | If not sent, order is set as a delivery.                                                         |
+| tableName     | string  | optional     | default: 'InTouch'. If table_id sent, gets real tableName, otherwise gets payload data.          |
+| guests        | number  | optional     | default: 1                                                                                       |
+| notes         | string  | optional     |                                                                                                  |
+| extraId       | string  | optional     | Used to register an external order_id/reference.                                                 |
+| orderDiscount | JSON    | optional     | [see Order discount payload](#order-discount-payload)                                            |
+| contents      | array   | **required** | Must be an array of JSON. [see Contents payload](#contents-payload)                              |
+| payment      | JSON    | optional     | [see Payment payload](#payment-payload)                                                           |
+
+> Order payload example:
+
+```sh
+{
+    "order": {
+        "total": 10.50,
+        "table_id": 1,
+        "tableName": "TableName",
+        "guests": 1,
+        "notes": "Notes",
+        "extraId": "Ext-1",
+        "orderDiscount": {
+            ...
+        },
+        "contents": [
+            {
+                ...
+            },
+            ...
+        ],
+        "payment": {
+            ...
+        },
+    }
+    ...
+}
+```
+
+### Order discount payload
+
+| Field  | Type    | Required     | Extra info               |
+|--------|---------|--------------|--------------------------|
+| name   | string  | optional     | default: 'Discount'      |
+| amount | decimal | **required** | Must have negative sign. |
+
+> Order discount payload example:
+
+```sh
+{
+    "order": {
+        "total": 8.00, // discount subtracted
+        ...
+        "orderDiscount": {
+            "name": "Discount",
+            "amount": -2.50
+        },
+        ...
+    }
+    ...
+}
+```
+
+### Contents payload
+
+| Field  | Type    | Required     | Extra info               |
+|--------|---------|--------------|--------------------------|
+| item_id   | string  | **required** | Existing [item](#items) ID. It can be a normal item, a selling format item or a menu item. |
+| itemPrice | decimal | **required** | Individual item price. |
+| quantity | number | optional | default: 1 |
+| dishOrder | number | optional | **Only for menu items. Must be an existing [Menu Item-Category Pivot](#menu-item-category-pivot).** |
+| modifiers | array   | optional | **Only for normal and selling format items.** Must be an array of JSON. [see Modifiers payload](#modifiers-payload)   
+| menuContents | array   | optional | **Only for menu items.** Must be an array of JSON. [see MenuContents payload](#menucontents-payload)   
+
+> Content payload example:
+
+```sh
+{
+    "order": {
+        "total": 13.00
+        ...
+        "contents": {
+            "item_id": 1,
+            "itemPrice": 6.50,
+            "quantity": 2,
+            "modifiers" or "menuContents": [
+                {
+                    ...
+                },
+                ...
+            ],
+        }
+        ...
+    }
+    ...
+}
+```
+
+### Modifiers payload
+
+**Only for normal and selling format items.**
+
+For normal items (item.type = 0):
+
+There is no quantity and each modifier must be sent idividually.
+
+| Field  | Type    | Required     | Extra info               |
+|--------|---------|--------------|--------------------------|
+| id   | number  | optional | Existing [modifier](#modifiers) ID. |
+| name | string | optional | If modifier ID is found, it is set the modifier name. |
+| price | decimal | **required* | - |
+
+> Modifier (normal item) payload example:
+
+```sh
+{
+    "order": {
+        "total": 17.80
+        ...
+        "contents": {
+            "itemPrice": 6.50,
+            "quantity": 2,
+            ...
+            "modifiers": [
+                {
+                    "id": 1, // modifier ID exists ("name": "Nuts")
+                    "price": 1.20
+                },
+                {
+                    "name": "Nuts",
+                    "price": 1.20
+                },
+                ...
+            ]
+        }
+        ...
+    }
+    ...
+}
+```
+
+For selling format items (item.type = 4):
+
+Normal modifiers cannot be set.
+
+| Field  | Type    | Required     | Extra info               |
+|--------|---------|--------------|--------------------------|
+| id   | number  | **required** | Existing [format pivot](#selling-format-pivots) ID. |
+| price | decimal | optional | default: 0 |
+
+> Modifier (selling format item) payload example:
+
+```sh
+{
+    "order": {
+        ...
+        "contents": {
+            ...
+            "modifiers": [ // only 1 modifier to set the selling format
+                {
+                    "id": 1,
+                }
+            ]
+        }
+        ...
+    }
+    ...
+}
+```
 
 
-Field               | Required | Description
---------------------|----------|--------------
-`amount`            | yes      | The payment amount
-`tip`               | no       | The tip for that payment
-`payment_reference` | no       | A info field that references your payment id
-`payment_method_id` | no       | In case you want it to match with a revo payment, or don't send to use the standard `InTouch` payment
-`emailToSendInvoice`| no       | If you want to send the invoice to an email
-`locale`            | no       | The locale to use when sending the email
+### MenuContents payload
+
+**Only for menu items (item.type = 1):**
+
+Via API, a menu item can only contain a normal item or a selling format item. So, the structure of "menuContents" is the same as the ["contents"](#contents-payload), ignoring menu fields ("dishOrder" and "menuContents").
+
+> MenuContents (menu item) payload example:
+
+```sh
+{
+    "order": {
+        "total": 33.40
+        ...
+        "contents": {
+            "item_id": 12, // menu item
+            "itemPrice": 10.00,
+            ...
+            "menuContents": [
+                {
+                    "item_id": 1, // normal item
+                    "itemPrice": 6.50,
+                    "quantity": 2,
+                    "modifiers": [
+                        {
+                            "name": "Nuts",
+                            "price": 1.20
+                        },
+                        ...
+                    ]
+                },
+                {
+                    "item_id": 2, // selling format item
+                    "itemPrice": 7,
+                    "quantity": 1,
+                    "modifiers": [
+                        {
+                            "id",
+                            "price": 1.00
+                        }
+                    ]
+                }
+                ...
+            ]
+        }
+        ...
+    }
+    ...
+}
+```
+
+### Payment payload
+
+| Field  | Type    | Required     | Extra info               |
+|--------|---------|--------------|--------------------------|
+| amount | decimal | **required** | The amount to pay. Must not exceed the order total amount - order already paid amount. |
+| payment_method_id | number | optional | Existing [payment method](#payment-methods) ID. default: channel payment method is used or created. |
+| payment_reference | string | optional | The reference of the payment. |
+| tip | decimal | optional |  |
+| contents | array | optional | Pay per items. Array of content IDs. The amount must match contents+modifiers sum amount. |
+
+Regarding the payment methods, there are 2 fix payment methods for all accounts:
+- Card => "payment_method_id": 1
+- Cash => "payment_method_id": 2
+
+> Payment payload example:
+
+```sh
+{
+    "order": {
+        "total": 12.20,
+        ...
+        "payment": {
+            "amount": 12.20
+            "payment_method_id": 1,
+            "payment_reference": "QR code payment.",
+            ...
+        }
+    }
+    ...
+}
+```
+
+### Customer payload
+
+**The customer info and the delivery info are not the same.**
+
+If you want to manage customer infor, check the [customer section](#customers)
+
+| Field  | Type    | Required     | Extra info               |
+|--------|---------|--------------|--------------------------|
+| name | string | **required** | |
+| email | string | **required** | |
+
+> Customer payload example:
+
+```sh
+{
+    "order": {
+        ...
+    },
+    "customer": {
+        "name": "Customer Name",
+        "email": "customer@revo.test"
+    }
+    ...
+}
+```
+
+### Delivery payload
+
+**The delivery info and the customer info are not the same.**
+
+The delivery data is the info for the delivery/pickup order. This info will not be saved in the customer data.
+
+| Field  | Type    | Required     | Extra info               |
+|--------|---------|--------------|--------------------------|
+| phone | number | **required** | The phone for the delivery/pickup order. |
+| date | string | optional | Date when the order has to be prepared. "YYYY-MM-DD HH:MM:SS" - default: current time.  |
+| address | string | optional | Set address for delivery orders. NO address for pickup orders. |
+| city | string | optional | |
+| channel | number | optional | default: REVO channel (InTouch) |
+
+
+> Delivery payload example:
+
+```sh
+{
+    "order": {
+        ...
+    },
+    "delivery": {
+        "phone": 123456789,
+        "date": "2009-05-02 21:45:00",
+        ...
+    }
+    ...
+}
+```
 
 ## Standalone payment
 
-```
-payment={ 
-    "amount" : 12.40,
-    "tip" : 0.40,
-    "payment_reference" : "your-payment-reference",
-    "payment_method_id" : 1
-}
-```
-
-Otherwise, you might need the order id before doing the payment, so you can add it afterwards with another call, where the parameters follow the same rules as the above call
+If you only want to make a payment for an existing order, you must use the following endpoint:
 
 `POST orders/{orderId}/payments`
 
+**The payload structure is the same as the payment done in the order creation, but sent as a form-data body request.** [See again the details.](#payment-payload)
+
+> Standalone payload example:
+
+```sh
+# Must be sent as a form-data body request.
+"payment": {
+    "amount": 12.20
+    "payment_method_id": 1,
+    "payment_reference": "QR code payment.",
+    ...
+}
+```
 
 ## Fetch an Order
 `GET orders/{orderId}`
