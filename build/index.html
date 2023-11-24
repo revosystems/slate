@@ -344,13 +344,10 @@
             <a href="#xef-loyalty" class="toc-h1 toc-link" data-title="Xef Loyalty">Xef Loyalty</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#base-url" class="toc-h2 toc-link" data-title="Base URL">Base URL</a>
+                    <a href="#basic-usage" class="toc-h2 toc-link" data-title="Basic usage">Basic usage</a>
                   </li>
                   <li>
                     <a href="#create-an-order" class="toc-h2 toc-link" data-title="Create an order">Create an order</a>
-                  </li>
-                  <li>
-                    <a href="#order-with-payment" class="toc-h2 toc-link" data-title="Order with payment">Order with payment</a>
                   </li>
                   <li>
                     <a href="#standalone-payment" class="toc-h2 toc-link" data-title="Standalone payment">Standalone payment</a>
@@ -3076,217 +3073,650 @@ POST message={
         }
   }
 </code></p>
-<h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='base-url'>Base URL</h2>
-<p><code>https://revoxef.works/api/loyalty/</code></p>
+<h1 id='xef-loyalty'>Xef Loyalty</h1><h2 id='basic-usage'>Basic usage</h2>
+<p>The main URL for the external API:</p>
+
+<p><code>https://revoxef.works/api/loyalty</code></p>
 
 <blockquote>
 <p>The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
 </blockquote>
-<h2 id='create-an-order'>Create an order</h2>
-<p>Data can be passed as show in the example. Although it can also be passed as form params, passing <code>Content-Type: application/json</code> header. </p>
-<pre class="highlight plaintext"><code>curl -XPOST -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' -d 'customer={
-    "name":"Jordi",
-    "email":"jordi.p@revo.works"
-}&amp;order={
-    "subtotal" : 1336,
-    "sum" : 1336,
-    "table_id" : null,  // Optional (In case you want it into a table in xef)
-    "tableName" :       // Optional (In case you want to give another table name)
-    "total" : 1460,
-    "taxAmount" : 124,
-    "notes" : "You can send some optional notes",
-    "contents":[{
-        "item_id" : 949,
-        "quantity" : 1.000,
-        "menuContents" : null,
-        "id" : null,
-        "subtotal" : 910,
-        "itemPrice" : 1000,
-        "tax" : 1000,
-        "modifiers" : [],
-        "total" : 1000,
-        "taxAmount" : 90,
-        "dishOrder" : 2, //Optional
-        "notes" : "You can also send optional notes here"
-    },{
-        "item_id" : 2041,
-        "quantity" : 1,
-        "menuContents" : null,
-        "id" : null,
-        "subtotal" : 153,
-        "itemPrice" : 160,
-        "tax" : 2000,
-        "modifiers" : [],
-        "total" : 160,
-        "taxAmount" : 7
-    },{
-        "item_id" : 927,
-        "quantity" : 1,
-        "menuContents" : null,
-        "id" : null,
-        "subtotal" : 273,
-        "itemPrice" : 300,
-        "tax" : 1000,
-        "modifiers" : [],
-        "total" : 300,
-        "taxAmount" : 27
-    }
-]}&amp;delivery={  // Optional; object to specify delivery info.
-    "channel": null,  // Optional; Code according to Delivery plarform (Deliveroo, Ubereats, Deliverect, Just Eats, etc.)
-    "address":"Carrer del Bruc, 23, 1er, 08241 pis, Barcelona",      // Full address
-    "phone": "666666666",  // Optional
-    "date": "2020-09-23 14:01:59"
-}
-</code></pre>
-<p><code>POST orders</code></p>
 
-<p>Headers:</p>
+<p>The URL for the integrations API environment:</p>
+
+<p><code>https://integrations.revoxef.works/api/loyalty</code></p>
+
+<p>And you should provide the mandatory headers for the authentication</p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Header</th>
 <th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>tenant</td>
-<td>account name</td>
+<td>{account-username}</td>
 </tr>
 <tr>
 <td>Authorization</td>
-<td>Bearer {token}</td>
+<td>Bearer {the-token}</td>
 </tr>
 <tr>
 <td>client-token</td>
 <td>{client-token}</td>
 </tr>
-</tbody></table>
-
-<p>Body:</p>
-
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>order</td>
-<td><code>json</code></td>
-<td> Json encoded order</td>
-</tr>
-<tr>
-<td>customer</td>
-<td><code>array</code></td>
-<td><em>optional</em> Of name and email <code>[&quot;name&quot; =&gt; &quot;The name&quot;, &quot;email&quot; =&gt; &quot;theEmail@example.com&quot;]</code></td>
-</tr>
-<tr>
-<td>delivery</td>
-<td><code>json</code></td>
-<td><em>optional</em> Delivery object <code>[&quot;address&quot; =&gt; &quot;The address (&#39;Pickup&#39; if delivery not needed)&quot;, &quot;date&quot; =&gt; &quot;Datetime when order should be delivered&quot;, &quot;phone&quot; =&gt; &quot;The phone&quot;, &quot;channel&quot; =&gt; &quot;The delivery channel, if neeeded&quot;]</code></td>
-</tr>
-<tr>
-<td>skipMerge</td>
-<td><code>bool</code></td>
-<td><em>optional</em> if you don&#39;t want the order to be merged if there is another one already opened</td>
-</tr>
-<tr>
-<td>warehouse_id</td>
-<td><code>integer</code></td>
-<td><em>optional</em> Send the xef revo warehouse_id if you want the stock to be discounted</td>
+<td>Content-Type</td>
+<td>application/json</td>
 </tr>
 </tbody></table>
-<pre class="highlight plaintext"><code>Response:
-{
-    "total"     : 12.23,
-    "taxAmount" : 1.23,
-    "subtotal"  : 10,
-    "sum"       : 10,
-    "contents"  : [
-        [
-            "item_id"       : 1,
-            "total"         : 7,
-            "taxAmount"     : 2,
-            "subtotal"      : 5,
-            "itemPrice"     : 7,
-            "taxPercentage" : 10,
-        ], [
-            "item_id"       : 2,
-            "total"         : 7,
-            "taxAmount"     : 2,
-            "subtotal"      : 5,
-            "itemPrice"     : 7,
-            "taxPercentage" : 10,
-        ]
-    ]
-}
-</code></pre><h2 id='order-with-payment'>Order with payment</h2><pre class="highlight plaintext"><code>order={
-    "contents" : [{
-        ...
-    }],
-    "payment" : { 
-       "amount" : 12.40,
-       "tip" : 0.50,
-       "payment_reference" : "your-payment-reference",
-       "payment_method_id" : 1
-    }
-    "emailToSendInvoice" : "anemail@example.com",
-    "locale" : "en"
-}
+<h2 id='create-an-order'>Create an order</h2>
+<p>POST <code>https://revoxef.works/api/loyalty/orders</code></p>
 
-</code></pre>
-<p>You can send a payment while creating the order as well by adding the <code>payment</code> element inside the order</p>
+<p>The payload to create the order, must be sent as a JSON.</p>
+
+<p>The parameters for the payload, are the following:</p>
 
 <table><thead>
 <tr>
 <th>Field</th>
+<th>Type</th>
 <th>Required</th>
-<th>Description</th>
+<th>Extra info</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>amount</code></td>
-<td>yes</td>
-<td>The payment amount</td>
+<td>order</td>
+<td>JSON</td>
+<td><strong>required</strong></td>
+<td><a href="#order-payload">see Order payload</a></td>
 </tr>
 <tr>
-<td><code>tip</code></td>
-<td>no</td>
-<td>The tip for that payment</td>
+<td>customer</td>
+<td>JSON</td>
+<td>optional</td>
+<td><a href="#customer-payload">see Customer payload</a></td>
 </tr>
 <tr>
-<td><code>payment_reference</code></td>
-<td>no</td>
-<td>A info field that references your payment id</td>
+<td>delivery</td>
+<td>JSON</td>
+<td>optional</td>
+<td><a href="#delivery-payload">see Delivery payload</a></td>
 </tr>
 <tr>
-<td><code>payment_method_id</code></td>
-<td>no</td>
-<td>In case you want it to match with a revo payment, or don&#39;t send to use the standard <code>InTouch</code> payment</td>
+<td>skipMerge</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: false. If you don&#39;t want the order to be merged if there is another one already opened.</td>
 </tr>
 <tr>
-<td><code>emailToSendInvoice</code></td>
-<td>no</td>
-<td>If you want to send the invoice to an email</td>
+<td>warehouse_id</td>
+<td>number</td>
+<td>optional</td>
+<td>Send the Revo XEF <a href="#warehouses">warehouse_id</a> if you want the stock to be discounted.</td>
 </tr>
 <tr>
-<td><code>locale</code></td>
-<td>no</td>
-<td>The locale to use when sending the email</td>
+<td>emailToSendInvoice</td>
+<td>string</td>
+<td>optional</td>
+<td>Email where the invoice will be sent.</td>
 </tr>
 </tbody></table>
-<h2 id='standalone-payment'>Standalone payment</h2><pre class="highlight plaintext"><code>payment={ 
-    "amount" : 12.40,
-    "tip" : 0.40,
-    "payment_reference" : "your-payment-reference",
-    "payment_method_id" : 1
-}
+
+<blockquote>
+<p>General payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        ...
+    <span class="o">}</span>,
+    <span class="s2">"customer"</span>: <span class="o">{</span>
+        ...
+    <span class="o">}</span>,
+    <span class="s2">"delivery"</span>: <span class="o">{</span>
+        ...
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre>
-<p>Otherwise, you might need the order id before doing the payment, so you can add it afterwards with another call, where the parameters follow the same rules as the above call</p>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order_id"</span>: 1
+<span class="o">}</span>
+</code></pre><h3 id='order-payload'>Order payload</h3>
+<p>Most of the parameters are recalculated when the order is processed in the POS.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td>must be the sum of the order contents with their extra modifiers. Discounts must be applied too.</td>
+</tr>
+<tr>
+<td>table_id</td>
+<td>number</td>
+<td>optional</td>
+<td>If not sent, order is set as a delivery.</td>
+</tr>
+<tr>
+<td>tableName</td>
+<td>string</td>
+<td>optional</td>
+<td>default: &#39;InTouch&#39;. If table_id sent, gets real tableName, otherwise gets payload data.</td>
+</tr>
+<tr>
+<td>guests</td>
+<td>number</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>extraId</td>
+<td>string</td>
+<td>optional</td>
+<td>Used to register an external order_id/reference.</td>
+</tr>
+<tr>
+<td>orderDiscount</td>
+<td>JSON</td>
+<td>optional</td>
+<td><a href="#order-discount-payload">see Order discount payload</a></td>
+</tr>
+<tr>
+<td>contents</td>
+<td>array</td>
+<td><strong>required</strong></td>
+<td>Must be an array of JSON. <a href="#contents-payload">see Contents payload</a></td>
+</tr>
+<tr>
+<td>payment</td>
+<td>JSON</td>
+<td>optional</td>
+<td><a href="#payment-payload">see Payment payload</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Order payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        <span class="s2">"total"</span>: 10.50,
+        <span class="s2">"table_id"</span>: 1,
+        <span class="s2">"tableName"</span>: <span class="s2">"TableName"</span>,
+        <span class="s2">"guests"</span>: 1,
+        <span class="s2">"notes"</span>: <span class="s2">"Notes"</span>,
+        <span class="s2">"extraId"</span>: <span class="s2">"Ext-1"</span>,
+        <span class="s2">"orderDiscount"</span>: <span class="o">{</span>
+            ...
+        <span class="o">}</span>,
+        <span class="s2">"contents"</span>: <span class="o">[</span>
+            <span class="o">{</span>
+                ...
+            <span class="o">}</span>,
+            ...
+        <span class="o">]</span>,
+        <span class="s2">"payment"</span>: <span class="o">{</span>
+            ...
+        <span class="o">}</span>,
+    <span class="o">}</span>
+    ...
+<span class="o">}</span>
+</code></pre><h3 id='order-discount-payload'>Order discount payload</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>optional</td>
+<td>default: &#39;Discount&#39;</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td>Must have negative sign.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Order discount payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        <span class="s2">"total"</span>: 8.00, // discount subtracted
+        ...
+        <span class="s2">"orderDiscount"</span>: <span class="o">{</span>
+            <span class="s2">"name"</span>: <span class="s2">"Discount"</span>,
+            <span class="s2">"amount"</span>: -2.50
+        <span class="o">}</span>,
+        ...
+    <span class="o">}</span>
+    ...
+<span class="o">}</span>
+</code></pre><h3 id='contents-payload'>Contents payload</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>item_id</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Existing <a href="#items">item</a> ID. It can be a normal item, a selling format item or a menu item.</td>
+</tr>
+<tr>
+<td>itemPrice</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td>Individual item price.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>number</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>dishOrder</td>
+<td>number</td>
+<td>optional</td>
+<td><strong>Only for menu items. Must be an existing <a href="#menu-item-category-pivot">Menu Item-Category Pivot</a>.</strong></td>
+</tr>
+<tr>
+<td>modifiers</td>
+<td>array</td>
+<td>optional</td>
+<td><strong>Only for normal and selling format items.</strong> Must be an array of JSON. <a href="#modifiers-payload">see Modifiers payload</a></td>
+</tr>
+<tr>
+<td>menuContents</td>
+<td>array</td>
+<td>optional</td>
+<td><strong>Only for menu items.</strong> Must be an array of JSON. <a href="#menucontents-payload">see MenuContents payload</a></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Content payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        <span class="s2">"total"</span>: 13.00
+        ...
+        <span class="s2">"contents"</span>: <span class="o">{</span>
+            <span class="s2">"item_id"</span>: 1,
+            <span class="s2">"itemPrice"</span>: 6.50,
+            <span class="s2">"quantity"</span>: 2,
+            <span class="s2">"modifiers"</span> or <span class="s2">"menuContents"</span>: <span class="o">[</span>
+                <span class="o">{</span>
+                    ...
+                <span class="o">}</span>,
+                ...
+            <span class="o">]</span>,
+        <span class="o">}</span>
+        ...
+    <span class="o">}</span>
+    ...
+<span class="o">}</span>
+</code></pre><h3 id='modifiers-payload'>Modifiers payload</h3>
+<p><strong>Only for normal and selling format items.</strong></p>
+
+<p>For normal items (item.type = 0):</p>
+
+<p>There is no quantity and each modifier must be sent idividually.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>optional</td>
+<td>Existing <a href="#modifiers">modifier</a> ID.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>optional</td>
+<td>If modifier ID is found, it is set the modifier name.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>decimal</td>
+<td>*<em>required</em></td>
+<td>-</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Modifier (normal item) payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        <span class="s2">"total"</span>: 17.80
+        ...
+        <span class="s2">"contents"</span>: <span class="o">{</span>
+            <span class="s2">"itemPrice"</span>: 6.50,
+            <span class="s2">"quantity"</span>: 2,
+            ...
+            <span class="s2">"modifiers"</span>: <span class="o">[</span>
+                <span class="o">{</span>
+                    <span class="s2">"id"</span>: 1, // modifier ID exists <span class="o">(</span><span class="s2">"name"</span>: <span class="s2">"Nuts"</span><span class="o">)</span>
+                    <span class="s2">"price"</span>: 1.20
+                <span class="o">}</span>,
+                <span class="o">{</span>
+                    <span class="s2">"name"</span>: <span class="s2">"Nuts"</span>,
+                    <span class="s2">"price"</span>: 1.20
+                <span class="o">}</span>,
+                ...
+            <span class="o">]</span>
+        <span class="o">}</span>
+        ...
+    <span class="o">}</span>
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>For selling format items (item.type = 4):</p>
+
+<p>Normal modifiers cannot be set.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>Existing <a href="#selling-format-pivots">format pivot</a> ID.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>decimal</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Modifier (selling format item) payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        ...
+        <span class="s2">"contents"</span>: <span class="o">{</span>
+            ...
+            <span class="s2">"modifiers"</span>: <span class="o">[</span> // only 1 modifier to <span class="nb">set </span>the selling format
+                <span class="o">{</span>
+                    <span class="s2">"id"</span>: 1,
+                <span class="o">}</span>
+            <span class="o">]</span>
+        <span class="o">}</span>
+        ...
+    <span class="o">}</span>
+    ...
+<span class="o">}</span>
+</code></pre><h3 id='menucontents-payload'>MenuContents payload</h3>
+<p><strong>Only for menu items (item.type = 1):</strong></p>
+
+<p>Via API, a menu item can only contain a normal item or a selling format item. So, the structure of &quot;menuContents&quot; is the same as the <a href="#contents-payload">&quot;contents&quot;</a>, ignoring menu fields (&quot;dishOrder&quot; and &quot;menuContents&quot;).</p>
+
+<blockquote>
+<p>MenuContents (menu item) payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        <span class="s2">"total"</span>: 33.40
+        ...
+        <span class="s2">"contents"</span>: <span class="o">{</span>
+            <span class="s2">"item_id"</span>: 12, // menu item
+            <span class="s2">"itemPrice"</span>: 10.00,
+            ...
+            <span class="s2">"menuContents"</span>: <span class="o">[</span>
+                <span class="o">{</span>
+                    <span class="s2">"item_id"</span>: 1, // normal item
+                    <span class="s2">"itemPrice"</span>: 6.50,
+                    <span class="s2">"quantity"</span>: 2,
+                    <span class="s2">"modifiers"</span>: <span class="o">[</span>
+                        <span class="o">{</span>
+                            <span class="s2">"name"</span>: <span class="s2">"Nuts"</span>,
+                            <span class="s2">"price"</span>: 1.20
+                        <span class="o">}</span>,
+                        ...
+                    <span class="o">]</span>
+                <span class="o">}</span>,
+                <span class="o">{</span>
+                    <span class="s2">"item_id"</span>: 2, // selling format item
+                    <span class="s2">"itemPrice"</span>: 7,
+                    <span class="s2">"quantity"</span>: 1,
+                    <span class="s2">"modifiers"</span>: <span class="o">[</span>
+                        <span class="o">{</span>
+                            <span class="s2">"id"</span>,
+                            <span class="s2">"price"</span>: 1.00
+                        <span class="o">}</span>
+                    <span class="o">]</span>
+                <span class="o">}</span>
+                ...
+            <span class="o">]</span>
+        <span class="o">}</span>
+        ...
+    <span class="o">}</span>
+    ...
+<span class="o">}</span>
+</code></pre><h3 id='payment-payload'>Payment payload</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td>The amount to pay. Must not exceed the order total amount - order already paid amount.</td>
+</tr>
+<tr>
+<td>payment_method_id</td>
+<td>number</td>
+<td>optional</td>
+<td>Existing <a href="#payment-methods">payment method</a> ID. default: channel payment method is used or created.</td>
+</tr>
+<tr>
+<td>payment_reference</td>
+<td>string</td>
+<td>optional</td>
+<td>The reference of the payment.</td>
+</tr>
+<tr>
+<td>tip</td>
+<td>decimal</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>contents</td>
+<td>array</td>
+<td>optional</td>
+<td>Pay per items. Array of content IDs. The amount must match contents+modifiers sum amount.</td>
+</tr>
+</tbody></table>
+
+<p>Regarding the payment methods, there are 2 fix payment methods for all accounts:
+- Card =&gt; &quot;payment_method_id&quot;: 1
+- Cash =&gt; &quot;payment_method_id&quot;: 2</p>
+
+<blockquote>
+<p>Payment payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        <span class="s2">"total"</span>: 12.20,
+        ...
+        <span class="s2">"payment"</span>: <span class="o">{</span>
+            <span class="s2">"amount"</span>: 12.20
+            <span class="s2">"payment_method_id"</span>: 1,
+            <span class="s2">"payment_reference"</span>: <span class="s2">"QR code payment."</span>,
+            ...
+        <span class="o">}</span>
+    <span class="o">}</span>
+    ...
+<span class="o">}</span>
+</code></pre><h3 id='customer-payload'>Customer payload</h3>
+<p><strong>The customer info and the delivery info are not the same.</strong></p>
+
+<p>If you want to manage customer infor, check the <a href="#customers">customer section</a></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Customer payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        ...
+    <span class="o">}</span>,
+    <span class="s2">"customer"</span>: <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Customer Name"</span>,
+        <span class="s2">"email"</span>: <span class="s2">"customer@revo.test"</span>
+    <span class="o">}</span>
+    ...
+<span class="o">}</span>
+</code></pre><h3 id='delivery-payload'>Delivery payload</h3>
+<p><strong>The delivery info and the customer info are not the same.</strong></p>
+
+<p>The delivery data is the info for the delivery/pickup order. This info will not be saved in the customer data.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>phone</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td>The phone for the delivery/pickup order.</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string</td>
+<td>optional</td>
+<td>Date when the order has to be prepared. &quot;YYYY-MM-DD HH:MM:SS&quot; - default: current time.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>optional</td>
+<td>Set address for delivery orders. NO address for pickup orders.</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>channel</td>
+<td>number</td>
+<td>optional</td>
+<td>default: REVO channel (InTouch)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Delivery payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"order"</span>: <span class="o">{</span>
+        ...
+    <span class="o">}</span>,
+    <span class="s2">"delivery"</span>: <span class="o">{</span>
+        <span class="s2">"phone"</span>: 123456789,
+        <span class="s2">"date"</span>: <span class="s2">"2009-05-02 21:45:00"</span>,
+        ...
+    <span class="o">}</span>
+    ...
+<span class="o">}</span>
+</code></pre><h2 id='standalone-payment'>Standalone payment</h2>
+<p>If you only want to make a payment for an existing order, you must use the following endpoint:</p>
 
 <p><code>POST orders/{orderId}/payments</code></p>
-<h2 id='fetch-an-order'>Fetch an Order</h2>
+
+<p><strong>The payload structure is the same as the payment done in the order creation, but sent as a form-data body request.</strong> <a href="#payment-payload">See again the details.</a></p>
+
+<blockquote>
+<p>Standalone payload example:</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="c"># Must be sent as a form-data body request.</span>
+<span class="s2">"payment"</span>: <span class="o">{</span>
+    <span class="s2">"amount"</span>: 12.20
+    <span class="s2">"payment_method_id"</span>: 1,
+    <span class="s2">"payment_reference"</span>: <span class="s2">"QR code payment."</span>,
+    ...
+<span class="o">}</span>
+</code></pre><h2 id='fetch-an-order'>Fetch an Order</h2>
 <p><code>GET orders/{orderId}</code></p>
 
 <p>You can fetch an order information using this endpoint</p>
