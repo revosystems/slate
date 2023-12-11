@@ -80,13 +80,13 @@ Response is a groups paginated array with the following fields:
 
 | Field            | Type    | Required | Extra info                |
 |------------------|---------|----------|---------------------------|
-| id               | number  | *Read Only* | autoincrement          |
+| id               | number  | *ReadOnly* | autoincrement          |
 | name             | string  | **required** |                       |
 | photo            | string  | optional |                           |
 | order            | number  | optional |                           |
 | active           | boolean | optional | default: 1                |
 | tax_id           | number  | optional |                           |
-| tax              | object  | *Read Only* |                        |
+| tax              | object  | *ReadOnly* |                        |
 
 **tax object (optional):**
 
@@ -138,7 +138,7 @@ Response is a groups paginated array with the following fields:
 
 | Field            | Type    | Required | Extra info                |
 |------------------|---------|----------|---------------------------|
-| id               | number  | *Read Only* | autoincrement          |
+| id               | number  | *ReadOnly* | autoincrement          |
 | name             | string  | **required** |                       |
 | group_id         | number  | **required** |                       |
 | photo            | string  | optional |                           |
@@ -146,7 +146,7 @@ Response is a groups paginated array with the following fields:
 | active           | boolean | optional | default: 1                |
 | extra_id         | string  | optional |                           |
 | tax_id           | number  | optional |                           |
-| tax              | object  | *Read Only* |                        |
+| tax              | object  | *ReadOnly* |                        |
 
 **tax object (optional):**
 
@@ -200,7 +200,7 @@ Response is a groups paginated array with the following fields:
 
 | Field            | Type    | Required | Extra info                |
 |------------------|---------|----------|---------------------------|
-| id               | number  | *Read Only* | autoincrement          |
+| id               | number  | *ReadOnly* | autoincrement          |
 | name             | string  | **required** |                       |
 | category_id      | number  | **required** |                       |
 | photo            | string  | optional |                           |
@@ -227,11 +227,11 @@ Response is a groups paginated array with the following fields:
 | usesWeight       | boolean   | optional | default: 0              |
 | unit_id          | number  | optional |                           |
 | tax_id           | number  | optional |                           |
-| tax              | object  | *Read Only* |                        |
-| variant_master   | object  | *Read Only* | Same product structure (optional) |
-| ecommerce_info   | object  | *Read Only* | Showed with filter *withECommerce*. |
-| stocks   | array (objects) | *Read Only* | Showed with filter *withStocks* or ECommerce module enabled + filter *withECommerceStocks*. |
-| variant_info   | object  | *Read Only* | Showed with filter *withVariantInfo* or ECommerce module enabled + filter *withECommerceStocks*.. |
+| tax              | object  | *ReadOnly* |                        |
+| variant_master   | object  | *ReadOnly* | Same product structure (optional) |
+| ecommerce_info   | object  | *ReadOnly* | Showed with filter *withECommerce*. |
+| stocks   | array (objects) | *ReadOnly* | Showed with filter *withStocks* or ECommerce module enabled + filter *withECommerceStocks*. |
+| variant_info   | object  | *ReadOnly* | Showed with filter *withVariantInfo* or ECommerce module enabled + filter *withECommerceStocks*.. |
 
 **tax object (optional):**
 
