@@ -19,6 +19,7 @@ includes:
   - xef-webhooks
   
   - retail-external
+  - retail-catalog
   - retail-reports
   
   - flow

@@ -3,26 +3,30 @@
 ## Authentication 
 
 ```sh
-curl --header "username: {myaccount}" \
-     --header "authorization: Bearer {token}" \
+curl --header "username: {account-username}" \
+     --header "Authorization: Bearer {token}" \
+     --header "Content-Type: application/json" \
      https://revoretail.works/api/external/reports
 ```
 
-Base endpoint
+The main URL for the external API:
 
 `https://revoretail.works/api/external/reports`
 
-You should send the headers `username` with your account username and `authorization` with the token created at `account > tokens`
+The URL for the integrations API environment:
 
-> Get your token at [https://revoretail.works/admin/account/tokens](https://revoretail.works/admin/account/tokens)
+`https://integrations.revoretail.works/api/external/reports`
+
+And you should provide the mandatory headers for the authentication
+
 
 Header        | Value
---------------|-----------
-username      | {account}
-authorization | Bearer {token}
+--------------|----------
+username      | {account-username}
+Authorization | Bearer {token}
+Content-Type  | application/json
 
-
-The `token` it obtained at [Account managment](https://revoretail.works/admin/account/tokens) section of RevoRetail. You just need to create a new token givin it a descriptive name. For example `api acess`.
+The `token` is obtained at [Account managment](https://revoretail.works/admin/account/tokens) section of RevoRetail.
 
 
 ## Response format
@@ -31,8 +35,10 @@ The `token` it obtained at [Account managment](https://revoretail.works/admin/ac
 {
     "current_page": 1,
     "data": [  [Report data will go here]  ],
+    "first_page_url": "https://revoretail.works/api/external/reports/{reportName}?page=1",
     "from": 1,
     "last_page": 4,
+    "last_page_url": "https://revoretail.works/api/external/reports/{reportName}?page=4",
     "next_page_url": "https://revoretail.works/api/external/reports/{reportName}?page=2",
     "path": "https://revoretail.works/api/external/reports/{reportName}",
     "per_page": 50,

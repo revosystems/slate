@@ -2,7 +2,7 @@
 
 ## Prerequisistes
 
-To be able to use the external api you need a `revo retail` account and an `access token`
+To be able to use the external api you need a `REVO Retail`.
 
 1. Login into the desired account
 2. Go to account management
@@ -10,183 +10,46 @@ To be able to use the external api you need a `revo retail` account and an `acce
 
 
 ## Authorization
-The main URL for the external api is
 
+The main URL for the external API:
 
 `https://revoretail.works/api/external`
+
+The URL for the integrations API environment:
+
+`https://integrations.revoretail.works/api/external`
 
 And you should provide the mandatory headers for the authentication
 
 
-Header          | Value
-----------------|------
-`username`      | {account-username}
-`Authorization` | Bearer {the-token}
+Header        | Value
+--------------|----------
+username      | {account-username}
+Authorization | Bearer {token}
+Content-Type  | application/json
 
 
 ## Generic list response
 
 ```sh
 {
-    "current_page"  : 1,
-    "from"          : 1,
-    "last_page"     : 2,
-    "next_page_url" : "https://revoretail.works/api/external/[resource]?page=2",
-    "path"          : "http://revoretail.works/api/external/[resource]",
-    "per_page"      : 50,
-    "prev_page_url" : null,
-    "to"            : 50,
-    "total"         : 10,
-    "data": []
+    "current_page": 1,
+    "data": [  [Response data will go here]  ],
+    "first_page_url": "https://revoretail.works/api/external/{resource}?page=1",
+    "from": 1,
+    "last_page": 2,
+    "last_page_url": "https://revoretail.works/api/external/{resource}?page=2",
+    "next_page_url": "https://revoretail.works/api/external/{resource}?page=2",
+    "path": "https://revoretail.works/api/external/{resource}",
+    "per_page": 50,
+    "prev_page_url": null,
+    "to": 50,
+    "total": 75
 }
 ```
 
 
 ## Available resources
-
-### Get list of groups
-Get a list of groups
-
-
-`GET https://revoretail.works/api/external/catalog/groups`
-
-> GET groups
-
-```sh
-[
-    {
-        "id": 1,
-        "name", "Shoes",
-        "photo"     : "",
-        "order"     : 0,
-        "active"    : 1,
-        "group_id"  : 1,
-        "tax_id"    : 1
-    },
-    {
-        "id": 2,
-        "name", "Pants",
-        "photo"     : "",
-        "order"     : 0,
-        "active"    : 1,
-        "group_id"  : 1,
-        "tax_id"    : 1
-    }
-]
-```
-
-### Get list of categories
-Get a list of categories, can filter by group
-
-
-`GET https://revoretail.works/api/external/catalog/categories?group=`
-
-> GET categories?group=
-
-```sh
-[
-    {
-        "id": 1,
-        "name", "Trousers",
-        "photo"     : "",
-        "order"     : 0,
-        "active"    : 1,
-        "group_id"  : 1,
-        "tax_id"    : 1
-    },
-    {
-        "id": 2,
-        "name", "Shorts",
-        "photo"     : "",
-        "order"     : 0,
-        "active"    : 1,
-        "group_id"  : 1,
-        "tax_id"    : 1
-    }
-]
-```
-
-
-### Get list of products
-Get a list of products, can filter by category
-
-
-`GET https://revoretail.works/api/external/catalog/products?category=`
-
-> GET products?category=
-
-```sh
-[
-    {
-        "id": 1,
-        "name", "new nike xl"
-        "reference"             : "",
-        "info"                  : "",
-        "shortInfo"             : "",
-        "brand"                 : "",
-        "season"                : "",
-        "photo"                 : "",
-        "order"                 : "0",
-        "active"                : "1",
-        "featured"              : "0",
-        "isOpen"                : "0",
-        "type"                  : "0",
-        "price"                 : "",
-        "costPrice"             : "",
-        "barcode"               : "",
-        "category_id"           : 1,
-        "tax_id"                : 1,
-        "main_product_id"       : null,
-        "usesStockManagement"   : false,
-        "usesWeight"            : false,
-        "unit_id"               : "1"
-    }, {
-        "id": 2,
-        "name", "new nike m"
-        "reference"             : "",
-        "info"                  : "",
-        "shortInfo"             : "",
-        "brand"                 : "",
-        "season"                : "",
-        "photo"                 : "",
-        "order"                 : "0",
-        "active"                : "1",
-        "featured"              : "0",
-        "isOpen"                : "0",
-        "type"                  : "0",
-        "price"                 : "",
-        "costPrice"             : "",
-        "barcode"               : "",
-        "category_id"           : 1,
-        "tax_id"                : 1,
-        "main_product_id"       : null,
-        "usesStockManagement"   : false,
-        "usesWeight"            : false,
-        "unit_id"               : "1"    }
-]
-```
-
-If we add `withStocks` parameter we'll get an stocks list within each product.
-For example:
-
-> GET filtered by withStocks
-
-```sh
-[
-    {
-        "id": 1,
-        "name", "new nike xl",
-        ...
-        "stocks": [{
-            "id": 1,"warehouse_id": 1, "quantity": 10
-        },{
-            "id": 2,"warehouse_id": 3, "quantity": 15
-        }]
-    }
-]
-
-```
-
 
 ### Variants
 RevoRetail uses variants to store product sizes, colors, etc..
@@ -305,123 +168,6 @@ Get a list of available taxes
 ]
 ```
 
-## Catalog generation
-In order to generate a catalog via API we can create groups, group's categories and category's products.
-in any of these cases we can send a dictionary with the desired object to create (group, category or product) or we can send a list of dictionaries to create multiple objects at the same time. e.g.:
-
-`POST https://revoretail.works/api/external/catalog/groups`
-
-> POST groups
-
-```sh
-// BODY Dictionary:
-{
-    "name": "Group 1",
-    "active": 1,        // Optional, defaults to 1
-    "tax_id": 1         // Optional, defaults to null
-}
-```
-
-```sh
-// BODY List of dictionaries:
-[
-    {
-        "name": "Group 1",
-        "active": 1,        // Optional, defaults to 1
-        "tax_id": 1         // Optional, defaults to null
-    }, {
-        "name": "Group 2"
-        "active": 1,        // Optional, defaults to 1
-        "tax_id": 1         // Optional, defaults to null
-    }
-]
-```
-
-In any case its responses are a 200 JSON with 2 fields (success and errors): 
-
-> Response:
-
-```sh
-{
-    "success": 1,                   // Amount of created objects
-    "errors": [{"name": "Group 1"}] // List of object that couldn't be created
-}
-```
-
-### Create a category
-
-`POST https://revoretail.works/api/external/catalog/categories`
-
-> POST categories
-
-```sh
-{
-    "name": "Category 1",
-    "group_id": 1,
-    "active": 1,            // Optional, defaults to 1
-    "tax_id": 1             // Optional, defaults to null
-}
-```
-
-### Create a product
-
-`POST https://revoretail.works/api/external/catalog/products`
-
-> POST products
-
-```sh
-{
-    "name": "Product 1",
-    "category_id": 1,
-    "id":                   // Optional, defaults autoincrement
-    "active": 1,            // Optional, defaults to 1
-    "tax_id": 1,            // Optional, defaults to null
-    "reference": "",        // Optional
-    "info": "",             // Optional
-    "shortInfo": "",        // Optional
-    "brand": "",            // Optional
-    "season": "",           // Optional
-    "order": "",            // Optional
-    "featured": "",         // Optional
-    "isOpen": "",           // Optional
-    "price": "",            // Optional
-    "costPrice": "",        // Optional
-    "barcode": "",          // Optional
-    "main_product_id": "",  // Optional
-    "usesStockManagement": "",  // Optional
-    "usesWeight": "",       // Optional
-    "unit_id": 1            // Optional
-}
-```
-### Update a product
-
-`PUT https://revoretail.works/api/external/catalog/products/{item_id}`
-
-> PUT products/{item_id}
-
-```sh
-{
-    "name": "Product 1",
-    "price": 15,
-    "info": "",
-    "id":                   // Optional, defaults autoincrement
-    "active": 1,            // Optional, defaults to 1
-    "tax_id": 1,            // Optional, defaults to null
-    "reference": "",        // Optional
-    "shortInfo": "",        // Optional
-    "brand": "",            // Optional
-    "season": "",           // Optional
-    "order": "",            // Optional
-    "featured": "",         // Optional
-    "isOpen": "",           // Optional
-    "costPrice": "",        // Optional
-    "barcode": "",          // Optional
-    "main_product_id": "",  // Optional
-    "usesStockManagement": "",  // Optional
-    "usesWeight": "",       // Optional
-    "unit_id": 1            // Optional
-}
-```
 ### Get stocks list
 Get an stock list.
 
