@@ -472,13 +472,36 @@
                     <a href="#available-resources" class="toc-h2 toc-link" data-title="Available resources">Available resources</a>
                   </li>
                   <li>
-                    <a href="#catalog-generation" class="toc-h2 toc-link" data-title="Catalog generation">Catalog generation</a>
-                  </li>
-                  <li>
                     <a href="#create-order" class="toc-h2 toc-link" data-title="Create Order">Create Order</a>
                   </li>
                   <li>
                     <a href="#sync-chains" class="toc-h2 toc-link" data-title="Sync chains">Sync chains</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#retail-catalog" class="toc-h1 toc-link" data-title="Retail Catalog">Retail Catalog</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#prerequisistes" class="toc-h2 toc-link" data-title="Prerequisistes">Prerequisistes</a>
+                  </li>
+                  <li>
+                    <a href="#authorization" class="toc-h2 toc-link" data-title="Authorization">Authorization</a>
+                  </li>
+                  <li>
+                    <a href="#generic-list-response" class="toc-h2 toc-link" data-title="Generic list response">Generic list response</a>
+                  </li>
+                  <li>
+                    <a href="#catalog-structure" class="toc-h2 toc-link" data-title="Catalog structure">Catalog structure</a>
+                  </li>
+                  <li>
+                    <a href="#groups" class="toc-h2 toc-link" data-title="Groups">Groups</a>
+                  </li>
+                  <li>
+                    <a href="#categories" class="toc-h2 toc-link" data-title="Categories">Categories</a>
+                  </li>
+                  <li>
+                    <a href="#products" class="toc-h2 toc-link" data-title="Products">Products</a>
                   </li>
               </ul>
           </li>
@@ -4552,7 +4575,7 @@ Take into account that not all filters are available for all reports. To exactly
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><h1 id='retail'>Retail</h1><h2 id='prerequisistes'>Prerequisistes</h2>
-<p>To be able to use the external api you need a <code>revo retail</code> account and an <code>access token</code></p>
+<p>To be able to use the external api you need a <code>REVO Retail</code>.</p>
 
 <ol>
 <li>Login into the desired account</li>
@@ -4560,9 +4583,13 @@ Take into account that not all filters are available for all reports. To exactly
 <li>Create a new <a href="http://revoretail.works/admin/account/tokens">token</a></li>
 </ol>
 <h2 id='authorization'>Authorization</h2>
-<p>The main URL for the external api is</p>
+<p>The main URL for the external API:</p>
 
 <p><code>https://revoretail.works/api/external</code></p>
+
+<p>The URL for the integrations API environment:</p>
+
+<p><code>https://integrations.revoretail.works/api/external</code></p>
 
 <p>And you should provide the mandatory headers for the authentication</p>
 
@@ -4573,159 +4600,33 @@ Take into account that not all filters are available for all reports. To exactly
 </tr>
 </thead><tbody>
 <tr>
-<td><code>username</code></td>
+<td>username</td>
 <td>{account-username}</td>
 </tr>
 <tr>
-<td><code>Authorization</code></td>
-<td>Bearer {the-token}</td>
+<td>Authorization</td>
+<td>Bearer {token}</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
 </tr>
 </tbody></table>
 <h2 id='generic-list-response'>Generic list response</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
-    <span class="s2">"current_page"</span>  : 1,
-    <span class="s2">"from"</span>          : 1,
-    <span class="s2">"last_page"</span>     : 2,
-    <span class="s2">"next_page_url"</span> : <span class="s2">"https://revoretail.works/api/external/[resource]?page=2"</span>,
-    <span class="s2">"path"</span>          : <span class="s2">"http://revoretail.works/api/external/[resource]"</span>,
-    <span class="s2">"per_page"</span>      : 50,
-    <span class="s2">"prev_page_url"</span> : null,
-    <span class="s2">"to"</span>            : 50,
-    <span class="s2">"total"</span>         : 10,
-    <span class="s2">"data"</span>: <span class="o">[]</span>
+    <span class="s2">"current_page"</span>: 1,
+    <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Response data will go here]  <span class="o">]</span>,
+    <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}?page=1"</span>,
+    <span class="s2">"from"</span>: 1,
+    <span class="s2">"last_page"</span>: 2,
+    <span class="s2">"last_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}?page=2"</span>,
+    <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}?page=2"</span>,
+    <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}"</span>,
+    <span class="s2">"per_page"</span>: 50,
+    <span class="s2">"prev_page_url"</span>: null,
+    <span class="s2">"to"</span>: 50,
+    <span class="s2">"total"</span>: 75
 <span class="o">}</span>
-</code></pre><h2 id='available-resources'>Available resources</h2><h3 id='get-list-of-groups'>Get list of groups</h3>
-<p>Get a list of groups</p>
-
-<p><code>GET https://revoretail.works/api/external/catalog/groups</code></p>
-
-<blockquote>
-<p>GET groups</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 1,
-        <span class="s2">"name"</span>, <span class="s2">"Shoes"</span>,
-        <span class="s2">"photo"</span>     : <span class="s2">""</span>,
-        <span class="s2">"order"</span>     : 0,
-        <span class="s2">"active"</span>    : 1,
-        <span class="s2">"group_id"</span>  : 1,
-        <span class="s2">"tax_id"</span>    : 1
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 2,
-        <span class="s2">"name"</span>, <span class="s2">"Pants"</span>,
-        <span class="s2">"photo"</span>     : <span class="s2">""</span>,
-        <span class="s2">"order"</span>     : 0,
-        <span class="s2">"active"</span>    : 1,
-        <span class="s2">"group_id"</span>  : 1,
-        <span class="s2">"tax_id"</span>    : 1
-    <span class="o">}</span>
-<span class="o">]</span>
-</code></pre><h3 id='get-list-of-categories'>Get list of categories</h3>
-<p>Get a list of categories, can filter by group</p>
-
-<p><code>GET https://revoretail.works/api/external/catalog/categories?group=</code></p>
-
-<blockquote>
-<p>GET categories?group=</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 1,
-        <span class="s2">"name"</span>, <span class="s2">"Trousers"</span>,
-        <span class="s2">"photo"</span>     : <span class="s2">""</span>,
-        <span class="s2">"order"</span>     : 0,
-        <span class="s2">"active"</span>    : 1,
-        <span class="s2">"group_id"</span>  : 1,
-        <span class="s2">"tax_id"</span>    : 1
-    <span class="o">}</span>,
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 2,
-        <span class="s2">"name"</span>, <span class="s2">"Shorts"</span>,
-        <span class="s2">"photo"</span>     : <span class="s2">""</span>,
-        <span class="s2">"order"</span>     : 0,
-        <span class="s2">"active"</span>    : 1,
-        <span class="s2">"group_id"</span>  : 1,
-        <span class="s2">"tax_id"</span>    : 1
-    <span class="o">}</span>
-<span class="o">]</span>
-</code></pre><h3 id='get-list-of-products'>Get list of products</h3>
-<p>Get a list of products, can filter by category</p>
-
-<p><code>GET https://revoretail.works/api/external/catalog/products?category=</code></p>
-
-<blockquote>
-<p>GET products?category=</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 1,
-        <span class="s2">"name"</span>, <span class="s2">"new nike xl"</span>
-        <span class="s2">"reference"</span>             : <span class="s2">""</span>,
-        <span class="s2">"info"</span>                  : <span class="s2">""</span>,
-        <span class="s2">"shortInfo"</span>             : <span class="s2">""</span>,
-        <span class="s2">"brand"</span>                 : <span class="s2">""</span>,
-        <span class="s2">"season"</span>                : <span class="s2">""</span>,
-        <span class="s2">"photo"</span>                 : <span class="s2">""</span>,
-        <span class="s2">"order"</span>                 : <span class="s2">"0"</span>,
-        <span class="s2">"active"</span>                : <span class="s2">"1"</span>,
-        <span class="s2">"featured"</span>              : <span class="s2">"0"</span>,
-        <span class="s2">"isOpen"</span>                : <span class="s2">"0"</span>,
-        <span class="s2">"type"</span>                  : <span class="s2">"0"</span>,
-        <span class="s2">"price"</span>                 : <span class="s2">""</span>,
-        <span class="s2">"costPrice"</span>             : <span class="s2">""</span>,
-        <span class="s2">"barcode"</span>               : <span class="s2">""</span>,
-        <span class="s2">"category_id"</span>           : 1,
-        <span class="s2">"tax_id"</span>                : 1,
-        <span class="s2">"main_product_id"</span>       : null,
-        <span class="s2">"usesStockManagement"</span>   : <span class="nb">false</span>,
-        <span class="s2">"usesWeight"</span>            : <span class="nb">false</span>,
-        <span class="s2">"unit_id"</span>               : <span class="s2">"1"</span>
-    <span class="o">}</span>, <span class="o">{</span>
-        <span class="s2">"id"</span>: 2,
-        <span class="s2">"name"</span>, <span class="s2">"new nike m"</span>
-        <span class="s2">"reference"</span>             : <span class="s2">""</span>,
-        <span class="s2">"info"</span>                  : <span class="s2">""</span>,
-        <span class="s2">"shortInfo"</span>             : <span class="s2">""</span>,
-        <span class="s2">"brand"</span>                 : <span class="s2">""</span>,
-        <span class="s2">"season"</span>                : <span class="s2">""</span>,
-        <span class="s2">"photo"</span>                 : <span class="s2">""</span>,
-        <span class="s2">"order"</span>                 : <span class="s2">"0"</span>,
-        <span class="s2">"active"</span>                : <span class="s2">"1"</span>,
-        <span class="s2">"featured"</span>              : <span class="s2">"0"</span>,
-        <span class="s2">"isOpen"</span>                : <span class="s2">"0"</span>,
-        <span class="s2">"type"</span>                  : <span class="s2">"0"</span>,
-        <span class="s2">"price"</span>                 : <span class="s2">""</span>,
-        <span class="s2">"costPrice"</span>             : <span class="s2">""</span>,
-        <span class="s2">"barcode"</span>               : <span class="s2">""</span>,
-        <span class="s2">"category_id"</span>           : 1,
-        <span class="s2">"tax_id"</span>                : 1,
-        <span class="s2">"main_product_id"</span>       : null,
-        <span class="s2">"usesStockManagement"</span>   : <span class="nb">false</span>,
-        <span class="s2">"usesWeight"</span>            : <span class="nb">false</span>,
-        <span class="s2">"unit_id"</span>               : <span class="s2">"1"</span>    <span class="o">}</span>
-<span class="o">]</span>
-</code></pre>
-<p>If we add <code>withStocks</code> parameter we&#39;ll get an stocks list within each product.
-For example:</p>
-
-<blockquote>
-<p>GET filtered by withStocks</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"id"</span>: 1,
-        <span class="s2">"name"</span>, <span class="s2">"new nike xl"</span>,
-        ...
-        <span class="s2">"stocks"</span>: <span class="o">[{</span>
-            <span class="s2">"id"</span>: 1,<span class="s2">"warehouse_id"</span>: 1, <span class="s2">"quantity"</span>: 10
-        <span class="o">}</span>,<span class="o">{</span>
-            <span class="s2">"id"</span>: 2,<span class="s2">"warehouse_id"</span>: 3, <span class="s2">"quantity"</span>: 15
-        <span class="o">}]</span>
-    <span class="o">}</span>
-<span class="o">]</span>
-
-</code></pre><h3 id='variants'>Variants</h3>
+</code></pre><h2 id='available-resources'>Available resources</h2><h3 id='variants'>Variants</h3>
 <p>RevoRetail uses variants to store product sizes, colors, etc..</p>
 
 <p>It has 3 objects kinds to represent them</p>
@@ -4836,110 +4737,6 @@ Then we have product variants that are variants linked to products.</p>
         <span class="s2">"taxPercentage"</span>: 21.00
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre><h2 id='catalog-generation'>Catalog generation</h2>
-<p>In order to generate a catalog via API we can create groups, group&#39;s categories and category&#39;s products.
-in any of these cases we can send a dictionary with the desired object to create (group, category or product) or we can send a list of dictionaries to create multiple objects at the same time. e.g.:</p>
-
-<p><code>POST https://revoretail.works/api/external/catalog/groups</code></p>
-
-<blockquote>
-<p>POST groups</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code>// BODY Dictionary:
-<span class="o">{</span>
-    <span class="s2">"name"</span>: <span class="s2">"Group 1"</span>,
-    <span class="s2">"active"</span>: 1,        // Optional, defaults to 1
-    <span class="s2">"tax_id"</span>: 1         // Optional, defaults to null
-<span class="o">}</span>
-</code></pre><pre class="highlight sh tab-shell"><code>// BODY List of dictionaries:
-<span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">"name"</span>: <span class="s2">"Group 1"</span>,
-        <span class="s2">"active"</span>: 1,        // Optional, defaults to 1
-        <span class="s2">"tax_id"</span>: 1         // Optional, defaults to null
-    <span class="o">}</span>, <span class="o">{</span>
-        <span class="s2">"name"</span>: <span class="s2">"Group 2"</span>
-        <span class="s2">"active"</span>: 1,        // Optional, defaults to 1
-        <span class="s2">"tax_id"</span>: 1         // Optional, defaults to null
-    <span class="o">}</span>
-<span class="o">]</span>
-</code></pre>
-<p>In any case its responses are a 200 JSON with 2 fields (success and errors): </p>
-
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
-    <span class="s2">"success"</span>: 1,                   // Amount of created objects
-    <span class="s2">"errors"</span>: <span class="o">[{</span><span class="s2">"name"</span>: <span class="s2">"Group 1"</span><span class="o">}]</span> // List of object that couldn<span class="s1">'t be created
-}
-</span></code></pre><h3 id='create-a-category'>Create a category</h3>
-<p><code>POST https://revoretail.works/api/external/catalog/categories</code></p>
-
-<blockquote>
-<p>POST categories</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
-    <span class="s2">"name"</span>: <span class="s2">"Category 1"</span>,
-    <span class="s2">"group_id"</span>: 1,
-    <span class="s2">"active"</span>: 1,            // Optional, defaults to 1
-    <span class="s2">"tax_id"</span>: 1             // Optional, defaults to null
-<span class="o">}</span>
-</code></pre><h3 id='create-a-product'>Create a product</h3>
-<p><code>POST https://revoretail.works/api/external/catalog/products</code></p>
-
-<blockquote>
-<p>POST products</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
-    <span class="s2">"name"</span>: <span class="s2">"Product 1"</span>,
-    <span class="s2">"category_id"</span>: 1,
-    <span class="s2">"id"</span>:                   // Optional, defaults autoincrement
-    <span class="s2">"active"</span>: 1,            // Optional, defaults to 1
-    <span class="s2">"tax_id"</span>: 1,            // Optional, defaults to null
-    <span class="s2">"reference"</span>: <span class="s2">""</span>,        // Optional
-    <span class="s2">"info"</span>: <span class="s2">""</span>,             // Optional
-    <span class="s2">"shortInfo"</span>: <span class="s2">""</span>,        // Optional
-    <span class="s2">"brand"</span>: <span class="s2">""</span>,            // Optional
-    <span class="s2">"season"</span>: <span class="s2">""</span>,           // Optional
-    <span class="s2">"order"</span>: <span class="s2">""</span>,            // Optional
-    <span class="s2">"featured"</span>: <span class="s2">""</span>,         // Optional
-    <span class="s2">"isOpen"</span>: <span class="s2">""</span>,           // Optional
-    <span class="s2">"price"</span>: <span class="s2">""</span>,            // Optional
-    <span class="s2">"costPrice"</span>: <span class="s2">""</span>,        // Optional
-    <span class="s2">"barcode"</span>: <span class="s2">""</span>,          // Optional
-    <span class="s2">"main_product_id"</span>: <span class="s2">""</span>,  // Optional
-    <span class="s2">"usesStockManagement"</span>: <span class="s2">""</span>,  // Optional
-    <span class="s2">"usesWeight"</span>: <span class="s2">""</span>,       // Optional
-    <span class="s2">"unit_id"</span>: 1            // Optional
-<span class="o">}</span>
-</code></pre><h3 id='update-a-product'>Update a product</h3>
-<p><code>PUT https://revoretail.works/api/external/catalog/products/{item_id}</code></p>
-
-<blockquote>
-<p>PUT products/{item_id}</p>
-</blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
-    <span class="s2">"name"</span>: <span class="s2">"Product 1"</span>,
-    <span class="s2">"price"</span>: 15,
-    <span class="s2">"info"</span>: <span class="s2">""</span>,
-    <span class="s2">"id"</span>:                   // Optional, defaults autoincrement
-    <span class="s2">"active"</span>: 1,            // Optional, defaults to 1
-    <span class="s2">"tax_id"</span>: 1,            // Optional, defaults to null
-    <span class="s2">"reference"</span>: <span class="s2">""</span>,        // Optional
-    <span class="s2">"shortInfo"</span>: <span class="s2">""</span>,        // Optional
-    <span class="s2">"brand"</span>: <span class="s2">""</span>,            // Optional
-    <span class="s2">"season"</span>: <span class="s2">""</span>,           // Optional
-    <span class="s2">"order"</span>: <span class="s2">""</span>,            // Optional
-    <span class="s2">"featured"</span>: <span class="s2">""</span>,         // Optional
-    <span class="s2">"isOpen"</span>: <span class="s2">""</span>,           // Optional
-    <span class="s2">"costPrice"</span>: <span class="s2">""</span>,        // Optional
-    <span class="s2">"barcode"</span>: <span class="s2">""</span>,          // Optional
-    <span class="s2">"main_product_id"</span>: <span class="s2">""</span>,  // Optional
-    <span class="s2">"usesStockManagement"</span>: <span class="s2">""</span>,  // Optional
-    <span class="s2">"usesWeight"</span>: <span class="s2">""</span>,       // Optional
-    <span class="s2">"unit_id"</span>: 1            // Optional
-<span class="o">}</span>
 </code></pre><h3 id='get-stocks-list'>Get stocks list</h3>
 <p>Get an stock list.</p>
 
@@ -5103,19 +4900,30 @@ in any of these cases we can send a dictionary with the desired object to create
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span><span class="s2">"message"</span>: Synced<span class="o">}</span>,
 <span class="o">}</span>
-</code></pre><h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {myaccount}"</span> <span class="se">\</span>
-     --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
-     https://revoretail.works/api/external/reports
-</code></pre>
-<p>Base endpoint</p>
-
-<p><code>https://revoretail.works/api/external/reports</code></p>
-
-<p>You should send the headers <code>username</code> with your account username and <code>authorization</code> with the token created at <code>account &gt; tokens</code></p>
+</code></pre><h1 id='retail-catalog'>Retail Catalog</h1>
+<p>Inside catalog there are many resources: groups, categories and resources.</p>
 
 <blockquote>
-<p>Get your token at <a href="https://revoretail.works/admin/account/tokens">https://revoretail.works/admin/account/tokens</a></p>
+<p>The api has a limit of 40 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
 </blockquote>
+<h2 id='prerequisistes'>Prerequisistes</h2>
+<p>To be able to use the external api you need a <code>REVO Retail</code>.</p>
+
+<ol>
+<li>Login into the desired account</li>
+<li>Go to account management</li>
+<li>Create a new <a href="http://revoretail.works/admin/account/tokens">token</a></li>
+</ol>
+<h2 id='authorization'>Authorization</h2>
+<p>The main URL for the external API:</p>
+
+<p><code>https://revoretail.works/api/external/{resource}</code></p>
+
+<p>The URL for the integrations API environment:</p>
+
+<p><code>https://integrations.revoretail.works/api/external/{resource}</code></p>
+
+<p>And you should provide the mandatory headers for the authentication</p>
 
 <table><thead>
 <tr>
@@ -5125,20 +4933,713 @@ in any of these cases we can send a dictionary with the desired object to create
 </thead><tbody>
 <tr>
 <td>username</td>
-<td>{account}</td>
+<td>{account-username}</td>
 </tr>
 <tr>
-<td>authorization</td>
+<td>Authorization</td>
 <td>Bearer {token}</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+<h2 id='generic-list-response'>Generic list response</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"current_page"</span>: 1,
+    <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Response data will go here]  <span class="o">]</span>,
+    <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}?page=1"</span>,
+    <span class="s2">"from"</span>: 1,
+    <span class="s2">"last_page"</span>: 2,
+    <span class="s2">"last_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}?page=2"</span>,
+    <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}?page=2"</span>,
+    <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}"</span>,
+    <span class="s2">"per_page"</span>: 50,
+    <span class="s2">"prev_page_url"</span>: null,
+    <span class="s2">"to"</span>: 50,
+    <span class="s2">"total"</span>: 75
+<span class="o">}</span>
+</code></pre><h3 id='url-parameters'>URL parameters</h3>
+<p>You can add the next URL parameters for the paginated responses:</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td>number</td>
+<td>optional</td>
+<td>As the data is paginated, use this parameter to select the page to fetch.</td>
+</tr>
+<tr>
+<td><code>pagination</code></td>
+<td>number</td>
+<td>optional</td>
+<td>Number of objects per page. The default value is <strong>50</strong> and the max allowed is <strong>200</strong>.</td>
 </tr>
 </tbody></table>
 
-<p>The <code>token</code> it obtained at <a href="https://revoretail.works/admin/account/tokens">Account managment</a> section of RevoRetail. You just need to create a new token givin it a descriptive name. For example <code>api acess</code>.</p>
+<p>At the bottom of the request, it is specified information about the current page and pagination.</p>
+<h2 id='catalog-structure'>Catalog structure</h2>
+<p>The main catalog structure is the following:</p>
+
+<p><em>Groups</em> =&gt; <em>Categories</em> =&gt; <em>Items</em></p>
+
+<p><em>Items</em> cannot exist without <em>Categories</em>, and <em>Categories</em> cannot exists without <em>Groups</em>.</p>
+<h2 id='groups'>Groups</h2>
+<p>Can list, show, create, update and delete Groups.</p>
+
+<p>GET <code>https://revoretail.works/api/external/catalog/groups</code></p>
+
+<p>Response is a groups paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td><em>Only read</em></td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>photo</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>tax_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>tax</td>
+<td>object</td>
+<td><em>Only read</em></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>tax object (optional):</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+</tr>
+<tr>
+<td>percentage</td>
+<td>string</td>
+</tr>
+<tr>
+<td>shouldStack</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoretail.works/api/external/catalog/groups/&lt;group_id&gt;</code></p>
+
+<p>POST <code>https://revoretail.works/api/external/catalog/groups</code></p>
+
+<blockquote>
+<p>Create groups (POST) <code>catalog/groups</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Test Group 1"</span>,
+        ...
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Test Group 2"</span>,
+        ...
+    <span class="o">}</span>,
+    ...
+<span class="o">]</span>
+</code></pre>
+<blockquote>
+<p>Update a group (POST) <code>catalog/groups/&lt;group_id&gt;</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Super Test Group 1"</span>,
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoretail.works/api/external/catalog/groups/&lt;group_id&gt;</code></p>
+<h2 id='categories'>Categories</h2>
+<p>Can list, show, create, update and delete Categories.</p>
+
+<p>GET <code>https://revoretail.works/api/external/catalog/categories</code></p>
+
+<p>Response is a groups paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td><em>Only read</em></td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>group_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>photo</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>extra_id</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>tax_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>tax</td>
+<td>object</td>
+<td><em>Only read</em></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<p><strong>tax object (optional):</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+</tr>
+<tr>
+<td>percentage</td>
+<td>string</td>
+</tr>
+<tr>
+<td>shouldStack</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoretail.works/api/external/catalog/categories/&lt;category_id&gt;</code></p>
+
+<p>POST <code>https://revoretail.works/api/external/catalog/categories</code></p>
+
+<blockquote>
+<p>Create categories (POST) <code>catalog/categories</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Test Category 1"</span>,
+        <span class="s2">"group_id"</span>: 1,
+        ...
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Test Category 2"</span>,
+        <span class="s2">"group_id"</span>: 1,
+        ...
+    <span class="o">}</span>,
+    ...
+<span class="o">]</span>
+</code></pre>
+<blockquote>
+<p>Update a category (POST) <code>catalog/category/&lt;category_id&gt;</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Super Test Category 1"</span>,
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoretail.works/api/external/catalog/categories/&lt;category_id&gt;</code></p>
+<h2 id='products'>Products</h2>
+<p>Can list, show, create, update and delete Products.</p>
+
+<p>GET <code>https://revoretail.works/api/external/catalog/products</code></p>
+
+<p>Response is a groups paginated array with the following fields:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td><em>Only read</em></td>
+<td>autoincrement</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>category_id</td>
+<td>number</td>
+<td><strong>required</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>photo</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>order</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 1</td>
+</tr>
+<tr>
+<td>extra_id</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>reference</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>info</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>shortInfo</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>brand</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>season</td>
+<td>string</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>featured</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>isOpen</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>number</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>type</td>
+<td>number</td>
+<td>optional</td>
+<td>0 = NORMAL (default), 1 = KIT, 2 = TICKET, 3 = CONTAINER, 4 = GIFT_CARD, 5 = VARIANT_MASTER, 6 = VARIANT, 7 = MANAGEMENT_ONLY, 8 = VOUCHER</td>
+</tr>
+<tr>
+<td>price</td>
+<td>decimal</td>
+<td>optional</td>
+<td>default: 0.00</td>
+</tr>
+<tr>
+<td>costPrice</td>
+<td>decimal</td>
+<td>optional</td>
+<td>default: 0.00</td>
+</tr>
+<tr>
+<td>barcode</td>
+<td>string</td>
+<td>optional</td>
+<td>default: 0.00</td>
+</tr>
+<tr>
+<td>main_product_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>complementary_product_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>discountinued_at</td>
+<td>date</td>
+<td>optional</td>
+<td>YYYY-MM-DD</td>
+</tr>
+<tr>
+<td>traceability</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>usesStockManagement</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>usesWeight</td>
+<td>boolean</td>
+<td>optional</td>
+<td>default: 0</td>
+</tr>
+<tr>
+<td>unit_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>tax_id</td>
+<td>number</td>
+<td>optional</td>
+<td></td>
+</tr>
+<tr>
+<td>tax</td>
+<td>object</td>
+<td><em>Only read</em></td>
+<td></td>
+</tr>
+<tr>
+<td>variant_master</td>
+<td>object</td>
+<td><em>Only read</em></td>
+<td>Same product structure (optional)</td>
+</tr>
+<tr>
+<td>ecommerce_info</td>
+<td>object</td>
+<td><em>Only read</em></td>
+<td>Showed with filter <em>withECommerce</em>.</td>
+</tr>
+<tr>
+<td>stocks</td>
+<td>array (objects)</td>
+<td><em>Only read</em></td>
+<td>Showed with filter <em>withStocks</em> or ECommerce module enabled + filter <em>withECommerceStocks</em>.</td>
+</tr>
+<tr>
+<td>variant_info</td>
+<td>object</td>
+<td><em>Only read</em></td>
+<td>Showed with filter <em>withVariantInfo</em> or ECommerce module enabled + filter <em>withECommerceStocks</em>..</td>
+</tr>
+</tbody></table>
+
+<p><strong>tax object (optional):</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+</tr>
+<tr>
+<td>percentage</td>
+<td>string</td>
+</tr>
+<tr>
+<td>shouldStack</td>
+<td>boolean</td>
+</tr>
+</tbody></table>
+
+<p><strong>ecommerce_info object (optional):</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>product_id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>active</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>number</td>
+</tr>
+<tr>
+<td>sizes</td>
+<td>object (width, height and depth)</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string</td>
+</tr>
+<tr>
+<td>discount_amount</td>
+<td>string</td>
+</tr>
+<tr>
+<td>discount_percentage</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>stocks array (optional):</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>string</td>
+</tr>
+<tr>
+<td>alert</td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>warehouse_id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>unit_id</td>
+<td>number</td>
+</tr>
+</tbody></table>
+
+<p><strong>variant_info object (optional):</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>product_id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>variant_1_id</td>
+<td>number</td>
+</tr>
+<tr>
+<td>variant_2_id</td>
+<td>number</td>
+</tr>
+</tbody></table>
+
+<p>GET <code>https://revoretail.works/api/external/catalog/products/&lt;product_id&gt;</code></p>
+
+<p>POST <code>https://revoretail.works/api/external/catalog/products</code></p>
+
+<blockquote>
+<p>Create products (POST) <code>catalog/products</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Test Category 1"</span>,
+        <span class="s2">"category_id"</span>: 1,
+        ...
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"name"</span>: <span class="s2">"Test Category 2"</span>,
+        <span class="s2">"category_id"</span>: 1,
+        ...
+    <span class="o">}</span>,
+    ...
+<span class="o">]</span>
+</code></pre>
+<blockquote>
+<p>Update a product (POST) <code>catalog/products/&lt;product_id&gt;</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Super Test Product 1"</span>,
+    ...
+<span class="o">}</span>
+</code></pre>
+<p>DELETE <code>https://revoretail.works/api/external/catalog/products/&lt;product_id&gt;</code></p>
+<h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
+     --header <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
+     --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     https://revoretail.works/api/external/reports
+</code></pre>
+<p>The main URL for the external API:</p>
+
+<p><code>https://revoretail.works/api/external/reports</code></p>
+
+<p>The URL for the integrations API environment:</p>
+
+<p><code>https://integrations.revoretail.works/api/external/reports</code></p>
+
+<p>And you should provide the mandatory headers for the authentication</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {token}</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<p>The <code>token</code> is obtained at <a href="https://revoretail.works/admin/account/tokens">Account managment</a> section of RevoRetail.</p>
 <h2 id='response-format'>Response format</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Report data will go here]  <span class="o">]</span>,
+    <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=1"</span>,
     <span class="s2">"from"</span>: 1,
     <span class="s2">"last_page"</span>: 4,
+    <span class="s2">"last_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=4"</span>,
     <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=2"</span>,
     <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}"</span>,
     <span class="s2">"per_page"</span>: 50,
