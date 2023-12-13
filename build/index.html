@@ -3769,7 +3769,9 @@ It will return the <code>open</code> orders paginated by 50.</p>
 -d 'reason="Payment Failed"' \
 'https://revoxef.works/api/loyalty/orders/123456'
 </code></pre>
-<p>During the next 5 minutes after an order has been place, you can cancel it (for example, if the defeered payment failed)</p>
+<p>This endpoint makes a refund (a new order with negatives values).</p>
+
+<p>There is a limit time to cancel the order. If the account has configured the <a href="https://revoxef.works/config/delivery">Previous delivery minutes</a>, the limit to cancel the order will be the <em>Delivery date</em> subtract the <em>Delivery minutes</em>. Otherwise, you will have 5 minutes after an order has been place.</p>
 
 <p><code>DELETE orders/{orderId}</code></p>
 

@@ -437,7 +437,9 @@ curl -XDELETE -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' \
 'https://revoxef.works/api/loyalty/orders/123456'
 ```
 
-During the next 5 minutes after an order has been place, you can cancel it (for example, if the defeered payment failed)
+This endpoint makes a refund (a new order with negatives values).
+
+There is a limit time to cancel the order. If the account has configured the [Previous delivery minutes](https://revoxef.works/config/delivery), the limit to cancel the order will be the *Delivery date* subtract the *Delivery minutes*. Otherwise, you will have 5 minutes after an order has been place.
 
 `DELETE orders/{orderId}`
 
