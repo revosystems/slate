@@ -5,7 +5,9 @@ To explore those resources as a paginated list we can use a GET request with the
 
 - `GET https://revoxef.works/api/external/v2/catalog/{resource}` replacing the desired resource on this url. 
 
-> The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
+> The API has a data size límit of 2MB for each request.
+
+> The API has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
 
 ## Prerequisistes
 To be able to use the external api you need a `revo xef` account and a `access token`

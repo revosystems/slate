@@ -5,7 +5,9 @@ The main URL for the external API:
 
 `https://revoxef.works/api/loyalty`
 
-> The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
+> The API has a data size límit of 2MB for each request.
+
+> The API has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
 
 The URL for the integrations API environment:
 

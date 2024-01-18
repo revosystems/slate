@@ -14,7 +14,9 @@ Base endpoint
 
 You should send the headers `tenant` with your account username and `authorization` with the token created at `account > tokens`
 
-> The api has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
+> The API has a data size límit of 2MB for each request.
+
+> The API has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
 
 > Get your token at [https://revoxef.works/account/tokens](https://revoxef.works/account/tokens)
 
