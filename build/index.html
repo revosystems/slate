@@ -605,6 +605,9 @@
                     <a href="#store-status" class="toc-h2 toc-link" data-title="Store Status">Store Status</a>
                   </li>
                   <li>
+                    <a href="#store-products-availability" class="toc-h2 toc-link" data-title="Store products availability">Store products availability</a>
+                  </li>
+                  <li>
                     <a href="#customers-points" class="toc-h2 toc-link" data-title="Customers Points">Customers Points</a>
                   </li>
                   <li>
@@ -6353,6 +6356,35 @@ All requests will have the same structure.</p>
         <span class="s2">"currentStatus"</span>: <span class="s2">"paused"</span>
     <span class="o">}</span>
 <span class="o">}</span>
+</code></pre><h2 id='store-products-availability'>Store products availability</h2>
+<p>With this endpoint, you can activate/deactivate products in a specific store</p>
+<h4 id='post-stores-products-availability'><code>POST stores/products/availability</code></h4>
+<p>If the request is processed, we return status OK (200).</p>
+
+<p>All request parameters must be sent as a query string:</p>
+
+<table><thead>
+<tr>
+<th>Body Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ids</td>
+<td>Array of product_ids.</td>
+</tr>
+<tr>
+<td>store_ids</td>
+<td>Array of store_ids.</td>
+</tr>
+<tr>
+<td>active</td>
+<td>true/false - the status for all the products from the request</td>
+</tr>
+</tbody></table>
+<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/stores/products/availability?ids=[product_id1,product_id2]&amp;store_ids=[store_id1, store_id2]&amp;active=false'</span> <span class="se">\</span>
+  --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
+  --header <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
 </code></pre><h2 id='customers-points'>Customers Points</h2>
 <p>This endpoint is an exception to the rule. To get the {customer-token} you need to login with a customer. Explained in the next section (Customer Authorization type request).</p>
 <h4 id='get-customers-customer-token-points'><code>GET customers/{customer-token}/points</code></h4>
