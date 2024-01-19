@@ -92,6 +92,28 @@ status    | **string** status to send.
 }
 ```
 
+## Store products availability
+
+With this endpoint, you can activate/deactivate products in a specific store
+
+#### `POST stores/products/availability`
+
+If the request is processed, we return status OK (200).
+
+All request parameters must be sent as a query string:
+
+Body Field  | Description
+---------|---------
+ids | Array of product_ids.
+store_ids | Array of store_ids.
+active | true/false - the status for all the products from the request
+
+```sh
+curl --location --request GET 'https://revointouch.works/api/v1/stores/products/availability?ids=[product_id1,product_id2]&store_ids=[store_id1, store_id2]&active=false' \
+  --header 'account: {account-username}' \
+  --header 'Authorization: Bearer {customer-token}' \
+```
+
 ## Customers Points
 
 This endpoint is an exception to the rule. To get the {customer-token} you need to login with a customer. Explained in the next section (Customer Authorization type request).
