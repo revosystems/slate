@@ -244,14 +244,20 @@ Normal modifiers cannot be set.
 
 **Only for menu items (item.type = 1):**
 
-Via API, a menu item can only contain a normal item or a selling format item. So, the structure of "menuContents" is the same as the ["contents"](#contents-payload), ignoring menu fields ("dishOrder" and "menuContents").
+| Field  | Type    | Required     | Extra info               |
+|--------|---------|--------------|--------------------------|
+| item_id   | string  | **required** | Existing [item](#items) ID. It can be a normal menu item or a selling format menu item. |
+| name | string | **required** | Menu ittem name.
+| price | decimal | **required** | Item menu price.
+| quantity | number | optional | Only can be set 1 quantity. |
+| dishOrder | number | optional | **Must be an existing [Menu Item-Category Pivot](#menu-item-category-pivot).** |
 
 > MenuContents (menu item) payload example:
 
 ```sh
 {
     "order": {
-        "total": 33.40
+        "total": 25.70
         ...
         "contents": {
             "item_id": 12, // menu item
@@ -260,8 +266,8 @@ Via API, a menu item can only contain a normal item or a selling format item. So
             "menuContents": [
                 {
                     "item_id": 1, // normal item
-                    "itemPrice": 6.50,
-                    "quantity": 2,
+                    "price": 6.50,
+                    "quantity": 1,
                     "modifiers": [
                         {
                             "name": "Nuts",

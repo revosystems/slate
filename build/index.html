@@ -3527,14 +3527,52 @@ POST message={
 </code></pre><h3 id='menucontents-payload'>MenuContents payload</h3>
 <p><strong>Only for menu items (item.type = 1):</strong></p>
 
-<p>Via API, a menu item can only contain a normal item or a selling format item. So, the structure of &quot;menuContents&quot; is the same as the <a href="#contents-payload">&quot;contents&quot;</a>, ignoring menu fields (&quot;dishOrder&quot; and &quot;menuContents&quot;).</p>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Extra info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>item_id</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Existing <a href="#items">item</a> ID. It can be a normal menu item or a selling format menu item.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td><strong>required</strong></td>
+<td>Menu ittem name.</td>
+</tr>
+<tr>
+<td>price</td>
+<td>decimal</td>
+<td><strong>required</strong></td>
+<td>Item menu price.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>number</td>
+<td>optional</td>
+<td>Only can be set 1 quantity.</td>
+</tr>
+<tr>
+<td>dishOrder</td>
+<td>number</td>
+<td>optional</td>
+<td><strong>Must be an existing <a href="#menu-item-category-pivot">Menu Item-Category Pivot</a>.</strong></td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>MenuContents (menu item) payload example:</p>
 </blockquote>
 <pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
-        <span class="s2">"total"</span>: 33.40
+        <span class="s2">"total"</span>: 25.70
         ...
         <span class="s2">"contents"</span>: <span class="o">{</span>
             <span class="s2">"item_id"</span>: 12, // menu item
@@ -3543,8 +3581,8 @@ POST message={
             <span class="s2">"menuContents"</span>: <span class="o">[</span>
                 <span class="o">{</span>
                     <span class="s2">"item_id"</span>: 1, // normal item
-                    <span class="s2">"itemPrice"</span>: 6.50,
-                    <span class="s2">"quantity"</span>: 2,
+                    <span class="s2">"price"</span>: 6.50,
+                    <span class="s2">"quantity"</span>: 1,
                     <span class="s2">"modifiers"</span>: <span class="o">[</span>
                         <span class="o">{</span>
                             <span class="s2">"name"</span>: <span class="s2">"Nuts"</span>,
