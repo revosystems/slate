@@ -139,7 +139,6 @@ Most of the parameters are recalculated when the order is processed in the POS.
 | item_id   | string  | **required** | Existing [item](#items) ID. It can be a normal item, a selling format item or a menu item. |
 | itemPrice | decimal | **required** | Individual item price. |
 | quantity | number | optional | default: 1 |
-| dishOrder | number | optional | **Only for menu items. Must be an existing [Menu Item-Category Pivot](#menu-item-category-pivot).** |
 | modifiers | array   | optional | **Only for normal and selling format items.** Must be an array of JSON. [see Modifiers payload](#modifiers-payload)   
 | menuContents | array   | optional | **Only for menu items.** Must be an array of JSON. [see MenuContents payload](#menucontents-payload)   
 
