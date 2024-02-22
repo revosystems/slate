@@ -6433,7 +6433,7 @@ All requests will have the same structure.</p>
 <td>default: 0. &#39;alsoNested&#39; must be 1, to reactivate the products that are inside menus (only in the case they have been deactivated).</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/catalog/updateStatus?active=0&amp;store=1&amp;products=[product_ids]&amp;until=2024/02/22'</span> <span class="se">\</span>
+<pre class="highlight sh tab-shell"><code>curl --location --request POST <span class="s1">'https://revointouch.works/api/v1/catalog/updateStatus?active=0&amp;store=1&amp;products=[product_ids]&amp;until=2024/02/22'</span> <span class="se">\</span>
   --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
   --header <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
 </code></pre><h2 id='customers-points'>Customers Points</h2>

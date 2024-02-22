@@ -112,7 +112,7 @@ alsoNested | optional | default: 0. True (1), to also change the status of the p
 reactivateInNested | optional | default: 0. 'alsoNested' must be 1, to reactivate the products that are inside menus (only in the case they have been deactivated).
 
 ```sh
-curl --location --request GET 'https://revointouch.works/api/v1/catalog/updateStatus?active=0&store=1&products=[product_ids]&until=2024/02/22' \
+curl --location --request POST 'https://revointouch.works/api/v1/catalog/updateStatus?active=0&store=1&products=[product_ids]&until=2024/02/22' \
   --header 'account: {account-username}' \
   --header 'Authorization: Bearer {customer-token}' \
 ```
