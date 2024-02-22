@@ -96,20 +96,23 @@ status    | **string** status to send.
 
 With this endpoint, you can activate/deactivate products in a specific store
 
-#### `POST stores/products/availability`
+#### `POST catalog/updateStatus`
 
 If the request is processed, we return status OK (200).
 
 All request parameters must be sent as a query string:
 
-Body Field  | Description
----------|---------
-ids | Array of product_ids.
-store_ids | Array of store_ids.
-active | true/false - the status for all the products from the request
+Body Field  | Required | Description
+---------|----------|---------
+products | **required** | Array of product_ids.
+store | **required** | The store_id.
+active | **required** | 1/0 - the status for all the products from the request
+until | optional | datetime: 'YYYY/MM/DD HH:mm'. In the case of deactivation, when to reactivate.
+alsoNested | optional | default: 0. True (1), to also change the status of the passed products that are inside menus.
+reactivateInNested | optional | default: 0. 'alsoNested' must be 1, to reactivate the products that are inside menus (only in the case they have been deactivated).
 
 ```sh
-curl --location --request GET 'https://revointouch.works/api/v1/stores/products/availability?ids=[product_id1,product_id2]&store_ids=[store_id1, store_id2]&active=false' \
+curl --location --request GET 'https://revointouch.works/api/v1/catalog/updateStatus?active=0&store=1&products=[product_ids]&until=2024/02/22' \
   --header 'account: {account-username}' \
   --header 'Authorization: Bearer {customer-token}' \
 ```

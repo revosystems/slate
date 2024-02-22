@@ -6390,7 +6390,7 @@ All requests will have the same structure.</p>
 <span class="o">}</span>
 </code></pre><h2 id='store-products-availability'>Store products availability</h2>
 <p>With this endpoint, you can activate/deactivate products in a specific store</p>
-<h4 id='post-stores-products-availability'><code>POST stores/products/availability</code></h4>
+<h4 id='post-catalog-updatestatus'><code>POST catalog/updateStatus</code></h4>
 <p>If the request is processed, we return status OK (200).</p>
 
 <p>All request parameters must be sent as a query string:</p>
@@ -6398,23 +6398,42 @@ All requests will have the same structure.</p>
 <table><thead>
 <tr>
 <th>Body Field</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ids</td>
+<td>products</td>
+<td><strong>required</strong></td>
 <td>Array of product_ids.</td>
 </tr>
 <tr>
-<td>store_ids</td>
-<td>Array of store_ids.</td>
+<td>store</td>
+<td><strong>required</strong></td>
+<td>The store_id.</td>
 </tr>
 <tr>
 <td>active</td>
-<td>true/false - the status for all the products from the request</td>
+<td><strong>required</strong></td>
+<td>1/0 - the status for all the products from the request</td>
+</tr>
+<tr>
+<td>until</td>
+<td>optional</td>
+<td>datetime: &#39;YYYY/MM/DD HH:mm&#39;. In the case of deactivation, when to reactivate.</td>
+</tr>
+<tr>
+<td>alsoNested</td>
+<td>optional</td>
+<td>default: 0. True (1), to also change the status of the passed products that are inside menus.</td>
+</tr>
+<tr>
+<td>reactivateInNested</td>
+<td>optional</td>
+<td>default: 0. &#39;alsoNested&#39; must be 1, to reactivate the products that are inside menus (only in the case they have been deactivated).</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/stores/products/availability?ids=[product_id1,product_id2]&amp;store_ids=[store_id1, store_id2]&amp;active=false'</span> <span class="se">\</span>
+<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/catalog/updateStatus?active=0&amp;store=1&amp;products=[product_ids]&amp;until=2024/02/22'</span> <span class="se">\</span>
   --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
   --header <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
 </code></pre><h2 id='customers-points'>Customers Points</h2>
