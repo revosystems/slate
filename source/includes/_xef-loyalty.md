@@ -177,8 +177,8 @@ There is no quantity and each modifier must be sent idividually.
 | Field  | Type    | Required     | Extra info               |
 |--------|---------|--------------|--------------------------|
 | id   | number  | optional | Existing [modifier](#modifiers) ID. |
-| name | string | optional | If modifier ID is found, it is set the modifier name. |
-| price | decimal | **required* | - |
+| name | string | **required** | If modifier ID is found, it is set the modifier name. |
+| price | decimal | **required** | - |
 
 > Modifier (normal item) payload example:
 
