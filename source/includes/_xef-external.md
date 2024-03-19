@@ -159,8 +159,11 @@ Value | Meaning                    | Description
 GET https://revoxef.works/api/external/v2/customers
 GET https://revoxef.works/api/external/v2/customers/<customer_id>
 POST https://revoxef.works/api/external/v2/customers
-    Create a customer:          {"name": "Customer 1", "active": 1}
-    Update a customer:          {"id":2, "name": "Customer 1 updated", "active": 0}
+    Data must be sent as a array.
+    Create a customer:          [{"name": "Customer 1", "active": 1}]
+        "name" is required
+    Update a customer:          [{"id": 2, "name": "Customer 1 updated", "active": 0}]
+        "id" and "name" are required
     Create multiple customers:  [
             {"name": "Customer 1", "active": 1},
             {"name": "Customer 2", "active": 1}
