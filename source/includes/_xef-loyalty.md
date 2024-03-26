@@ -211,7 +211,7 @@ There is no quantity and each modifier must be sent idividually.
 
 For selling format items (item.type = 4):
 
-Normal modifiers cannot be set.
+**Normal modifiers cannot be set.**
 
 | Field  | Type    | Required     | Extra info               |
 |--------|---------|--------------|--------------------------|
@@ -331,14 +331,27 @@ Regarding the payment methods, there are 2 fix payment methods for all accounts:
 
 ### Customer payload
 
-**The customer info and the delivery info are not the same.**
+If a customer is found with the email or phone from this section, respectively, we will get the existing customer, and the other fields will not be updated.
 
-If you want to manage customer infor, check the [customer section](#customers)
+If the customer is not found, we will create one with all the fields sent.
+
+**The customer info and the delivery info are not the same.** Customer object is the customer itself, the customer data linked to the invoice. The delivery object is a complement data only linked to the delivery order. It is up to you if you want to match customer and delivery fields, in case of non existing customer.
+
+We recommend to manage customers using the specific endpoints. Check the [customer section](#customers)
 
 | Field  | Type    | Required     | Extra info               |
 |--------|---------|--------------|--------------------------|
 | name | string | **required** | |
 | email | string | **required** | |
+| phone | string | optional | |
+| nif | string | optional | |
+| web | string | optional | |
+| address | string | optional | |
+| postalCode | string | optional | |
+| city | string | optional | |
+| state | string | optional | |
+| extra_id | string | optional | |
+| notes | string | optional | |
 
 > Customer payload example:
 
