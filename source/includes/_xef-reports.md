@@ -112,6 +112,7 @@ Filter        | Type       | Description
 `withModifiers` |          | Append contents modifiers
 `withDelivery` |           | Append delivery information
 `forTurn=$turn_id` |       | Filter orders for turn_id. This filter already includes withInvoices and withPayments filters. Date filters (start_date and end_date) do nothing with forTurn filter.
+`table=$table_id` |        | Filter orders for table_id. Only for orders.
 
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
