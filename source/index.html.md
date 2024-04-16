@@ -18,6 +18,7 @@ includes:
   - xef-reports
   - xef-webhooks
   
+  - retail-deprecated
   - retail-external
   - retail-catalog
   - retail-reports
@@ -30,7 +31,7 @@ includes:
   - overview
 #  - errors
 
-search: true
+search: false
 ---
 
 # Introduction

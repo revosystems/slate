@@ -198,7 +198,7 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+      <script src="javascripts/all_nosearch.js"></script>
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;]">
@@ -213,10 +213,6 @@
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -453,6 +449,26 @@
                   </li>
                   <li>
                     <a href="#order" class="toc-h2 toc-link" data-title="Order">Order</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#retail-deprecated" class="toc-h1 toc-link" data-title="Retail (Deprecated)">Retail (Deprecated)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#retail-old-reports" class="toc-h2 toc-link" data-title="Retail Old Reports">Retail Old Reports</a>
+                  </li>
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#response-format" class="toc-h2 toc-link" data-title="Response format">Response format</a>
+                  </li>
+                  <li>
+                    <a href="#available-reports" class="toc-h2 toc-link" data-title="Available reports">Available reports</a>
+                  </li>
+                  <li>
+                    <a href="#available-filters" class="toc-h2 toc-link" data-title="Available filters">Available filters</a>
                   </li>
               </ul>
           </li>
@@ -4688,7 +4704,166 @@ Take into account that not all filters are available for all reports. To exactly
         <span class="s2">"guests"</span>: <span class="o">{</span>guests<span class="o">}</span> 
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h1 id='retail'>Retail</h1><h2 id='prerequisistes'>Prerequisistes</h2>
+</code></pre><h1 id='retail-deprecated'>Retail (Deprecated)</h1><h2 id='retail-old-reports'>Retail Old Reports</h2><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
+     --header <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
+     --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     https://revoretail.works/api/external/reports
+</code></pre>
+<p>The main URL for the external API:</p>
+
+<p><code>https://revoretail.works/api/external/reports</code></p>
+
+<p>The URL for the integrations API environment:</p>
+
+<p><code>https://integrations.revoretail.works/api/external/reports</code></p>
+
+<p>And you should provide the mandatory headers for the authentication</p>
+
+<table><thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>{account-username}</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Bearer {token}</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>application/json</td>
+</tr>
+</tbody></table>
+
+<p>The <code>token</code> is obtained at <a href="https://revoretail.works/admin/account/tokens">Account managment</a> section of RevoRetail.</p>
+<h2 id='response-format'>Response format</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"current_page"</span>: 1,
+    <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Report data will go here]  <span class="o">]</span>,
+    <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=1"</span>,
+    <span class="s2">"from"</span>: 1,
+    <span class="s2">"last_page"</span>: 4,
+    <span class="s2">"last_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=4"</span>,
+    <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=2"</span>,
+    <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}"</span>,
+    <span class="s2">"per_page"</span>: 50,
+    <span class="s2">"prev_page_url"</span>: null,
+    <span class="s2">"to"</span>: 50,
+    <span class="s2">"total"</span>: 190
+<span class="o">}</span>
+</code></pre>
+<p>All requests will return the info following this template.<br>
+This format is paginated to avoid the system collapse. The object <code>data</code> contains the lines of the requested report.</p>
+<h2 id='available-reports'>Available reports</h2>
+<p>Here you have a list of the available filters.</p>
+
+<ul>
+<li>categories</li>
+<li>categorySales</li>
+<li>contentsDiscounts</li>
+<li>customerOrderContents</li>
+<li>customersList</li>
+<li>customers</li>
+<li>deliveryNoteContents</li>
+<li>fullProductSales</li>
+<li>groups</li>
+<li>hours</li>
+<li>inOuts</li>
+<li>inventories</li>
+<li>inventoryContents</li>
+<li>marketingAnswers</li>
+<li>orderDiscounts</li>
+<li>orderInvoices</li>
+<li>ordersByCustomer</li>
+<li>orders</li>
+<li>payments</li>
+<li>presences</li>
+<li>productList</li>
+<li>productSales</li>
+<li>products</li>
+<li>stockCategories</li>
+<li>stockGroups</li>
+<li>stockMovements</li>
+<li>stocks</li>
+<li>targets</li>
+<li>taxes</li>
+<li>turns</li>
+<li>vendorItems</li>
+</ul>
+<h2 id='available-filters'>Available filters</h2>
+<p>A parte de <code>start_date</code> y <code>end_date</code> se puede filtrar por otros campos (siempre que tengan sentido con el informe). A continuación les dejamos una lista:</p>
+
+<table><thead>
+<tr>
+<th>Filter</th>
+<th> Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start_date</code></td>
+<td>YYYY-MM-DD</td>
+<td><em>Required</em> The start date of the report</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>YYYY-MM-DD</td>
+<td><em>Required</em> The end date of the report</td>
+</tr>
+<tr>
+<td><code>start_time</code></td>
+<td>HH:mm</td>
+<td>The start time of the report</td>
+</tr>
+<tr>
+<td><code>end_time</code></td>
+<td>HH:mm</td>
+<td>The end time of the report</td>
+</tr>
+<tr>
+<td><code>employee</code></td>
+<td>int</td>
+<td>Id of the employee to filter with</td>
+</tr>
+<tr>
+<td><code>room</code></td>
+<td>int</td>
+<td>Id of the room to filter with</td>
+</tr>
+<tr>
+<td><code>dayofweek</code></td>
+<td>int</td>
+<td>Where Sunday is 1 and Saturday is 7</td>
+</tr>
+<tr>
+<td><code>priceRate</code></td>
+<td>int</td>
+<td>The id of the price rate</td>
+</tr>
+<tr>
+<td><code>cashier</code></td>
+<td>int</td>
+<td>The id of the cashier</td>
+</tr>
+<tr>
+<td><code>discount</code></td>
+<td>int</td>
+<td>The id of the cashier</td>
+</tr>
+<tr>
+<td><code>dateField</code></td>
+<td>string</td>
+<td>The date field that&#39;ll be used on filters query (created_at, updated_at, closed_at, opened_at)</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Just note that all filters don't work on all reports. To know which ones work, we recomend to visit the reports in the [backend](https://revoretail.works/admin/reports/summary) and see what parameters are applied at the url query when filtering.
+</aside>
+<h1 id='retail'>Retail</h1><h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the external api you need a <code>REVO Retail</code>.</p>
 
 <ol>
