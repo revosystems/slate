@@ -5712,7 +5712,7 @@ Then we have product variants that are variants linked to products.</p>
 </code></pre>
 <p>DELETE <code>https://revoretail.works/api/external/catalog/products/&lt;product_id&gt;</code></p>
 <h2 id='stocks'>Stocks</h2>
-<p>Can list, create and update Stocks</p>
+<p>Can list and create/update Stocks</p>
 
 <p>GET <code>https://revoretail.works/api/external/catalog/stocks</code></p>
 
@@ -5742,8 +5742,9 @@ Then we have product variants that are variants linked to products.</p>
 <p>POST <code>https://revoretail.works/api/external/stocks/add</code></p>
 
 <blockquote>
-<p>Create/Update a Stock (POST) <code>api/external/stocks/add</code>
-If the warehouse_id has a product_id already registered, it will update the record. If not, it will create a new stock record.</p>
+<p>Create/Update a Stock (POST) <code>api/external/stocks/add</code></p>
+
+<p>If the warehouse_id has a product_id already registered, it will update the record. If not, it will create a new stock record.</p>
 </blockquote>
 <pre class="highlight sh tab-shell"><code><span class="c"># Body</span>
 <span class="o">{</span>

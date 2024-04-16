@@ -310,7 +310,7 @@ DELETE `https://revoretail.works/api/external/catalog/products/<product_id>`
 
 ## Stocks
 
-Can list, create and update Stocks
+Can list and create/update Stocks
 
 GET `https://revoretail.works/api/external/catalog/stocks`
 
@@ -341,6 +341,7 @@ GET `https://revoretail.works/api/external/catalog/stocks`
 POST `https://revoretail.works/api/external/stocks/add`
 
 > Create/Update a Stock (POST) `api/external/stocks/add`
+
 > If the warehouse_id has a product_id already registered, it will update the record. If not, it will create a new stock record.
 
 ```sh
