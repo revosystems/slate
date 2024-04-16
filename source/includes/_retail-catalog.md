@@ -307,3 +307,51 @@ POST `https://revoretail.works/api/external/catalog/products`
 ```
 
 DELETE `https://revoretail.works/api/external/catalog/products/<product_id>`
+
+## Stocks
+
+Can list, create and update Stocks
+
+GET `https://revoretail.works/api/external/catalog/stocks`
+
+> List Stocks (GET) `catalog/stocks`
+
+```sh
+# Response
+[
+    {
+        "quantity": 20,
+        "defaultQuantity": 10,
+        "alert": 4,
+        "warehouse_id": 1,
+        "item_id": 1,
+        "unit_id": 1
+    },
+    {
+        "quantity": 15,
+        "defaultQuantity": 5,
+        "alert": 4,
+        "warehouse_id": 1,
+        "item_id": 2,
+        "unit_id": 1
+    },
+]
+```
+
+POST `https://revoretail.works/api/external/stocks/add`
+
+> Create/Update a Stock (POST) `api/external/stocks/add`
+> If the warehouse_id has a product_id already registered, it will update the record. If not, it will create a new stock record.
+
+```sh
+# Body
+{
+    "warehouse_id" : 1, // Required
+    "product_id" : 1, // Required
+    "quantity": 20 // Required
+}
+# Response
+{
+    "quantity": 20
+}
+```

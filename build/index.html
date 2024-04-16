@@ -503,6 +503,9 @@
                   <li>
                     <a href="#products" class="toc-h2 toc-link" data-title="Products">Products</a>
                   </li>
+                  <li>
+                    <a href="#stocks" class="toc-h2 toc-link" data-title="Stocks">Stocks</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -5708,7 +5711,51 @@ Then we have product variants that are variants linked to products.</p>
 <span class="o">}</span>
 </code></pre>
 <p>DELETE <code>https://revoretail.works/api/external/catalog/products/&lt;product_id&gt;</code></p>
-<h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
+<h2 id='stocks'>Stocks</h2>
+<p>Can list, create and update Stocks</p>
+
+<p>GET <code>https://revoretail.works/api/external/catalog/stocks</code></p>
+
+<blockquote>
+<p>List Stocks (GET) <code>catalog/stocks</code></p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="c"># Response</span>
+<span class="o">[</span>
+    <span class="o">{</span>
+        <span class="s2">"quantity"</span>: 20,
+        <span class="s2">"defaultQuantity"</span>: 10,
+        <span class="s2">"alert"</span>: 4,
+        <span class="s2">"warehouse_id"</span>: 1,
+        <span class="s2">"item_id"</span>: 1,
+        <span class="s2">"unit_id"</span>: 1
+    <span class="o">}</span>,
+    <span class="o">{</span>
+        <span class="s2">"quantity"</span>: 15,
+        <span class="s2">"defaultQuantity"</span>: 5,
+        <span class="s2">"alert"</span>: 4,
+        <span class="s2">"warehouse_id"</span>: 1,
+        <span class="s2">"item_id"</span>: 2,
+        <span class="s2">"unit_id"</span>: 1
+    <span class="o">}</span>,
+<span class="o">]</span>
+</code></pre>
+<p>POST <code>https://revoretail.works/api/external/stocks/add</code></p>
+
+<blockquote>
+<p>Create/Update a Stock (POST) <code>api/external/stocks/add</code>
+If the warehouse_id has a product_id already registered, it will update the record. If not, it will create a new stock record.</p>
+</blockquote>
+<pre class="highlight sh tab-shell"><code><span class="c"># Body</span>
+<span class="o">{</span>
+    <span class="s2">"warehouse_id"</span> : 1, // Required
+    <span class="s2">"product_id"</span> : 1, // Required
+    <span class="s2">"quantity"</span>: 20 // Required
+<span class="o">}</span>
+<span class="c"># Response</span>
+<span class="o">{</span>
+    <span class="s2">"quantity"</span>: 20
+<span class="o">}</span>
+</code></pre><h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
      --header <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
      --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      https://revoretail.works/api/external/reports
