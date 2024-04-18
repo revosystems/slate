@@ -1,8 +1,6 @@
 # Retail (Deprecated)
 
-## Retail Old Reports
-
-## Authentication 
+## Authentication
 
 ```sh
 curl --header "username: {account-username}" \
@@ -53,7 +51,7 @@ The `token` is obtained at [Account managment](https://revoretail.works/admin/ac
 All requests will return the info following this template.       
 This format is paginated to avoid the system collapse. The object `data` contains the lines of the requested report.
 
-## Available reports
+## Available reports (Deprecated)
 
 Here you have a list of the available filters.
 
@@ -89,7 +87,7 @@ Here you have a list of the available filters.
 * turns
 * vendorItems
 
-## Available filters
+## Available filters (Deprecated)
 A parte de `start_date` y `end_date` se puede filtrar por otros campos (siempre que tengan sentido con el informe). A continuación les dejamos una lista:
 
 Filter        | Value      | Description

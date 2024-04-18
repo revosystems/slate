@@ -34,7 +34,7 @@ data     | `json`   | data required for the action (explained below)
 > The API has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the `getXXX` actions.
 
 
-## Get
+## Get (Deprecated)
 
 Returns the full data for an specific model and id.
 
@@ -61,7 +61,7 @@ https://revoxef.works/apiExternal?message=
 ```
     
 
-## getMenuGroups
+## getMenuGroups (Deprecated)
 
 ```sh
 https://revoxef.works/apiExternal?message=
@@ -76,7 +76,7 @@ Since maybe we want to create an online shop that starts with menu groups, we ca
 This will return a list of all the groups (with their `ID`). With this Id we can [fetch the categories](#getChilds).
 
 
-## getChildren
+## getChildren (Deprecated)
 
 ```sh
 "data":{
@@ -105,7 +105,7 @@ https://revoxef.works/apiExternal?message=
 It will return all the childs of the `menuGroup` with `ID` 2.
     
 
-## getInventory
+## getInventory (Deprecated)
 
 ```sh
  https://revoxef.works/apiExternal?message=
@@ -126,7 +126,7 @@ items        | `array int` | Array of the ids of the items to get the quantity
 
 
  
-### decreaseInventory
+### decreaseInventory (Deprecated)
 
 Decreases the inventory for an Item in a Warehouse.
  
@@ -147,7 +147,7 @@ item_id      | `int` | Is the ID of the item to decrease
 quantity     | `int` | Is the quantity to decrease
 
 
-## Revo Display Images
+## Revo Display Images (Deprecated)
 
 Returns an array of paths for each [Revo Display](/display) ads image.
 
@@ -160,7 +160,7 @@ Field       | Type      | Description
 account     | `string`  | the account name
 image_path  | `string`  | the image path returned in the array
 
-## Orders
+## Orders (Deprecated)
 
 `GET Orders`
 

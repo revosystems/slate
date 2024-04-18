@@ -6,16 +6,16 @@
 curl --header "username: {account-username}" \
      --header "Authorization: Bearer {token}" \
      --header "Content-Type: application/json" \
-     https://revoretail.works/api/external/reports
+     https://revoretail.works/api/external/v3/reports/{reportName}
 ```
 
 The main URL for the external API:
 
-`https://revoretail.works/api/external/reports`
+`https://revoretail.works/api/external/v3/reports/{reportName}`
 
 The URL for the integrations API environment:
 
-`https://integrations.revoretail.works/api/external/reports`
+`https://integrations.revoretail.works/api/external/v3/reports/{reportName}`
 
 And you should provide the mandatory headers for the authentication
 
@@ -28,6 +28,12 @@ Content-Type  | application/json
 
 The `token` is obtained at [Account managment](https://revoretail.works/admin/account/tokens) section of RevoRetail.
 
+| Field        | Type       | Required | Description                                                               |
+|--------------|------------|----------|---------------------------------------------------------------------------|
+| `start_date` | YYYY-mm-dd | optional | The initial date for the report. Default: start of month.                 |
+| `end_date`   | YYYY-mm-dd | optional | The final date for the report. Default: today.                            |
+| `page`       | number     | optional | As the data is paginated, use this parameter to select the page to fetch. |
+| `pagination` | number     | optional | Number of objects per page. The default value is **50** and the max allowed is **200**. |
 
 ## Response format
 
@@ -35,12 +41,12 @@ The `token` is obtained at [Account managment](https://revoretail.works/admin/ac
 {
     "current_page": 1,
     "data": [  [Report data will go here]  ],
-    "first_page_url": "https://revoretail.works/api/external/reports/{reportName}?page=1",
+    "first_page_url": "https://revoretail.works/api/external/v3/reports/{reportName}?page=1",
     "from": 1,
     "last_page": 4,
-    "last_page_url": "https://revoretail.works/api/external/reports/{reportName}?page=4",
-    "next_page_url": "https://revoretail.works/api/external/reports/{reportName}?page=2",
-    "path": "https://revoretail.works/api/external/reports/{reportName}",
+    "last_page_url": "https://revoretail.works/api/external/v3/reports/{reportName}?page=4",
+    "next_page_url": "https://revoretail.works/api/external/v3/reports/{reportName}?page=2",
+    "path": "https://revoretail.works/api/external/v3/reports/{reportName}",
     "per_page": 50,
     "prev_page_url": null,
     "to": 50,

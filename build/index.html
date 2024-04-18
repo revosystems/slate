@@ -224,22 +224,22 @@
                     <a href="#basic-request" class="toc-h2 toc-link" data-title="Basic Request">Basic Request</a>
                   </li>
                   <li>
-                    <a href="#get" class="toc-h2 toc-link" data-title="Get">Get</a>
+                    <a href="#get-deprecated" class="toc-h2 toc-link" data-title="Get (Deprecated)">Get (Deprecated)</a>
                   </li>
                   <li>
-                    <a href="#getmenugroups" class="toc-h2 toc-link" data-title="getMenuGroups">getMenuGroups</a>
+                    <a href="#getmenugroups-deprecated" class="toc-h2 toc-link" data-title="getMenuGroups (Deprecated)">getMenuGroups (Deprecated)</a>
                   </li>
                   <li>
-                    <a href="#getchildren" class="toc-h2 toc-link" data-title="getChildren">getChildren</a>
+                    <a href="#getchildren-deprecated" class="toc-h2 toc-link" data-title="getChildren (Deprecated)">getChildren (Deprecated)</a>
                   </li>
                   <li>
-                    <a href="#getinventory" class="toc-h2 toc-link" data-title="getInventory">getInventory</a>
+                    <a href="#getinventory-deprecated" class="toc-h2 toc-link" data-title="getInventory (Deprecated)">getInventory (Deprecated)</a>
                   </li>
                   <li>
-                    <a href="#revo-display-images" class="toc-h2 toc-link" data-title="Revo Display Images">Revo Display Images</a>
+                    <a href="#revo-display-images-deprecated" class="toc-h2 toc-link" data-title="Revo Display Images (Deprecated)">Revo Display Images (Deprecated)</a>
                   </li>
                   <li>
-                    <a href="#orders" class="toc-h2 toc-link" data-title="Orders">Orders</a>
+                    <a href="#orders-deprecated" class="toc-h2 toc-link" data-title="Orders (Deprecated)">Orders (Deprecated)</a>
                   </li>
               </ul>
           </li>
@@ -456,19 +456,16 @@
             <a href="#retail-deprecated" class="toc-h1 toc-link" data-title="Retail (Deprecated)">Retail (Deprecated)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#retail-old-reports" class="toc-h2 toc-link" data-title="Retail Old Reports">Retail Old Reports</a>
-                  </li>
-                  <li>
                     <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
                   </li>
                   <li>
                     <a href="#response-format" class="toc-h2 toc-link" data-title="Response format">Response format</a>
                   </li>
                   <li>
-                    <a href="#available-reports" class="toc-h2 toc-link" data-title="Available reports">Available reports</a>
+                    <a href="#available-reports-deprecated" class="toc-h2 toc-link" data-title="Available reports (Deprecated)">Available reports (Deprecated)</a>
                   </li>
                   <li>
-                    <a href="#available-filters" class="toc-h2 toc-link" data-title="Available filters">Available filters</a>
+                    <a href="#available-filters-deprecated" class="toc-h2 toc-link" data-title="Available filters (Deprecated)">Available filters (Deprecated)</a>
                   </li>
               </ul>
           </li>
@@ -813,7 +810,7 @@ See <a href="#xef-catalog">Xef Catalog</a> section one instead</p>
 <blockquote>
 <p>The API has a limit of 120 requests every minute so the best practice is to cache for x time the fetched information done with the <code>getXXX</code> actions.</p>
 </blockquote>
-<h2 id='get'>Get</h2>
+<h2 id='get-deprecated'>Get (Deprecated)</h2>
 <p>Returns the full data for an specific model and id.</p>
 <pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
         <span class="s2">"model"</span>:<span class="s2">"model"</span>,
@@ -841,7 +838,7 @@ See <a href="#xef-catalog">Xef Catalog</a> section one instead</p>
         <span class="s2">"action"</span>    : <span class="s2">"get"</span>,
         <span class="s2">"data"</span>      : <span class="o">{</span><span class="s2">"model"</span>:<span class="s2">"MenuItem"</span>,<span class="s2">"id"</span>:<span class="s2">"236"</span><span class="o">}</span>
     <span class="o">}</span>
-</code></pre><h2 id='getmenugroups'>getMenuGroups</h2><pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
+</code></pre><h2 id='getmenugroups-deprecated'>getMenuGroups (Deprecated)</h2><pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
     <span class="o">{</span>
         <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
         <span class="s2">"action"</span>:<span class="s2">"getMenuGroups"</span>,
@@ -850,7 +847,7 @@ See <a href="#xef-catalog">Xef Catalog</a> section one instead</p>
 </code></pre>
 <p>Since maybe we want to create an online shop that starts with menu groups, we can get them all using the action <code>getMenuGroups</code> with empty data.
 This will return a list of all the groups (with their <code>ID</code>). With this Id we can <a href="#getChilds">fetch the categories</a>.</p>
-<h2 id='getchildren'>getChildren</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
+<h2 id='getchildren-deprecated'>getChildren (Deprecated)</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
     <span class="s2">"model"</span>:<span class="s2">"parentModel"</span>,
     <span class="s2">"id"</span>:id
     <span class="o">}</span>
@@ -883,7 +880,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
     <span class="o">}</span>
 </code></pre>
 <p>It will return all the childs of the <code>menuGroup</code> with <code>ID</code> 2.</p>
-<h2 id='getinventory'>getInventory</h2><pre class="highlight sh tab-shell"><code> https://revoxef.works/apiExternal?message<span class="o">=</span>
+<h2 id='getinventory-deprecated'>getInventory (Deprecated)</h2><pre class="highlight sh tab-shell"><code> https://revoxef.works/apiExternal?message<span class="o">=</span>
      <span class="o">{</span>
          <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
          <span class="s2">"action"</span>:<span class="s2">"getInventory"</span>,
@@ -910,7 +907,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>Array of the ids of the items to get the quantity</td>
 </tr>
 </tbody></table>
-<h3 id='decreaseinventory'>decreaseInventory</h3>
+<h3 id='decreaseinventory-deprecated'>decreaseInventory (Deprecated)</h3>
 <p>Decreases the inventory for an Item in a Warehouse.</p>
 <pre class="highlight sh tab-shell"><code> https://revoxef.works/apiExternal?message<span class="o">=</span>
      <span class="o">{</span>
@@ -942,7 +939,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>Is the quantity to decrease</td>
 </tr>
 </tbody></table>
-<h2 id='revo-display-images'>Revo Display Images</h2>
+<h2 id='revo-display-images-deprecated'>Revo Display Images (Deprecated)</h2>
 <p>Returns an array of paths for each <a href="/display">Revo Display</a> ads image.</p>
 
 <p>To get the image</p>
@@ -967,7 +964,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>the image path returned in the array</td>
 </tr>
 </tbody></table>
-<h2 id='orders'>Orders</h2>
+<h2 id='orders-deprecated'>Orders (Deprecated)</h2>
 <p><code>GET Orders</code></p>
 <pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/orders?from<span class="o">=</span>2017-01-02&amp;to<span class="o">=</span>2017-01-04
 </code></pre>
@@ -4704,7 +4701,7 @@ Take into account that not all filters are available for all reports. To exactly
         <span class="s2">"guests"</span>: <span class="o">{</span>guests<span class="o">}</span> 
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h1 id='retail-deprecated'>Retail (Deprecated)</h1><h2 id='retail-old-reports'>Retail Old Reports</h2><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
+</code></pre><h1 id='retail-deprecated'>Retail (Deprecated)</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
      --header <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
      --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      https://revoretail.works/api/external/reports
@@ -4757,7 +4754,7 @@ Take into account that not all filters are available for all reports. To exactly
 </code></pre>
 <p>All requests will return the info following this template.<br>
 This format is paginated to avoid the system collapse. The object <code>data</code> contains the lines of the requested report.</p>
-<h2 id='available-reports'>Available reports</h2>
+<h2 id='available-reports-deprecated'>Available reports (Deprecated)</h2>
 <p>Here you have a list of the available filters.</p>
 
 <ul>
@@ -4793,7 +4790,7 @@ This format is paginated to avoid the system collapse. The object <code>data</co
 <li>turns</li>
 <li>vendorItems</li>
 </ul>
-<h2 id='available-filters'>Available filters</h2>
+<h2 id='available-filters-deprecated'>Available filters (Deprecated)</h2>
 <p>A parte de <code>start_date</code> y <code>end_date</code> se puede filtrar por otros campos (siempre que tengan sentido con el informe). A continuación les dejamos una lista:</p>
 
 <table><thead>
@@ -5934,15 +5931,15 @@ Then we have product variants that are variants linked to products.</p>
 </code></pre><h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
      --header <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
      --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-     https://revoretail.works/api/external/reports
+     https://revoretail.works/api/external/v3/reports/<span class="o">{</span>reportName<span class="o">}</span>
 </code></pre>
 <p>The main URL for the external API:</p>
 
-<p><code>https://revoretail.works/api/external/reports</code></p>
+<p><code>https://revoretail.works/api/external/v3/reports/{reportName}</code></p>
 
 <p>The URL for the integrations API environment:</p>
 
-<p><code>https://integrations.revoretail.works/api/external/reports</code></p>
+<p><code>https://integrations.revoretail.works/api/external/v3/reports/{reportName}</code></p>
 
 <p>And you should provide the mandatory headers for the authentication</p>
 
@@ -5967,15 +5964,49 @@ Then we have product variants that are variants linked to products.</p>
 </tbody></table>
 
 <p>The <code>token</code> is obtained at <a href="https://revoretail.works/admin/account/tokens">Account managment</a> section of RevoRetail.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start_date</code></td>
+<td>YYYY-mm-dd</td>
+<td>optional</td>
+<td>The initial date for the report. Default: start of month.</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>YYYY-mm-dd</td>
+<td>optional</td>
+<td>The final date for the report. Default: today.</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>number</td>
+<td>optional</td>
+<td>As the data is paginated, use this parameter to select the page to fetch.</td>
+</tr>
+<tr>
+<td><code>pagination</code></td>
+<td>number</td>
+<td>optional</td>
+<td>Number of objects per page. The default value is <strong>50</strong> and the max allowed is <strong>200</strong>.</td>
+</tr>
+</tbody></table>
 <h2 id='response-format'>Response format</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Report data will go here]  <span class="o">]</span>,
-    <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=1"</span>,
+    <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/v3/reports/{reportName}?page=1"</span>,
     <span class="s2">"from"</span>: 1,
     <span class="s2">"last_page"</span>: 4,
-    <span class="s2">"last_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=4"</span>,
-    <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=2"</span>,
-    <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}"</span>,
+    <span class="s2">"last_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/v3/reports/{reportName}?page=4"</span>,
+    <span class="s2">"next_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/v3/reports/{reportName}?page=2"</span>,
+    <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/v3/reports/{reportName}"</span>,
     <span class="s2">"per_page"</span>: 50,
     <span class="s2">"prev_page_url"</span>: null,
     <span class="s2">"to"</span>: 50,
