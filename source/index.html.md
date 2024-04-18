@@ -18,11 +18,6 @@ includes:
   - xef-reports
   - xef-webhooks
   
-  - retail-deprecated
-  - retail-external
-  - retail-catalog
-  - retail-reports
-  
   - flow
   - flow-integration
   
