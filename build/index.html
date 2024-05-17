@@ -276,6 +276,9 @@
                   <li>
                     <a href="#get-images" class="toc-h2 toc-link" data-title="Get images">Get images</a>
                   </li>
+                  <li>
+                    <a href="#sync-resources" class="toc-h2 toc-link" data-title="Sync Resources">Sync Resources</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -1327,6 +1330,34 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 </tbody></table>
 
 <p>The image_path is the photo name (with the extension). You can get the photos in the <a href="https://api.revo.works/#xef-catalog">catalog</a>.</p>
+<h2 id='sync-resources'>Sync Resources</h2>
+<p><code>POST https://revoxef.works/api/external/chains/sync</code></p>
+
+<p>With this endpoint, you will be able to sync some resources from the master account to each child account.</p>
+
+<p>The resources that will be synced, are the next ones:</p>
+
+<ul>
+<li>Tax</li>
+<li>Unit</li>
+<li>MenuSuperGroup</li>
+<li>ModifierCategory</li>
+<li>Modifier</li>
+<li>ModifierGroup</li>
+<li>ModifierPivot</li>
+<li>MenuGroup</li>
+<li>MenuCategory</li>
+<li>MenuItem</li>
+<li>LinkedItemPivot</li>
+<li>MenuItemInventory</li>
+<li>MenuMenuCategory</li>
+<li>MenuMenuPivot</li>
+<li>SellingFormat</li>
+<li>Combination</li>
+<li>CombinationGroup</li>
+<li>CombinationPivot</li>
+<li>ItemSellingFormatPivot</li>
+</ul>
 <h1 id='xef-catalog'>Xef Catalog</h1>
 <p>Inside catalog there are many resources; items, categories, groups, modifiers and sellingFormats.</p>
 

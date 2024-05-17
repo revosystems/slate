@@ -205,3 +205,31 @@ account     | `string`  | Is your account name, same name used for login into th
 image_path  | `string`  | is the photo variable of the model
 
 The image_path is the photo name (with the extension). You can get the photos in the [catalog](https://api.revo.works/#xef-catalog).
+
+## Sync Resources
+
+`POST https://revoxef.works/api/external/chains/sync`
+
+With this endpoint, you will be able to sync some resources from the master account to each child account.
+
+The resources that will be synced, are the next ones:
+
+- Tax
+- Unit
+- MenuSuperGroup
+- ModifierCategory
+- Modifier
+- ModifierGroup
+- ModifierPivot
+- MenuGroup
+- MenuCategory
+- MenuItem
+- LinkedItemPivot
+- MenuItemInventory
+- MenuMenuCategory
+- MenuMenuPivot
+- SellingFormat
+- Combination
+- CombinationGroup
+- CombinationPivot
+- ItemSellingFormatPivot
