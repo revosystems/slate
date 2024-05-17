@@ -212,6 +212,8 @@ The image_path is the photo name (with the extension). You can get the photos in
 
 With this endpoint, you will be able to sync some resources from the master account to each child account.
 
+The 'tenant' must be from the master account.
+
 The resources that will be synced, are the next ones:
 
 - Tax
@@ -233,3 +235,5 @@ The resources that will be synced, are the next ones:
 - CombinationGroup
 - CombinationPivot
 - ItemSellingFormatPivot
+
+More info about [Master Accounts](https://support.revoxef.works/en/articles/308).
