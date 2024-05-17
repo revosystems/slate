@@ -236,4 +236,4 @@ The resources that will be synced, are the next ones:
 - CombinationPivot
 - ItemSellingFormatPivot
 
-More info about [Master Accounts](https://support.revoxef.works/en/articles/308).
+More info about [Master Accounts](https://support.revoxef.works/es/articles/308).
