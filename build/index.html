@@ -42,7 +42,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -126,7 +126,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -141,41 +141,52 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nn {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nl {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ni {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .bp {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vg {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vi {
   color: #ffffff;
+  background-color: #272822;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .w {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ow {
   color: #f92672;
@@ -766,7 +777,7 @@
 <h1 id='xef-deprecated'>Xef (Deprecated)</h1>
 <p>Although this <code>api</code> is still working, it has been deprecated in favor of the new <code>REST</code> one
 See <a href="#xef-catalog">Xef Catalog</a> section one instead</p>
-<h2 id='basic-request'>Basic Request</h2><pre class="highlight sh tab-shell"><code>    <span class="o">{</span>
+<h2 id='basic-request'>Basic Request</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>    <span class="o">{</span>
         <span class="s2">"auth"</span>:<span class="o">{</span>
             <span class="s2">"tenant"</span>  :<span class="s2">"account"</span>,
             <span class="s2">"password"</span>:<span class="s2">"password"</span>
@@ -774,7 +785,7 @@ See <a href="#xef-catalog">Xef Catalog</a> section one instead</p>
         <span class="s2">"action"</span>:<span class="s2">"action"</span>,
         <span class="s2">"data"</span>:data
     <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>To work with <code>Revo external api</code> a <code>POST</code> or <code>GET</code> request is required to the following url:</p>
 
 <p><code>https://revoxef.works/apiExternal</code></p>
@@ -815,11 +826,11 @@ See <a href="#xef-catalog">Xef Catalog</a> section one instead</p>
 </blockquote>
 <h2 id='get-deprecated'>Get (Deprecated)</h2>
 <p>Returns the full data for an specific model and id.</p>
-<pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
         <span class="s2">"model"</span>:<span class="s2">"model"</span>,
         <span class="s2">"id"</span>:<span class="s2">"id"</span>
         <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -835,26 +846,26 @@ See <a href="#xef-catalog">Xef Catalog</a> section one instead</p>
 <td>is the id of the model to fetch</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
     <span class="o">{</span>
         <span class="s2">"auth"</span>      : <span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
         <span class="s2">"action"</span>    : <span class="s2">"get"</span>,
         <span class="s2">"data"</span>      : <span class="o">{</span><span class="s2">"model"</span>:<span class="s2">"MenuItem"</span>,<span class="s2">"id"</span>:<span class="s2">"236"</span><span class="o">}</span>
     <span class="o">}</span>
-</code></pre><h2 id='getmenugroups-deprecated'>getMenuGroups (Deprecated)</h2><pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
+</code></pre></div><h2 id='getmenugroups-deprecated'>getMenuGroups (Deprecated)</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
     <span class="o">{</span>
         <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
         <span class="s2">"action"</span>:<span class="s2">"getMenuGroups"</span>,
         <span class="s2">"data"</span>:<span class="o">{}</span>
     <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Since maybe we want to create an online shop that starts with menu groups, we can get them all using the action <code>getMenuGroups</code> with empty data.
 This will return a list of all the groups (with their <code>ID</code>). With this Id we can <a href="#getChilds">fetch the categories</a>.</p>
-<h2 id='getchildren-deprecated'>getChildren (Deprecated)</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
+<h2 id='getchildren-deprecated'>getChildren (Deprecated)</h2><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
     <span class="s2">"model"</span>:<span class="s2">"parentModel"</span>,
     <span class="s2">"id"</span>:id
     <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>This action returns all the children for an specific model</p>
 
 <table><thead>
@@ -875,21 +886,21 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>the id of the model we want its children.</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>https://revoxef.works/apiExternal?message<span class="o">=</span>
     <span class="o">{</span>
         <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
         <span class="s2">"action"</span>:<span class="s2">"getChilds"</span>,
         <span class="s2">"data"</span>:<span class="o">{</span><span class="s2">"model"</span>:<span class="s2">"MenuGroup"</span>,<span class="s2">"id"</span>:2<span class="o">}</span>
     <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>It will return all the childs of the <code>menuGroup</code> with <code>ID</code> 2.</p>
-<h2 id='getinventory-deprecated'>getInventory (Deprecated)</h2><pre class="highlight sh tab-shell"><code> https://revoxef.works/apiExternal?message<span class="o">=</span>
+<h2 id='getinventory-deprecated'>getInventory (Deprecated)</h2><div class="highlight"><pre class="highlight sh tab-shell"><code> https://revoxef.works/apiExternal?message<span class="o">=</span>
      <span class="o">{</span>
          <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
          <span class="s2">"action"</span>:<span class="s2">"getInventory"</span>,
          <span class="s2">"data"</span>:<span class="o">{</span><span class="s2">"warehouse_id"</span>:1,<span class="s2">"items"</span>:[2,4,10]<span class="o">}</span>
      <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Gets the current inventory for an Item in a Warehouse.</p>
 
 <table><thead>
@@ -912,13 +923,13 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 </tbody></table>
 <h3 id='decreaseinventory-deprecated'>decreaseInventory (Deprecated)</h3>
 <p>Decreases the inventory for an Item in a Warehouse.</p>
-<pre class="highlight sh tab-shell"><code> https://revoxef.works/apiExternal?message<span class="o">=</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code> https://revoxef.works/apiExternal?message<span class="o">=</span>
      <span class="o">{</span>
          <span class="s2">"auth"</span>:<span class="o">{</span><span class="s2">"tenant"</span>:<span class="s2">"account"</span>,<span class="s2">"password"</span>:<span class="s2">"password"</span><span class="o">}</span>,
          <span class="s2">"action"</span>:<span class="s2">"decreaseInventory"</span>,
          <span class="s2">"data"</span>:<span class="o">{</span><span class="s2">"warehouse_id"</span>:1,<span class="s2">"item_id"</span>:2, <span class="s2">"quantity"</span>:1<span class="o">}</span>
      <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -969,12 +980,12 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 </tbody></table>
 <h2 id='orders-deprecated'>Orders (Deprecated)</h2>
 <p><code>GET Orders</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/orders?from<span class="o">=</span>2017-01-02&amp;to<span class="o">=</span>2017-01-04
-</code></pre>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/orders?from<span class="o">=</span>2017-01-02&amp;to<span class="o">=</span>2017-01-04
+</code></pre></div>
 <blockquote>
 <p>Response is paginated for every 50 </p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code>    <span class="s2">"id"</span>: 4,
+<div class="highlight"><pre class="highlight sh tab-shell"><code>    <span class="s2">"id"</span>: 4,
     <span class="s2">"opened"</span>: <span class="s2">"2017-12-15 08:40:52"</span>,
     <span class="s2">"closed"</span>: <span class="s2">"2017-01-03 00:00:00"</span>,
     <span class="s2">"merged"</span>: null,
@@ -1028,7 +1039,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         <span class="o">}</span>
        <span class="o">]</span>,
       <span class="o">}</span> 
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1066,7 +1077,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <blockquote>
 <p>You can add <code>?withPayments</code> parameter. This way apart from <code>orderContents</code> another array will be loaded called <code>orderInvoices</code>, it will contain an array of invoices and each invoice will contain an array of <code>orderPayments</code>. </p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="s2">"orderContents"</span>: <span class="o">[{</span>…<span class="o">}</span>, <span class="o">{</span>…<span class="o">}</span>, …],
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"orderContents"</span>: <span class="o">[{</span>…<span class="o">}</span>, <span class="o">{</span>…<span class="o">}</span>, …],
 <span class="s2">"orderInvoices"</span>: <span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"orderPayments"</span>: <span class="o">[</span>
@@ -1078,11 +1089,11 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         <span class="o">]</span>, …
     <span class="o">}</span>, <span class="o">{</span>…<span class="o">}</span>, …
 <span class="o">]</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>You can add <strong>?withRooms</strong> parameter. This way apart from <code>orderContents</code> another array will be loaded called <code>table</code> which will contain a <code>room</code>. </p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="s2">"orderContents"</span>: <span class="o">[{</span>…<span class="o">}</span>, <span class="o">{</span>…<span class="o">}</span>, …],
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"orderContents"</span>: <span class="o">[{</span>…<span class="o">}</span>, <span class="o">{</span>…<span class="o">}</span>, …],
 <span class="s2">"table"</span>: <span class="o">{</span>
     <span class="s2">"id"</span>        : &lt;table_id&gt;,
     <span class="s2">"name"</span>      : &lt;tableName&gt;,
@@ -1092,7 +1103,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         <span class="s2">"name"</span>  : &lt;roomName&gt;
     <span class="o">}</span>,
 <span class="o">}</span>
-</code></pre><h1 id='xef'>Xef</h1><h2 id='prerequisites'>Prerequisites</h2>
+</code></pre></div><h1 id='xef'>Xef</h1><h2 id='prerequisites'>Prerequisites</h2>
 <p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code> and your <code>integrator token</code></p>
 
 <ol>
@@ -1137,30 +1148,30 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 </blockquote>
 <h2 id='payment-methods'>Payment Methods</h2>
 <p><code>GET PaymentMethods</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/paymentMethods
-</code></pre>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/paymentMethods
+</code></pre></div>
 <blockquote>
 <p>Response is an array of payment methods with the following fields:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>"id": 1,
+<div class="highlight"><pre class="highlight plaintext"><code>"id": 1,
 "name": "Payment method name",
 "active": true,
-</code></pre><h2 id='rooms'>Rooms</h2>
+</code></pre></div><h2 id='rooms'>Rooms</h2>
 <p><code>GET Rooms</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/rooms
-</code></pre>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/rooms
+</code></pre></div>
 <blockquote>
 <p>Response is paginated for every 20 rooms </p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code>    <span class="s2">"id"</span>: 1,
+<div class="highlight"><pre class="highlight sh tab-shell"><code>    <span class="s2">"id"</span>: 1,
     <span class="s2">"name"</span>: <span class="s2">"Room 1"</span>,
     <span class="s2">"order"</span>: <span class="s2">"0"</span>,
     <span class="s2">"active"</span>: <span class="s2">"1"</span>,
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>You can add <code>?withTables</code> parameter. This way apart from <code>rooms</code> another array will be loaded called <code>tables</code>, it will contain a tables array within each room. </p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="s2">"tables"</span>: <span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"tables"</span>: <span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
         <span class="s2">"name"</span>: <span class="s2">"Table 1"</span>,
@@ -1179,7 +1190,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
         <span class="s2">"price_id"</span>: null,
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre><h2 id='giftcards'>GiftCards</h2>
+</code></pre></div><h2 id='giftcards'>GiftCards</h2>
 <p><code>POST GiftCards</code></p>
 
 <table><thead>
@@ -1205,17 +1216,17 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <td>Campaign ID when giftcard should be linked with a campaign (get ID from backend)</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/giftCards
-</code></pre>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/giftCards
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"balance"</span>: 1.25,
     <span class="s2">"uuid"</span>: <span class="s2">"123456"</span>
     <span class="s2">"campaign_id"</span>: <span class="s2">"3"</span>
 <span class="o">}</span>
-</code></pre><h2 id='responses'>Responses</h2>
+</code></pre></div><h2 id='responses'>Responses</h2>
 <table><thead>
 <tr>
 <th>Value</th>
@@ -1238,11 +1249,11 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"balance"</span>: 1.25,
     <span class="s2">"customer_id"</span>: <span class="s2">"3"</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p><code>POST GiftCards/{uuid}</code></p>
 
 <table><thead>
@@ -1274,7 +1285,7 @@ This will return a list of all the groups (with their <code>ID</code>). With thi
 </tbody></table>
 <h2 id='customers'>Customers</h2>
 <p><code>GET Customers</code></p>
-<pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/customers
+<div class="highlight"><pre class="highlight sh tab-shell"><code>GET https://revoxef.works/api/external/v2/customers
 GET https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 POST https://revoxef.works/api/external/v2/customers
     Data must be sent as an array.
@@ -1287,11 +1298,11 @@ POST https://revoxef.works/api/external/v2/customers
             <span class="o">{</span><span class="s2">"name"</span>: <span class="s2">"Customer 2"</span>, <span class="s2">"active"</span>: 1<span class="o">}</span>
         <span class="o">]</span>
 DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Response is a groups paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>    'id',
+<div class="highlight"><pre class="highlight plaintext"><code>    'id',
     'name',
     'active',
     'tax_id',
@@ -1299,7 +1310,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     'super_group_id',
     'printer_id',
     'printer_group_id',
-</code></pre><h2 id='others'>Others</h2><h2 id='get-images'>Get images</h2>
+</code></pre></div><h2 id='others'>Others</h2><h2 id='get-images'>Get images</h2>
 <p>To get the image, you need to do a get request the ideal thing for the images is to store it in your server and only request the image if the path changed.</p>
 
 <p>Normal size:</p>
@@ -1530,26 +1541,26 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 
 <p>All parameters are optional.</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Group 1"</span>,
     <span class="s2">"active"</span>: 1
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a group (POST) <code>catalog/groups</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 2, // required to update
     <span class="s2">"name"</span>: <span class="s2">"Group 1 updated"</span>,
     <span class="s2">"active"</span>: 0
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple groups (POST) <code>catalog/groups</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"groups"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -1564,7 +1575,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/groups/&lt;group_id&gt;</code></p>
 <h2 id='categories'>Categories</h2>
 <p>Can list, show, create, update and delete Categories</p>
@@ -1670,27 +1681,27 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a category (POST) <code>catalog/categories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Category 1"</span>,
     <span class="s2">"active"</span>: 1,
     <span class="s2">"group_id"</span>: 1
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a category  (POST) <code>catalog/categories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"name"</span>: <span class="s2">"Category 1 updated"</span>,
     <span class="s2">"active"</span>: 0
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple categories (POST) <code>catalog/categories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"categories"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -1705,7 +1716,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/categories/&lt;category_id&gt;</code></p>
 <h2 id='items'>Items</h2>
 <p>For the <em>Items</em>, there are the following types:</p>
@@ -2009,28 +2020,28 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a item (POST) <code>catalog/items</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Product 1"</span>,
     <span class="s2">"price"</span>: 8.50,
     <span class="s2">"active"</span>: 1,
     <span class="s2">"category_id"</span>: 1
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a item (POST) <code>catalog/items</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"name"</span>: <span class="s2">"Category 1 updated"</span>,
     <span class="s2">"active"</span>: 0
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple items (POST) <code>catalog/items</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"items"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -2045,7 +2056,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/items/&lt;item_id&gt;</code></p>
 <h2 id='selling-formats'>Selling Formats</h2>
 <p>Can list, show, create, update and delete Selling Formats</p>
@@ -2101,26 +2112,26 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a selling format (POST) <code>catalog/sellingFormats</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Selling format 1"</span>,
     <span class="s2">"active"</span>: 1
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a selling format (POST) <code>catalog/sellingFormats</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"name"</span>: <span class="s2">"Selling format 1 updated"</span>,
     <span class="s2">"active"</span>: 0
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple selling formats (POST) <code>catalog/sellingFormats</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"sellingFormats"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -2135,7 +2146,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/sellingFormats/&lt;format_id&gt;</code></p>
 <h3 id='selling-format-pivots'>Selling Format Pivots</h3>
 <p>An <em>Item</em> can be of <em>Selling format</em> type.</p>
@@ -2215,27 +2226,27 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a selling format pivot (POST) <code>catalog/sellingFormatPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"price"</span>: 5.00,
     <span class="s2">"quantity"</span>: 1,
     <span class="s2">"format_id"</span>: 1,
     <span class="s2">"item_id"</span>: 1,
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a selling format pivot (POST) <code>catalog/sellingFormatPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"quantity"</span>: 2
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple selling format pivots (POST) <code>catalog/sellingFormatPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"sellingFormatPivots"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -2254,7 +2265,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/sellingFormatPivots/&lt;format_pivot_id&gt;</code></p>
 <h2 id='modifiers'>Modifiers</h2>
 <p>The <em>Modifiers</em> structure is the following:</p>
@@ -2342,27 +2353,27 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a modifier (POST) <code>catalog/modifiers</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Modifier 1"</span>,
     <span class="s2">"price"</span>: 1.00,
     <span class="s2">"category_id"</span>: 1,
     <span class="s2">"active"</span>: 1
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a modifier (POST) <code>catalog/modifiers</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"price"</span>: 2.00
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple modifiers (POST) <code>catalog/modifiers</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"modifiers"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -2377,7 +2388,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifiers/&lt;modifier_id&gt;</code></p>
 <h3 id='modifier-categories'>Modifier Categories</h3>
 <p>Can list, show, create, update and delete Modifier Categories</p>
@@ -2439,24 +2450,24 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a modifier category (POST) <code>catalog/modifierCategories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Modifier category 1"</span>
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a modifier category (POST) <code>catalog/modifierCategories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"isChoice"</span>: 0
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple modifier categories (POST) <code>catalog/modifierCategories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"modifierCategories"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -2471,7 +2482,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifierCategories/&lt;modifier_category_id&gt;</code></p>
 <h3 id='modifier-groups'>Modifier Groups</h3>
 <p>Can list, show, create, update and delete Modifier Groups</p>
@@ -2521,24 +2532,24 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a modifier group (POST) <code>catalog/modifierGroups</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Modifier group 1"</span>
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a modifier group (POST) <code>catalog/modifierGroups</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"name"</span>: <span class="s2">"Modifier group updated 1"</span>
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple modifier groups (POST) <code>catalog/modifierGroups</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"modifierGroups"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -2553,7 +2564,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifierGroups/&lt;modifier_group_id&gt;</code></p>
 <h3 id='modifier-pivot'>Modifier Pivot</h3>
 <p>The next pivot endpoints define the (optional) relationship between <em>Modifier Categories</em> and <em>Modifier Groups</em>.</p>
@@ -2605,25 +2616,25 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a modifier pivot (POST) <code>catalog/modifierPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"group_id"</span>: 1,
     <span class="s2">"category_id"</span>: 1
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a modifier pivot (POST) <code>catalog/modifierPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"group_id"</span>: 2
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple modifier pivots (POST) <code>catalog/modifierPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"modifierPivots"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -2638,7 +2649,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/modifierPivots/&lt;modifier_pivot_id&gt;</code></p>
 <h2 id='menu-categories'>Menu Categories</h2>
 <p>An <em>Item</em> can be of Menu type.</p>
@@ -2720,26 +2731,26 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a menu category (POST) <code>catalog/menuMenuCategories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"First dishes"</span>,
     <span class="s2">"item_id"</span>: 1
     <span class="s2">"isMultipleChoice"</span>: 2,
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a menu category (POST) <code>catalog/menuMenuCategories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"isMultipleChoice"</span>: 2
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple menu menu categories (POST) <code>catalog/menuMenuCategories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"menuMenuCategories"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -2756,7 +2767,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/menuMenuCategories/&lt;menu_category_id&gt;</code></p>
 <h3 id='menu-item-category-pivot'>Menu Item-Category Pivot</h3>
 <p>This endpoint links the <em>Normal Items</em>, from the menu, with their <em>Menu Category</em>.</p>
@@ -2844,25 +2855,25 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Create a menu item-category pivot (POST) <code>catalog/menuMenuItemCategoryPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"item_id"</span>: 1,
     <span class="s2">"category_id"</span>: 1
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a menu item-category pivot (POST) <code>catalog/menuMenuItemCategoryPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1, // required to update
     <span class="s2">"price"</span>: 1.00
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Create/update multiple menu item-category pivots (POST) <code>catalog/menuMenuItemCategoryPivots</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"menuMenuItemCategoryPivots"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1, // only required to update
@@ -2879,7 +2890,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         ...
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/catalog/menuMenuItemCategoryPivots/&lt;menu_item_category_pivot_id&gt;</code></p>
 <h2 id='warehouses'>Warehouses</h2>
 <p>GET Warehouses <code>https://revoxef.works/api/external/v2/warehouses</code></p>
@@ -2887,51 +2898,51 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>Response is a warehouses paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
+<div class="highlight"><pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
     <span class="s1">'name'</span>,
     <span class="s1">'order'</span>,
-</code></pre>
+</code></pre></div>
 <p>GET Warehouses stocks <code>https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;</code></p>
 
 <blockquote>
 <p>Response for a warehouse is a stocks paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
+<div class="highlight"><pre class="highlight sh tab-shell"><code>    <span class="s1">'id'</span>,
     <span class="s1">'quantity'</span>,
     <span class="s1">'defaultQuantity'</span>,
     <span class="s1">'alert'</span>,
     <span class="s1">'warehouse_id'</span>,
     <span class="s1">'item_id'</span>,
     <span class="s1">'unit_id'</span>
-</code></pre>
+</code></pre></div>
 <p>POST <code>https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;/addStock</code></p>
 
 <blockquote>
 <p>Add a stock to a warehouse (POST) <code>warehouses/&lt;warehouse_id&gt;/addStock</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_add&gt;<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_add&gt;<span class="o">}</span>
+</code></pre></div>
 <p>POST <code>https://revoxef.works/api/external/v2/warehouses/&lt;warehouse_id&gt;/setStock</code></p>
 
 <blockquote>
 <p>Set a item stock to a warehouse (POST) <code>warehouses/&lt;warehouse_id&gt;/setStock</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>
-</code></pre>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>
+</code></pre></div>
 <blockquote>
 <p>Set multiple stocks to a warehouse (POST) <code>warehouses/&lt;warehouse_id&gt;/setStock</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"stocks"</span>: <span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span><span class="s2">"stocks"</span>: <span class="o">[</span>
     <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>,
     <span class="o">{</span><span class="s2">"item_id"</span>: &lt;item_id&gt;, <span class="s2">"quantity"</span>: &lt;quantity_to_set&gt;<span class="o">}</span>,
 <span class="o">]}</span>
-</code></pre><h2 id='purchases'>Purchases</h2>
+</code></pre></div><h2 id='purchases'>Purchases</h2>
 <p>GET Purchase orders <code>https://revoxef.works/api/external/v2/purchaseOrders</code></p>
 
 <blockquote>
 <p>Response is a purchase orders paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>    'id',
+<div class="highlight"><pre class="highlight plaintext"><code>    'id',
     'vendor_order_id',
     'reference',
     'subtotal',
@@ -2941,13 +2952,13 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     'vendor_id',
     'vendorName',
     'contentsArray'
-</code></pre>
+</code></pre></div>
 <p>GET Purchase order contents <code>https://revoxef.works/api/external/v2/purchaseOrders/{purchase_order_id}</code></p>
 
 <blockquote>
 <p>Response is a purchase order contents paginated array with the following fields:</p>
 </blockquote>
-<pre class="highlight plaintext"><code>    'id',
+<div class="highlight"><pre class="highlight plaintext"><code>    'id',
     'status',
     'quantity',
     'received',
@@ -2960,13 +2971,13 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     'itemName',
     'itemBarcode',
     'item_id'
-</code></pre><h2 id='vendors'>Vendors</h2>
+</code></pre></div><h2 id='vendors'>Vendors</h2>
 <p>GET <code>https://revoxef.works/api/external/v2/vendors</code></p>
 
 <blockquote>
 <p>GET ...vendors</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">[</span>
         <span class="o">{</span>
@@ -2985,13 +2996,13 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
             <span class="s2">"shouldBeNotified"</span>: 0
         <span class="o">}</span>,
         ...
-</code></pre>
+</code></pre></div>
 <p>GET <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code></p>
 
 <blockquote>
 <p>GET ...vendors/{vendor_id}</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"id"</span>: 1,
     <span class="s2">"name"</span>: <span class="s2">"RevoVendor"</span>,
     <span class="s2">"address"</span>: <span class="s2">"Address"</span>,
@@ -3006,13 +3017,13 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     <span class="s2">"notes"</span>: null,
     <span class="s2">"shouldBeNotified"</span>: 0
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>POST <code>https://revoxef.works/api/external/v2/vendors</code></p>
 
 <blockquote>
 <p>POST ...vendors</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"RevoVendor"</span>, // required
     <span class="s2">"address"</span>: <span class="s2">"Address"</span>, // required
     <span class="s2">"city"</span>: <span class="s2">"City"</span>,
@@ -3026,13 +3037,13 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     <span class="s2">"notes"</span>: null,
     <span class="s2">"shouldBeNotified"</span>: 0
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>PUT <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code></p>
 
 <blockquote>
 <p>PUT ...vendors/{vendor_id}</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"RevoVendor"</span>,
     <span class="s2">"address"</span>: <span class="s2">"Address"</span>,
     <span class="s2">"city"</span>: <span class="s2">"City"</span>,
@@ -3046,7 +3057,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
     <span class="s2">"notes"</span>: null,
     <span class="s2">"shouldBeNotified"</span>: 0
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}</code></p>
 <h2 id='vendor-items'>Vendor Items</h2>
 <p>GET <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code></p>
@@ -3054,7 +3065,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 <blockquote>
 <p>GET ...items</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">[</span>
         <span class="o">{</span>
@@ -3066,7 +3077,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
             <span class="s2">"tax_id"</span>: null
         <span class="o">}</span>,
         ...
-</code></pre>
+</code></pre></div>
 <p>POST <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code></p>
 
 <blockquote>
@@ -3074,7 +3085,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 
 <p>With this endpoint you can create or update, if the vendor.item_id already exists.</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"items"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"item_id"</span>: 1, // required
@@ -3091,7 +3102,7 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
         <span class="o">}</span>
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoxef.works/api/external/v2/vendors/{vendor_id}/items</code></p>
 
 <blockquote>
@@ -3099,10 +3110,10 @@ DELETE https://revoxef.works/api/external/v2/customers/&lt;customer_id&gt;
 
 <p>All items_id must exist to delete their relation to vendor.</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span> 
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span> 
     <span class="s2">"items"</span>: <span class="o">[</span> item1_id, item3_id, item10_id <span class="o">]</span>
 <span class="o">}</span>
-</code></pre><h1 id='flow-api'>Flow Api</h1><h2 id='prerequisistes'>Prerequisistes</h2>
+</code></pre></div><h1 id='flow-api'>Flow Api</h1><h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the Flow api you need a <code>revo xef</code> account and a <code>access token</code></p>
 
 <ol>
@@ -3253,7 +3264,7 @@ POST message={
 <blockquote>
 <p>General payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         ...
     <span class="o">}</span>,
@@ -3264,14 +3275,14 @@ POST message={
         ...
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Response:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order_id"</span>: 1
 <span class="o">}</span>
-</code></pre><h3 id='order-payload'>Order payload</h3>
+</code></pre></div><h3 id='order-payload'>Order payload</h3>
 <p>Most of the parameters are recalculated when the order is processed in the POS.</p>
 
 <table><thead>
@@ -3341,7 +3352,7 @@ POST message={
 <blockquote>
 <p>Order payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         <span class="s2">"total"</span>: 10.50,
         <span class="s2">"table_id"</span>: 1,
@@ -3364,7 +3375,7 @@ POST message={
     <span class="o">}</span>
     ...
 <span class="o">}</span>
-</code></pre><h3 id='order-discount-payload'>Order discount payload</h3>
+</code></pre></div><h3 id='order-discount-payload'>Order discount payload</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3390,19 +3401,19 @@ POST message={
 <blockquote>
 <p>Order discount payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         <span class="s2">"total"</span>: 8.00, // discount subtracted
         ...
         <span class="s2">"orderDiscount"</span>: <span class="o">{</span>
             <span class="s2">"name"</span>: <span class="s2">"Discount"</span>,
-            <span class="s2">"amount"</span>: -2.50
+            <span class="s2">"amount"</span>: <span class="nt">-2</span>.50
         <span class="o">}</span>,
         ...
     <span class="o">}</span>
     ...
 <span class="o">}</span>
-</code></pre><h3 id='contents-payload'>Contents payload</h3>
+</code></pre></div><h3 id='contents-payload'>Contents payload</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3446,7 +3457,7 @@ POST message={
 <blockquote>
 <p>Content payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         <span class="s2">"total"</span>: 13.00
         ...
@@ -3465,7 +3476,7 @@ POST message={
     <span class="o">}</span>
     ...
 <span class="o">}</span>
-</code></pre><h3 id='modifiers-payload'>Modifiers payload</h3>
+</code></pre></div><h3 id='modifiers-payload'>Modifiers payload</h3>
 <p><strong>Only for normal and selling format items.</strong></p>
 
 <p>For normal items (item.type = 0):</p>
@@ -3503,7 +3514,7 @@ POST message={
 <blockquote>
 <p>Modifier (normal item) payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         <span class="s2">"total"</span>: 17.80
         ...
@@ -3527,7 +3538,7 @@ POST message={
     <span class="o">}</span>
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>For selling format items (item.type = 4):</p>
 
 <p><strong>Normal modifiers cannot be set.</strong></p>
@@ -3557,7 +3568,7 @@ POST message={
 <blockquote>
 <p>Modifier (selling format item) payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         ...
         <span class="s2">"contents"</span>: <span class="o">{</span>
@@ -3572,7 +3583,7 @@ POST message={
     <span class="o">}</span>
     ...
 <span class="o">}</span>
-</code></pre><h3 id='menucontents-payload'>MenuContents payload</h3>
+</code></pre></div><h3 id='menucontents-payload'>MenuContents payload</h3>
 <p><strong>Only for menu items (item.type = 1):</strong></p>
 
 <table><thead>
@@ -3618,7 +3629,7 @@ POST message={
 <blockquote>
 <p>MenuContents (menu item) payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         <span class="s2">"total"</span>: 25.70
         ...
@@ -3657,7 +3668,7 @@ POST message={
     <span class="o">}</span>
     ...
 <span class="o">}</span>
-</code></pre><h3 id='payment-payload'>Payment payload</h3>
+</code></pre></div><h3 id='payment-payload'>Payment payload</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3708,7 +3719,7 @@ POST message={
 <blockquote>
 <p>Payment payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         <span class="s2">"total"</span>: 12.20,
         ...
@@ -3721,7 +3732,7 @@ POST message={
     <span class="o">}</span>
     ...
 <span class="o">}</span>
-</code></pre><h3 id='customer-payload'>Customer payload</h3>
+</code></pre></div><h3 id='customer-payload'>Customer payload</h3>
 <p>If a customer is found with the email or phone from this section, respectively, we will get the existing customer, and the other fields will not be updated.</p>
 
 <p>If the customer is not found, we will create one with all the fields sent.</p>
@@ -3809,7 +3820,7 @@ POST message={
 <blockquote>
 <p>Customer payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         ...
     <span class="o">}</span>,
@@ -3819,7 +3830,7 @@ POST message={
     <span class="o">}</span>
     ...
 <span class="o">}</span>
-</code></pre><h3 id='delivery-payload'>Delivery payload</h3>
+</code></pre></div><h3 id='delivery-payload'>Delivery payload</h3>
 <p><strong>The delivery info and the customer info are not the same.</strong></p>
 
 <p>The delivery data is the info for the delivery/pickup order. This info will not be saved in the customer data.</p>
@@ -3867,7 +3878,7 @@ POST message={
 <blockquote>
 <p>Delivery payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"order"</span>: <span class="o">{</span>
         ...
     <span class="o">}</span>,
@@ -3878,7 +3889,7 @@ POST message={
     <span class="o">}</span>
     ...
 <span class="o">}</span>
-</code></pre><h2 id='standalone-payment'>Standalone payment</h2>
+</code></pre></div><h2 id='standalone-payment'>Standalone payment</h2>
 <p>If you only want to make a payment for an existing order, you must use the following endpoint:</p>
 
 <p><code>POST orders/{orderId}/payments</code></p>
@@ -3888,14 +3899,14 @@ POST message={
 <blockquote>
 <p>Standalone payload example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="c"># Must be sent as a form-data body request.</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="c"># Must be sent as a form-data body request.</span>
 <span class="s2">"payment"</span>: <span class="o">{</span>
     <span class="s2">"amount"</span>: 12.20
     <span class="s2">"payment_method_id"</span>: 1,
     <span class="s2">"payment_reference"</span>: <span class="s2">"QR code payment."</span>,
     ...
 <span class="o">}</span>
-</code></pre><h2 id='fetch-an-order'>Fetch an Order</h2>
+</code></pre></div><h2 id='fetch-an-order'>Fetch an Order</h2>
 <p><code>GET orders/{orderId}</code></p>
 
 <p>You can fetch an order information using this endpoint</p>
@@ -3918,10 +3929,10 @@ It will return the <code>open</code> orders paginated by 50.</p>
 
 <p>It will return a 404 if there is no open order at that table at the moment</p>
 </blockquote>
-<h2 id='cancel-order'>Cancel Order</h2><pre class="highlight plaintext"><code>curl -XDELETE -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' \
+<h2 id='cancel-order'>Cancel Order</h2><div class="highlight"><pre class="highlight plaintext"><code>curl -XDELETE -H 'tenant: {tenant}' -H 'Authorization: Bearer {token}' \
 -d 'reason="Payment Failed"' \
 'https://revoxef.works/api/loyalty/orders/123456'
-</code></pre>
+</code></pre></div>
 <p>This endpoint makes a refund (a new order with negatives values).</p>
 
 <p>There is a limit time to cancel the order. If the account has configured the <a href="https://revoxef.works/config/delivery">Previous delivery minutes</a>, the limit to cancel the order will be the <em>Delivery date</em> subtract the <em>Delivery minutes</em>. Otherwise, you will have 5 minutes after an order has been place.</p>
@@ -3949,11 +3960,11 @@ It will return the <code>open</code> orders paginated by 50.</p>
 <p>Get all the tables with is name and id</p>
 
 <p><code>GET tables</code></p>
-<h2 id='tables-availability'>Tables availability</h2><pre class="highlight plaintext"><code>{
+<h2 id='tables-availability'>Tables availability</h2><div class="highlight"><pre class="highlight plaintext"><code>{
     "available" : true
 }
 
-</code></pre>
+</code></pre></div>
 <p>Use this method to know if a table is available or not (there is no open order on it)</p>
 
 <p><code>GET tables/{tableId}/available</code></p>
@@ -3970,30 +3981,30 @@ When this integration is enabled in the edit order screen, there will appear a n
 </blockquote>
 <h2 id='get-order'>GET ORDER</h2>
 <p>Gets all the information of the current order</p>
-<pre class="highlight plaintext"><code>    RevoLoyalty.getOrder(function(json) {
+<div class="highlight"><pre class="highlight plaintext"><code>    RevoLoyalty.getOrder(function(json) {
         var order = JSON.parse(json)
         const total = order["total"]
     })
-</code></pre><h2 id='get-account'>GET ACCOUNT</h2>
+</code></pre></div><h2 id='get-account'>GET ACCOUNT</h2>
 <p>Gets the account id and the account name</p>
-<pre class="highlight plaintext"><code>    RevoLoyalty.getAccount(function(json) {
+<div class="highlight"><pre class="highlight plaintext"><code>    RevoLoyalty.getAccount(function(json) {
         var items = JSON.parse(json)
         document.getElementById("text").innerHTML = json
         document.getElementById("orderTotal").innerHTML = "Account id: "+ account["id"]
     })
-</code></pre><h2 id='get-items'>GET ITEMS</h2>
+</code></pre></div><h2 id='get-items'>GET ITEMS</h2>
 <p>Gets all the information of the items requested by its ids, array of ints. If there is no item with a requested id, it won&#39;t be in the response</p>
-<pre class="highlight plaintext"><code>    RevoLoyalty.getItems([itemId1, itemId2, itemId3], function(json) {
+<div class="highlight"><pre class="highlight plaintext"><code>    RevoLoyalty.getItems([itemId1, itemId2, itemId3], function(json) {
         var items = JSON.parse(json)
         document.getElementById("text").innerHTML = json
         document.getElementById("orderTotal").innerHTML = "Account id: "+ account["id"]
     })
-</code></pre><h2 id='add-existing-discount'>ADD EXISTING DISCOUNT</h2>
+</code></pre></div><h2 id='add-existing-discount'>ADD EXISTING DISCOUNT</h2>
 <p>Adds a discount that exists in the database to the whole order</p>
-<pre class="highlight plaintext"><code>    RevoLoyalty.addExistingDiscount({id}, function(error) {
+<div class="highlight"><pre class="highlight plaintext"><code>    RevoLoyalty.addExistingDiscount({id}, function(error) {
 
     })
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4011,10 +4022,10 @@ When this integration is enabled in the edit order screen, there will appear a n
 <p>Result: Error if the discount does not exist</p>
 <h2 id='add-percentage-discount'>ADD PERCENTAGE DISCOUNT</h2>
 <p>Adds a new discount with percentage to the whole order</p>
-<pre class="highlight plaintext"><code>RevoLoyalty.addPercentageDiscount({name}, {percentage}, function() {
+<div class="highlight"><pre class="highlight plaintext"><code>RevoLoyalty.addPercentageDiscount({name}, {percentage}, function() {
 
 })
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4035,10 +4046,10 @@ When this integration is enabled in the edit order screen, there will appear a n
 </tbody></table>
 <h2 id='add-amount-discount'>ADD AMOUNT DISCOUNT</h2>
 <p>Adds a new discount with amount to the whole order</p>
-<pre class="highlight plaintext"><code>RevoLoyalty.addAmountDiscount({name}, {amount}, function() {
+<div class="highlight"><pre class="highlight plaintext"><code>RevoLoyalty.addAmountDiscount({name}, {amount}, function() {
 
 })
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4059,10 +4070,10 @@ When this integration is enabled in the edit order screen, there will appear a n
 </tbody></table>
 <h2 id='add-existing-content-discount'>ADD EXISTING CONTENT DISCOUNT</h2>
 <p>Adds a discount that exists in the database to the whole order</p>
-<pre class="highlight plaintext"><code>    RevoLoyalty.addContentExistingDiscount({line}, {id}, function(error) {
+<div class="highlight"><pre class="highlight plaintext"><code>    RevoLoyalty.addContentExistingDiscount({line}, {id}, function(error) {
 
     })
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4085,10 +4096,10 @@ When this integration is enabled in the edit order screen, there will appear a n
 <p>Result: Error if the discount does not exist</p>
 <h2 id='add-content-percentage-discount'>ADD CONTENT PERCENTAGE DISCOUNT</h2>
 <p>Adds a new discount with percentage to the whole order</p>
-<pre class="highlight plaintext"><code>RevoLoyalty.addContentPercentageDiscount({line}, {name}, {percentage}, {withoutExtras}, function() {
+<div class="highlight"><pre class="highlight plaintext"><code>RevoLoyalty.addContentPercentageDiscount({line}, {name}, {percentage}, {withoutExtras}, function() {
 
 })
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4119,10 +4130,10 @@ When this integration is enabled in the edit order screen, there will appear a n
 </tbody></table>
 <h2 id='add-content-amount-discount'>ADD CONTENT AMOUNT DISCOUNT</h2>
 <p>Adds a new discount with amount to the whole order</p>
-<pre class="highlight plaintext"><code>RevoLoyalty.addContentAmountDiscount({line}, {name}, {amount}, {withoutExtras}, function() {
+<div class="highlight"><pre class="highlight plaintext"><code>RevoLoyalty.addContentAmountDiscount({line}, {name}, {amount}, {withoutExtras}, function() {
 
 })
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4153,10 +4164,10 @@ When this integration is enabled in the edit order screen, there will appear a n
 </tbody></table>
 <h2 id='add-product'>ADD PRODUCT</h2>
 <p>Adds a new content to the order, the product must me of type <code>standard</code> as no popups can be shown</p>
-<pre class="highlight plaintext"><code>RevoLoyalty.addProduct({id}, {price}, function(error) {
+<div class="highlight"><pre class="highlight plaintext"><code>RevoLoyalty.addProduct({id}, {price}, function(error) {
 
 })
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4179,10 +4190,10 @@ When this integration is enabled in the edit order screen, there will appear a n
 <p>Error when the product does not exists or is not standard</p>
 <h2 id='add-payment'>ADD Payment</h2>
 <p>Adds a payment to the order, it will create an invoice there isn&#39;t one yet</p>
-<pre class="highlight plaintext"><code>RevoLoyalty.addPayment({id}, {amount}, function(error) {
+<div class="highlight"><pre class="highlight plaintext"><code>RevoLoyalty.addPayment({id}, {amount}, function(error) {
 
 })
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4205,12 +4216,12 @@ When this integration is enabled in the edit order screen, there will appear a n
 <p>error when the payment method does not exist</p>
 <h2 id='close'>CLOSE</h2>
 <p>Closes the webview</p>
-<pre class="highlight plaintext"><code>    RevoLoyalty.close()
-</code></pre><h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
-     --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
-     --header <span class="s1">'client-token: {client-token}'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight plaintext"><code>    RevoLoyalty.close()
+</code></pre></div><h1 id='xef-reports'>Xef Reports</h1><h2 id='authentication'>Authentication</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--header</span> <span class="s2">"tenant: {myaccount}"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s1">'client-token: {client-token}'</span> <span class="se">\</span>
 https://revoxef.works/api/external/v3
-</code></pre>
+</code></pre></div>
 <p>Base endpoint</p>
 
 <p><code>https://revoxef.works/api/external/v3</code></p>
@@ -4224,9 +4235,9 @@ https://revoxef.works/api/external/v3
 
 <p>Get your token at <a href="https://revoxef.works/account/tokens">https://revoxef.works/account/tokens</a></p>
 </blockquote>
-<h2 id='request'>Request</h2><pre class="highlight shell tab-shell"><code>curl --header <span class="s2">"tenant: {myaccount}"</span> --header <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\ </span>--header <span class="s1">'client-token: {client-token}'</span> <span class="se">\</span>
+<h2 id='request'>Request</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--header</span> <span class="s2">"tenant: {myaccount}"</span> <span class="nt">--header</span> <span class="s2">"authorization: Bearer {token}"</span> <span class="se">\ </span><span class="nt">--header</span> <span class="s1">'client-token: {client-token}'</span> <span class="se">\</span>
 https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName<span class="o">}</span>?start_date<span class="o">=</span>2018-01-01&amp;end_date<span class="o">=</span>2018-01-29
-</code></pre>
+</code></pre></div>
 <p><code>GET reports/{reportName}</code></p>
 
 <table><thead>
@@ -4262,7 +4273,7 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <td>Number of objects per page. The default value is <strong>50</strong> and the max allowed is <strong>200</strong>.</td>
 </tr>
 </tbody></table>
-<h3 id='response'>Response</h3><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">{</span><span class="s2">"HERE WILL GO THE SPECIFIC REPORT DATA"</span><span class="o">}</span>,
     <span class="s2">"from"</span>: 1,
@@ -4274,7 +4285,7 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
     <span class="s2">"to"</span>: 50,
     <span class="s2">"total"</span>: 190
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>All responses will have this header</p>
 <h2 id='available-reports'>Available reports</h2>
 <p>Here is a list of all available reports</p>
@@ -4312,99 +4323,129 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <li>canceledOrders</li>
 </ul>
 <h3 id='filters'>Filters</h3>
+<p>All filters must be used as a query parameters.</p>
+
 <table><thead>
 <tr>
 <th>Filter</th>
 <th> Type</th>
+<th>Belongs to report/resource</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><code>start_date</code></td>
 <td>YYYY-mm-dd</td>
+<td>All</td>
 <td>(required) The initial date for the report</td>
 </tr>
 <tr>
 <td><code>end_date</code></td>
 <td>YYYY-mm-dd</td>
+<td>All</td>
 <td>(required) The final date for the report</td>
 </tr>
 <tr>
 <td><code>start_time</code></td>
 <td>HH:mm</td>
+<td>All</td>
 <td>The start time for the report</td>
 </tr>
 <tr>
 <td><code>end_time</code></td>
 <td>HH:mm</td>
+<td>All</td>
 <td>The end time for the report</td>
-</tr>
-<tr>
-<td><code>room</code></td>
-<td>int</td>
-<td>Room id</td>
 </tr>
 <tr>
 <td><code>dayofweek</code></td>
 <td>int</td>
+<td>All</td>
 <td>Where Sunday is 1 and Saturday is 7</td>
+</tr>
+<tr>
+<td><code>room</code></td>
+<td>int</td>
+<td>Orders</td>
+<td>Room id</td>
 </tr>
 <tr>
 <td><code>priceRate</code></td>
 <td>int</td>
+<td>Contents</td>
 <td>Price rate id</td>
 </tr>
 <tr>
+<td><code>forTurn</code></td>
+<td>int</td>
+<td>Orders</td>
+<td>Filter orders for turn_id (forTurn=turn_id). This filter already includes withInvoices and withPayments filters. Date filters (start_date and end_date) do nothing with forTurn filter.</td>
+</tr>
+<tr>
+<td><code>table</code></td>
+<td>int</td>
+<td>Orders / Contents</td>
+<td>Filter orders/contents for table_id (table=table_id).</td>
+</tr>
+<tr>
 <td><code>withInvoices</code></td>
-<td></td>
-<td>Append invoices</td>
-</tr>
-<tr>
-<td><code>withFiscal</code></td>
-<td></td>
-<td>Append fiscal data to invoice</td>
-</tr>
-<tr>
-<td><code>withPayments</code></td>
-<td></td>
-<td>Append payments</td>
+<td>-</td>
+<td>Orders</td>
+<td>Append invoices resource</td>
 </tr>
 <tr>
 <td><code>withContents</code></td>
-<td></td>
-<td>Append contents</td>
-</tr>
-<tr>
-<td><code>withSubContents</code></td>
-<td></td>
-<td>Append subContents</td>
-</tr>
-<tr>
-<td><code>withItem</code></td>
-<td></td>
-<td>Append item details</td>
-</tr>
-<tr>
-<td><code>withModifiers</code></td>
-<td></td>
-<td>Append contents modifiers</td>
+<td>-</td>
+<td>Orders</td>
+<td>Append contents resource</td>
 </tr>
 <tr>
 <td><code>withDelivery</code></td>
-<td></td>
-<td>Append delivery information</td>
+<td>-</td>
+<td>Orders</td>
+<td>Append delivery resource</td>
 </tr>
 <tr>
-<td><code>forTurn=$turn_id</code></td>
-<td></td>
-<td>Filter orders for turn_id. This filter already includes withInvoices and withPayments filters. Date filters (start_date and end_date) do nothing with forTurn filter.</td>
+<td><code>withPayments</code></td>
+<td>-</td>
+<td>Invoices</td>
+<td>Append payments resource</td>
 </tr>
 <tr>
-<td><code>table=$table_id</code></td>
-<td></td>
-<td>Filter orders for table_id. Only for orders.</td>
+<td><code>withFiscal</code></td>
+<td>-</td>
+<td>Invoices</td>
+<td>Append fiscal data resource</td>
+</tr>
+<tr>
+<td><code>withItem</code></td>
+<td>-</td>
+<td>Contents</td>
+<td>Append item resource</td>
+</tr>
+<tr>
+<td><code>withSubContents</code></td>
+<td>-</td>
+<td>Contents</td>
+<td>Append subContents (menu contents) resource</td>
+</tr>
+<tr>
+<td><code>withModifiers</code></td>
+<td>-</td>
+<td>Contents</td>
+<td>Append modifier resource</td>
+</tr>
+<tr>
+<td><code>withPriceRate</code></td>
+<td>-</td>
+<td>Contents</td>
+<td>Append price rate resource</td>
 </tr>
 </tbody></table>
+
+<p>Example:</p>
+
+<p>Using order reports endpoint, if you want PriceRates resource, as it belongs to Contents, you will also need withContents filter.</p>
 
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
@@ -4461,7 +4502,7 @@ Take into account that not all filters are available for all reports. To exactly
 <p>With the body hashed with the <code>SHA256</code> algorithm and using the <code>secret key</code> generated when creating the first webhook.</p>
 
 <p>The payload will always have the keys</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"event"</span> : <span class="s2">"order.closed"</span>,
     <span class="s2">"data"</span> : <span class="o">{</span>
         <span class="s2">"id"</span> : 298
@@ -4469,7 +4510,7 @@ Take into account that not all filters are available for all reports. To exactly
         <span class="s2">"guests"</span> : 4
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Key</th>
@@ -4529,11 +4570,11 @@ Take into account that not all filters are available for all reports. To exactly
 <td>The event that will triger it</td>
 </tr>
 </tbody></table>
-<h2 id='product'>Product</h2><pre class="highlight sh tab-shell"><code>// Updated
+<h2 id='product'>Product</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>// Updated
 <span class="o">{</span>
     <span class="s2">"event"</span> : <span class="s2">"product.updated"</span>
     <span class="s2">"data"</span> : <span class="o">{</span>
-        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
         <span class="s2">"type"</span> : <span class="o">{</span><span class="nb">type</span><span class="o">}</span>,
         <span class="s2">"name"</span> : <span class="o">{</span>name<span class="o">}</span>,
         <span class="s2">"price"</span> : <span class="o">{</span>photo<span class="o">}</span>
@@ -4544,14 +4585,14 @@ Take into account that not all filters are available for all reports. To exactly
 <span class="o">{</span>
     <span class="s2">"event"</span> : <span class="s2">"product.deleted"</span>
     <span class="s2">"data"</span>:<span class="o">{</span>
-        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>
+        <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='customer'>Customer</h2><pre class="highlight sh tab-shell"><code>// Created
+</code></pre></div><h2 id='customer'>Customer</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>// Created
 <span class="o">{</span>
     <span class="s2">"event"</span> : <span class="s2">"customer.created"</span>
     <span class="s2">"data"</span> : <span class="o">{</span>
-        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
         <span class="s2">"active"</span> : <span class="o">{</span>active<span class="o">}</span>,
         <span class="s2">"name"</span> : <span class="o">{</span>name<span class="o">}</span>,
         <span class="s2">"address"</span> : <span class="o">{</span>address<span class="o">}</span>,
@@ -4575,7 +4616,7 @@ Take into account that not all filters are available for all reports. To exactly
 <span class="o">{</span>
     <span class="s2">"event"</span> : <span class="s2">"customer.updated"</span>
     <span class="s2">"data"</span> : <span class="o">{</span>
-        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
         <span class="s2">"active"</span> : <span class="o">{</span>active<span class="o">}</span>,
         <span class="s2">"name"</span> : <span class="o">{</span>name<span class="o">}</span>,
         <span class="s2">"address"</span> : <span class="o">{</span>address<span class="o">}</span>,
@@ -4599,20 +4640,20 @@ Take into account that not all filters are available for all reports. To exactly
 <span class="o">{</span>
     <span class="s2">"event"</span> : <span class="s2">"customer.deleted"</span>
     <span class="s2">"data"</span>:<span class="o">{</span>
-        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>
+        <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='order'>Order</h2><pre class="highlight sh tab-shell"><code>// Created
+</code></pre></div><h2 id='order'>Order</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>// Created
 <span class="o">{</span>
     <span class="s2">"event"</span> : <span class="s2">"order.created"</span>
     <span class="s2">"data"</span> : <span class="o">{</span>
-        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
         <span class="s2">"opened"</span> : <span class="o">{</span>opened<span class="o">}</span>,
         <span class="s2">"closed"</span> : <span class="o">{</span>closed<span class="o">}</span>,
         <span class="s2">"merged"</span> : <span class="o">{</span>merged<span class="o">}</span>,
         <span class="s2">"guests"</span> : <span class="o">{</span>guests<span class="o">}</span>,
         <span class="s2">"orderDiscountAmount"</span> : <span class="o">{</span>orderDiscountAmount<span class="o">}</span>,
-        <span class="s2">"sum"</span> : <span class="o">{</span>sum<span class="o">}</span>,
+        <span class="s2">"sum"</span> : <span class="o">{</span><span class="nb">sum</span><span class="o">}</span>,
         <span class="s2">"discountAmount"</span> : <span class="o">{</span>discountAmount<span class="o">}</span>,
         <span class="s2">"subtotal"</span> : <span class="o">{</span>subtotal<span class="o">}</span>,
         <span class="s2">"taxAmount"</span> : <span class="o">{</span>taxAmount<span class="o">}</span>,
@@ -4634,7 +4675,7 @@ Take into account that not all filters are available for all reports. To exactly
         <span class="s2">"refunded_order_id"</span> : <span class="o">{</span>refunded_order_id<span class="o">}</span>,
         <span class="s2">"orderContents"</span> : <span class="o">[</span>
           <span class="o">{</span>
-           <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+           <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
            <span class="s2">"order_id"</span> : <span class="o">{</span>order_id<span class="o">}</span>,
            <span class="s2">"item_id"</span> : <span class="o">{</span>item_id<span class="o">}</span>,
            <span class="s2">"dishOrder"</span> : <span class="o">{</span>dishOrder<span class="o">}</span>,
@@ -4647,14 +4688,14 @@ Take into account that not all filters are available for all reports. To exactly
            <span class="s2">"modifiers"</span> : <span class="o">[</span>
             <span class="o">{</span>
              <span class="s2">"category_id"</span> : <span class="o">{</span>category_id<span class="o">}</span>,
-             <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+             <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
              <span class="s2">"order"</span> : <span class="o">{</span>order<span class="o">}</span>,
              <span class="s2">"name"</span> : <span class="o">{</span>name<span class="o">}</span>,
              <span class="s2">"photo"</span> : <span class="o">{</span>photo<span class="o">}</span>,
              <span class="s2">"price"</span> : <span class="o">{</span>price<span class="o">}</span>,
             <span class="o">}</span>, <span class="o">{</span>
              <span class="s2">"category_id"</span> : <span class="o">{</span>category_id<span class="o">}</span>,
-             <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+             <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
              <span class="s2">"order"</span> : <span class="o">{</span>order<span class="o">}</span>,
              <span class="s2">"name"</span> : <span class="o">{</span>name<span class="o">}</span>,
              <span class="s2">"photo"</span> : <span class="o">{</span>photo<span class="o">}</span>,
@@ -4686,13 +4727,13 @@ Take into account that not all filters are available for all reports. To exactly
         <span class="o">]</span>,
         <span class="s2">"orderInvoices"</span> : <span class="o">[</span>
           <span class="o">{</span>
-            <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+            <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
             <span class="s2">"order_id"</span> : <span class="o">{</span>order_id<span class="o">}</span>,
             <span class="s2">"customer_id"</span> : <span class="o">{</span>customer_id<span class="o">}</span>,
             <span class="s2">"customerJSON"</span> : <span class="o">{</span>customerJSON<span class="o">}</span>,
-            <span class="s2">"date"</span> : <span class="o">{</span>date<span class="o">}</span>,
+            <span class="s2">"date"</span> : <span class="o">{</span><span class="nb">date</span><span class="o">}</span>,
             <span class="s2">"paymentMode"</span> : <span class="o">{</span>paymentMode<span class="o">}</span>,
-            <span class="s2">"sum"</span> : <span class="o">{</span>sum<span class="o">}</span>,
+            <span class="s2">"sum"</span> : <span class="o">{</span><span class="nb">sum</span><span class="o">}</span>,
             <span class="s2">"discountAmount"</span> : <span class="o">{</span>discountAmount<span class="o">}</span>,
             <span class="s2">"orderDiscountAmount"</span> : <span class="o">{</span>orderDiscountAmount<span class="o">}</span>,
             <span class="s2">"taxAmount"</span> : <span class="o">{</span>taxAmount<span class="o">}</span>,
@@ -4703,11 +4744,11 @@ Take into account that not all filters are available for all reports. To exactly
             <span class="s2">"notAccountable"</span> : <span class="o">{</span>notAccountable<span class="o">}</span>,
             <span class="s2">"orderPayments"</span> : <span class="o">[</span>
               <span class="o">{</span>
-                <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+                <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
                 <span class="s2">"invoice_id"</span> : <span class="o">{</span>invoice_id<span class="o">}</span>,
                 <span class="s2">"tenantUser_id"</span> : <span class="o">{</span>tenantUser_id<span class="o">}</span>,
                 <span class="s2">"tenantUserName"</span> : <span class="o">{</span>tenantUserName<span class="o">}</span>,
-                <span class="s2">"date"</span> : <span class="o">{</span>date<span class="o">}</span>,
+                <span class="s2">"date"</span> : <span class="o">{</span><span class="nb">date</span><span class="o">}</span>,
                 <span class="s2">"tipAmount"</span> : <span class="o">{</span>tipAmount<span class="o">}</span>,
                 <span class="s2">"payAmount"</span> : <span class="o">{</span>payAmount<span class="o">}</span>,
                 <span class="s2">"totalCollected"</span> : <span class="o">{</span>totalCollected<span class="o">}</span>,
@@ -4730,17 +4771,17 @@ Take into account that not all filters are available for all reports. To exactly
 <span class="o">{</span>
     <span class="s2">"event"</span> : <span class="s2">"order.closed"</span>
     <span class="s2">"data"</span>:<span class="o">{</span>
-        <span class="s2">"id"</span> : <span class="o">{</span>id<span class="o">}</span>,
+        <span class="s2">"id"</span> : <span class="o">{</span><span class="nb">id</span><span class="o">}</span>,
         <span class="s2">"table_id"</span> : <span class="o">{</span>table_id<span class="o">}</span>,
         <span class="s2">"total"</span> : <span class="o">{</span>total<span class="o">}</span>,
         <span class="s2">"guests"</span>: <span class="o">{</span>guests<span class="o">}</span> 
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h1 id='retail-deprecated'>Retail (Deprecated)</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
-     --header <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
-     --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+</code></pre></div><h1 id='retail-deprecated'>Retail (Deprecated)</h1><h2 id='authentication'>Authentication</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>curl <span class="nt">--header</span> <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      https://revoretail.works/api/external/reports
-</code></pre>
+</code></pre></div>
 <p>The main URL for the external API:</p>
 
 <p><code>https://revoretail.works/api/external/reports</code></p>
@@ -4772,7 +4813,7 @@ Take into account that not all filters are available for all reports. To exactly
 </tbody></table>
 
 <p>The <code>token</code> is obtained at <a href="https://revoretail.works/admin/account/tokens">Account managment</a> section of RevoRetail.</p>
-<h2 id='response-format'>Response format</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<h2 id='response-format'>Response format</h2><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Report data will go here]  <span class="o">]</span>,
     <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/reports/{reportName}?page=1"</span>,
@@ -4786,7 +4827,7 @@ Take into account that not all filters are available for all reports. To exactly
     <span class="s2">"to"</span>: 50,
     <span class="s2">"total"</span>: 190
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>All requests will return the info following this template.<br>
 This format is paginated to avoid the system collapse. The object <code>data</code> contains the lines of the requested report.</p>
 <h2 id='available-reports-deprecated'>Available reports (Deprecated)</h2>
@@ -4933,7 +4974,7 @@ Just note that all filters don't work on all reports. To know which ones work, w
 <td>application/json</td>
 </tr>
 </tbody></table>
-<h2 id='generic-list-response'>Generic list response</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<h2 id='generic-list-response'>Generic list response</h2><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Response data will go here]  <span class="o">]</span>,
     <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}?page=1"</span>,
@@ -4947,7 +4988,7 @@ Just note that all filters don't work on all reports. To know which ones work, w
     <span class="s2">"to"</span>: 50,
     <span class="s2">"total"</span>: 75
 <span class="o">}</span>
-</code></pre><h2 id='available-resources'>Available resources</h2><h3 id='variants'>Variants</h3>
+</code></pre></div><h2 id='available-resources'>Available resources</h2><h3 id='variants'>Variants</h3>
 <p>RevoRetail uses variants to store product sizes, colors, etc..</p>
 
 <p>It has 3 objects kinds to represent them</p>
@@ -4960,11 +5001,11 @@ Variant kind, for example, size or color.</p>
 <blockquote>
 <p>GET variantSets</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span><span class="s2">"id"</span>: 1, <span class="s2">"name"</span>: <span class="s2">"Color"</span><span class="o">}</span>,
     <span class="o">{</span><span class="s2">"id"</span>: 1, <span class="s2">"name"</span>: <span class="s2">"Size"</span><span class="o">}</span>
 <span class="o">]</span>
-</code></pre>
+</code></pre></div>
 <p>** 2. Variant **
 <code>Variants</code> are every variantSet variant, so blue, red, yellow,… for colors or L, XL,… for sizes. </p>
 
@@ -4973,7 +5014,7 @@ Variant kind, for example, size or color.</p>
 <blockquote>
 <p>GET variants</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">[</span>
    <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
         <span class="s2">"name"</span>: <span class="s2">"Red"</span>,
@@ -5003,7 +5044,7 @@ Variant kind, for example, size or color.</p>
         <span class="s2">"color"</span>: null
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre>
+</code></pre></div>
 <p>** 3. Product Variants **
 Then we have product variants that are variants linked to products.</p>
 
@@ -5012,7 +5053,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>GET productsVariants</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
         <span class="s2">"product_id"</span>: 23,
@@ -5038,7 +5079,7 @@ Then we have product variants that are variants linked to products.</p>
         <span class="s2">"variant_2_id"</span>: 4
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre><h3 id='get-list-of-taxes'>Get list of taxes</h3>
+</code></pre></div><h3 id='get-list-of-taxes'>Get list of taxes</h3>
 <p>Get a list of available taxes</p>
 
 <p><code>GET https://revoretail.works/api/external/config/taxes</code></p>
@@ -5046,7 +5087,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>GET taxes</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
         <span class="s2">"name"</span>: <span class="s2">"10%"</span>,
@@ -5058,7 +5099,7 @@ Then we have product variants that are variants linked to products.</p>
         <span class="s2">"taxPercentage"</span>: 21.00
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre><h3 id='get-stocks-list'>Get stocks list</h3>
+</code></pre></div><h3 id='get-stocks-list'>Get stocks list</h3>
 <p>Get an stock list.</p>
 
 <p><code>GET https://revoretail.works/api/external/catalog/stocks</code></p>
@@ -5066,7 +5107,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>GET stocks</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
         <span class="s2">"item_id"</span>: <span class="s2">"1"</span>,
@@ -5086,7 +5127,7 @@ Then we have product variants that are variants linked to products.</p>
         <span class="s2">"quantity"</span>: 15.00
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre><h3 id='generate-stock-movement'>Generate stock movement.</h3>
+</code></pre></div><h3 id='generate-stock-movement'>Generate stock movement.</h3>
 <p>We can generate stock movements with the following POST (required parameters: warehouse id, product id and quantity to move)</p>
 
 <p><code>POST https://revoretail.works/api/external/stocks/add</code></p>
@@ -5094,12 +5135,12 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>POST stocks/add</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"product_id"</span>: 1,
     <span class="s2">"warehouse_id"</span>: 1,
     <span class="s2">"quantity"</span>: 22.5
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>The answer is a 200 JSON with the current warehouse stock  <code>quantity</code>.</p>
 <h2 id='create-order'>Create Order</h2>
 <p>Store an order.</p>
@@ -5109,7 +5150,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>POST orders </p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"notes"</span>: <span class="s2">""</span>,
     <span class="s2">"shippingAmount"</span>: 0,
     <span class="s2">"sum"</span>: 71.5,
@@ -5167,7 +5208,7 @@ Then we have product variants that are variants linked to products.</p>
         <span class="o">}</span>
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>This will return an order. As relevant fields we do get the order id which will be used to make payments and create an invoice.</p>
 
 <p><code>{&quot;id&quot;: 1, &quot;status&quot;: 0, ...}</code></p>
@@ -5179,7 +5220,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>POST orders/{order_id}/invoices </p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"payments"</span>: <span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"amount"</span>: 65,
@@ -5189,7 +5230,7 @@ Then we have product variants that are variants linked to products.</p>
     <span class="o">}</span>
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>This will return an order invoice. As new relevant fields we can get the id.</p>
 
 <p><code>{&quot;id&quot;: 1, &quot;number&quot;: &quot;E-1&quot;, ...}</code></p>
@@ -5201,7 +5242,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>GET payment_methods</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
         <span class="s2">"name"</span>: <span class="s2">"Card"</span>,
@@ -5211,17 +5252,17 @@ Then we have product variants that are variants linked to products.</p>
         <span class="s2">"name"</span>: <span class="s2">"Cash"</span>,
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre><h2 id='sync-chains'>Sync chains</h2>
+</code></pre></div><h2 id='sync-chains'>Sync chains</h2>
 <p><code>Sync account chains data</code></p>
-<pre class="highlight sh tab-shell"><code>POST https://revoretail.works/api/external/chains/sync
-</code></pre>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>POST https://revoretail.works/api/external/chains/sync
+</code></pre></div>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span><span class="s2">"message"</span>: Synced<span class="o">}</span>,
 <span class="o">}</span>
-</code></pre><h1 id='retail-catalog'>Retail Catalog</h1>
+</code></pre></div><h1 id='retail-catalog'>Retail Catalog</h1>
 <p>Inside catalog there are many resources: groups, categories and resources.</p>
 
 <blockquote>
@@ -5265,7 +5306,7 @@ Then we have product variants that are variants linked to products.</p>
 <td>application/json</td>
 </tr>
 </tbody></table>
-<h2 id='generic-list-response'>Generic list response</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<h2 id='generic-list-response'>Generic list response</h2><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Response data will go here]  <span class="o">]</span>,
     <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/{resource}?page=1"</span>,
@@ -5279,7 +5320,7 @@ Then we have product variants that are variants linked to products.</p>
     <span class="s2">"to"</span>: 50,
     <span class="s2">"total"</span>: 75
 <span class="o">}</span>
-</code></pre><h3 id='url-parameters'>URL parameters</h3>
+</code></pre></div><h3 id='url-parameters'>URL parameters</h3>
 <p>You can add the next URL parameters for the paginated responses:</p>
 
 <table><thead>
@@ -5403,7 +5444,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>Create groups (POST) <code>catalog/groups</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"name"</span>: <span class="s2">"Test Group 1"</span>,
         ...
@@ -5414,15 +5455,15 @@ Then we have product variants that are variants linked to products.</p>
     <span class="o">}</span>,
     ...
 <span class="o">]</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a group (POST) <code>catalog/groups/&lt;group_id&gt;</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Super Test Group 1"</span>,
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoretail.works/api/external/catalog/groups/&lt;group_id&gt;</code></p>
 <h2 id='categories'>Categories</h2>
 <p>Can list, show, create, update and delete Categories.</p>
@@ -5528,7 +5569,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>Create categories (POST) <code>catalog/categories</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"name"</span>: <span class="s2">"Test Category 1"</span>,
         <span class="s2">"group_id"</span>: 1,
@@ -5541,15 +5582,15 @@ Then we have product variants that are variants linked to products.</p>
     <span class="o">}</span>,
     ...
 <span class="o">]</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a category (POST) <code>catalog/category/&lt;category_id&gt;</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Super Test Category 1"</span>,
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoretail.works/api/external/catalog/categories/&lt;category_id&gt;</code></p>
 <h2 id='products'>Products</h2>
 <p>Can list, show, create, update and delete Products.</p>
@@ -5895,7 +5936,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>Create products (POST) <code>catalog/products</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">[</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"name"</span>: <span class="s2">"Test Category 1"</span>,
         <span class="s2">"category_id"</span>: 1,
@@ -5908,15 +5949,15 @@ Then we have product variants that are variants linked to products.</p>
     <span class="o">}</span>,
     ...
 <span class="o">]</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Update a product (POST) <code>catalog/products/&lt;product_id&gt;</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Super Test Product 1"</span>,
     ...
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>DELETE <code>https://revoretail.works/api/external/catalog/products/&lt;product_id&gt;</code></p>
 <h2 id='stocks'>Stocks</h2>
 <p>Can list and create/update Stocks</p>
@@ -5926,7 +5967,7 @@ Then we have product variants that are variants linked to products.</p>
 <blockquote>
 <p>List Stocks (GET) <code>catalog/stocks</code></p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="c"># Response</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="c"># Response</span>
 <span class="o">[</span>
     <span class="o">{</span>
         <span class="s2">"quantity"</span>: 20,
@@ -5945,7 +5986,7 @@ Then we have product variants that are variants linked to products.</p>
         <span class="s2">"unit_id"</span>: 1
     <span class="o">}</span>,
 <span class="o">]</span>
-</code></pre>
+</code></pre></div>
 <p>POST <code>https://revoretail.works/api/external/stocks/add</code></p>
 
 <blockquote>
@@ -5953,7 +5994,7 @@ Then we have product variants that are variants linked to products.</p>
 
 <p>If the warehouse_id has a product_id already registered, it will update the record. If not, it will create a new stock record.</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="c"># Body</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="c"># Body</span>
 <span class="o">{</span>
     <span class="s2">"warehouse_id"</span> : 1, // Required
     <span class="s2">"product_id"</span> : 1, // Required
@@ -5963,11 +6004,11 @@ Then we have product variants that are variants linked to products.</p>
 <span class="o">{</span>
     <span class="s2">"quantity"</span>: 20
 <span class="o">}</span>
-</code></pre><h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><pre class="highlight sh tab-shell"><code>curl --header <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
-     --header <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
-     --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+</code></pre></div><h1 id='retail-reports'>Retail Reports</h1><h2 id='authentication'>Authentication</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>curl <span class="nt">--header</span> <span class="s2">"username: {account-username}"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Authorization: Bearer {token}"</span> <span class="se">\</span>
+     <span class="nt">--header</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      https://revoretail.works/api/external/v3/reports/<span class="o">{</span>reportName<span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>The main URL for the external API:</p>
 
 <p><code>https://revoretail.works/api/external/v3/reports/{reportName}</code></p>
@@ -6033,7 +6074,7 @@ Then we have product variants that are variants linked to products.</p>
 <td>Number of objects per page. The default value is <strong>50</strong> and the max allowed is <strong>200</strong>.</td>
 </tr>
 </tbody></table>
-<h2 id='response-format'>Response format</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<h2 id='response-format'>Response format</h2><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"current_page"</span>: 1,
     <span class="s2">"data"</span>: <span class="o">[</span>  <span class="o">[</span>Report data will go here]  <span class="o">]</span>,
     <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/v3/reports/{reportName}?page=1"</span>,
@@ -6047,7 +6088,7 @@ Then we have product variants that are variants linked to products.</p>
     <span class="s2">"to"</span>: 50,
     <span class="s2">"total"</span>: 190
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>All requests will return the info following this template.<br>
 This format is paginated to avoid the system collapse. The object <code>data</code> contains the lines of the requested report.</p>
 <h2 id='available-reports'>Available reports</h2>
@@ -6178,16 +6219,16 @@ Just note that all filters don't work on all reports. To know which ones work, w
 </tbody></table>
 
 <p>Response JSON: </p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
         "ok": true/false, (shows wether request succeded or not).
         "message": "", (when error occurs, an error message is sent)
         "data": {}/[]
     }
-</code></pre><h2 id='bookings'>Bookings</h2>
+</code></pre></div><h2 id='bookings'>Bookings</h2>
 <p>Start and End dates must be sent. Response is an array of bookings inside requested dates.</p>
 
 <p><code>https://revoflow.works/api/v1/bookings?start=2017-01-01&amp;end=2017-01-31</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
         "ok": true,
       "message": "",
       "data": [
@@ -6244,12 +6285,12 @@ Just note that all filters don't work on all reports. To know which ones work, w
         },
         ...]
     }
-</code></pre>
+</code></pre></div>
 <p>Finds a booking by its ID (in that example, the booking id is 1)<br>
 <code>https://revoflow.works/api/v1/bookings/1</code></p>
 <h3 id='save-booking-post'>Save Booking (POST)</h3>
 <p><code>https://revoflow.works/api/v1/bookings</code></p>
-<pre class="highlight plaintext"><code>    { 
+<div class="highlight"><pre class="highlight plaintext"><code>    { 
         data: {   
             "booking": {
                 "date": "2017-01-19",
@@ -6267,9 +6308,9 @@ Just note that all filters don't work on all reports. To know which ones work, w
             }
         }
     }
-</code></pre><h2 id='update-booking-put'>Update booking (PUT)</h2>
+</code></pre></div><h2 id='update-booking-put'>Update booking (PUT)</h2>
 <p><code>https://revoflow.works/api/v1/bookings/{id}</code></p>
-<pre class="highlight plaintext"><code>    { 
+<div class="highlight"><pre class="highlight plaintext"><code>    { 
         data: {   
             "booking": {
                 "date": "2017-01-19",
@@ -6283,12 +6324,12 @@ Just note that all filters don't work on all reports. To know which ones work, w
         }
     }
 
-</code></pre><h2 id='customers'>Customers</h2>
+</code></pre></div><h2 id='customers'>Customers</h2>
 <p>Gets the a list of paginated customers.
 The page and limit must be set in request.</p>
 
 <p><code>https://revoflow.works/api/v1/customers?page=1&amp;limit=10</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
         "ok": true,
         "message": "",
         "data": {
@@ -6318,11 +6359,11 @@ The page and limit must be set in request.</p>
             "left": 0
         }
     }
-</code></pre><h2 id='products'>Products</h2>
+</code></pre></div><h2 id='products'>Products</h2>
 <p>Get products list</p>
 
 <p><code>https://revoflow.works/api/v1/products</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
       "ok": true,
       "message": "",
       "data": [
@@ -6341,13 +6382,13 @@ The page and limit must be set in request.</p>
         },
         ...]
     }
-</code></pre>
+</code></pre></div>
 <p>Get product by its ID
 <code>https://revoflow.works/api/v1/products/1</code></p>
 <h2 id='shifts'>Shifts</h2>
 <p>Get shifts list
 <code>https://revoflow.works/api/v1/shifts</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
       "ok": true,
       "message": "",
       "data": [
@@ -6363,10 +6404,10 @@ The page and limit must be set in request.</p>
         },
         ...]
     }
-</code></pre><h2 id='tables'>Tables</h2>
+</code></pre></div><h2 id='tables'>Tables</h2>
 <p>Get tables by day and shift.
 <code>https://revoflow.works/api/v1/tables?date=2017-02-01&amp;shift_id=1</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
       "ok": true,
       "message": "",
       "data": [
@@ -6375,10 +6416,10 @@ The page and limit must be set in request.</p>
         }
       ]
     }    
-</code></pre><h2 id='availabillity'>Availabillity</h2>
+</code></pre></div><h2 id='availabillity'>Availabillity</h2>
 <p>Get the availabillity between requested dates.
 <code>https://revoflow.works/api/v1/availability?from=2017-02-01&amp;to=2017-02-15</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
       "ok": true,
       "message": "",
       "data": [
@@ -6403,10 +6444,10 @@ The page and limit must be set in request.</p>
         }
       ]
     }
-</code></pre><h2 id='time-available'>Time Available</h2>
+</code></pre></div><h2 id='time-available'>Time Available</h2>
 <p>Get the available time on each shift.
 <code>https://revoflow.works/api/v1/shiftsTime?date=2017-02-01&amp;guests=5</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
       "ok": true,
       "message": "",
       "data": [
@@ -6427,11 +6468,11 @@ The page and limit must be set in request.</p>
         }
       ]
     }
-</code></pre><h2 id='next-bookings'>Next bookings</h2>
+</code></pre></div><h2 id='next-bookings'>Next bookings</h2>
 <p>Get next bookings inside interval [&quot;-1h&quot; - &quot;+2h&quot;].</p>
 
 <p><code>https://revoflow.works/api/v1/nextBookings</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
       "ok": true,
       "message": "",
       "data": [
@@ -6490,24 +6531,24 @@ The page and limit must be set in request.</p>
         },
         ...]
     }
-</code></pre><h2 id='close-booking'>Close Booking</h2>
+</code></pre></div><h2 id='close-booking'>Close Booking</h2>
 <p>Closes booking by Order ID
 <code>https://revoflow.works/api/v1/bookings/closeWithOrder/{id}</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
       "ok": true,
       "message": "",
       "data": []
     }
-</code></pre>
+</code></pre></div>
 <p>Closes booking by ID
 <code>https://revoflow.works/api/v1/bookings/close/{id}</code></p>
-<pre class="highlight plaintext"><code>    {
+<div class="highlight"><pre class="highlight plaintext"><code>    {
       "ok": true,
       "message": "",
       "data": []
     }
 ``
-</code></pre><h1 id='revoflow-integration-api'>RevoFlow integration API</h1><h2 id='basic-request'>Basic Request</h2><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+</code></pre></div><h1 id='revoflow-integration-api'>RevoFlow integration API</h1><h2 id='basic-request'>Basic Request</h2><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
    <span class="s2">"auth"</span>:<span class="o">{</span>
      <span class="s2">"tenant"</span>  :<span class="s2">"account"</span>,
      <span class="s2">"password"</span>:<span class="s2">"password"</span>
@@ -6515,7 +6556,7 @@ The page and limit must be set in request.</p>
    <span class="s2">"action"</span>:<span class="s2">"action"</span>,
    <span class="s2">"data"</span>:data
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>To work with <code>Revo external api</code> a <code>POST</code> or <code>GET</code> request is required to the following url:</p>
 
 <p><code>https://admin.revo.works/apiFlow</code></p>
@@ -6556,11 +6597,11 @@ The page and limit must be set in request.</p>
 </blockquote>
 <h2 id='sync'>Sync</h2>
 <p>Returns the full data for an specific model and id.</p>
-<pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>:<span class="o">{</span>
     <span class="s2">"model"</span>:<span class="s2">"TableTable"</span>
     <span class="s2">"fromDate:"</span>yyyy/mm/dd HH:mm:ss<span class="s2">",
 }
-</span></code></pre>
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -6576,7 +6617,7 @@ The page and limit must be set in request.</p>
 <td>the date from which changes to sync</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code> https://admin.revo.works/apiFlow?message<span class="o">=</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code> https://admin.revo.works/apiFlow?message<span class="o">=</span>
 <span class="o">{</span>
 <span class="s2">"auth"</span>:<span class="o">{</span>
     <span class="s2">"tenant"</span>  :<span class="s2">"user1"</span>,
@@ -6589,25 +6630,25 @@ The page and limit must be set in request.</p>
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre><h2 id='searchproducts'>searchProducts</h2>
+</code></pre></div><h2 id='searchproducts'>searchProducts</h2>
 <p>This action searches and returns the products where the name is like the text you ask for</p>
-<pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
   <span class="s2">"text"</span>: <span class="s2">"burger"</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Text needs to be at least of 3 characters</p>
 </blockquote>
-<h2 id='updatetables'>updateTables</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
+<h2 id='updatetables'>updateTables</h2><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
   <span class="s2">"tables"</span>: <span class="o">[</span>
     <span class="o">{</span><span class="s1">'id'</span>:1,<span class="s1">'x'</span>:10,<span class="s1">'y'</span>:10,<span class="s1">'width'</span>:100,<span class="s1">'height'</span>:100,<span class="s1">'isJoined'</span>:false<span class="o">}</span>,
     <span class="o">{</span><span class="s1">'id'</span>:2,<span class="s1">'x'</span>:20,<span class="s1">'y'</span>:20,<span class="s1">'width'</span>:100,<span class="s1">'height'</span>:100,<span class="s1">'isJoined'</span>:true<span class="o">}</span>,
     <span class="o">{</span><span class="s1">'id'</span>:3,<span class="s1">'x'</span>:30,<span class="s1">'y'</span>:30,<span class="s1">'width'</span>:100,<span class="s1">'height'</span>:100,<span class="s1">'isJoined'</span>:false<span class="o">}</span>
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>This action updates the tables Layout (not the original one)</p>
-<h2 id='neworder'>newOrder</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
+<h2 id='neworder'>newOrder</h2><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
     <span class="s2">"table_id"</span>: 3,
     <span class="s2">"guests"</span>: 4,
     <span class="s2">"contents"</span>: <span class="o">[</span>
@@ -6631,7 +6672,7 @@ The page and limit must be set in request.</p>
       }
     ]
 }
-</span></code></pre><h2 id='updateorder'>updateOrder</h2><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
+</span></code></pre></div><h2 id='updateorder'>updateOrder</h2><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="s2">"data"</span>: <span class="o">{</span>
     <span class="s2">"table_id"</span>: 2,
     <span class="s2">"guests"</span>: 4,
     <span class="s2">"payments"</span>:[
@@ -6641,7 +6682,7 @@ The page and limit must be set in request.</p>
         }
     ]
 }
-</span></code></pre>
+</span></code></pre></div>
 <p>Use this function to create a new Order to Revo,
 You can send payments where <code>payment_method_id</code> is <code>1</code> (Card) or <code>2</code> (Cash)</p>
 <h1 id='intouch'>InTouch</h1>
@@ -6683,10 +6724,10 @@ All requests will have the same structure.</p>
 </tbody></table>
 
 <p>The <code>api-token</code> is a unique token generated for each account and can be found in the Back-Office (Prerequisites).</p>
-<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/'</span> <span class="se">\</span>
-  --header <span class="s1">'Authorization: Bearer {api-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
-</code></pre><h2 id='stores'>Stores</h2><h4 id='get-stores'><code>GET stores</code></h4>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://revointouch.works/api/v1/'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Authorization: Bearer {api-token}'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
+</code></pre></div><h2 id='stores'>Stores</h2><h4 id='get-stores'><code>GET stores</code></h4>
 <p>Returns a list of the stores from a specified POS username.</p>
 
 <table><thead>
@@ -6704,7 +6745,7 @@ All requests will have the same structure.</p>
 <blockquote>
 <p>GET stores?username=USERNAME</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">[</span>
         <span class="o">{</span>
             <span class="s2">"id"</span>: 1,
@@ -6716,14 +6757,14 @@ All requests will have the same structure.</p>
         <span class="o">}</span>
     <span class="o">]</span>
 <span class="o">}</span>
-</code></pre><h2 id='store-status'>Store Status</h2><h4 id='get-stores-store-status'><code>GET stores/{store}/status</code></h4>
+</code></pre></div><h2 id='store-status'>Store Status</h2><h4 id='get-stores-store-status'><code>GET stores/{store}/status</code></h4>
 <p>Returns the status of the specified store.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"status"</span>: <span class="s2">"paused"</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h4 id='post-stores-store-status'><code>POST stores/{store}/status</code></h4>
+</code></pre></div><h4 id='post-stores-store-status'><code>POST stores/{store}/status</code></h4>
 <p>Returns previous and current updated status after call.</p>
 
 <table><thead>
@@ -6737,13 +6778,13 @@ All requests will have the same structure.</p>
 <td><strong>string</strong> status to send.</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"previousStatus"</span>: <span class="s2">"online"</span>,
         <span class="s2">"currentStatus"</span>: <span class="s2">"paused"</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='store-products-availability'>Store products availability</h2>
+</code></pre></div><h2 id='store-products-availability'>Store products availability</h2>
 <p>With this endpoint, you can activate/deactivate products in a specific store</p>
 <h4 id='post-catalog-updatestatus'><code>POST catalog/updateStatus</code></h4>
 <p>If the request is processed, we return status OK (200).</p>
@@ -6788,10 +6829,10 @@ All requests will have the same structure.</p>
 <td>default: 0. &#39;alsoNested&#39; must be 1, to reactivate the products that are inside menus (only in the case they have been deactivated).</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>curl --location --request POST <span class="s1">'https://revointouch.works/api/v1/catalog/updateStatus?active=0&amp;store=1&amp;products=[product_ids]&amp;until=2024/02/22'</span> <span class="se">\</span>
-  --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
-  --header <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
-</code></pre><h2 id='customers-points'>Customers Points</h2>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://revointouch.works/api/v1/catalog/updateStatus?active=0&amp;store=1&amp;products=[product_ids]&amp;until=2024/02/22'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
+</code></pre></div><h2 id='customers-points'>Customers Points</h2>
 <p>This endpoint is an exception to the rule. To get the {customer-token} you need to login with a customer. Explained in the next section (Customer Authorization type request).</p>
 <h4 id='get-customers-customer-token-points'><code>GET customers/{customer-token}/points</code></h4>
 <p>Returns the points of a customer + the points spent with the specified product.</p>
@@ -6837,13 +6878,13 @@ Response:
 <td><strong>Json</strong> id of the product in Json format.</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"spentPoints"</span>: 0,
         <span class="s2">"leftPoints"</span>: 8000
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='solo-urls'>SOLO URLs</h2>
+</code></pre></div><h2 id='solo-urls'>SOLO URLs</h2>
 <p>With this endpoint you can get all the SOLO access URLs.</p>
 <h4 id='get-solo-urls'><code>GET solo/urls</code></h4>
 <p>You can use the following optional URL parameter:</p>
@@ -6867,15 +6908,15 @@ Response:
 <blockquote>
 <p>cURL request example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/solo/urls'</span> <span class="se">\</span>
-  --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
-  --header <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
-  --header <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
-</code></pre>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://revointouch.works/api/v1/solo/urls'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+</code></pre></div>
 <blockquote>
 <p>Response example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"delivery_url"</span>: <span class="s2">"https://delivery_url"</span>,
         <span class="s2">"pickup_url"</span>: <span class="s2">"https://pickup_url"</span>,
@@ -6904,7 +6945,7 @@ Response:
         <span class="o">]</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h1 id='intouch-customer-authorization-type-request'>InTouch - Customer Authorization type request</h1>
+</code></pre></div><h1 id='intouch-customer-authorization-type-request'>InTouch - Customer Authorization type request</h1>
 <p>Also, for this type of request, you will need a POS integration (Xef account). This can be done in the InTouch Back-Office (Settings &gt; POS Integrations).</p>
 <h2 id='prerequisites-2'>Prerequisites</h2>
 <p>To be able to use this type of request you must need a <code>Revo InTouch</code> account and a <code>POS integration</code>.</p>
@@ -7033,12 +7074,12 @@ Response:
 <td>Bearer {customer-token}</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/customer'</span> <span class="se">\</span>
-  --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
-  --header <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
-</code></pre><h2 id='customer'>Customer</h2><h4 id='get'><code>GET /</code></h4>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://revointouch.works/api/v1/customer'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Authorization: Bearer {customer-token}'</span> <span class="se">\</span>
+</code></pre></div><h2 id='customer'>Customer</h2><h4 id='get'><code>GET /</code></h4>
 <p>Returns the current customer info.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"id"</span>: 1,
         <span class="s2">"name"</span>: <span class="s2">"Customer Name"</span>,
@@ -7068,7 +7109,7 @@ Response:
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h4 id='put'><code>PUT /</code></h4>
+</code></pre></div><h4 id='put'><code>PUT /</code></h4>
 <p>Updates the current customer info.</p>
 
 <p>Body data to send in <strong>Json</strong> format (mandatory parameters):
@@ -7097,15 +7138,15 @@ Response:
 </tbody></table>
 
 <p>Photo must be in base64 encoded format.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"result"</span>: <span class="s2">"OK"</span>,
         <span class="s2">"photoName"</span>: <span class="s2">"ovrA7mVcSQ.jpg"</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='cards'>Cards</h2><h4 id='get-cards'><code>GET cards</code></h4>
+</code></pre></div><h2 id='cards'>Cards</h2><h4 id='get-cards'><code>GET cards</code></h4>
 <p>Returns all the cards data.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">"active"</span> : 1,
@@ -7127,7 +7168,7 @@ Response:
     <span class="o">}</span>,
   <span class="o">]</span>
 <span class="o">}</span>
-</code></pre><h4 id='get-cards-card_uuid'><code>GET cards/{card_uuid}</code></h4>
+</code></pre></div><h4 id='get-cards-card_uuid'><code>GET cards/{card_uuid}</code></h4>
 <p>Gets the specified card&#39;s data by the card_uuid
 <code>sh
 {
@@ -7160,12 +7201,12 @@ Response:
 <td><strong>string</strong> (optional) the stripe payment token. If null or not present it will use customer&#39;s default credit card --&gt;</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"newAmount"</span> : 1000
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h4 id='post-cards'><code>POST cards</code></h4>
+</code></pre></div><h4 id='post-cards'><code>POST cards</code></h4>
 <p>Creates a new gift card with the desired name.</p>
 
 <table><thead>
@@ -7179,7 +7220,7 @@ Response:
 <td><strong>string</strong> the name of the new card</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"amount"</span> : 0,
     <span class="s2">"id"</span> : 9,
@@ -7189,7 +7230,7 @@ Response:
     <span class="s2">"customer_id"</span> : 1
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <!-- ## CardAssociate
 
 #### `POST cards/{uuid}/associate`
@@ -7251,7 +7292,7 @@ amount| **string** Amount to transfer to the card
 <td><strong>string</strong> Id of the group to associate</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"id"</span>: 2,
         <span class="s2">"name"</span>: <span class="s2">"Revo"</span>,
@@ -7259,7 +7300,7 @@ amount| **string** Amount to transfer to the card
         <span class="s2">"created_at"</span>: <span class="s2">"2021-06-14 15:54:53"</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='orders'>Orders</h2><h3 id='create-an-order'>Create an order</h3><h4 id='post-orders'><code>POST orders</code></h4>
+</code></pre></div><h2 id='orders'>Orders</h2><h3 id='create-an-order'>Create an order</h3><h4 id='post-orders'><code>POST orders</code></h4>
 <p>Parameters:</p>
 
 <table><thead>
@@ -7316,13 +7357,13 @@ amount| **string** Amount to transfer to the card
 <td>the array of menuContents</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code><span class="nv">order</span><span class="o">={</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="nv">order</span><span class="o">={</span>
   <span class="s2">"subtotal"</span> : 1673,
   <span class="s2">"id"</span> : null,
   <span class="s2">"total"</span> : 1840,
   <span class="s2">"taxAmount"</span> : 167
 <span class="o">}</span>
-</code></pre><pre class="highlight sh tab-shell"><code><span class="nv">delivery</span><span class="o">={</span>
+</code></pre></div><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="nv">delivery</span><span class="o">={</span>
     <span class="s2">"address"</span> : <span class="s2">"Central perk, 12"</span>,
     <span class="s2">"city"</span> : <span class="s2">"New York"</span>,
     <span class="s2">"phone"</span> : <span class="s2">"555-555-555"</span>,
@@ -7330,7 +7371,7 @@ amount| **string** Amount to transfer to the card
     <span class="s2">"geolocation"</span> : <span class="s2">"41.5500976,2.0964411"</span>
 <span class="o">}</span>
 
-</code></pre><pre class="highlight sh tab-shell"><code>contents <span class="o">=</span> <span class="o">[{</span>
+</code></pre></div><div class="highlight"><pre class="highlight sh tab-shell"><code>contents <span class="o">=</span> <span class="o">[{</span>
   <span class="s2">"product_id"</span> : 1,
   <span class="s2">"quantity"</span> : 1,
   <span class="s2">"id"</span> : null,
@@ -7376,9 +7417,9 @@ amount| **string** Amount to transfer to the card
       <span class="s2">"modifiers"</span> : <span class="o">[]</span>
   <span class="o">]</span>
 <span class="o">}]</span>
-</code></pre><h3 id='get-an-order'>Get an order</h3><h4 id='get-orders'><code>GET orders</code></h4>
+</code></pre></div><h3 id='get-an-order'>Get an order</h3><h4 id='get-orders'><code>GET orders</code></h4>
 <p>Returns the orders of the current customer.</p>
-<pre class="highlight sh tab-shell"><code>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>
 <span class="o">{</span>
   <span class="s2">"data"</span> : 
     <span class="o">[</span>
@@ -7433,7 +7474,7 @@ amount| **string** Amount to transfer to the card
           <span class="o">}</span>,
     <span class="o">]</span>
   <span class="o">}</span>
-</code></pre><h3 id='close-an-order'>Close an Order</h3><h4 id='put-orders-id'><code>PUT orders/{id}</code></h4>
+</code></pre></div><h3 id='close-an-order'>Close an Order</h3><h4 id='put-orders-id'><code>PUT orders/{id}</code></h4>
 <p>It closes the order with the specified id.</p>
 
 <p>Returns the order info:
@@ -7453,7 +7494,7 @@ amount| **string** Amount to transfer to the card
         &quot;status&quot;: 5,
     }
 }</p>
-<pre class="highlight plaintext"><code>
+<div class="highlight"><pre class="highlight plaintext"><code>
 ### Get Last Order
 #### `GET lastOrder`
 
@@ -7517,14 +7558,14 @@ Returns the last order for the customer.
     }
   }
 }
-</code></pre><h2 id='points'>Points</h2><h4 id='get-points'><code>GET points</code></h4>
+</code></pre></div><h2 id='points'>Points</h2><h4 id='get-points'><code>GET points</code></h4>
 <p>Returns points for the current customer.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"points"</span>: 58013
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <!-- ## Credit Cards
 
 #### `POST creditCards`
@@ -7619,7 +7660,7 @@ token    | The stripe card token
 #### `DELETE creditCards/{id}` -->
 <h2 id='theme'>Theme</h2><h4 id='get-theme'><code>GET theme</code></h4>
 <p>Returns app theme.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"theme"</span>: <span class="o">{</span>
             <span class="s2">"account"</span>: <span class="s2">"revosupport"</span>,
@@ -7680,7 +7721,7 @@ token    | The stripe card token
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre><h2 id='invoices'>Invoices</h2><h4 id='post-invoices-id-points-obtain'><code>POST invoices/{id}/points/obtain</code></h4>
+</code></pre></div><h2 id='invoices'>Invoices</h2><h4 id='post-invoices-id-points-obtain'><code>POST invoices/{id}/points/obtain</code></h4>
 <p>Return the points for the specific invoice.</p>
 <h1 id='intouch-public-customer-type-request'>InTouch - Public Customer type request</h1><h2 id='prerequisites-3'>Prerequisites</h2>
 <p>To be able to use this type of request you must need a <code>Revo InTouch</code> account and a <code>POS integration</code>.</p>
@@ -7706,11 +7747,11 @@ token    | The stripe card token
 <td>{account-username}</td>
 </tr>
 </tbody></table>
-<pre class="highlight sh tab-shell"><code>curl --location --request GET <span class="s1">'https://revointouch.works/api/v1/customer'</span> <span class="se">\</span>
-  --header <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
-</code></pre><h2 id='stores-2'>Stores</h2><h4 id='get-stores-2'><code>GET stores</code></h4>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://revointouch.works/api/v1/customer'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'account: {account-username}'</span> <span class="se">\</span>
+</code></pre></div><h2 id='stores-2'>Stores</h2><h4 id='get-stores-2'><code>GET stores</code></h4>
 <p>Returns all the stores data.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -7729,9 +7770,9 @@ token    | The stripe card token
     <span class="s2">"deleted"</span> : null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='categories'>Categories</h2><h4 id='get-categories'><code>GET categories</code></h4>
+</code></pre></div><h2 id='categories'>Categories</h2><h4 id='get-categories'><code>GET categories</code></h4>
 <p>Returns all categories data.</p>
-<pre class="highlight sh tab-shell"><code>  <span class="s2">"data"</span> : <span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>  <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
         <span class="s2">"deleted_at"</span> : null,
@@ -7748,9 +7789,9 @@ token    | The stripe card token
     <span class="s2">"deleted"</span> : null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='shifts'>Shifts</h2><h4 id='get-shifts'><code>GET shifts</code></h4>
+</code></pre></div><h2 id='shifts'>Shifts</h2><h4 id='get-shifts'><code>GET shifts</code></h4>
 <p>Returns all shifts.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -7772,11 +7813,11 @@ token    | The stripe card token
     <span class="s2">"deleted"</span> : null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='deliveryshifts'>DeliveryShifts</h2>
+</code></pre></div><h2 id='deliveryshifts'>DeliveryShifts</h2>
 <p>These only should be used when <code>store.use_delivery_shifts</code> is true, if it is false, use the standard shifts for deliveries as well</p>
 <h4 id='get-deliveryshifts'><code>GET deliveryShifts</code></h4>
 <p>Returns all delivery shifts</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -7798,7 +7839,7 @@ token    | The stripe card token
     <span class="s2">"deleted"</span> : null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='products'>Products</h2><h4 id='get-products-returns-all-products'><code>GET products</code> Returns all products.</h4><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+</code></pre></div><h2 id='products'>Products</h2><h4 id='get-products-returns-all-products'><code>GET products</code> Returns all products.</h4><div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -7839,9 +7880,9 @@ token    | The stripe card token
     <span class="s2">"deleted"</span> : null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='menu-categories'>Menu Categories</h2><h4 id='get-menucategories'><code>GET menuCategories</code></h4>
+</code></pre></div><h2 id='menu-categories'>Menu Categories</h2><h4 id='get-menucategories'><code>GET menuCategories</code></h4>
 <p>Returns all menuCategories</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="o">{</span>
         <span class="s2">"id"</span> : 1
         <span class="s2">"name"</span> : <span class="s2">"Drinks"</span>,
@@ -7856,9 +7897,9 @@ token    | The stripe card token
 
 <span class="o">}</span>
 
-</code></pre><h2 id='menu-products'>Menu Products</h2><h4 id='get-menuproducts'><code>GET menuProducts</code></h4>
+</code></pre></div><h2 id='menu-products'>Menu Products</h2><h4 id='get-menuproducts'><code>GET menuProducts</code></h4>
 <p>Returns all menuproducts</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="o">{</span>
         <span class="s2">"product_id"</span> : 1,
         <span class="s2">"menu_category_id"</span> : 1
@@ -7874,9 +7915,9 @@ token    | The stripe card token
 
 <span class="o">}</span>
 
-</code></pre><h2 id='modifiers'>Modifiers</h2><h4 id='get-modifiers'><code>GET modifiers</code></h4>
+</code></pre></div><h2 id='modifiers'>Modifiers</h2><h4 id='get-modifiers'><code>GET modifiers</code></h4>
 <p>Returns all modifiers.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
 <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -7896,9 +7937,9 @@ token    | The stripe card token
     <span class="s2">"deleted"</span> : null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='modifier-categories'>Modifier Categories</h2><h4 id='get-modifiercategories'><code>GET modifierCategories</code></h4>
+</code></pre></div><h2 id='modifier-categories'>Modifier Categories</h2><h4 id='get-modifiercategories'><code>GET modifierCategories</code></h4>
 <p>Returns all modifier categories.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -7919,9 +7960,9 @@ token    | The stripe card token
     <span class="s2">"deleted"</span> : null
   <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><h2 id='product-modifier-categories'>Product - Modifier Categories</h2><h4 id='get-productmodifiercategories'><code>GET productModifierCategories</code></h4>
+</code></pre></div><h2 id='product-modifier-categories'>Product - Modifier Categories</h2><h4 id='get-productmodifiercategories'><code>GET productModifierCategories</code></h4>
 <p>Returns all productModifierCategories</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -7942,17 +7983,17 @@ token    | The stripe card token
   <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre><h2 id='tableavailable'>TableAvailable</h2><h4 id='get-table-id-available'><code>GET table/{id}/available</code></h4>
+</code></pre></div><h2 id='tableavailable'>TableAvailable</h2><h4 id='get-table-id-available'><code>GET table/{id}/available</code></h4>
 <p>Returns if the table (of the first store with a POS Integration) with the specified id is available.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"available"</span>: <span class="nb">true</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre><h2 id='productstore'>ProductStore</h2><h4 id='get-productstore'><code>GET productStore</code></h4>
+</code></pre></div><h2 id='productstore'>ProductStore</h2><h4 id='get-productstore'><code>GET productStore</code></h4>
 <p>Returns productStore for current customer.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -7981,9 +8022,9 @@ token    | The stripe card token
   <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre><h2 id='sellingformatstore'>SellingFormatStore</h2><h4 id='get-sellingformatstore'><code>GET sellingFormatStore</code></h4>
+</code></pre></div><h2 id='sellingformatstore'>SellingFormatStore</h2><h4 id='get-sellingformatstore'><code>GET sellingFormatStore</code></h4>
 <p>Returns sellingFormatStore for current customer.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
   <span class="s2">"data"</span> : <span class="o">{</span>
     <span class="s2">"new"</span> : <span class="o">[</span>
       <span class="o">{</span>
@@ -8010,7 +8051,7 @@ token    | The stripe card token
   <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre>
+</code></pre></div>
 <!-- #### `GET pointsShifts`
 
 Returns PointShifts.
@@ -8027,7 +8068,7 @@ Returns PointShifts.
 ``` -->
 <h2 id='kiosk'>Kiosk</h2><h4 id='get-kiosk'><code>GET kiosk</code></h4>
 <p>Returns kiosk Data.</p>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"data"</span>: <span class="o">{</span>
         <span class="s2">"new"</span>: <span class="o">[</span>
             <span class="o">{</span>
@@ -8080,7 +8121,7 @@ Returns PointShifts.
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre><h2 id='syncable-models'>Syncable models</h2>
+</code></pre></div><h2 id='syncable-models'>Syncable models</h2>
 <p>Doing a get request with a <code>from</code> parameter will return the objects to sync from them. Ideally you can store those objects into your system to be more responsive and sync when something changes</p>
 <h1 id='overview'>Overview</h1><h2 id='prerequisistes'>Prerequisistes</h2>
 <p>To be able to use the external api you need a <code>revo xef</code> account and a <code>access token</code></p>
@@ -8124,9 +8165,9 @@ Returns PointShifts.
 <blockquote>
 <p>Following fields can be passed (all of them are optional):</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s1">'user_id'</span>                   : null,  // unsignedInteger, operator_id <span class="k">if </span>known
-    <span class="s1">'probability'</span>               : null,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; VERY_LOW, 2 <span class="o">=</span>&gt; LOW, 3 <span class="o">=</span>&gt; MEDIUM, 4 <span class="o">=</span>&gt; HIGH, 5 <span class="o">=</span>&gt; VERY_HIGH]
+    <span class="s1">'probability'</span>               : null,  // tinyInteger <span class="o">[</span>1 <span class="o">=&gt;</span> VERY_LOW, 2 <span class="o">=&gt;</span> LOW, 3 <span class="o">=&gt;</span> MEDIUM, 4 <span class="o">=&gt;</span> HIGH, 5 <span class="o">=&gt;</span> VERY_HIGH]
     <span class="s1">'total'</span>                     : 0.0,  // decimal
     <span class="s1">'total_devices'</span>             : 10,  // decimal
     <span class="s1">'trade_name'</span>                : <span class="s2">"Testing business"</span>,  // string
@@ -8139,8 +8180,8 @@ Returns PointShifts.
     <span class="s1">'email'</span>                     : <span class="s2">"john@revo.works"</span>,  // string
     <span class="s1">'phone'</span>                     : <span class="s2">"+34 668686854"</span>,  // varchar<span class="o">(</span>255<span class="o">)</span>
     <span class="s1">'city'</span>                      : <span class="s2">"Manchester"</span>,  // string
-    <span class="s1">'product'</span>                   : 2,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; Xef, 2 <span class="o">=</span>&gt; Retail]
-    <span class="s1">'type_segment'</span>              : 1,  // <span class="o">[</span>1 <span class="o">=</span>&gt; SEGMENT_SMALL, 2 <span class="o">=</span>&gt; SEGMENT_MEDIUM, 3 <span class="o">=</span>&gt; SEGMENT_LARGE]
+    <span class="s1">'product'</span>                   : 2,  // tinyInteger <span class="o">[</span>1 <span class="o">=&gt;</span> Xef, 2 <span class="o">=&gt;</span> Retail]
+    <span class="s1">'type_segment'</span>              : 1,  // <span class="o">[</span>1 <span class="o">=&gt;</span> SEGMENT_SMALL, 2 <span class="o">=&gt;</span> SEGMENT_MEDIUM, 3 <span class="o">=&gt;</span> SEGMENT_LARGE]
     <span class="s1">'general_typology'</span>          : 1,  // GENERAL TYPOLOGIES IDS ARE SPECIFIED BELOW<span class="k">*</span>
     <span class="s1">'specific_typology'</span>         : <span class="o">[</span>1, 2] // SPECIFIC TYPOLOGIES IDS ARE SPECIFIED BELOW<span class="k">**</span>
     <span class="s1">'property_spaces'</span>           : 4,  // PROPERTY SPACES IDS ARE  SPECIFIED BELOW<span class="k">***</span>
@@ -8154,21 +8195,21 @@ Returns PointShifts.
     <span class="s1">'xef_printers_quantity'</span>     : 1,  // Kitchen printers. integer
     <span class="s1">'xef_kds'</span>                   : 1,  // Would likes KDS? boolean
     <span class="s1">'xef_kds_quantity'</span>          : 1,  // How many KDS? integer
-    <span class="s1">'pos'</span>                       : -2,  // Current POS. -2 means None. tinyInteger
-    <span class="s1">'pos_other'</span>                 : <span class="s2">""</span>,  // If -1 one specified, here an other pos name can be written. string
+    <span class="s1">'pos'</span>                       : <span class="nt">-2</span>,  // Current POS. <span class="nt">-2</span> means None. tinyInteger
+    <span class="s1">'pos_other'</span>                 : <span class="s2">""</span>,  // If <span class="nt">-1</span> one specified, here an other pos name can be written. string
     <span class="s1">'retail_sale_mode'</span>          : 1, // Require a sale <span class="k">in </span>front of customer? boolean
-    <span class="s1">'retail_sale_location'</span>      : 2 // <span class="o">[</span>1 <span class="o">=</span>&gt; onLocal, 2 <span class="o">=</span>&gt; onMobility] Sale location. bool
+    <span class="s1">'retail_sale_location'</span>      : 2 // <span class="o">[</span>1 <span class="o">=&gt;</span> onLocal, 2 <span class="o">=&gt;</span> onMobility] Sale location. bool
     <span class="s1">'can_use_another_pos'</span>       : 0,  // tinyInteger
-    <span class="s1">'xef_pms'</span>                   : -1,  // Current PMS. -1 means Other. tinyInteger
-    <span class="s1">'xef_pms_other'</span>             : <span class="s2">""</span>,  // If -1 one specified, here an other pms name can be written. string
-    <span class="s1">'erp'</span>                       : -2,  // Current ERP. -2 means None. tinyInteger
-    <span class="s1">'erp_other'</span>                 : <span class="s2">""</span>,  // If -1 one specified, here an other erp name can be written. string
-    <span class="s1">'soft_other'</span>                : <span class="s2">""</span>,  // If -1 one specified, here an other soft name can be written. string
-    <span class="s1">'status'</span>                    : 1,  // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; NEW, 2 <span class="o">=</span>&gt; FIRST_CONTACT, 3 <span class="o">=</span>&gt; VISITED, 4 <span class="o">=</span>&gt; COMPLETED, 5 <span class="o">=</span>&gt; FAILED]
-    <span class="s1">'offer_status'</span>              : 1, // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; PENDING, 2 <span class="o">=</span>&gt; IN_CURSE, 3 <span class="o">=</span>&gt; PRESENTED, 4 <span class="o">=</span>&gt; COMPLETED, 5 <span class="o">=</span>&gt; EXPIRED]
-    <span class="s1">'soft'</span>                  <span class="o">=</span>&gt; <span class="o">[</span> -2 <span class="o">]</span>,  Current SOFTS. -2 means None. array of tinyIntegers SOFTS IDS ARE SPECIFIED BELOW<span class="k">****</span>
+    <span class="s1">'xef_pms'</span>                   : <span class="nt">-1</span>,  // Current PMS. <span class="nt">-1</span> means Other. tinyInteger
+    <span class="s1">'xef_pms_other'</span>             : <span class="s2">""</span>,  // If <span class="nt">-1</span> one specified, here an other pms name can be written. string
+    <span class="s1">'erp'</span>                       : <span class="nt">-2</span>,  // Current ERP. <span class="nt">-2</span> means None. tinyInteger
+    <span class="s1">'erp_other'</span>                 : <span class="s2">""</span>,  // If <span class="nt">-1</span> one specified, here an other erp name can be written. string
+    <span class="s1">'soft_other'</span>                : <span class="s2">""</span>,  // If <span class="nt">-1</span> one specified, here an other soft name can be written. string
+    <span class="s1">'status'</span>                    : 1,  // tinyInteger <span class="o">[</span>1 <span class="o">=&gt;</span> NEW, 2 <span class="o">=&gt;</span> FIRST_CONTACT, 3 <span class="o">=&gt;</span> VISITED, 4 <span class="o">=&gt;</span> COMPLETED, 5 <span class="o">=&gt;</span> FAILED]
+    <span class="s1">'offer_status'</span>              : 1, // tinyInteger <span class="o">[</span>1 <span class="o">=&gt;</span> PENDING, 2 <span class="o">=&gt;</span> IN_CURSE, 3 <span class="o">=&gt;</span> PRESENTED, 4 <span class="o">=&gt;</span> COMPLETED, 5 <span class="o">=&gt;</span> EXPIRED]
+    <span class="s1">'soft'</span>                  <span class="o">=&gt;</span> <span class="o">[</span> <span class="nt">-2</span> <span class="o">]</span>,  Current SOFTS. <span class="nt">-2</span> means None. array of tinyIntegers SOFTS IDS ARE SPECIFIED BELOW<span class="k">****</span>
 <span class="o">}</span>
-</code></pre>
+</code></pre></div>
 <p>Response is a json with created lead:</p>
 
 <p><code>{&quot;id&quot;: 1, &quot;status&quot;: 0, ...}</code></p>
@@ -8176,13 +8217,13 @@ Returns PointShifts.
 <blockquote>
 <p>Some Organizations can have custom fields, like it is shown in the following example:</p>
 </blockquote>
-<pre class="highlight sh tab-shell"><code><span class="o">{</span>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s1">'is_already_customer'</span>               : 1, // boolean
     <span class="s1">'is_already_using_organization_tpv'</span> : 0, // boolean
-    <span class="s1">'share_bandwith_with_customers'</span>     : 2, // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; <span class="s1">'yes'</span>, 0 <span class="o">=</span>&gt; <span class="s1">'no'</span>, 3 <span class="o">=</span>&gt; <span class="s1">'yesButDontKnowMega'</span> <span class="o">]</span>
-    <span class="s1">'is_smart_business_wired'</span>           : 1, // tinyInteger <span class="o">[</span>1 <span class="o">=</span>&gt; <span class="s1">'yes'</span>, 0 <span class="o">=</span>&gt; <span class="s1">'no'</span>, 3 <span class="o">=</span>&gt; <span class="s1">'dontKnow'</span> <span class="o">]</span>
+    <span class="s1">'share_bandwith_with_customers'</span>     : 2, // tinyInteger <span class="o">[</span>1 <span class="o">=&gt;</span> <span class="s1">'yes'</span>, 0 <span class="o">=&gt;</span> <span class="s1">'no'</span>, 3 <span class="o">=&gt;</span> <span class="s1">'yesButDontKnowMega'</span> <span class="o">]</span>
+    <span class="s1">'is_smart_business_wired'</span>           : 1, // tinyInteger <span class="o">[</span>1 <span class="o">=&gt;</span> <span class="s1">'yes'</span>, 0 <span class="o">=&gt;</span> <span class="s1">'no'</span>, 3 <span class="o">=&gt;</span> <span class="s1">'dontKnow'</span> <span class="o">]</span>
 <span class="o">}</span>
-</code></pre><h3 id='tips'>Tips</h3><h4 id='general-typologies'>* General typologies</h4>
+</code></pre></div><h3 id='tips'>Tips</h3><h4 id='general-typologies'>* General typologies</h4>
 <table><thead>
 <tr>
 <th>Key</th>
