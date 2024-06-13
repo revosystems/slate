@@ -94,25 +94,32 @@ Here is a list of all available reports
 
 ### Filters
 
-Filter        | Type       | Description
---------------|------------|-------------
-`start_date`  | YYYY-mm-dd | (required) The initial date for the report
-`end_date`    | YYYY-mm-dd | (required) The final date for the report
-`start_time`  | HH:mm      | The start time for the report
-`end_time`    | HH:mm      | The end time for the report
-`room`        | int        | Room id
-`dayofweek`   | int        | Where Sunday is 1 and Saturday is 7
-`priceRate`   | int        | Price rate id
-`withInvoices`|            | Append invoices
-`withFiscal`  |            | Append fiscal data to invoice
-`withPayments`|            | Append payments
-`withContents`|            | Append contents 
-`withSubContents`|         | Append subContents 
-`withItem`    |            | Append item details
-`withModifiers` |          | Append contents modifiers
-`withDelivery` |           | Append delivery information
-`forTurn=$turn_id` |       | Filter orders for turn_id. This filter already includes withInvoices and withPayments filters. Date filters (start_date and end_date) do nothing with forTurn filter.
-`table=$table_id` |        | Filter orders for table_id. Only for orders.
+All filters must be used as a query parameters.
+
+Filter        | Type       | Belongs to report/resource | Description
+--------------|------------|---------------------|-------------
+`start_date`  | YYYY-mm-dd | All                 | (required) The initial date for the report
+`end_date`    | YYYY-mm-dd | All                 | (required) The final date for the report
+`start_time`  | HH:mm      | All                 | The start time for the report
+`end_time`    | HH:mm      | All                 | The end time for the report
+`dayofweek`   | int        | All                 | Where Sunday is 1 and Saturday is 7
+`room`        | int        | Orders              | Room id
+`priceRate`   | int        | Contents            | Price rate id
+`forTurn`     | int        | Orders              | Filter orders for turn_id (forTurn=turn_id). This filter already includes withInvoices and withPayments filters. Date filters (start_date and end_date) do nothing with forTurn filter.
+`table`       | int        | Orders / Contents   | Filter orders/contents for table_id (table=table_id).
+`withInvoices`| -          | Orders              | Append invoices resource
+`withContents`| -          | Orders              | Append contents resource
+`withDelivery` | -         | Orders              | Append delivery resource
+`withPayments`| -          | Invoices            | Append payments resource
+`withFiscal`  | -          | Invoices            | Append fiscal data resource
+`withItem`    | -          | Contents            | Append item resource
+`withSubContents`| -       | Contents            | Append subContents (menu contents) resource
+`withModifiers` | -        | Contents            | Append modifier resource
+`withPriceRate` | -        | Contents            | Append price rate resource
+
+Example:
+
+Using order reports endpoint, if you want PriceRates resource, as it belongs to Contents, you will also need withContents filter.
 
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
