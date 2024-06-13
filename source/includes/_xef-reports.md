@@ -115,7 +115,7 @@ Filter        | Type       | Belongs to report/resource | Description
 `withItem`    | -          | Contents            | Append item resource
 `withSubContents`| -       | Contents            | Append subContents (menu contents) resource
 `withModifiers` | -        | Contents            | Append modifier resource
-`withPriceRate` | -        | Contents            | Append price rate resource
+`withPriceRate` | -        | Contents            | Append price rate resource ("type": 0(percentage)/1(price))
 
 Example:
 
