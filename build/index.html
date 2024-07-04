@@ -3424,7 +3424,7 @@ POST message={
 </thead><tbody>
 <tr>
 <td>item_id</td>
-<td>string</td>
+<td>number</td>
 <td><strong>required</strong></td>
 <td>Existing <a href="#items">item</a> ID. It can be a normal item, a selling format item or a menu item.</td>
 </tr>
@@ -3596,7 +3596,7 @@ POST message={
 </thead><tbody>
 <tr>
 <td>item_id</td>
-<td>string</td>
+<td>number</td>
 <td><strong>required</strong></td>
 <td>Existing <a href="#items">item</a> ID. It can be a normal menu item or a selling format menu item.</td>
 </tr>
@@ -3623,6 +3623,12 @@ POST message={
 <td>number</td>
 <td>optional</td>
 <td><strong>Must be an existing <a href="#menu-item-category-pivot">Menu Item-Category Pivot</a>.</strong></td>
+</tr>
+<tr>
+<td>modifiers</td>
+<td>array</td>
+<td>optional</td>
+<td><strong>Only for normal and selling format items.</strong> Must be an array of JSON. <a href="#modifiers-payload">see Modifiers payload</a></td>
 </tr>
 </tbody></table>
 
