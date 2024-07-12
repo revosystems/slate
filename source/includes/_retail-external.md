@@ -319,7 +319,7 @@ This will return an order invoice. As new relevant fields we can get the id.
 
 
 
-### Get list of Payments Methods
+## Get list of Payments Methods
 Get a list of available payment methods (card, cash, others...)
 
 
@@ -340,7 +340,9 @@ Get a list of available payment methods (card, cash, others...)
 ]
 ```
 
-### Customers
+## Customers
+
+### GET Customers
 
 Get a list of paginated customers
 
@@ -383,6 +385,8 @@ Response:
 }
 ```
 
+### POST Customers
+
 Create a customer
 
 `POST https://revoretail.works/api/external/config/customers`
@@ -417,6 +421,9 @@ Create a customer
 }
 ```
 
+
+### PATCH Customers
+
 Update a customer
 
 `PATCH https://revoretail.works/api/external/config/customers/{customer_id}`
@@ -429,7 +436,7 @@ Update a customer
 }
 ```
 
-### Sync chains
+## Sync chains
 
 `Sync account chains data`
 

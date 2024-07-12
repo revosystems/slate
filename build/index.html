@@ -501,6 +501,15 @@
                   <li>
                     <a href="#create-order" class="toc-h2 toc-link" data-title="Create Order">Create Order</a>
                   </li>
+                  <li>
+                    <a href="#get-list-of-payments-methods" class="toc-h2 toc-link" data-title="Get list of Payments Methods">Get list of Payments Methods</a>
+                  </li>
+                  <li>
+                    <a href="#customers" class="toc-h2 toc-link" data-title="Customers">Customers</a>
+                  </li>
+                  <li>
+                    <a href="#sync-chains" class="toc-h2 toc-link" data-title="Sync chains">Sync chains</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -5237,7 +5246,7 @@ Then we have product variants that are variants linked to products.</p>
 <p>This will return an order invoice. As new relevant fields we can get the id.</p>
 
 <p><code>{&quot;id&quot;: 1, &quot;number&quot;: &quot;E-1&quot;, ...}</code></p>
-<h3 id='get-list-of-payments-methods'>Get list of Payments Methods</h3>
+<h2 id='get-list-of-payments-methods'>Get list of Payments Methods</h2>
 <p>Get a list of available payment methods (card, cash, others...)</p>
 
 <p><code>GET https://revoretail.works/api/external/config/payment_methods</code></p>
@@ -5255,7 +5264,7 @@ Then we have product variants that are variants linked to products.</p>
         <span class="s2">"name"</span>: <span class="s2">"Cash"</span>,
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre></div><h3 id='customers'>Customers</h3>
+</code></pre></div><h2 id='customers'>Customers</h2><h3 id='get-customers'>GET Customers</h3>
 <p>Get a list of paginated customers</p>
 
 <p><code>GET https://revoretail.works/api/external/config/customers</code></p>
@@ -5295,7 +5304,7 @@ Then we have product variants that are variants linked to products.</p>
     <span class="s2">"to"</span>: 1,
     <span class="s2">"total"</span>: 1
 <span class="o">}</span>
-</code></pre></div>
+</code></pre></div><h3 id='post-customers'>POST Customers</h3>
 <p>Create a customer</p>
 
 <p><code>POST https://revoretail.works/api/external/config/customers</code></p>
@@ -5327,7 +5336,7 @@ Then we have product variants that are variants linked to products.</p>
     <span class="s2">"code"</span>: 0,
     <span class="s2">"data"</span>: <span class="o">[]</span>
 <span class="o">}</span>
-</code></pre></div>
+</code></pre></div><h3 id='patch-customers'>PATCH Customers</h3>
 <p>Update a customer</p>
 
 <p><code>PATCH https://revoretail.works/api/external/config/customers/{customer_id}</code></p>
@@ -5338,7 +5347,7 @@ Then we have product variants that are variants linked to products.</p>
 <div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
     <span class="s2">"name"</span>: <span class="s2">"Name Updated"</span>
 <span class="o">}</span>
-</code></pre></div><h3 id='sync-chains'>Sync chains</h3>
+</code></pre></div><h2 id='sync-chains'>Sync chains</h2>
 <p><code>Sync account chains data</code></p>
 <div class="highlight"><pre class="highlight sh tab-shell"><code>POST https://revoretail.works/api/external/chains/sync
 </code></pre></div>
