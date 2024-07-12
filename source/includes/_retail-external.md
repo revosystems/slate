@@ -342,8 +342,6 @@ Get a list of available payment methods (card, cash, others...)
 
 ### Customers
 
-#### GET Customers
-
 Get a list of paginated customers
 
 `GET https://revoretail.works/api/external/config/customers`
@@ -385,8 +383,6 @@ Response:
 }
 ```
 
-#### POST Customers
-
 Create a customer
 
 `POST https://revoretail.works/api/external/config/customers`
@@ -421,12 +417,9 @@ Create a customer
 }
 ```
 
-
-#### PATCH Customers
-
 Update a customer
 
-`POST https://revoretail.works/api/external/config/customers/{customer_id}`
+`PATCH https://revoretail.works/api/external/config/customers/{customer_id}`
 
 > PATCH customers/{customer_id}
 
