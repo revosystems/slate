@@ -42,10 +42,10 @@ Feel free to navigate through the docs and tell us if you feel that something ca
 
 ## API documentations
 
-- [Revo XEF](xef.html)
+- [Revo XEF](sections/xef.html)
 
-- [Revo RETAIL](retail.html)
+- [Revo RETAIL](sections/retail.html)
 
-- [Revo FLOW](flow.html)
+- [Revo FLOW](sections/flow.html)
 
-- [Revo InTOUCH/SOLO](intouch.html)
+- [Revo InTOUCH/SOLO](sections/intouch.html)
