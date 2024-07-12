@@ -19,5 +19,5 @@ includes:
   
   - xef-old
 
-search: true
+search: false
 ---

@@ -29,7 +29,7 @@ includes:
   - intouch
 #  - errors
 
-search: true
+search: false
 ---
 
 # Introduction
