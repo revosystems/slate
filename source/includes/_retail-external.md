@@ -320,6 +320,7 @@ This will return an order invoice. As new relevant fields we can get the id.
 
 
 ## Get list of Payments Methods
+
 Get a list of available payment methods (card, cash, others...)
 
 
