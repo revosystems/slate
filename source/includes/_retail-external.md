@@ -415,6 +415,7 @@ Create a customer
 > Error for required params:
 
 ```sh
+HTTP request status 422
 {
     "error": "The given data was invalid."
     "code": 0,
