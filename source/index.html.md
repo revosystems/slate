@@ -27,11 +27,9 @@ includes:
   - flow-integration
   
   - intouch
-  
-  - overview
 #  - errors
 
-search: false
+search: true
 ---
 
 # Introduction
