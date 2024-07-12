@@ -1,5 +1,5 @@
 ---
-title: Revo XEF API Reference
+title: Revo InTOUCH/SOLO API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -9,15 +9,7 @@ toc_footers:
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - xef-external
-  - xef-external-catalog
-  - xef-bookings
-  - xef-loyalty
-  - xef-loyalty-webview
-  - xef-reports
-  - xef-webhooks
-  
-  - xef-old
+  - intouch
 
 search: false
 ---
