@@ -40,6 +40,10 @@ You will be able to fetch records, update or fetch the catalog, create new order
 
 Feel free to navigate through the docs and tell us if you feel that something can be improved.
 
+Revo XEF
+
+- [Revo XEF](xef-index.html.md)
+
 ## API documentations
 
 - [Revo XEF](xef-index.html.md)
