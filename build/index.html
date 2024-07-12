@@ -501,9 +501,6 @@
                   <li>
                     <a href="#create-order" class="toc-h2 toc-link" data-title="Create Order">Create Order</a>
                   </li>
-                  <li>
-                    <a href="#sync-chains" class="toc-h2 toc-link" data-title="Sync chains">Sync chains</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -5258,7 +5255,90 @@ Then we have product variants that are variants linked to products.</p>
         <span class="s2">"name"</span>: <span class="s2">"Cash"</span>,
     <span class="o">}</span>
 <span class="o">]</span>
-</code></pre></div><h2 id='sync-chains'>Sync chains</h2>
+</code></pre></div><h3 id='customers'>Customers</h3><h4 id='get-customers'>GET Customers</h4>
+<p>Get a list of paginated customers</p>
+
+<p><code>GET https://revoretail.works/api/external/config/customers</code></p>
+
+<blockquote>
+<p>GET customers</p>
+</blockquote>
+<div class="highlight"><pre class="highlight sh tab-shell"><code>Response:
+<span class="o">{</span>
+    <span class="s2">"current_page"</span>: 1,
+    <span class="s2">"data"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1,
+            <span class="s2">"name"</span>: <span class="s2">"Name"</span>,
+            <span class="s2">"address"</span>: <span class="s2">"Address"</span>,
+            <span class="s2">"city"</span>: <span class="s2">"City"</span>,
+            <span class="s2">"state"</span>: <span class="s2">"State"</span>,
+            <span class="s2">"country"</span>: <span class="s2">"ES"</span>,
+            <span class="s2">"postalCode"</span>: <span class="s2">"00008"</span>,
+            <span class="s2">"nif"</span>: <span class="s2">"12345678A"</span>,
+            <span class="s2">"web"</span>: null,
+            <span class="s2">"email"</span>: <span class="s2">"test@test.test"</span>,
+            <span class="s2">"phone"</span>: <span class="s2">"123456789"</span>,
+            <span class="s2">"notes"</span>: null,
+            <span class="s2">"maxCredit"</span>: <span class="s2">"0.00"</span>,
+            <span class="s2">"extra_id"</span>: null,
+        <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"first_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/config/customers?page=1"</span>,
+    <span class="s2">"from"</span>: 1,
+    <span class="s2">"last_page"</span>: 1,
+    <span class="s2">"last_page_url"</span>: <span class="s2">"https://revoretail.works/api/external/config/customers?page=1"</span>,
+    <span class="s2">"next_page_url"</span>: null,
+    <span class="s2">"path"</span>: <span class="s2">"https://revoretail.works/api/external/config/customers"</span>,
+    <span class="s2">"per_page"</span>: 50,
+    <span class="s2">"prev_page_url"</span>: null,
+    <span class="s2">"to"</span>: 1,
+    <span class="s2">"total"</span>: 1
+<span class="o">}</span>
+</code></pre></div><h4 id='post-customers'>POST Customers</h4>
+<p>Create a customer</p>
+
+<p><code>POST https://revoretail.works/api/external/config/customers</code></p>
+
+<blockquote>
+<p>POST customers</p>
+</blockquote>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Name"</span>, // required
+    <span class="s2">"address"</span>: <span class="s2">"Address"</span>, // required
+    <span class="s2">"city"</span>: <span class="s2">"City"</span>,
+    <span class="s2">"state"</span>: <span class="s2">"State"</span>,
+    <span class="s2">"country"</span>: <span class="s2">"ES"</span>,
+    <span class="s2">"postalCode"</span>: <span class="s2">"00008"</span>,
+    <span class="s2">"nif"</span>: <span class="s2">"12345678A"</span>,
+    <span class="s2">"web"</span>: null,
+    <span class="s2">"email"</span>: <span class="s2">"test@test.test"</span>,
+    <span class="s2">"phone"</span>: <span class="s2">"123456789"</span>,
+    <span class="s2">"notes"</span>: null,
+    <span class="s2">"maxCredit"</span>: <span class="s2">"0.00"</span>,
+    <span class="s2">"extra_id"</span>: null,
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<p>Error for required params:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"error"</span>: <span class="s2">"The given data was invalid."</span>
+    <span class="s2">"code"</span>: 0,
+    <span class="s2">"data"</span>: <span class="o">[]</span>
+<span class="o">}</span>
+</code></pre></div><h4 id='patch-customers'>PATCH Customers</h4>
+<p>Update a customer</p>
+
+<p><code>POST https://revoretail.works/api/external/config/customers/{customer_id}</code></p>
+
+<blockquote>
+<p>PATCH customers/{customer_id}</p>
+</blockquote>
+<div class="highlight"><pre class="highlight sh tab-shell"><code><span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"Name Updated"</span>
+<span class="o">}</span>
+</code></pre></div><h3 id='sync-chains'>Sync chains</h3>
 <p><code>Sync account chains data</code></p>
 <div class="highlight"><pre class="highlight sh tab-shell"><code>POST https://revoretail.works/api/external/chains/sync
 </code></pre></div>

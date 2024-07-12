@@ -340,7 +340,103 @@ Get a list of available payment methods (card, cash, others...)
 ]
 ```
 
-## Sync chains
+### Customers
+
+#### GET Customers
+
+Get a list of paginated customers
+
+`GET https://revoretail.works/api/external/config/customers`
+
+> GET customers
+
+```sh
+Response:
+{
+    "current_page": 1,
+    "data": [
+        {
+            "id": 1,
+            "name": "Name",
+            "address": "Address",
+            "city": "City",
+            "state": "State",
+            "country": "ES",
+            "postalCode": "00008",
+            "nif": "12345678A",
+            "web": null,
+            "email": "test@test.test",
+            "phone": "123456789",
+            "notes": null,
+            "maxCredit": "0.00",
+            "extra_id": null,
+        }
+    ],
+    "first_page_url": "https://revoretail.works/api/external/config/customers?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "https://revoretail.works/api/external/config/customers?page=1",
+    "next_page_url": null,
+    "path": "https://revoretail.works/api/external/config/customers",
+    "per_page": 50,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+}
+```
+
+#### POST Customers
+
+Create a customer
+
+`POST https://revoretail.works/api/external/config/customers`
+
+> POST customers
+
+```sh
+{
+    "name": "Name", // required
+    "address": "Address", // required
+    "city": "City",
+    "state": "State",
+    "country": "ES",
+    "postalCode": "00008",
+    "nif": "12345678A",
+    "web": null,
+    "email": "test@test.test",
+    "phone": "123456789",
+    "notes": null,
+    "maxCredit": "0.00",
+    "extra_id": null,
+}
+```
+
+> Error for required params:
+
+```sh
+{
+    "error": "The given data was invalid."
+    "code": 0,
+    "data": []
+}
+```
+
+
+#### PATCH Customers
+
+Update a customer
+
+`POST https://revoretail.works/api/external/config/customers/{customer_id}`
+
+> PATCH customers/{customer_id}
+
+```sh
+{
+    "name": "Name Updated"
+}
+```
+
+### Sync chains
 
 `Sync account chains data`
 
