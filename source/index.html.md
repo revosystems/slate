@@ -1,5 +1,5 @@
 ---
-title: Revo API Reference
+title: Revo API Index Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -8,28 +8,6 @@ toc_footers:
   - <a href='https://revo.works'>Sign Up to be able to use the apis</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
-includes:
-  - xef-old
-  - xef-external
-  - xef-external-catalog
-  - xef-bookings
-  - xef-loyalty
-  - xef-loyalty-webview
-  - xef-reports
-  - xef-webhooks
-  
-  - retail-deprecated
-  - retail-external
-  - retail-catalog
-  - retail-reports
-  
-  - flow
-  - flow-integration
-  
-  - intouch
-#  - errors
-
-search: false
 ---
 
 # Introduction
@@ -40,10 +18,12 @@ You will be able to fetch records, update or fetch the catalog, create new order
 
 Feel free to navigate through the docs and tell us if you feel that something can be improved.
 
-Revo XEF
-
-- [Revo XEF](xef-index.html.md)
-
 ## API documentations
 
-- [Revo XEF](xef-index.html.md)
+- [Revo XEF](xef-index.html)
+
+- [Revo RETAIL](retail-index.html)
+
+- [Revo FLOW](retail-index.html)
+
+- [Revo InTOUCH/SOLO](intouch-index.html)
