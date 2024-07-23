@@ -304,7 +304,7 @@ For selling format items (item.type = 4):
 | payment_method_id | number | optional | Existing [payment method](#payment-methods) ID. default: channel payment method is used or created. |
 | payment_reference | string | optional | The reference of the payment. |
 | tip | decimal | optional |  |
-| contents | array | optional | Pay per items. Array of content IDs. The amount must match contents+modifiers sum amount. |
+| contents | array | optional | **Only for [Standalone payment](#standalone-payment) section.** Pay per items. Array of content IDs. The amount must match contents+modifiers sum amount. |
 
 Regarding the payment methods, there are 2 fix payment methods for all accounts:
 
@@ -416,6 +416,7 @@ If you only want to make a payment for an existing order, you must use the follo
     "amount": 12.20
     "payment_method_id": 1,
     "payment_reference": "QR code payment.",
+    "contents": [1,2,3]
     ...
 }
 ```

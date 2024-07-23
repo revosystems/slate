@@ -3712,7 +3712,7 @@ POST message={
 <td>contents</td>
 <td>array</td>
 <td>optional</td>
-<td>Pay per items. Array of content IDs. The amount must match contents+modifiers sum amount.</td>
+<td><strong>Only for <a href="#standalone-payment">Standalone payment</a> section.</strong> Pay per items. Array of content IDs. The amount must match contents+modifiers sum amount.</td>
 </tr>
 </tbody></table>
 
@@ -3911,6 +3911,7 @@ POST message={
     <span class="s2">"amount"</span>: 12.20
     <span class="s2">"payment_method_id"</span>: 1,
     <span class="s2">"payment_reference"</span>: <span class="s2">"QR code payment."</span>,
+    <span class="s2">"contents"</span>: <span class="o">[</span>1,2,3]
     ...
 <span class="o">}</span>
 </code></pre></div><h2 id='fetch-an-order'>Fetch an Order</h2>
