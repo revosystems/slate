@@ -208,7 +208,7 @@ Get products list
 
 You can also filter products by shift ids.
 
-> Filter by shift ids:
+> Filter by shift ids (JSON body):
 
 ```
 {
