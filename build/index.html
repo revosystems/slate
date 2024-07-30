@@ -6470,10 +6470,21 @@ The page and limit must be set in request.</p>
           "duration": "00:00:00",
           "spacing": "00:00:00",
           "type": 0,
-          "order": 0
+          "order": 0,
+          "shifts": [1, 2]
         },
-        ...]
+        ...
+      ]
     }
+</code></pre></div>
+<p>You can also filter products by shift ids.</p>
+
+<blockquote>
+<p>Filter by shift ids:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+  "shifts", [{shift_id1}, {shift_id2}, ...]
+}
 </code></pre></div>
 <p>Get product by its ID
 <code>https://revoflow.works/api/v1/products/1</code></p>
@@ -6492,9 +6503,11 @@ The page and limit must be set in request.</p>
           "endTime": "14:00:00",
           "weekdays": "[1,1,1,1,1,1,1]",
           "deleted_at": null,
-          "weekday": null
+          "weekday": null,
+          "shifts": [1, 2]
         },
-        ...]
+        ...
+      ]
     }
 </code></pre></div><h2 id='tables'>Tables</h2>
 <p>Get tables by day and shift.

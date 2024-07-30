@@ -198,10 +198,22 @@ Get products list
           "duration": "00:00:00",
           "spacing": "00:00:00",
           "type": 0,
-          "order": 0
+          "order": 0,
+          "shifts": [1, 2]
         },
-        ...]
+        ...
+      ]
     }
+```
+
+You can also filter products by shift ids.
+
+> Filter by shift ids:
+
+```
+{
+  "shifts", [{shift_id1}, {shift_id2}, ...]
+}
 ```
 
 Get product by its ID
@@ -225,9 +237,11 @@ Get shifts list
           "endTime": "14:00:00",
           "weekdays": "[1,1,1,1,1,1,1]",
           "deleted_at": null,
-          "weekday": null
+          "weekday": null,
+          "shifts": [1, 2]
         },
-        ...]
+        ...
+      ]
     }
 ```   
 
