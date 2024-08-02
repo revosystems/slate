@@ -206,7 +206,8 @@ Get products list
     }
 ```
 
-You can also filter products by shift ids.
+
+You can also filter products by shift ids:
 
 `https://revoflow.works/api/v1/products?shifts=shift_id1,shift_id2`
 
