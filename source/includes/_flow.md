@@ -208,13 +208,12 @@ Get products list
 
 You can also filter products by shift ids.
 
-> Filter by shift ids (JSON body):
+`https://revoflow.works/api/v1/products?shifts=shift_id1,shift_id2`
 
-```
-{
-  "shifts", [{shift_id1}, {shift_id2}, ...]
-}
-```
+> Filter by shift ids (query parameter):
+
+> https://revoflow.works/api/v1/products?shifts=1,2
+
 
 Get product by its ID
 `https://revoflow.works/api/v1/products/1`

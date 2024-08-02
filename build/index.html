@@ -6479,13 +6479,14 @@ The page and limit must be set in request.</p>
 </code></pre></div>
 <p>You can also filter products by shift ids.</p>
 
+<p><code>https://revoflow.works/api/v1/products?shifts=shift_id1,shift_id2</code></p>
+
 <blockquote>
-<p>Filter by shift ids (JSON body):</p>
+<p>Filter by shift ids (query parameter):</p>
+
+<p>https://revoflow.works/api/v1/products?shifts=1,2</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>{
-  "shifts", [{shift_id1}, {shift_id2}, ...]
-}
-</code></pre></div>
+
 <p>Get product by its ID
 <code>https://revoflow.works/api/v1/products/1</code></p>
 <h2 id='shifts'>Shifts</h2>
