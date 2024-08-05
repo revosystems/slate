@@ -207,7 +207,7 @@ Get products list
 ```
 
 
-You can also filter products by shift ids:
+You can also filter products by shift ids. Remember that products without shifts ([]) means that they have all shifts associated, so if you filter by shifts you will get all products that have the shifts of the filter + all products without shifts ([]).
 
 `https://revoflow.works/api/v1/products?shifts=shift_id1,shift_id2`
 
