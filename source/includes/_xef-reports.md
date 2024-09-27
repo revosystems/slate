@@ -116,6 +116,7 @@ Filter        | Type       | Belongs to report/resource | Description
 `withSubContents`| -       | Contents            | Append subContents (menu contents) resource
 `withModifiers` | -        | Contents            | Append modifier resource
 `withPriceRate` | -        | Contents            | Append price rate resource ("type": 0(percentage)/1(price))
+`withAppliedTaxes` | -     | Contents / Invoices | Append taxes information applied to the resource
 
 Example:
 
