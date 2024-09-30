@@ -4387,13 +4387,19 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <td><code>forTurn</code></td>
 <td>int</td>
 <td>Orders</td>
-<td>Filter orders for turn_id (forTurn=turn_id). This filter already includes withInvoices and withPayments filters. Date filters (start_date and end_date) do nothing with forTurn filter.</td>
+<td>Filter orders for turn_id (forTurn=turn_id). This filter already includes withInvoices and withPayments filters. Date filters (start_date and end_date) do nothing with forTurn filter</td>
 </tr>
 <tr>
 <td><code>table</code></td>
 <td>int</td>
 <td>Orders / Contents</td>
 <td>Filter orders/contents for table_id (table=table_id).</td>
+</tr>
+<tr>
+<td><code>fullPrecision</code></td>
+<td>bool</td>
+<td>All</td>
+<td>Displays <a href="#fields-with-fullprecision">all possible numeric fields</a> with their complete decimal precision when ?fullPrecision=true is applied</td>
 </tr>
 <tr>
 <td><code>withInvoices</code></td>
@@ -4464,6 +4470,36 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
 </aside>
+<h3 id='fields-with-fullprecision'>Fields with fullPrecision</h3>
+<p>This section lists all fields that can have their decimal precision increased by using the &quot;fullPrecision&quot; <a href="#filters">filter</a>.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th> Resource</th>
+<th>Precision without flag</th>
+<th>Precision with flag</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>subtotal</code></td>
+<td>Contents</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>tax</code></td>
+<td>Contents</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>discount_amount</code></td>
+<td>Contents</td>
+<td>2</td>
+<td>4</td>
+</tr>
+</tbody></table>
 <h2 id='master'>Master</h2>
 <p>In case you have a master account you can create a token for the master account and use it to access all the chain reports as well as get a list of all the accounts within the master account</p>
 <h3 id='get-accounts'>Get Accounts</h3>

@@ -105,8 +105,9 @@ Filter        | Type       | Belongs to report/resource | Description
 `dayofweek`   | int        | All                 | Where Sunday is 1 and Saturday is 7
 `room`        | int        | Orders              | Room id
 `priceRate`   | int        | Contents            | Price rate id
-`forTurn`     | int        | Orders              | Filter orders for turn_id (forTurn=turn_id). This filter already includes withInvoices and withPayments filters. Date filters (start_date and end_date) do nothing with forTurn filter.
+`forTurn`     | int        | Orders              | Filter orders for turn_id (forTurn=turn_id). This filter already includes withInvoices and withPayments filters. Date filters (start_date and end_date) do nothing with forTurn filter
 `table`       | int        | Orders / Contents   | Filter orders/contents for table_id (table=table_id).
+`fullPrecision` | bool        | All   | Displays [all possible numeric fields](#fields-with-fullprecision) with their complete decimal precision when ?fullPrecision=true is applied
 `withInvoices`| -          | Orders              | Append invoices resource
 `withContents`| -          | Orders              | Append contents resource
 `withDelivery` | -         | Orders              | Append delivery resource
@@ -125,6 +126,17 @@ Using order reports endpoint, if you want PriceRates resource, as it belongs to 
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
 </aside>
+
+### Fields with fullPrecision
+
+This section lists all fields that can have their decimal precision increased by using the "fullPrecision" [filter](#filters).
+
+Field | Resource | Precision without flag | Precision with flag
+----------|----------|----|----
+`subtotal` | Contents | 2 | 4
+`tax` | Contents | 2 | 4
+`discount_amount` | Contents | 2 | 4
+
 
 ## Master
 In case you have a master account you can create a token for the master account and use it to access all the chain reports as well as get a list of all the accounts within the master account
