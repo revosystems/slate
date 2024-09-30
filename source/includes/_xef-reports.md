@@ -131,11 +131,11 @@ Take into account that not all filters are available for all reports. To exactly
 
 This section lists all fields that can have their decimal precision increased by using the "fullPrecision" [filter](#filters).
 
-Field | Resource | Precision without flag | Precision with flag
-----------|-----------|--------------------------|---------------------
-`subtotal` | Contents | 2 | 4
-`tax` | Contents | 2 | 4
-`discount_amount` | Contents | 2 | 4
+Field             | Resource  | Precision without flag   | Precision with flag
+------------------|-----------|--------------------------|---------------------
+`subtotal`        | Contents  | 2                        | 4
+`tax`             | Contents  | 2                        | 4
+`discount_amount` | Contents  | 2                        | 4
 
 
 ## Master
