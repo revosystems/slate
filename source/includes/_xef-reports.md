@@ -141,9 +141,61 @@ Field             | Resource  | Precision without flag   | Precision with flag
 ## Master
 In case you have a master account you can create a token for the master account and use it to access all the chain reports as well as get a list of all the accounts within the master account
 
-### Get Accounts
+### Get Accounts V3
+
+`GET https://revoxef.works/api/external/v3/accounts`
+
+Using the optional query parameter `?withBusiness=true` in the endpoint, we can retrieve information about the business account.
+
+```shell
+{
+    "data": [
+        {
+            "id": 1,
+            "tenant": "accountname",
+            "business": { // only with withBusiness flag
+                "name": "Name",
+                "legal_name": "Legal Name",
+                "slogan": "Sloga",
+                "phone": "123456789",
+                "address": "Address",
+                "city": "City",
+                "state": "State",
+                "country": "Country",
+                "postal_code": "01234",
+                "nif": "B123456789",
+                "logo": "abcdefg123.png",
+                "web": "https://www.revo.works",
+                "tax_included": true, // bool
+                "opening_time": "05:00:00",
+                "cash_control_type": "SIMPLE", // "NONE", "SIMPLE", "FULL" or "AUTO"
+                "blind_cashier": false, // bool
+                "presence_control": true, // bool
+                "currency": "EUR",
+                "second_currency": "USD",
+                "exchange_rate": 0,  // 4 decimal precision
+                "currency2_cash_payment_method_id": 8,
+                "currency2_card_payment_method_id": 9,
+                "comma_decimal": true, // bool
+                "languages": [ // "ca", "en", "es", "eu", "fr", "pt", "it", "zh", "de"
+                    "ca"
+                ]
+            }
+        },
+        ...
+    ]
+}
+```
+
+### Get Accounts V2 (old)
 
 `GET https://revoxef.works/api/external/v2/accounts`
+
+```shell
+{
+    "IDTenant": "Tenant/AccountName"
+}
+````
 
 ### Chain reports
 

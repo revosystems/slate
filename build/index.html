@@ -4502,9 +4502,53 @@ Take into account that not all filters are available for all reports. To exactly
 </tbody></table>
 <h2 id='master'>Master</h2>
 <p>In case you have a master account you can create a token for the master account and use it to access all the chain reports as well as get a list of all the accounts within the master account</p>
-<h3 id='get-accounts'>Get Accounts</h3>
+<h3 id='get-accounts-v3'>Get Accounts V3</h3>
+<p><code>GET https://revoxef.works/api/external/v3/accounts</code></p>
+
+<p>Using the optional query parameter <code>?withBusiness=true</code> in the endpoint, we can retrieve information about the business account.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"data"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">"id"</span>: 1,
+            <span class="s2">"tenant"</span>: <span class="s2">"accountname"</span>,
+            <span class="s2">"business"</span>: <span class="o">{</span> // only with withBusiness flag
+                <span class="s2">"name"</span>: <span class="s2">"Name"</span>,
+                <span class="s2">"legal_name"</span>: <span class="s2">"Legal Name"</span>,
+                <span class="s2">"slogan"</span>: <span class="s2">"Sloga"</span>,
+                <span class="s2">"phone"</span>: <span class="s2">"123456789"</span>,
+                <span class="s2">"address"</span>: <span class="s2">"Address"</span>,
+                <span class="s2">"city"</span>: <span class="s2">"City"</span>,
+                <span class="s2">"state"</span>: <span class="s2">"State"</span>,
+                <span class="s2">"country"</span>: <span class="s2">"Country"</span>,
+                <span class="s2">"postal_code"</span>: <span class="s2">"01234"</span>,
+                <span class="s2">"nif"</span>: <span class="s2">"B123456789"</span>,
+                <span class="s2">"logo"</span>: <span class="s2">"abcdefg123.png"</span>,
+                <span class="s2">"web"</span>: <span class="s2">"https://www.revo.works"</span>,
+                <span class="s2">"tax_included"</span>: <span class="nb">true</span>, // bool
+                <span class="s2">"opening_time"</span>: <span class="s2">"05:00:00"</span>,
+                <span class="s2">"cash_control_type"</span>: <span class="s2">"SIMPLE"</span>, // <span class="s2">"NONE"</span>, <span class="s2">"SIMPLE"</span>, <span class="s2">"FULL"</span> or <span class="s2">"AUTO"</span>
+                <span class="s2">"blind_cashier"</span>: <span class="nb">false</span>, // bool
+                <span class="s2">"presence_control"</span>: <span class="nb">true</span>, // bool
+                <span class="s2">"currency"</span>: <span class="s2">"EUR"</span>,
+                <span class="s2">"second_currency"</span>: <span class="s2">"USD"</span>,
+                <span class="s2">"exchange_rate"</span>: 0,  // 4 decimal precision
+                <span class="s2">"currency2_cash_payment_method_id"</span>: 8,
+                <span class="s2">"currency2_card_payment_method_id"</span>: 9,
+                <span class="s2">"comma_decimal"</span>: <span class="nb">true</span>, // bool
+                <span class="s2">"languages"</span>: <span class="o">[</span> // <span class="s2">"ca"</span>, <span class="s2">"en"</span>, <span class="s2">"es"</span>, <span class="s2">"eu"</span>, <span class="s2">"fr"</span>, <span class="s2">"pt"</span>, <span class="s2">"it"</span>, <span class="s2">"zh"</span>, <span class="s2">"de"</span>
+                    <span class="s2">"ca"</span>
+                <span class="o">]</span>
+            <span class="o">}</span>
+        <span class="o">}</span>,
+        ...
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div><h3 id='get-accounts-v2-old'>Get Accounts V2 (old)</h3>
 <p><code>GET https://revoxef.works/api/external/v2/accounts</code></p>
-<h3 id='chain-reports'>Chain reports</h3>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+    <span class="s2">"IDTenant"</span>: <span class="s2">"Tenant/AccountName"</span>
+<span class="o">}</span>
+</code></pre></div><h3 id='chain-reports'>Chain reports</h3>
 <p><code>GET https://revoxef.works/api/external/v2/accounts/reports/{reportName}</code></p>
 
 <p>And you have to add a new header that defines the chain to connect to</p>
