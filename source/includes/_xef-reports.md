@@ -94,9 +94,9 @@ Here is a list of all available reports
 
 ### Filters
 
-All filters must be used as a query parameters.
+All filters and flags must be used as a query parameters.
 
-Filter        | Type       | Belongs to report/resource | Description
+Filter/Flag   | Type       | Belongs to report/resource | Description
 --------------|------------|---------------------|-------------
 `start_date`  | YYYY-mm-dd | All                 | (required) The initial date for the report
 `end_date`    | YYYY-mm-dd | All                 | (required) The final date for the report
@@ -152,7 +152,7 @@ Take into account that not all filters are available for all reports. To exactly
 
 ### Fields with fullPrecision
 
-This section lists all fields that can have their decimal precision increased by using the "fullPrecision" [filter](#filters).
+This section lists all fields that can have their decimal precision increased by using the "?fullPrecision=true" [flag](#filters).
 
 Field             | Resource  | Precision without flag   | Precision with flag
 ------------------|-----------|--------------------------|---------------------
