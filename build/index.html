@@ -4459,7 +4459,7 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <td><code>withAppliedTaxes</code></td>
 <td>-</td>
 <td>Contents / Invoices</td>
-<td>Append taxes information applied to the resource</td>
+<td>Append taxes information applied to the resource (JSON example below)</td>
 </tr>
 </tbody></table>
 
@@ -4470,7 +4470,27 @@ https://revoxef.works/api/external/v3/reports/<span class="o">{</span>reportName
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
 </aside>
-<h3 id='fields-with-fullprecision'>Fields with fullPrecision</h3>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>?withAppliedTaxes
+<span class="o">{</span>
+    ...
+    <span class="s2">"RESOURCE"</span>: <span class="o">[</span> // <span class="s2">"invoices"</span>, <span class="s2">"contents"</span>, <span class="s2">"sub_contents"</span>
+        <span class="o">{</span>
+            ...
+            <span class="s2">"applied_taxes"</span>: <span class="o">[</span>
+                <span class="o">{</span>
+                    <span class="s2">"id"</span>: 1, // register ID
+                    <span class="s2">"tax_id"</span>: 3, // tax ID
+                    <span class="s2">"tax_name"</span>: <span class="s2">"IVA 21%"</span>,
+                    <span class="s2">"tax_percentage"</span>: 21.00,
+                    <span class="s2">"base_amount"</span>: 0.8264, // up to 4 decimal precision
+                    <span class="s2">"tax_amount"</span>: 0.1736 // up to 4 decimal precision
+                <span class="o">}</span>
+            <span class="o">]</span>,
+            ...
+        <span class="o">}</span>
+    <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div><h3 id='fields-with-fullprecision'>Fields with fullPrecision</h3>
 <p>This section lists all fields that can have their decimal precision increased by using the &quot;fullPrecision&quot; <a href="#filters">filter</a>.</p>
 
 <table><thead>

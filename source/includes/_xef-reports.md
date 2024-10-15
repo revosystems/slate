@@ -117,7 +117,7 @@ Filter        | Type       | Belongs to report/resource | Description
 `withSubContents`| -       | Contents            | Append subContents (menu contents) resource
 `withModifiers` | -        | Contents            | Append modifier resource
 `withPriceRate` | -        | Contents            | Append price rate resource ("type": 0(percentage)/1(price))
-`withAppliedTaxes` | -     | Contents / Invoices | Append taxes information applied to the resource
+`withAppliedTaxes` | -     | Contents / Invoices | Append taxes information applied to the resource (JSON example below)
 
 Example:
 
@@ -126,6 +126,29 @@ Using order reports endpoint, if you want PriceRates resource, as it belongs to 
 <aside class="notice">
 Take into account that not all filters are available for all reports. To exactly know which filters fits on each report is recommended to visit every report at [RevoXef](https://revoxef.works/reports/summary) and take a look at the url paramteres that appear when filtering.
 </aside>
+
+```shell
+?withAppliedTaxes
+{
+    ...
+    "RESOURCE": [ // "invoices", "contents", "sub_contents"
+        {
+            ...
+            "applied_taxes": [
+                {
+                    "id": 1, // register ID
+                    "tax_id": 3, // tax ID
+                    "tax_name": "IVA 21%",
+                    "tax_percentage": 21.00,
+                    "base_amount": 0.8264, // up to 4 decimal precision
+                    "tax_amount": 0.1736 // up to 4 decimal precision
+                }
+            ],
+            ...
+        }
+    ]
+}
+```
 
 ### Fields with fullPrecision
 
