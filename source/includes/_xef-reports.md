@@ -171,7 +171,7 @@ In case you have a master account you can create a token for the master account 
 Using the optional query parameter `?withBusiness=true` in the endpoint, we can retrieve information about the business account.
 
 ```shell
-V3 endpoint
+V3 accounts endpoint
 {
     "data": [
         {
