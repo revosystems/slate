@@ -42,7 +42,7 @@ You will be able to fetch records, update or fetch the catalog, create new order
 
 Feel free to navigate through the docs and tell us if you feel that something can be improved.
 
-## API documentations
+<!-- ## API documentations
 
 - [Revo XEF](sections/xef.html)
 
@@ -50,4 +50,4 @@ Feel free to navigate through the docs and tell us if you feel that something ca
 
 - [Revo FLOW](sections/flow.html)
 
-- [Revo InTOUCH/SOLO](sections/intouch.html)
+- [Revo InTOUCH/SOLO](sections/intouch.html) -->
