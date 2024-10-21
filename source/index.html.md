@@ -27,6 +27,8 @@ includes:
   - flow-integration
   
   - intouch
+
+  - changelog
 #  - errors
 
 search: false
